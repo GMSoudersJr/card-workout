@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import { PlayingCard } from '../classes/PlayingCard';
+
+  const card = new PlayingCard("CLUBS", "KING");
+
+  console.log(card);
+</script>
+
+<h1>This will be the login page</h1>
