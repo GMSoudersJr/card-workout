@@ -7,8 +7,8 @@ import {ECardValue} from '../enums/cardValue';
 import {ECardSymbol} from '../enums/cardSymbol';
 
 export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
-	rank: TCardRank;
 	suit: TSuit;
+	rank: TCardRank;
 	constructor(
 		suit: TSuit,
 		rank: TCardRank
