@@ -1,15 +1,36 @@
 <script lang="ts">
+  import { deckOfCards, discardedCards } from '../store';
   import { PlayingCard } from '../classes/PlayingCard';
-  import { DeckOfCards } from '../classes/deckOfCards';
-  import { createPlayingCard } from '../functions/createPlayingCard';
-  import { createDeckOfCards } from '../functions/createDeckOfCards';
 
-  const card = new PlayingCard("CLUBS", "KING");
+  function handlePluck() {
+    const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+    const randomCard = $deckOfCards.at(randomCardIndex)
+    pluckedCard = randomCard;
+    deckOfCards.pluck(randomCardIndex);
+    randomCard && discardedCards.add(randomCard)
+  }
 
-  const card2 = createPlayingCard(PlayingCard, "TWO", "SPADES");
-  const deckOfCards = createDeckOfCards(DeckOfCards);
-  console.log(deckOfCards);
-  console.log(card2);
+  function handleShuffle() {
+    deckOfCards.shuffle;
+    discardedCards.reset;
+    console.log("discarded", $discardedCards)
+    pluckedCard = undefined;
+  }
+
+  let pluckedCard: PlayingCard | undefined;
 </script>
 
 <h1>This will be the login page</h1>
+<a href="/pluck">pluck</a>
+<button on:click={handleShuffle}>
+  Shuffle
+</button>
+{#if $deckOfCards.length > 0}
+<button on:click={handlePluck}>
+  pluck
+</button>
+{/if}
+{#if pluckedCard}
+  {pluckedCard.name}
+{/if}
+{$discardedCards.length}
