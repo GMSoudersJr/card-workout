@@ -29,9 +29,7 @@ function createTheDeckOfCards() {
 		subscribe,
 		shuffle: () => set(createDeckOfCards()),
 		pluck: (someRandomNumber: number) => update((deck) => {
-			console.log("Plucking a card");
 			deck.splice(someRandomNumber, 1);
-			console.log(deck);
 			return deck
 		})
 	}
@@ -39,14 +37,14 @@ function createTheDeckOfCards() {
 
 function usedCards() {
 	let emptyArray: TPlayingCard<TCardRank, TSuit>[] = [];
-	const { subscribe, update, set } = writable(emptyArray);
+	const { subscribe, update } = writable(emptyArray);
 
 	return {
 		subscribe,
-		reset: () => update((arr) => {
-			arr.splice(0, arr.length);
-			arr = arr;
-			return arr;
+		reset: () => update(( array ) => {
+			array.splice(0, array.length);
+			array = array
+			return array
 		}),
 		add: (playingCard: TPlayingCard<TCardRank, TSuit>) => update((discarded: PlayingCard[]) => {
 			discarded.push(playingCard);
@@ -58,5 +56,27 @@ function usedCards() {
 
 }
 
+function createCurrentCard() {
+	let emptyArray: PlayingCard[] = [];
+	const { subscribe, update } = writable(emptyArray);
+
+	return {
+		subscribe,
+		data: (playingCard: PlayingCard) => update((singleCardArray: PlayingCard[]) => {
+			singleCardArray.splice(0, singleCardArray.length);
+			singleCardArray.push(playingCard);
+			singleCardArray = singleCardArray;
+			return singleCardArray
+		}),
+		reset: () => update(( singleCardArray ) => {
+			singleCardArray.splice(0, singleCardArray.length);
+			singleCardArray = singleCardArray
+			return singleCardArray
+		}),
+
+	}
+}
+
+export const currentCard = createCurrentCard();
 export const deckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();

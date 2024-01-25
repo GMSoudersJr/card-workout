@@ -1,19 +1,20 @@
 <script lang="ts">
-  import { deckOfCards, discardedCards } from '../store';
+  import { deckOfCards, discardedCards, currentCard } from '../store';
   import { PlayingCard } from '../classes/PlayingCard';
+	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
 
-  function handlePluck() {
+  function handleStart() {
     const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
     const randomCard = $deckOfCards.at(randomCardIndex)
     pluckedCard = randomCard;
     deckOfCards.pluck(randomCardIndex);
     randomCard && discardedCards.add(randomCard)
+    randomCard && currentCard.data(randomCard);
   }
 
   function handleShuffle() {
-    deckOfCards.shuffle;
-    discardedCards.reset;
-    console.log("discarded", $discardedCards)
+    deckOfCards.shuffle();
+    discardedCards.reset();
     pluckedCard = undefined;
   }
 
@@ -21,16 +22,21 @@
 </script>
 
 <h1>This will be the login page</h1>
-<a href="/pluck">pluck</a>
+{#if  $deckOfCards.length < 1}
 <button on:click={handleShuffle}>
   Shuffle
 </button>
-{#if $deckOfCards.length > 0}
-<button on:click={handlePluck}>
-  pluck
+{/if}
+{#if $discardedCards.length < 1}
+<button on:click={handleStart}>
+  Start
 </button>
 {/if}
 {#if pluckedCard}
-  {pluckedCard.name}
+  {$currentCard.name}
 {/if}
 {$discardedCards.length}
+{#if pluckedCard}
+<PlayingCardWidget>
+</PlayingCardWidget>
+{/if}
