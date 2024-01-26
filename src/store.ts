@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { PlayingCard } from './classes/PlayingCard';
+import { PlayingCard } from './classes/playingCard';
 import { ESuit } from './enums/suit';
 import { ECardRank } from './enums/cardRank';
 import type { TCardRank } from './types/cardRank';

@@ -15,6 +15,7 @@
       id={$currentCard[0].name}
       rankSymbol={$currentCard[0].rank}
       suitSymbol={$currentCard[0].suit}
+      textColor={$currentCard[0].textColor}
       disabled={false}
     />
   {/if}

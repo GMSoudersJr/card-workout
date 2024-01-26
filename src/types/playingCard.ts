@@ -4,4 +4,5 @@ export type TPlayingCard<ECardRank, ESuit> = {
 	get name(): string;
 	get value(): number;
 	get symbol(): string;
+	get textColor(): string;
 };

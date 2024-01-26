@@ -8,16 +8,19 @@
   function handleClick() {
     if ( $deckOfCards.length > 0 ) {
       discardedCards.add($currentCard[0]);
-      console.log($discardedCards.length);
-      console.log(document.getElementById('discarded-cards-aside')?.scrollWidth)
+      let numberOfDiscardedCards = $discardedCards.length;
       //@ts-ignore
-      if ($discardedCards.length == 10) { document.getElementById('discarded-cards-aside').scrollLeft += 9 }
-      //@ts-ignore
-      if ($discardedCards.length > 10) { document.getElementById('discarded-cards-aside').scrollLeft += 25 }
+      let scrollWidth = document.getElementById('discarded-cards-only')?.scrollWidth;
+      if (numberOfDiscardedCards > 9 && numberOfDiscardedCards < 50) {
+        //@ts-ignore
+        document.getElementById('discarded-cards-only').scrollLeft += 25;
+      }
       const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
       const randomCard = $deckOfCards.at(randomCardIndex)
       deckOfCards.pluck(randomCardIndex);
       randomCard && currentCard.data(randomCard);
+      console.log("no. of Discards:", numberOfDiscardedCards);
+      console.log("scroll width:", scrollWidth);
     } else {
       alert("All Done");
     }
@@ -26,6 +29,7 @@
   export let rankSymbol: TCardRank;
   export let suitSymbol: TSuit;
   export let id: string;
+  export let textColor: string;
   $: rank = ECardSymbol[rankSymbol as keyof typeof ECardSymbol]
   $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
   export let disabled: boolean;
@@ -41,13 +45,13 @@
   <section class="rank-and-suit">
 
     <slot name="rank">
-      <h3 class="rank">
+      <h3 class="rank" style:color={textColor}>
         {rank || ''}
       </h3>
     </slot>
 
     <slot name="suit">
-      <h2 class="suit">
+      <h2 class="suit" style:color={textColor}>
         {@html suit || ''}
       </h2>
     </slot>
@@ -57,13 +61,13 @@
   <section class="rank-and-suit rank-and-suit-rotate">
 
     <slot name="suit-vertical-flip">
-      <h2 class="suit suit-vertical-flip">
+      <h2 class="suit suit-vertical-flip" style:color={textColor}>
         {@html suit || ''}
       </h2>
     </slot>
 
     <slot name="rank-vertical-horizontal-flip">
-      <h3 class="rank rank-vertical-horizontal-flip">
+      <h3 class="rank rank-vertical-horizontal-flip" style:color={textColor}>
         {rank ?? ''}
       </h3>
     </slot>
@@ -86,6 +90,7 @@
     "rank-and-suit . ."
     ". . ."
     ". . rank-and-suit-rotate";
+    background: #D9D9D9;
   }
   .rank, .suit {
     line-height: 0.9em;
@@ -107,5 +112,6 @@
   button:disabled,
   button[disabled] {
     background: #FFFFFF;
+    filter: brightness(80%);
   }
 </style>

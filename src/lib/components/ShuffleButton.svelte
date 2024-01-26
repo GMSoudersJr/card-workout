@@ -6,7 +6,7 @@
     discardedCards.reset();
     currentCard.reset();
     //@ts-ignore
-    document.getElementById('discarded-cards-aside').scrollLeft = 0;
+    document.getElementById('discarded-cards-only').scrollLeft = 0;
   }
 
 </script>

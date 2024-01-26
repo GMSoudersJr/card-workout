@@ -25,4 +25,11 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	get symbol(): string {
 		return ECardSymbol[this.rank];
 	}
+	get textColor(): string {
+		if ( this.suit == "DIAMONDS" || this.suit == "HEARTS" ) {
+			return '#FF0000';
+		} else {
+			return '#000000';
+		}
+	}
 };
