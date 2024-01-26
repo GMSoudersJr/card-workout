@@ -49,9 +49,9 @@
     </slot>
 
     <slot name="suit">
-      <h2 class="suit" style:color={textColor}>
+      <h3 class="suit" style:color={textColor}>
         {@html suit || ''}
-      </h2>
+      </h3>
     </slot>
 
   </section>
@@ -59,9 +59,9 @@
   <section class="rank-and-suit rank-and-suit-rotate">
 
     <slot name="suit-vertical-flip">
-      <h2 class="suit suit-vertical-flip" style:color={textColor}>
+      <h3 class="suit suit-vertical-flip" style:color={textColor}>
         {@html suit || ''}
-      </h2>
+      </h3>
     </slot>
 
     <slot name="rank-vertical-horizontal-flip">
@@ -91,7 +91,7 @@
     background: #D9D9D9;
   }
   .rank, .suit {
-    line-height: 0.5em;
+    line-height: 0.6em;
   }
   .rank-and-suit {
     grid-area: rank-and-suit;
