@@ -5,6 +5,12 @@
 </script>
 
 <main>
+  <div class="nav-and-heading">
+    <a href="/" class="nav-link">
+      ⬅ Home
+    </a>
+    <h1 class="heading">Cards</h1>
+  </div>
   <aside class="discarded-cards-aside">
     <div id="discarded-cards-only" class="discarded-cards">
     {#if  $discardedCards}
@@ -30,8 +36,26 @@
     width: max-content;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: repeat(2, min-content) 1fr min-content;
     justify-content: center;
+  }
+  .nav-and-heading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    grid-template-areas: "nav heading .";
+  }
+  .nav-link {
+    grid-area: nav;
+    font-size: large;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #000000;
+  }
+  .heading {
+    grid-area: heading;
+    place-self: center;
   }
   .discarded-cards-aside {
     width: 320px;
@@ -54,7 +78,6 @@
     scrollbar-width: none;
     padding-top: 5px;
     justify-self: center;
-    border-top-left-radius: 8px;
   }
   .discarded-cards::-webkit-scrollbar {
     display: none;

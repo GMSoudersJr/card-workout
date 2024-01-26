@@ -19,8 +19,6 @@
       const randomCard = $deckOfCards.at(randomCardIndex)
       deckOfCards.pluck(randomCardIndex);
       randomCard && currentCard.data(randomCard);
-      console.log("no. of Discards:", numberOfDiscardedCards);
-      console.log("scroll width:", scrollWidth);
     } else {
       alert("All Done");
     }
@@ -93,13 +91,14 @@
     background: #D9D9D9;
   }
   .rank, .suit {
-    line-height: 0.9em;
+    line-height: 0.5em;
   }
   .rank-and-suit {
     grid-area: rank-and-suit;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
+    row-gap: 8px;
     justify-content: center;
     align-items: center;
   }

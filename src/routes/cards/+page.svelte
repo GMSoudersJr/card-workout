@@ -6,7 +6,6 @@
 </script>
 
 <main>
-  <h1 class="title">Cards</h1>
   {#if $currentCard.length == 0}
     <StartButton />
   {/if}
@@ -29,6 +28,7 @@
     text-align: center;
   }
   main {
+    padding-top: 8px;
     display: grid;
     grid-template-rows: repeat(3, min-content);
     row-gap: 1rem;

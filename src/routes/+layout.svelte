@@ -8,10 +8,8 @@
 
 <style>
   main {
-    width: 320px;
-    height: 568px;
-    border: 1px solid green;
+    border: 1px solid #259259;
     display: grid;
-    justify-content: center;
+    justify-items: center;
   }
 </style>
