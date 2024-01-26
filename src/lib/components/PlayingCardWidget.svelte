@@ -2,10 +2,18 @@
   import { deckOfCards, discardedCards, currentCard } from '../../store';
   import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
   import { ECardSymbol } from "../../enums/cardSymbol";
+	import type { TCardRank } from '../../types/cardRank';
+	import type { TSuit } from '../../types/suit';
 
   function handleClick() {
     if ( $deckOfCards.length > 0 ) {
       discardedCards.add($currentCard[0]);
+      console.log($discardedCards.length);
+      console.log(document.getElementById('discarded-cards-aside')?.scrollWidth)
+      //@ts-ignore
+      if ($discardedCards.length == 10) { document.getElementById('discarded-cards-aside').scrollLeft += 9 }
+      //@ts-ignore
+      if ($discardedCards.length > 10) { document.getElementById('discarded-cards-aside').scrollLeft += 25 }
       const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
       const randomCard = $deckOfCards.at(randomCardIndex)
       deckOfCards.pluck(randomCardIndex);
@@ -15,25 +23,32 @@
     }
   }
 
-  $: rankSymbol =  ECardSymbol[$currentCard[0]?.rank as keyof typeof ECardSymbol];
-  $: suitSymbol =  ESuitSymbolUnicode[$currentCard[0]?.suit as keyof typeof ESuitSymbolUnicode];
+  export let rankSymbol: TCardRank;
+  export let suitSymbol: TSuit;
+  export let id: string;
+  $: rank = ECardSymbol[rankSymbol as keyof typeof ECardSymbol]
+  $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
+  export let disabled: boolean;
 </script>
 
 <button
+  id={id}
   class="playing-card"
   on:click={handleClick}
+  aria-disabled={disabled}
+  disabled={disabled}
 >
   <section class="rank-and-suit">
 
     <slot name="rank">
       <h3 class="rank">
-        {rankSymbol || ''}
+        {rank || ''}
       </h3>
     </slot>
 
     <slot name="suit">
       <h2 class="suit">
-        {@html suitSymbol || ''}
+        {@html suit || ''}
       </h2>
     </slot>
 
@@ -43,13 +58,13 @@
 
     <slot name="suit-vertical-flip">
       <h2 class="suit suit-vertical-flip">
-        {@html suitSymbol || ''}
+        {@html suit || ''}
       </h2>
     </slot>
 
     <slot name="rank-vertical-horizontal-flip">
       <h3 class="rank rank-vertical-horizontal-flip">
-        {rankSymbol ?? ''}
+        {rank ?? ''}
       </h3>
     </slot>
 
@@ -88,5 +103,9 @@
   }
   .suit-vertical-flip, .rank-vertical-horizontal-flip  {
     transform: rotate(180deg);
+  }
+  button:disabled,
+  button[disabled] {
+    background: #FFFFFF;
   }
 </style>

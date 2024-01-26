@@ -5,20 +5,32 @@
 	import ShuffleButton from '$lib/components/ShuffleButton.svelte';
 </script>
 
-<h1 class="title">Cards</h1>
-
-{#if $currentCard.length == 0}
-  <StartButton />
-{/if}
-{#if $currentCard.length >= 1}
-  <PlayingCardWidget />
-{/if}
-{#if $discardedCards.length >= 51}
-  <ShuffleButton />
-{/if}
+<main>
+  <h1 class="title">Cards</h1>
+  {#if $currentCard.length == 0}
+    <StartButton />
+  {/if}
+  {#if $currentCard.length >= 1}
+    <PlayingCardWidget
+      id={$currentCard[0].name}
+      rankSymbol={$currentCard[0].rank}
+      suitSymbol={$currentCard[0].suit}
+      disabled={false}
+    />
+  {/if}
+  {#if $discardedCards.length >= 51}
+    <ShuffleButton />
+  {/if}
+</main>
 
 <style>
   .title {
     text-align: center;
+  }
+  main {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 1rem;
+    justify-content: center;
   }
 </style>

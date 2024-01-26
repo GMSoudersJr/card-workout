@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
   import { currentCard, deckOfCards, discardedCards } from '../../store';
 
   function handleShuffle() {
     deckOfCards.shuffle();
     discardedCards.reset();
     currentCard.reset();
+    //@ts-ignore
+    document.getElementById('discarded-cards-aside').scrollLeft = 0;
   }
 
 </script>
