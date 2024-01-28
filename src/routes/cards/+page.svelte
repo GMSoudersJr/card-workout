@@ -28,7 +28,7 @@
     text-align: center;
   }
   main {
-    padding-top: 8px;
+    padding-top: 0.5rem;
     display: grid;
     grid-template-rows: repeat(3, min-content);
     row-gap: 1rem;

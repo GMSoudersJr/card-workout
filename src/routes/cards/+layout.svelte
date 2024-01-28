@@ -76,7 +76,7 @@
     overflow-y: clip;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    padding-top: 5px;
+    padding-top: 10px;
     justify-self: center;
   }
   .discarded-cards::-webkit-scrollbar {

@@ -8,8 +8,10 @@
 
 <style>
   main {
-    border: 1px solid #259259;
+    width: 100vw;
+    padding: 0.5rem;
     display: grid;
+    grid-template-rows: min-content 1fr;
     justify-items: center;
   }
 </style>
