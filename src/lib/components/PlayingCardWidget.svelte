@@ -88,7 +88,7 @@
     "rank-and-suit . ."
     ". . ."
     ". . rank-and-suit-rotate";
-    background: #D9D9D9;
+    background: #FFF;
   }
   .rank, .suit {
     line-height: 0.6em;
