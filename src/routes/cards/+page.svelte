@@ -24,9 +24,6 @@
 </main>
 
 <style>
-  .title {
-    text-align: center;
-  }
   main {
     padding-top: 0.5rem;
     display: grid;

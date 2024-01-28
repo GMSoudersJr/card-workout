@@ -33,23 +33,24 @@
 
 <style>
   main {
-    width: max-content;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content) 1fr min-content;
     justify-content: center;
+    justify-items: center;
+    border: 1px solid black;
   }
   .nav-and-heading {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
     align-items: center;
     grid-template-areas: "nav heading .";
   }
   .nav-link {
     grid-area: nav;
     font-size: large;
-    padding-left: 5px;
     text-decoration: none;
     color: #000000;
   }
@@ -58,7 +59,7 @@
     place-self: center;
   }
   .discarded-cards-aside {
-    width: 320px;
+    width: 100%;
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr;
@@ -67,10 +68,10 @@
     overflow: hidden;
   }
   .discarded-cards {
-    width: 300px;
+    width: calc(100% - 20px);
     display: grid;
     height: calc(161.8px / 3);
-    grid-template-columns: repeat(51, 25px);
+    grid-template-columns: repeat(51, minmax(25px, 50px));
     grid-template-rows: 1fr;
     overflow-x: scroll;
     overflow-y: clip;
