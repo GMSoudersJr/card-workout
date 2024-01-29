@@ -7,14 +7,52 @@
 
   function handleClick() {
     if ( $deckOfCards.length > 0 ) {
+      let widthOfUnderCard = 25;
       discardedCards.add($currentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
+      let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
       //@ts-ignore
-      let scrollWidth = document.getElementById('discarded-cards-only')?.scrollWidth;
-      if (numberOfDiscardedCards > 9 && numberOfDiscardedCards < 50) {
+      if ( clientWidth / 51 > 25 ) {
         //@ts-ignore
-        document.getElementById('discarded-cards-only').scrollLeft += 25;
+        widthOfUnderCard = clientWidth / 51;
       }
+      let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
+      let scrollWidth = document.getElementById('discarded-cards-only')?.scrollWidth;
+      let scrollLeft = document.getElementById('discarded-cards-only')?.scrollLeft;
+      console.log("no. of cards:", numberOfDiscardedCards);
+      console.log("width of cards:", widthOfCards);
+      console.log("scroll width:", scrollWidth);
+      console.log("client width:", clientWidth);
+      //@ts-ignore
+      if ( widthOfCards >= clientWidth ) {
+        console.log("*****Let's Scroll*****")
+        console.log("from:", scrollLeft);
+        //@ts-ignore
+        let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
+        console.log("Should scroll to:", lengthToScroll);
+        //@ts-ignore
+        document.getElementById('discarded-cards-only').scrollLeft = lengthToScroll;
+        console.log("Actually to:", document.getElementById('discarded-cards-only')?.scrollLeft);
+/*
+        if ( lengthToScroll < 25 ) {
+          //@ts-ignore
+          document.getElementById('discarded-cards-only').scrollLeft += lengthToScroll;
+          console.log("scrolled left:", document.getElementById('discarded-cards-only')?.scrollLeft);
+        } else {
+          //@ts-ignore
+          document.getElementById('discarded-cards-only').scrollLeft += 25;
+          console.log("scrolled left:", document.getElementById('discarded-cards-only')?.scrollLeft);
+        }
+*/
+      }
+/*
+        //@ts-ignore
+      if (widthOfCards >= scrollWidth) {
+        console.log("width of cards equals or exceeds the scroll width");
+        //@ts-ignore
+        document.getElementById('discarded-cards-only').scrollLeft += widthOfUnderCard ;
+      }
+*/
       const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
       const randomCard = $deckOfCards.at(randomCardIndex)
       deckOfCards.pluck(randomCardIndex);
