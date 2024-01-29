@@ -1,4 +1,4 @@
-export enum ECardSymbol {
+export enum ECardRankSymbol {
 	TWO = '2',
 	THREE = '3',
 	FOUR = '4',

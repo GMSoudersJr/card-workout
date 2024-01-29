@@ -1,6 +1,7 @@
 <script lang="ts">
   import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
   import { discardedCards, deckOfCards } from "../../store";
+  import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
 
 </script>
 
@@ -13,7 +14,7 @@
   </div>
   <aside class="discarded-cards-aside">
     <div id="discarded-cards-only" class="discarded-cards">
-    {#if  $discardedCards}
+    {#if $discardedCards}
     {#each $discardedCards as card (card.name)}
       <PlayingCardWidget
         id={`${card.name}-discarded`}
@@ -27,7 +28,10 @@
     </div>
   </aside>
   <slot />
-  <aside>
+  <aside class="deck-of-cards-info-aside">
+    {#if $deckOfCards}
+      <CardsInfoWidget />
+    {/if}
   </aside>
 </main>
 
@@ -36,7 +40,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content) 1fr min-content;
+    grid-template-rows: repeat(2, min-content)  repeat(2, 1fr);
     justify-content: center;
     justify-items: center;
   }
@@ -81,5 +85,8 @@
   }
   .discarded-cards::-webkit-scrollbar {
     display: none;
+  }
+  .deck-of-cards-info-aside {
+    width: 100%;
   }
 </style>

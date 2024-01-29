@@ -4,7 +4,7 @@ import type { TCardRank } from '../types/cardRank';
 import { ESuit } from '../enums/suit';
 import { ECardRank } from '../enums/cardRank';
 import {ECardValue} from '../enums/cardValue';
-import {ECardSymbol} from '../enums/cardSymbol';
+import {ECardRankSymbol} from '../enums/cardRankSymbol';
 
 export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	suit: TSuit;
@@ -23,7 +23,7 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 		return ECardValue[this.rank];
 	}
 	get symbol(): string {
-		return ECardSymbol[this.rank];
+		return ECardRankSymbol[this.rank];
 	}
 	get textColor(): string {
 		if ( this.suit == "DIAMONDS" || this.suit == "HEARTS" ) {

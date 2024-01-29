@@ -31,7 +31,7 @@ function createTheDeckOfCards() {
 		pluck: (someRandomNumber: number) => update((deck) => {
 			deck.splice(someRandomNumber, 1);
 			return deck
-		})
+		}),
 	}
 }
 

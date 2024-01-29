@@ -1,4 +1,4 @@
-import type { PlayingCard } from '../classes/PlayingCard';
+import type { PlayingCard } from '../classes/playingCard';
 
 export type TDeckOfCards = {
 	cards: PlayingCard[];
