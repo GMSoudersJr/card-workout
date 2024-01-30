@@ -5,6 +5,7 @@ import { ESuit } from '../enums/suit';
 import { ECardRank } from '../enums/cardRank';
 import {ECardValue} from '../enums/cardValue';
 import {ECardRankSymbol} from '../enums/cardRankSymbol';
+import {ESuitColors} from '../enums/suitColors';
 
 export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	suit: TSuit;
@@ -26,10 +27,6 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 		return ECardRankSymbol[this.rank];
 	}
 	get textColor(): string {
-		if ( this.suit == "DIAMONDS" || this.suit == "HEARTS" ) {
-			return '#FF0000';
-		} else {
-			return '#000000';
-		}
+		return ESuitColors[this.suit as keyof typeof ESuitColors];
 	}
 };
