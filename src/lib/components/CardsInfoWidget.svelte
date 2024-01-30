@@ -47,7 +47,6 @@
 </script>
 
 <div class="deck-of-cards-info-widget-container">
-    <legend>View info by:</legend>
     <div class="radio-buttons-container">
       {#each infoChoices as choice}
       <label for={choice.id}>
@@ -72,7 +71,12 @@
     grid-template-rows: repeat(2, min-content);
     grid-template-rows: min-content;
     justify-items: center;
-    gap: 1rem;
+    align-items: center;
+    padding-top: 1rem;
+    gap: 1.5rem;
+  }
+  input {
+    margin-top: 0.5rem;
   }
   label {
     display: grid;
@@ -82,6 +86,9 @@
   }
   .radio-buttons-container {
     justify-content: center;
+    background: #F1F2F2;
+    padding: 8px 15px;
+    border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(3, max-content);
     grid-template-rows: min-content;

@@ -37,7 +37,9 @@
 <style>
   ul {
     display: grid;
-    grid-template-rows: repeat(4, min-content);
+    grid-template-rows: repeat(2, min-content);
+    grid-template-columns: repeat(2, max-content);
+    gap: 2rem;
     justify-content: center;
     justify-items: baseline;
   }
