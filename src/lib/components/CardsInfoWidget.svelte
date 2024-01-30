@@ -1,10 +1,28 @@
 <script lang="ts">
+	import type {ComponentType, SvelteComponent} from "svelte";
+
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
 
+  interface InfoWidgets {
+    [key: string]: ComponentType
+  }
 
-  const infoChoices = [
+  const infoWidgets: InfoWidgets = {
+    deck: DeckInfoWidget,
+    rank: RankInfoWidget,
+    suit: SuitInfoWidget,
+  };
+
+  interface InfoChoice {
+    id: string;
+    value: string;
+    innerHtml: string;
+    widget: ComponentType
+  }
+
+  const infoChoices: InfoChoice[] = [
     {
       id: "radio-deck",
       value: "deck",
@@ -21,11 +39,11 @@
       id: "radio-suit",
       value: "suit",
       innerHtml: "Suit",
+      widget: SuitInfoWidget,
     },
   ];
 
-
-  $: group = 'deck';
+  $: group = '';
 </script>
 
 <div class="deck-of-cards-info-widget-container">
@@ -44,10 +62,7 @@
       </label>
       {/each}
     </div>
-      {#if group}
-        <DeckInfoWidget />
-        <RankInfoWidget />
-      {/if}
+    <svelte:component this={infoWidgets[group]} />
 </div>
 
 <style>
@@ -57,13 +72,13 @@
     grid-template-rows: repeat(2, min-content);
     grid-template-rows: min-content;
     justify-items: center;
-    border: 1px solid orange;
     gap: 1rem;
   }
   label {
     display: grid;
     grid-template-columns: min-content;
     align-items: center;
+    font-size: large;
   }
   .radio-buttons-container {
     justify-content: center;

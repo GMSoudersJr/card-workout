@@ -38,9 +38,10 @@
 <style>
   main {
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content)  repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content)   1fr min-content;
     justify-content: center;
     justify-items: center;
   }
@@ -88,5 +89,7 @@
   }
   .deck-of-cards-info-aside {
     width: 100%;
+    height: 25svh;
+    background-color: #D9D9D9;
   }
 </style>

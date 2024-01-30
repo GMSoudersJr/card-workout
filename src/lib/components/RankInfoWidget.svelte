@@ -33,22 +33,22 @@
 
 <style>
   .strike-through {
-    color: #D9D9D9;
+    color: #A2A2A2;
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(3, max-content);
-    grid-template-rows: repeat(5, min-content);
+    grid-template-columns: repeat(6, max-content);
+    grid-template-rows: repeat(4, min-content);
     column-gap: 1rem;
     row-gap: 0.5rem;
-    justify-content: stretch;
+    justify-content: center;
     justify-items: center;
+    align-items: center;
     grid-template-areas: 
-    "TWO SIX JACK"
-    "THREE SEVEN QUEEN"
-    "FOUR EIGHT KING"
-    "FIVE NINE ACE"
-    ". TEN . ";
+    "TWO TWO FIVE FIVE EIGHT EIGHT"
+    "THREE THREE SIX SIX NINE NINE"
+    "FOUR FOUR SEVEN SEVEN TEN TEN"
+    "JACK JACK QUEEN KING ACE ACE ";
   }
   .rank-2 {
     grid-area: TWO;
@@ -90,6 +90,7 @@
     grid-area: ACE;
   }
   li {
+    font-size: 1.1rem;
     list-style: none;
   }
 </style>

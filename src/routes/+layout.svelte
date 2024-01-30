@@ -13,7 +13,7 @@
     padding: 0.5rem;
     display: grid;
     border: 5px solid #259259;
-    grid-template-rows: min-content 1fr;
     justify-items: center;
+    align-items: center;
   }
 </style>
