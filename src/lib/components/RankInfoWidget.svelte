@@ -37,18 +37,16 @@
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(6, max-content);
-    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: repeat(10, max-content);
+    grid-template-rows: repeat(3, min-content);
     column-gap: 1rem;
     row-gap: 0.5rem;
-    justify-content: center;
     justify-items: center;
-    align-items: center;
+    align-items: baseline;
     grid-template-areas: 
-    "TWO TWO FIVE FIVE EIGHT EIGHT"
-    "THREE THREE SIX SIX NINE NINE"
-    "FOUR FOUR SEVEN SEVEN TEN TEN"
-    "JACK JACK QUEEN KING ACE ACE ";
+    "TWO TWO . THREE . . FOUR . FIVE FIVE "
+    ". SIX SEVEN SEVEN EIGHT EIGHT NINE NINE TEN ."
+    "JACK JACK . QUEEN . . KING . ACE ACE ";
   }
   .rank-2 {
     grid-area: TWO;
