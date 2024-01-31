@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ComponentType, SvelteComponent} from "svelte";
+	import type {ComponentType} from "svelte";
 
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
