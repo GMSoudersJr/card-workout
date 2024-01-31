@@ -8,11 +8,11 @@
 </script>
 
 <main>
-  {#if $currentCard.length == 0}
+  {#if $currentCard.length == 0 && $discardedCards.length == 0}
   <StartButton />
-  {/if}
+  {:else}
+  {#if $currentCard.length > 0}
   <ul>
-  {#if $currentCard.length >= 1}
     {#each $currentCard as currentCard (currentCard.name)}
       <li
         out:send={{ key: currentCard.name }}
@@ -28,20 +28,20 @@
         />
       </li>
     {/each}
-  {/if}
   </ul>
-  {#if $discardedCards.length >= 51}
+  {/if}
+  {/if}
+  {#if $discardedCards.length == 52 && $currentCard.length == 0}
   <ShuffleButton />
   {/if}
 </main>
 
 <style>
   main {
-    padding-top: 0.5rem;
+    width: 100%;
     display: grid;
-    grid-template-rows: repeat(3, min-content);
-    row-gap: 1rem;
     justify-content: center;
+    align-items: center;
   }
   ul {
     display: grid;

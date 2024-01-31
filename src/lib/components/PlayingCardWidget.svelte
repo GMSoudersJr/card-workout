@@ -33,8 +33,9 @@
       const randomCard = $deckOfCards.at(randomCardIndex)
       deckOfCards.pluck(randomCardIndex);
       randomCard && currentCard.data(randomCard);
-    } else {
-      alert("All Done");
+    } else if ( $deckOfCards.length == 0 ) {
+      discardedCards.add($currentCard[0]);
+      currentCard.reset();
     }
   }
 
@@ -91,7 +92,7 @@
 <style>
   .playing-card {
     width: 100px;
-    height: 161.8px;
+    aspect-ratio: 1 / 1.618;
     border-radius: 8px;
     display: grid;
     justify-content: center;

@@ -19,7 +19,7 @@
     {#each $discardedCards as card (card.name)}
       <li
         in:receive={{ key: card.name }}
-        animate:flip={{ duration: 200 }}
+        animate:flip={{ duration: 500 }}
       >
         <PlayingCardWidget
           id={`${card.name}-discarded`}
@@ -43,7 +43,6 @@
 
 <style>
   main {
-    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
