@@ -38,7 +38,6 @@
 
 <style>
   main {
-    width: 100%;
     display: grid;
     justify-content: center;
     align-items: center;

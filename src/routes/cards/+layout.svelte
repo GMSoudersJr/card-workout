@@ -47,8 +47,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 181.8px 1fr min-content;
-    justify-content: center;
-    justify-items: center;
   }
   .nav-and-heading {
     width: 100%;
