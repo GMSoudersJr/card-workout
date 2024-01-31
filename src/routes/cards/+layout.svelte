@@ -1,11 +1,9 @@
 <script lang="ts">
   import { flip } from "svelte/animate";
-  import { receive, send } from "$lib/transition";
-  import { blur } from "svelte/transition";
+  import { receive } from "$lib/transition";
   import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
   import { discardedCards, deckOfCards } from "../../store";
   import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
-	import {quintOut} from "svelte/easing";
 </script>
 
 <main>
