@@ -22,7 +22,12 @@
         //@ts-ignore
         let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
         //@ts-ignore
-        document.getElementById('discarded-cards-only').scrollLeft = lengthToScroll;
+        // document.getElementById('discarded-cards-only').scrollLeft = lengthToScroll;
+        document.getElementById('discarded-cards-only')?.scrollTo({
+          top: 0,
+          left: lengthToScroll,
+          behavior: 'smooth'
+        });
       }
       const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
       const randomCard = $deckOfCards.at(randomCardIndex)
