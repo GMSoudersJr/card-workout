@@ -49,7 +49,6 @@ function usedCards() {
 		add: (playingCard: TPlayingCard<TCardRank, TSuit>) => update((discarded: PlayingCard[]) => {
 			discarded.push(playingCard);
 			discarded = discarded
-			console.log("discarded", discarded)
 			return discarded
 		}),
 
