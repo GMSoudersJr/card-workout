@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { flip } from "svelte/animate";
+  import { receive, send } from "$lib/transition";
+  import { blur } from "svelte/transition";
   import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
   import { discardedCards, deckOfCards } from "../../store";
   import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
-
+	import {quintOut} from "svelte/easing";
 </script>
 
 <main>
@@ -13,19 +16,24 @@
     <h1 class="heading">Cards</h1>
   </div>
   <aside class="discarded-cards-aside">
-    <div id="discarded-cards-only" class="discarded-cards">
+    <ul id="discarded-cards-only" class="discarded-cards">
     {#if $discardedCards}
     {#each $discardedCards as card (card.name)}
-      <PlayingCardWidget
-        id={`${card.name}-discarded`}
-        rankSymbol={card.rank}
-        suitSymbol={card.suit}
-        textColor={card.textColor}
-        disabled
-      />
+      <li
+        in:receive={{ key: card.name }}
+        animate:flip={{ duration: 200 }}
+      >
+        <PlayingCardWidget
+          id={`${card.name}-discarded`}
+          rankSymbol={card.rank}
+          suitSymbol={card.suit}
+          textColor={card.textColor}
+          disabled
+        />
+      </li>
     {/each}
     {/if}
-    </div>
+    </ul>
   </aside>
   <slot />
   <aside class="deck-of-cards-info-aside">
@@ -92,5 +100,8 @@
     width: 100%;
     height: 25svh;
     background-color: #D9D9D9;
+  }
+  li {
+    list-style: none;
   }
 </style>

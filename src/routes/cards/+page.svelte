@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { receive, send } from '$lib/transition';
+  import { flip } from 'svelte/animate';
   import { discardedCards, currentCard } from '../../store';
 	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
 	import StartButton from '$lib/components/StartButton.svelte';
@@ -7,19 +9,29 @@
 
 <main>
   {#if $currentCard.length == 0}
-    <StartButton />
+  <StartButton />
   {/if}
+  <ul>
   {#if $currentCard.length >= 1}
-    <PlayingCardWidget
-      id={$currentCard[0].name}
-      rankSymbol={$currentCard[0].rank}
-      suitSymbol={$currentCard[0].suit}
-      textColor={$currentCard[0].textColor}
-      disabled={false}
-    />
+    {#each $currentCard as currentCard (currentCard.name)}
+      <li
+        out:send={{ key: currentCard.name }}
+        in:receive={{ key: currentCard.name }}
+        animate:flip={{ duration: 5000 }}
+      >
+        <PlayingCardWidget
+          id={currentCard.name}
+          rankSymbol={currentCard.rank}
+          suitSymbol={currentCard.suit}
+          textColor={currentCard.textColor}
+          disabled={false}
+        />
+      </li>
+    {/each}
   {/if}
+  </ul>
   {#if $discardedCards.length >= 51}
-    <ShuffleButton />
+  <ShuffleButton />
   {/if}
 </main>
 
@@ -30,5 +42,12 @@
     grid-template-rows: repeat(3, min-content);
     row-gap: 1rem;
     justify-content: center;
+  }
+  ul {
+    display: grid;
+    grid-template-rows: min-content;
+  }
+  li {
+    list-style: none;
   }
 </style>
