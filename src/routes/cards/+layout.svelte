@@ -41,7 +41,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content)   1fr min-content;
+    grid-template-rows: min-content 181.8px 1fr min-content;
     justify-content: center;
     justify-items: center;
   }
@@ -70,11 +70,12 @@
     grid-template-rows: 1fr;
     background: #259259;
     overflow: hidden;
+    padding-bottom: 10px;
+    border-radius: 8px;
   }
   .discarded-cards {
     width: calc(100% - 20px);
     display: grid;
-    height: calc(161.8px / 3);
     grid-template-columns: repeat(54, minmax(25px, 50px));
     grid-template-rows: 1fr;
     overflow-x: scroll;
