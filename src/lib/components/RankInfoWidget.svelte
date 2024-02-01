@@ -1,6 +1,7 @@
 <script lang="ts">
   import { deckOfCards } from "../../store";
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
+	import RankInfoBox from "./RankInfoBox.svelte";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);
   $: ranks = rankSymbols.map((rankSymbol) => {
@@ -19,13 +20,7 @@
   <ul>
   {#each ranks as rank}
     <li class={`rank-${rank.symbol}`}>
-    {#if rank.count == 0}
-      <s class="strike-through">
-      {rank.symbol}s: {rank.count}
-      </s>
-    {:else}
-      {rank.symbol}s: {rank.count}
-    {/if}
+      <RankInfoBox rank={rank.symbol} count={rank.count} />
     </li>
   {/each}
   </ul>
@@ -37,16 +32,16 @@
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(10, max-content);
+    grid-template-columns: repeat(5, max-content);
     grid-template-rows: repeat(3, min-content);
     column-gap: 1rem;
     row-gap: 0.5rem;
     justify-items: center;
     align-items: baseline;
     grid-template-areas: 
-    "TWO TWO . THREE . . FOUR . FIVE FIVE "
-    ". SIX SEVEN SEVEN EIGHT EIGHT NINE NINE TEN ."
-    "JACK JACK . QUEEN . . KING . ACE ACE ";
+    "TWO THREE  FOUR FIVE SIX"
+    ". SEVEN EIGHT NINE ."
+    "TEN JACK QUEEN KING ACE";
   }
   .rank-2 {
     grid-area: TWO;
