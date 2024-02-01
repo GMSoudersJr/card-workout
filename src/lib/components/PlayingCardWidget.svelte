@@ -94,11 +94,12 @@
     width: 100px;
     aspect-ratio: 1 / 1.618;
     border-radius: 8px;
+    border: 1px solid #000000;
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 25% 1fr 25%;
-    grid-template-rows: 30% 1fr 30%;
+    grid-template-columns: 25px 1fr 25px;
+    grid-template-rows: 48.5px 1fr 48.5px;
     grid-template-areas:
     "rank-and-suit . ."
     ". . ."
@@ -120,7 +121,8 @@
   .rank-and-suit-rotate {
     grid-area: rank-and-suit-rotate;
   }
-  .suit-vertical-flip, .rank-vertical-horizontal-flip  {
+  .suit-vertical-flip,
+  .rank-vertical-horizontal-flip {
     transform: rotate(180deg);
   }
   button:disabled,
