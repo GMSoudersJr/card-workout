@@ -77,6 +77,8 @@
   }
   input {
     margin-top: 0.5rem;
+    display: grid;
+    place-content: center;
   }
   label {
     display: grid;
@@ -93,5 +95,29 @@
     grid-template-columns: repeat(3, max-content);
     grid-template-rows: min-content;
     gap: 3rem;
+  }
+  input[type='radio'] {
+    appearance: none;
+    background-color: #FFFFFF;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    justify-self: center;
+  }
+  input[type='radio']::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #259259;
+  }
+  input[type='radio']:checked::before {
+    transform: scale(1);
   }
 </style>
