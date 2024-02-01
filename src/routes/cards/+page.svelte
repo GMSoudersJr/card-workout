@@ -16,7 +16,7 @@
       <li
         out:send={{ key: currentCard.name }}
         in:receive={{ key: currentCard.name }}
-        animate:flip={{ duration: 500 }}
+        animate:flip={{ duration: 200 }}
       >
         <PlayingCardWidget
           id={currentCard.name}
@@ -36,10 +36,16 @@
 <style>
   main {
     display: grid;
-    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
   }
   ul {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
     display: grid;
     grid-template-rows: min-content;
   }

@@ -1,5 +1,5 @@
 import { crossfade } from 'svelte/transition';
-import { quintOut } from 'svelte/easing';
+import { quintInOut } from 'svelte/easing';
 
 export const [send, receive] = crossfade({
 	duration: (d) => Math.sqrt(d * 200),
@@ -10,7 +10,7 @@ export const [send, receive] = crossfade({
 
 		return {
 			duration: 600,
-			easing: quintOut,
+			easing: quintInOut,
 			css: (t) => `
 				transform: ${transform} scale(${t});
 				opacity: ${t}

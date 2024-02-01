@@ -1,6 +1,7 @@
 <script lang="ts">
   import { flip } from "svelte/animate";
-  import { receive } from "$lib/transition";
+  import { fly } from "svelte/transition";
+  import { receive, send } from "$lib/transition";
   import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
   import { discardedCards, deckOfCards } from "../../store";
   import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
@@ -19,7 +20,7 @@
     {#each $discardedCards as card (card.name)}
       <li
         in:receive={{ key: card.name }}
-        animate:flip={{ duration: 500 }}
+        animate:flip={{ duration: 200 }}
       >
         <PlayingCardWidget
           id={`${card.name}-discarded`}
@@ -44,6 +45,7 @@
 <style>
   main {
     height: 100%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 181.8px 1fr min-content;
