@@ -11,4 +11,5 @@ body {
   justify-items: center;
   grid-template-columns: 100vw;
   grid-template-rows: 100vh;
+  overflow: hidden;
 }

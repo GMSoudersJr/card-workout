@@ -5,6 +5,7 @@
   import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
   import { discardedCards, deckOfCards } from "../../store";
   import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
+	import DiscardedCardsWidget from "$lib/components/DiscardedCardsWidget.svelte";
 </script>
 
 <main>
@@ -15,24 +16,7 @@
     <h1 class="heading">Cards</h1>
   </div>
   <aside class="discarded-cards-aside">
-    <ul id="discarded-cards-only" class="discarded-cards">
-    {#if $discardedCards}
-    {#each $discardedCards as card (card.name)}
-      <li
-        in:receive={{ key: card.name }}
-        animate:flip={{ duration: 200 }}
-      >
-        <PlayingCardWidget
-          id={`${card.name}-discarded`}
-          rankSymbol={card.rank}
-          suitSymbol={card.suit}
-          textColor={card.textColor}
-          disabled
-        />
-      </li>
-    {/each}
-    {/if}
-    </ul>
+    <DiscardedCardsWidget />
   </aside>
   <slot />
   <aside class="deck-of-cards-info-aside">
@@ -70,12 +54,11 @@
   .discarded-cards-aside {
     width: 100%;
     display: grid;
-    justify-content: center;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     background: #259259;
     overflow: hidden;
-    padding-bottom: 10px;
+    padding: 10px;
     border-radius: 8px;
   }
   .discarded-cards {

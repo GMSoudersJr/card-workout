@@ -4,8 +4,9 @@
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
 	import type { TCardRank } from '../../types/cardRank';
 	import type { TSuit } from '../../types/suit';
+	import {tick} from 'svelte';
 
-  function handleClick() {
+  async function handleClick() {
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     //@ts-ignore
@@ -18,9 +19,7 @@
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
       //@ts-ignore
-      if ( widthOfCards >= clientWidth ) {
-        //@ts-ignore
-        let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
+      let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
         //@ts-ignore
         // document.getElementById('discarded-cards-only').scrollLeft = lengthToScroll;
         document.getElementById('discarded-cards-only')?.scrollTo({
@@ -37,9 +36,6 @@
         deckOfCards.pluck(randomCardIndex);
         randomCard && currentCard.data(randomCard);
       }
-    } else {
-      currentCard.reset();
-    }
   }
 
   export let rankSymbol: TCardRank;
