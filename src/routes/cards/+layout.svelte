@@ -79,7 +79,7 @@
   .discarded-cards {
     width: calc(100% - 20px);
     display: grid;
-    grid-template-columns: repeat(54, minmax(25px, 50px));
+    grid-template-columns: repeat(55, minmax(25px, 50px));
     grid-template-rows: 1fr;
     overflow-x: scroll;
     overflow-y: clip;

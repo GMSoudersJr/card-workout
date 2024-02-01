@@ -6,16 +6,16 @@
 	import type { TSuit } from '../../types/suit';
 
   function handleClick() {
-    if ( $deckOfCards.length > 0 ) {
-      let widthOfUnderCard = 25;
+    let widthOfUnderCard = 25;
+    let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
+    //@ts-ignore
+    if ( clientWidth / 52 > 25 ) {
+      //@ts-ignore
+      widthOfUnderCard = clientWidth / 52;
+    }
+    if ( $deckOfCards.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($currentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
-      let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
-      //@ts-ignore
-      if ( clientWidth / 51 > 25 ) {
-        //@ts-ignore
-        widthOfUnderCard = clientWidth / 51;
-      }
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
       //@ts-ignore
       if ( widthOfCards >= clientWidth ) {
@@ -29,12 +29,15 @@
           behavior: 'smooth'
         });
       }
-      const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-      const randomCard = $deckOfCards.at(randomCardIndex)
-      deckOfCards.pluck(randomCardIndex);
-      randomCard && currentCard.data(randomCard);
-    } else if ( $deckOfCards.length == 0 ) {
-      discardedCards.add($currentCard[0]);
+      if ( $deckOfCards.length == 0 ) {
+        currentCard.reset();
+      } else {
+        const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+        const randomCard = $deckOfCards.at(randomCardIndex)
+        deckOfCards.pluck(randomCardIndex);
+        randomCard && currentCard.data(randomCard);
+      }
+    } else {
       currentCard.reset();
     }
   }

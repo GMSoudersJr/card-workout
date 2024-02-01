@@ -10,8 +10,7 @@
 <main>
   {#if $currentCard.length == 0 && $discardedCards.length == 0}
   <StartButton />
-  {:else}
-  {#if $currentCard.length > 0}
+  {:else if $currentCard.length > 0}
   <ul>
     {#each $currentCard as currentCard (currentCard.name)}
       <li
@@ -29,9 +28,7 @@
       </li>
     {/each}
   </ul>
-  {/if}
-  {/if}
-  {#if $discardedCards.length == 52 && $currentCard.length == 0}
+  {:else if $discardedCards.length == 52 && $currentCard.length == 0}
   <ShuffleButton />
   {/if}
 </main>
