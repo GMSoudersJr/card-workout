@@ -16,7 +16,7 @@
       <li
         out:send={{ key: currentCard.name }}
         in:receive={{ key: currentCard.name }}
-        animate:flip={{ duration: 5000 }}
+        animate:flip={{ duration: 500 }}
       >
         <PlayingCardWidget
           id={currentCard.name}
