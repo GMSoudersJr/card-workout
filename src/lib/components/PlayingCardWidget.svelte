@@ -18,6 +18,7 @@
       discardedCards.add($currentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
+      await tick();
       //@ts-ignore
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
         //@ts-ignore
