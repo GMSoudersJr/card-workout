@@ -19,5 +19,6 @@
     padding: 8px 15px;
     border-radius: 8px;
     width: 100px;
+    font-size: large;
   }
 </style>
