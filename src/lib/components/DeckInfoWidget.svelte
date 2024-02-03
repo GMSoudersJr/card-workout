@@ -30,7 +30,7 @@
   .deck-info-container {
     display: grid;
     grid-template-columns: max-content;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 40px);
   }
   .info-wrapper {
     display: grid;
@@ -47,11 +47,11 @@
   .card-lines-container {
     display: grid;
     grid-template-columns: repeat(52, 1px);
-    column-gap: 3px;
+    column-gap: 4px;
     align-self: center;
   }
   .card-line {
-    width: 2px;
+    width: 3px;
     height: 30px;
     border: 1px solid #000080;
     background: #39FF14;
