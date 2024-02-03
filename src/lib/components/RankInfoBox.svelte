@@ -1,5 +1,5 @@
 <script lang="ts">
-$: grayscale = 100 - count * 100 / 4;
+  $: grayscale = 100 - count * 100 / 4;
   export let rank: string;
   export let count: number;
 </script>

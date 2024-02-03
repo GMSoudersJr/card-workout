@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { deckOfCards } from "../../store";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
@@ -6,17 +6,19 @@
 </script>
 
 <div class="deck-info-container">
-  <p class="cards-left-text">Cards left:</p>
-  <h3 class="cards-left-number">
-    {$deckOfCards.length}
-  </h3>
+  <div class="info-wrapper">
+    <p class="cards-left-text">Remaining:</p>
+    <h3 class="cards-left-number">
+      {$deckOfCards.length}
+    </h3>
+  </div>
   <div class="card-lines-container">
     {#each $deckOfCards as card (card.name)}
       <div
         id="card-line"
         class="card-line"
-        transition:slide={{ delay: 250, duration: 300, easing: quintOut, axis: 'y'}}
-        animate:flip
+        transition:slide={{ delay: 200, duration: 500, easing: quintOut, axis: 'y'}}
+        animate:flip={{ delay: 200, duration: 500 }}
       >
       </div>
     {/each}
@@ -27,28 +29,32 @@
 <style>
   .deck-info-container {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
-    grid-template-rows: repeat(2, min-content);
-    align-items: baseline;
-    justify-content: center;
-    justify-items: stretch;
-    gap: 0.5rem;
+    grid-template-columns: max-content;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .info-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: min-content;
+    column-gap: 0.5rem;
   }
   .cards-left-text {
     place-self: end;
   }
+  .cards-left-number {
+    color: #000080;
+  }
   .card-lines-container {
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
     display: grid;
     grid-template-columns: repeat(52, 1px);
     column-gap: 3px;
     align-self: center;
   }
   .card-line {
-    width: 1px;
+    width: 2px;
     height: 30px;
-    background: #000000;
+    border: 1px solid #000080;
+    background: #39FF14;
   }
 </style>
 
