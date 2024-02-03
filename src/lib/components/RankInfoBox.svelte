@@ -19,8 +19,8 @@ $: grayscale = 100 - count * 100 / 4;
 <style>
   .rank-info-box {
     display: grid;
-    grid-template-columns: 32px 20px;
-    grid-template-rows: min-content;
+    grid-template-columns: max-content 20px;
+    grid-template-rows: max-content;
     border: 1px solid #000080;
     border-radius: 4px;
   }
