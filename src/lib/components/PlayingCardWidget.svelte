@@ -97,7 +97,7 @@
     ". . ."
     ". . rank-and-suit-rotate";
     background: #FFF;
-    transform: scale(2);
+    transform: scale(1.618);
   }
   .rank, .suit {
     line-height: 0.6em;
