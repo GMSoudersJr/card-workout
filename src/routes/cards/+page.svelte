@@ -11,9 +11,8 @@
   {#if $currentCard.length == 0 && $discardedCards.length == 0}
   <StartButton />
   {:else if $currentCard.length > 0}
-  <ul>
     {#each $currentCard as currentCard (currentCard.name)}
-      <li
+      <div class="card-card-outer-container"
         out:send={{ key: currentCard.name }}
         in:receive={{ key: currentCard.name }}
         animate:flip={{ duration: 200 }}
@@ -25,9 +24,8 @@
           textColor={currentCard.textColor}
           disabled={false}
         />
-      </li>
+      </div>
     {/each}
-  </ul>
   {:else if $discardedCards.length == 52 && $currentCard.length == 0}
   <ShuffleButton />
   {/if}
@@ -38,16 +36,11 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    justify-items: center;
     align-items: center;
   }
-  ul {
-    height: 100%;
-    width: 100%;
-    justify-content: center;
+  .card-outer-container {
     justify-self: center;
-    align-content: center;
-    display: grid;
-    grid-template-rows: min-content;
   }
   li {
     list-style: none;
