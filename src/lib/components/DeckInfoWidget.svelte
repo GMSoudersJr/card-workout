@@ -10,7 +10,7 @@
   <h3 class="cards-left-number">
     {$deckOfCards.length}
   </h3>
-  <div class="card-lines">
+  <div class="card-lines-container">
     {#each $deckOfCards as card (card.name)}
       <div
         id="card-line"
@@ -37,7 +37,7 @@
   .cards-left-text {
     place-self: end;
   }
-  .card-lines {
+  .card-lines-container {
     grid-row: 2 / 3;
     grid-column: 1 / 3;
     display: grid;

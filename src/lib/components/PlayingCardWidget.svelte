@@ -127,7 +127,7 @@
   }
   button:disabled,
   button[disabled] {
-    background: #FFFFFF;
-    filter: brightness(80%);
+    background: #D9D9D9;
+    filter: grayscale(10%);
   }
 </style>

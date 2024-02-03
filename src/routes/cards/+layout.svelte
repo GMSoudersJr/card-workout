@@ -1,9 +1,4 @@
 <script lang="ts">
-  import { flip } from "svelte/animate";
-  import { fly } from "svelte/transition";
-  import { receive, send } from "$lib/transition";
-  import PlayingCardWidget from "$lib/components/PlayingCardWidget.svelte";
-  import { discardedCards, deckOfCards } from "../../store";
   import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
 	import DiscardedCardsWidget from "$lib/components/DiscardedCardsWidget.svelte";
 </script>
@@ -20,9 +15,7 @@
   </aside>
   <slot />
   <aside class="deck-of-cards-info-aside">
-    {#if $deckOfCards}
-      <CardsInfoWidget />
-    {/if}
+    <CardsInfoWidget />
   </aside>
 </main>
 
