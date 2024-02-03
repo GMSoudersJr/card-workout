@@ -57,33 +57,25 @@
 >
   <section class="rank-and-suit">
 
-    <slot name="rank">
       <h3 class="rank" style:color={textColor}>
         {rank || ''}
       </h3>
-    </slot>
 
-    <slot name="suit">
       <h3 class="suit" style:color={textColor}>
         {@html suit || ''}
       </h3>
-    </slot>
 
   </section>
 
   <section class="rank-and-suit rank-and-suit-rotate">
 
-    <slot name="suit-vertical-flip">
       <h3 class="suit suit-vertical-flip" style:color={textColor}>
         {@html suit || ''}
       </h3>
-    </slot>
 
-    <slot name="rank-vertical-horizontal-flip">
       <h3 class="rank rank-vertical-horizontal-flip" style:color={textColor}>
         {rank ?? ''}
       </h3>
-    </slot>
 
   </section>
 
