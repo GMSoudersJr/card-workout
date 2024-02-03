@@ -3,6 +3,7 @@
   import { ESuit } from "../../enums/suit";
 	import {ESuitSymbolUnicode} from "../../enums/suitSymbolUnicode";
   import { ESuitColors } from "../../enums/suitColors";
+	import SuitInfoBox from "./SuitInfoBox.svelte";
 
   let suitNames: string[] = Object.keys(ESuit);
   $: suits = suitNames.map((suitName) => {
@@ -19,35 +20,16 @@
 </script>
 
 <div id="suit-info-widget" class="suit-info-widget">
-  <ul>
-    {#each suits as suit (suit.name)}
-      <li style:color={suit.color} class={suit.name}>
-        {#if suit.count == 0}
-          <s class="strike-through">
-            {@html suit.icon}: {suit.count}
-          </s>
-        {:else}
-          {@html suit.icon}: {suit.count}
-        {/if}
-      </li>
-    {/each}
-  </ul>
+  {#each suits as suit (suit.name)}
+    <SuitInfoBox icon={suit.icon} color={suit.color} count={suit.count} />
+  {/each}
 </div>
 
 <style>
-  ul {
+  .suit-info-widget {
     display: grid;
     grid-template-rows: repeat(2, min-content);
     grid-template-columns: repeat(2, max-content);
-    gap: 2rem;
-    justify-content: center;
-    justify-items: baseline;
-  }
-  .strike-through {
-    color: #A2A2A2;
-  }
-  li {
-    list-style: none;
-    font-size: 1.1rem;
+    gap: 1.618rem;
   }
 </style>
