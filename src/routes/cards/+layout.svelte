@@ -61,27 +61,9 @@
     padding: 10px;
     border-radius: 8px;
   }
-  .discarded-cards {
-    width: calc(100% - 20px);
-    display: grid;
-    grid-template-columns: repeat(55, minmax(25px, 50px));
-    grid-template-rows: 1fr;
-    overflow-x: scroll;
-    overflow-y: clip;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding-top: 10px;
-    justify-self: center;
-  }
-  .discarded-cards::-webkit-scrollbar {
-    display: none;
-  }
   .deck-of-cards-info-aside {
     width: 100%;
     height: 25svh;
     background-color: #D9D9D9;
-  }
-  li {
-    list-style: none;
   }
 </style>
