@@ -39,10 +39,4 @@
     justify-items: center;
     align-items: center;
   }
-  .card-outer-container {
-    justify-self: center;
-  }
-  li {
-    list-style: none;
-  }
 </style>
