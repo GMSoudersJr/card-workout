@@ -40,7 +40,7 @@
   }
   .suit,
   .count {
-    font-size: large;
+    font-size: medium;
     padding: 2px 3px;
     text-align: center;
     font-weight: 600;
