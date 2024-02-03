@@ -97,6 +97,7 @@
     ". . ."
     ". . rank-and-suit-rotate";
     background: #FFF;
+    transform: scale(2);
   }
   .rank, .suit {
     line-height: 0.6em;
@@ -121,5 +122,6 @@
   button[disabled] {
     background: #D9D9D9;
     filter: grayscale(10%);
+    transform: scale(1);
   }
 </style>
