@@ -19,7 +19,7 @@
 <style>
   .suit-info-box {
     display: grid;
-    grid-template-columns: max-content 32px;
+    grid-template-columns: 1fr 1.618fr;
     grid-template-rows: max-content;
     border-radius: 4px;
     border: 1px solid #000080;
