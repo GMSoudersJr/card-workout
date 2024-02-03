@@ -94,7 +94,7 @@
     width: 100px;
     aspect-ratio: 1 / 1.618;
     border-radius: 8px;
-    border: 1px solid #000000;
+    border: 1px solid #000080;
     display: grid;
     justify-content: center;
     align-items: center;
