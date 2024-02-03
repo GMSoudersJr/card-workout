@@ -83,6 +83,7 @@
     grid-template-columns: min-content;
     align-items: center;
     font-size: large;
+    color: #000080;
   }
   .radio-buttons-container {
     justify-content: center;
@@ -99,10 +100,10 @@
     background-color: #FFFFFF;
     margin: 0;
     font: inherit;
-    color: currentColor;
+    color: #000080;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid currentColor;
+    border: 0.15em solid #000080;
     border-radius: 50%;
     justify-self: center;
   }
