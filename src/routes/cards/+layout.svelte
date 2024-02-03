@@ -60,5 +60,6 @@
     background-color: #D9D9D9;
     display: grid;
     padding: 1rem;
+    padding-bottom: 0;
   }
 </style>
