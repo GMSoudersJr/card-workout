@@ -27,9 +27,6 @@
 </div>
 
 <style>
-  .strike-through {
-    color: #A2A2A2;
-  }
   ul {
     display: grid;
     grid-template-columns: repeat(5, max-content);

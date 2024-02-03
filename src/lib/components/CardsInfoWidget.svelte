@@ -72,8 +72,6 @@
     grid-template-rows: min-content;
     justify-items: center;
     align-items: center;
-    padding-top: 1rem;
-    gap: 1.5rem;
   }
   input {
     margin-top: 0.5rem;
