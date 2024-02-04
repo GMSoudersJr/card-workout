@@ -40,6 +40,7 @@
   }
   .cards-left-text {
     place-self: end;
+    color: #000080;
   }
   .cards-left-number {
     color: #000080;
