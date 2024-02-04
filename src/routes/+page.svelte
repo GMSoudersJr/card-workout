@@ -1,6 +1,5 @@
 <script lang="ts">
+  import Homepage from "./Homepage.svelte";
 </script>
 
-<h1>This will be the login/home page page</h1>
-
-<a href="/cards">cards</a>
+<Homepage />
