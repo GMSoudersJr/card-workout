@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import { PlayingCard } from './classes/playingCard';
 import { ESuit } from './enums/suit';
 import { ECardRank } from './enums/cardRank';
@@ -80,3 +80,8 @@ function createCurrentCard() {
 export const currentCard = createCurrentCard();
 export const deckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
+
+export const randomCardIndex = derived( deckOfCards, ($deckOfCards) => {
+	return Math.floor(Math.random() * $deckOfCards.length)
+});
+

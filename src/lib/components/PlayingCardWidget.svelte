@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { deckOfCards, discardedCards, currentCard } from '../../store';
+  import {
+    deckOfCards,
+    discardedCards,
+    currentCard,
+    randomCardIndex,
+  } from '../../store';
   import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
 	import type { TCardRank } from '../../types/cardRank';
@@ -32,9 +37,9 @@
       if ( $deckOfCards.length == 0 ) {
         currentCard.reset();
       } else {
-        const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-        const randomCard = $deckOfCards.at(randomCardIndex)
-        deckOfCards.pluck(randomCardIndex);
+        //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+        const randomCard = $deckOfCards.at($randomCardIndex)
+        deckOfCards.pluck($randomCardIndex);
         randomCard && currentCard.data(randomCard);
       }
   }
