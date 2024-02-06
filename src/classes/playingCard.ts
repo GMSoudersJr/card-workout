@@ -16,7 +16,11 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	) {
 		this.suit = suit;
 		this.rank = rank;
+		this.hasBeenPlucked = false;
+		this.hasBeenDiscarded = false;
 	}
+	hasBeenPlucked: boolean;
+	hasBeenDiscarded: boolean;
 	get name(): string {
 		return `${ECardRank[this.rank]} of ${ESuit[this.suit]}`;
 	}

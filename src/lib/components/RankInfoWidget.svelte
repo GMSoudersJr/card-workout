@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { deckOfCards } from "../../store";
+  import { theRemainingDeck } from "../../store";
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
 	import RankInfoBox from "./RankInfoBox.svelte";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);
   $: ranks = rankSymbols.map((rankSymbol) => {
-    const arrayOfCards = $deckOfCards.filter((card) => {
+    const arrayOfCards = $theRemainingDeck.filter((card) => {
       return card.rank == rankSymbol;
     });
     return {

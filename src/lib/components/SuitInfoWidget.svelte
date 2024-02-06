@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { deckOfCards } from "../../store";
+  import { theRemainingDeck } from "../../store";
   import { ESuit } from "../../enums/suit";
 	import {ESuitSymbolUnicode} from "../../enums/suitSymbolUnicode";
   import { ESuitColors } from "../../enums/suitColors";
@@ -7,7 +7,7 @@
 
   let suitNames: string[] = Object.keys(ESuit);
   $: suits = suitNames.map((suitName) => {
-    const arrayOfCards = $deckOfCards.filter((card) => {
+    const arrayOfCards = $theRemainingDeck.filter((card) => {
       return card.suit == suitName;
     });
     return {

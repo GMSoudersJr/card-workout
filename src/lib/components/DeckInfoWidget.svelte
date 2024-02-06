@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { deckOfCards } from "../../store";
-  import { slide } from "svelte/transition";
-  import { quintOut } from "svelte/easing";
-  import { flip } from "svelte/animate";
+  import {
+    theDeckOfCards,
+    theRemainingDeck,
+  } from "../../store";
+
 </script>
 
 <div class="deck-info-container">
   <div class="info-wrapper">
     <p class="cards-left-text">Remaining:</p>
     <h3 class="cards-left-number">
-      {$deckOfCards.length}
+      {$theRemainingDeck.length}
     </h3>
   </div>
   <div class="card-lines-container">
-    {#each $deckOfCards as card (card.name)}
+    {#each $theDeckOfCards as card (card?.name)}
       <div
-        id="card-line"
-        class="card-line"
-        transition:slide={{ delay: 200, duration: 500, easing: quintOut, axis: 'y'}}
-        animate:flip={{ delay: 200, duration: 500 }}
+        id={`card-line ${card.name}`}
+        class={`card-line ${card.name}`}
+        style:opacity={card.hasBeenPlucked ? '0' : '1'}
       >
       </div>
     {/each}
@@ -57,5 +57,7 @@
     border: 1px solid #000080;
     background: #39FF14;
   }
+  .plucked {
+    background: #000000;
+  }
 </style>
-
