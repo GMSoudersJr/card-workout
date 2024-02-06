@@ -11,7 +11,7 @@ badd +76 src/store.ts
 badd +8 src/routes/cards/+layout.svelte
 badd +30 src/lib/components/CardsInfoWidget.svelte
 badd +17 src/lib/components/DeckInfoWidget.svelte
-badd +109 src/lib/components/PlayingCardWidget.svelte
+badd +120 src/lib/components/PlayingCardWidget.svelte
 badd +20 src/routes/cards/+page.svelte
 badd +25 src/classes/playingCard.ts
 badd +29 src/lib/components/ShuffleButton.svelte
@@ -45,12 +45,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 109 - ((32 * winheight(0) + 26) / 53)
+let s:l = 121 - ((35 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-109
-normal! 016|
+121
+normal! 05|
 lcd ~/svelte_projects/card-workout
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

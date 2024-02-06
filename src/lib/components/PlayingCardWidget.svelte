@@ -104,6 +104,7 @@
     ". . rank-and-suit-rotate";
     background: #FFF;
     transform: scale(1.618);
+    overflow: hidden;
   }
   .rank, .suit {
     height: 100%;
