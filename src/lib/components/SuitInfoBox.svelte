@@ -21,23 +21,24 @@
     display: grid;
     grid-template-columns: 20px 32px;
     grid-template-rows: max-content;
-    border-radius: 4px;
     border: 1px solid #000080;
+    border-radius: 4px;
   }
   .count {
     color: #FFFFFF;
     background: #39FF14;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    font-size: medium;
   }
   .suit {
     background-color: #FFFFFF;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    font-size: small;
   }
   .suit,
   .count {
-    font-size: medium;
     padding: 2px 3px;
     text-align: center;
     font-weight: 600;
