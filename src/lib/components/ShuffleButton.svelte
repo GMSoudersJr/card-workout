@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { currentCard, deckOfCards, discardedCards } from '../../store';
+  import {
+    currentCard,
+    theDeckOfCards,
+    discardedCards,
+  } from '../../store';
 
   function handleShuffle() {
-    deckOfCards.shuffle();
+    theDeckOfCards.shuffle();
     discardedCards.reset();
     currentCard.reset();
-    //@ts-ignore
-    document.getElementById('discarded-cards-only').scrollLeft = 0;
   }
 
 </script>

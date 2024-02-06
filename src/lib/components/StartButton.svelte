@@ -1,9 +1,13 @@
 <script lang="ts">
-  import { deckOfCards, currentCard } from '../../store';
+  import {
+    theDeckOfCards,
+    currentCard,
+    randomCardIndex
+  } from '../../store';
+
   function handleStart() {
-    const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-    const randomCard = $deckOfCards.at(randomCardIndex)
-    deckOfCards.pluck(randomCardIndex);
+    const randomCard = $theDeckOfCards.at($randomCardIndex)
+    theDeckOfCards.pluck($randomCardIndex);
     randomCard && currentCard.data(randomCard);
   }
 

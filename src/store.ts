@@ -29,8 +29,8 @@ function createTheDeckOfCards() {
 		subscribe,
 		shuffle: () => set(createDeckOfCards()),
 		pluck: (someRandomNumber: number) => update((deck) => {
-			deck.splice(someRandomNumber, 1);
-			return deck
+			deck[someRandomNumber].hasBeenPlucked = true;
+			return deck;
 		}),
 	}
 }
@@ -43,18 +43,19 @@ function usedCards() {
 		subscribe,
 		reset: () => update(( array ) => {
 			array.splice(0, array.length);
-			array = array
-			return array
+			array = array;
+			return array;
 		}),
 		add: (playingCard: TPlayingCard<TCardRank, TSuit>) => update((discarded: PlayingCard[]) => {
+			playingCard.hasBeenDiscarded = true;
 			discarded.push(playingCard);
-			discarded = discarded
-			return discarded
+			discarded = discarded;
+			return discarded;
 		}),
 
-	}
+	};
 
-}
+};
 
 function createCurrentCard() {
 	let emptyArray: PlayingCard[] = [];
@@ -74,14 +75,38 @@ function createCurrentCard() {
 			return singleCardArray
 		}),
 
-	}
-}
+	};
+};
 
 export const currentCard = createCurrentCard();
-export const deckOfCards = createTheDeckOfCards();
+export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 
-export const randomCardIndex = derived( deckOfCards, ($deckOfCards) => {
-	return Math.floor(Math.random() * $deckOfCards.length)
+export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
+	return $theDeckOfCards.filter((card) => {
+		return !card.hasBeenPlucked;
+	});
 });
 
+export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {
+	let result = -1;
+	let randomIndexNumber = Math.floor(Math.random() * $theDeckOfCards.length);
+
+	const recursiveIndexFinder = (index: number): number => {
+		if ($theDeckOfCards[index].hasBeenPlucked) {
+			index = Math.floor(Math.random() * $theDeckOfCards.length);
+			return recursiveIndexFinder(index);
+		} else {
+			return index;
+		}
+	};
+
+	const haveNotBeenPlucked = (card: PlayingCard) => !card.hasBeenPlucked;
+
+	if ($theDeckOfCards.some(haveNotBeenPlucked)) {
+		result = recursiveIndexFinder(randomIndexNumber);
+	} else {
+		result = randomIndexNumber;
+	};
+	return result;
+});

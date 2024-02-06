@@ -1,8 +1,9 @@
 <script lang="ts">
   import {
-    deckOfCards,
+    theDeckOfCards,
     discardedCards,
     currentCard,
+    theRemainingDeck,
     randomCardIndex,
   } from '../../store';
   import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
@@ -19,7 +20,7 @@
       //@ts-ignore
       widthOfUnderCard = clientWidth / 52;
     }
-    if ( $deckOfCards.length >= 0 && $discardedCards.length <= 51 ) {
+    if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($currentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
@@ -34,12 +35,12 @@
           behavior: 'smooth'
         });
       }
-      if ( $deckOfCards.length == 0 ) {
+      if ( $theRemainingDeck.length == 0 ) {
         currentCard.reset();
       } else {
         //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-        const randomCard = $deckOfCards.at($randomCardIndex)
-        deckOfCards.pluck($randomCardIndex);
+        const randomCard = $theDeckOfCards.at($randomCardIndex)
+        theDeckOfCards.pluck($randomCardIndex);
         randomCard && currentCard.data(randomCard);
       }
   }

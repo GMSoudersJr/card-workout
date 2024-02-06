@@ -1,7 +1,10 @@
 <script lang="ts">
   import { receive, send } from '$lib/transition';
   import { flip } from 'svelte/animate';
-  import { discardedCards, currentCard } from '../../store';
+  import {
+    discardedCards,
+    currentCard,
+  } from '../../store';
 	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
 	import StartButton from '$lib/components/StartButton.svelte';
 	import ShuffleButton from '$lib/components/ShuffleButton.svelte';
