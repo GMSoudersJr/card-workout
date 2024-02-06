@@ -20,9 +20,7 @@
   .suit-info-box {
     display: grid;
     grid-template-columns: 25px 40px;
-    grid-template-rows: max-content;
-    justify-content: center;
-    align-items: center;
+    grid-template-rows: 25px;
     border: 1px solid #000080;
     border-radius: 4px;
     background: #FFFFFF;
@@ -38,6 +36,7 @@
     background-color: #FFFFFF;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    align-self: center;
     font-size: small;
   }
   .suit,
