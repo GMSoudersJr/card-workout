@@ -25,7 +25,7 @@ badd +3 src/types/workout.ts
 badd +3 src/types/exerciseCard.ts
 badd +1 src/routes/+page.svelte
 badd +22 src/lib/components/SuitInfoBox.svelte
-badd +0 src/lib/components/RankInfoBox.svelte
+badd +1 src/lib/components/RankInfoBox.svelte
 argglobal
 %argdel
 $argadd ./
@@ -54,12 +54,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 40 - ((20 * winheight(0) + 13) / 26)
+let s:l = 22 - ((6 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-40
-normal! 022|
+22
+normal! 035|
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal

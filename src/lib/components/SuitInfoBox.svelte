@@ -19,10 +19,13 @@
 <style>
   .suit-info-box {
     display: grid;
-    grid-template-columns: 20px 32px;
+    grid-template-columns: 25px 40px;
     grid-template-rows: max-content;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #000080;
     border-radius: 4px;
+    background: #FFFFFF;
   }
   .count {
     color: #FFFFFF;
