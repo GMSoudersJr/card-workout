@@ -6,11 +6,11 @@
   } from '../../store';
 
   function handleStart() {
+    console.log($theDeckOfCards);
     const randomCard = $theDeckOfCards.at($randomCardIndex)
     theDeckOfCards.pluck($randomCardIndex);
     randomCard && currentCard.data(randomCard);
   }
-
 </script>
 
 <button on:click={handleStart}>
