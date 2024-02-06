@@ -63,25 +63,25 @@
 >
   <section class="rank-and-suit">
 
-      <h3 class="rank" style:color={textColor}>
+      <div class="rank" style:color={textColor}>
         {rank || ''}
-      </h3>
+      </div>
 
-      <h3 class="suit" style:color={textColor}>
+      <div class="suit" style:color={textColor}>
         {@html suit || ''}
-      </h3>
+      </div>
 
   </section>
 
   <section class="rank-and-suit rank-and-suit-rotate">
 
-      <h3 class="suit suit-vertical-flip" style:color={textColor}>
+      <div class="suit suit-vertical-flip" style:color={textColor}>
         {@html suit || ''}
-      </h3>
+      </div>
 
-      <h3 class="rank rank-vertical-horizontal-flip" style:color={textColor}>
+      <div class="rank rank-vertical-horizontal-flip" style:color={textColor}>
         {rank ?? ''}
-      </h3>
+      </div>
 
   </section>
 
@@ -106,7 +106,7 @@
     transform: scale(1.618);
   }
   .rank, .suit {
-    line-height: 0.6em;
+    height: 100%;
   }
   .rank-and-suit {
     grid-area: rank-and-suit;
