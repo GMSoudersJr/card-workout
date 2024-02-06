@@ -7,29 +7,30 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +50 src/store.ts
+badd +76 src/store.ts
 badd +8 src/routes/cards/+layout.svelte
 badd +30 src/lib/components/CardsInfoWidget.svelte
 badd +17 src/lib/components/DeckInfoWidget.svelte
-badd +43 src/lib/components/PlayingCardWidget.svelte
-badd +20 src/routes/cards/+page.svelte
-badd +22 src/classes/playingCard.ts
-badd +10 src/lib/components/ShuffleButton.svelte
+badd +99 src/lib/components/PlayingCardWidget.svelte
+badd +45 src/routes/cards/+page.svelte
+badd +25 src/classes/playingCard.ts
+badd +29 src/lib/components/ShuffleButton.svelte
 badd +7 src/types/playingCard.ts
-badd +0 src/lib/components/StartButton.svelte
+badd +16 src/lib/components/StartButton.svelte
+badd +33 src/enums/exercises.ts
+badd +3 src/types/reps.ts
+badd +1 src/types/exercises.ts
+badd +2 src/enums/workouts.ts
+badd +3 src/types/workout.ts
+badd +3 src/types/exerciseCard.ts
+badd +1 src/routes/+page.svelte
+badd +22 src/lib/components/SuitInfoBox.svelte
+badd +1 src/lib/components/RankInfoBox.svelte
 argglobal
 %argdel
 $argadd ./
-edit src/lib/components/StartButton.svelte
+edit src/lib/components/SuitInfoBox.svelte
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
@@ -42,13 +43,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe '1resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
 exe '2resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 2resize ' . ((&columns * 115 + 115) / 230)
-exe '3resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
-exe '4resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 4resize ' . ((&columns * 114 + 115) / 230)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -59,54 +54,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 13) / 26)
+let s:l = 22 - ((6 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 0
-lcd ~/svelte_projects/card-workout
-wincmd w
-argglobal
-if bufexists("~/svelte_projects/card-workout/src/lib/components/DeckInfoWidget.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/DeckInfoWidget.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/DeckInfoWidget.svelte | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 17 - ((8 * winheight(0) + 13) / 26)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-17
-normal! 03|
-lcd ~/svelte_projects/card-workout
-wincmd w
-argglobal
-if bufexists("~/svelte_projects/card-workout/src/lib/components/PlayingCardWidget.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/PlayingCardWidget.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/PlayingCardWidget.svelte | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 47 - ((14 * winheight(0) + 13) / 26)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-47
+22
 normal! 035|
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
-if bufexists("~/svelte_projects/card-workout/src/store.ts") | buffer ~/svelte_projects/card-workout/src/store.ts | else | edit ~/svelte_projects/card-workout/src/store.ts | endif
+if bufexists("~/svelte_projects/card-workout/src/lib/components/RankInfoBox.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/RankInfoBox.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/RankInfoBox.svelte | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -116,23 +73,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 50 - ((17 * winheight(0) + 13) / 26)
+let s:l = 38 - ((20 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-50
-normal! 07|
+38
+normal! 0
 lcd ~/svelte_projects/card-workout
 wincmd w
-4wincmd w
 exe '1resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
 exe '2resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 2resize ' . ((&columns * 115 + 115) / 230)
-exe '3resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
-exe '4resize ' . ((&lines * 26 + 27) / 55)
-exe 'vert 4resize ' . ((&columns * 114 + 115) / 230)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

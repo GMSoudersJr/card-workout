@@ -15,9 +15,9 @@
   <StartButton />
   {:else if $currentCard.length > 0}
     {#each $currentCard as currentCard (currentCard.name)}
-      <div class="card-card-outer-container"
+      <div class="card-outer-container"
         out:send={{ key: currentCard.name }}
-        in:receive={{ key: currentCard.name }}
+        in:send={{ key: currentCard.name }}
         animate:flip={{ duration: 200 }}
       >
         <PlayingCardWidget

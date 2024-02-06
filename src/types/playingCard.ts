@@ -1,6 +1,9 @@
-export type TPlayingCard<ECardRank, ESuit> = {
-	rank: ECardRank;
-	suit: ESuit;
+import type {TExercise} from "./exercises";
+
+export type TPlayingCard<TCardRank, TSuit> = {
+	rank: TCardRank;
+	suit: TSuit;
+	exercise?: TExercise;
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
 	get name(): string;

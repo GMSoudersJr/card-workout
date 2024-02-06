@@ -63,25 +63,25 @@
 >
   <section class="rank-and-suit">
 
-      <h3 class="rank" style:color={textColor}>
+      <div class="rank" style:color={textColor}>
         {rank || ''}
-      </h3>
+      </div>
 
-      <h3 class="suit" style:color={textColor}>
+      <div class="suit" style:color={textColor}>
         {@html suit || ''}
-      </h3>
+      </div>
 
   </section>
 
   <section class="rank-and-suit rank-and-suit-rotate">
 
-      <h3 class="suit suit-vertical-flip" style:color={textColor}>
+      <div class="suit suit-vertical-flip" style:color={textColor}>
         {@html suit || ''}
-      </h3>
+      </div>
 
-      <h3 class="rank rank-vertical-horizontal-flip" style:color={textColor}>
+      <div class="rank rank-vertical-horizontal-flip" style:color={textColor}>
         {rank ?? ''}
-      </h3>
+      </div>
 
   </section>
 
@@ -104,16 +104,21 @@
     ". . rank-and-suit-rotate";
     background: #FFF;
     transform: scale(1.618);
+    overflow: hidden;
   }
   .rank, .suit {
-    line-height: 0.6em;
+    height: 100%;
   }
+  .rank {
+    font-size: medium;
+    font-weight: 400;
+  }
+
   .rank-and-suit {
     grid-area: rank-and-suit;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content);
-    row-gap: 8px;
+    grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
   }
