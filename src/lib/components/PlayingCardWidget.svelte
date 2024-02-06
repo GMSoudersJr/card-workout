@@ -108,12 +108,16 @@
   .rank, .suit {
     height: 100%;
   }
+  .rank {
+    font-size: medium;
+    font-weight: 400;
+  }
+
   .rank-and-suit {
     grid-area: rank-and-suit;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content);
-    row-gap: 8px;
+    grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
   }
