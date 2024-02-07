@@ -32,10 +32,4 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
-  .workout-selection-container {
-    display: grid;
-    grid-template-columns: max-content;
-    grid-template-rows: repeat(2, min-content);
-    place-self: center;
-  }
 </style>
