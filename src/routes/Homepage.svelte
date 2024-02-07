@@ -5,9 +5,14 @@
   <div class="header">
     <h1>Suits You Best</h1>
   </div>
-  <div class="nav">
-    <a href="/cards">Cards</a>
-  </div>
+  <nav class="nav-container">
+    <div class="nav-item">
+      <a href="/cards">Cards</a>
+    </div>
+    <div class="nav-item">
+      <a href="/workouts">Workouts</a>
+    </div>
+  </nav>
 </main>
 
 <style>
@@ -24,12 +29,20 @@
   .header {
     color: #FFFFFF;
   }
-  .nav {
+  .nav-container {
+    display: grid;
+    grid-template-colums: min-content;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    row-gap: 1rem;
+  }
+  .nav-item {
     padding: 12px 15px;
     border: 4px solid #FFFFFF;
     border-radius: 8px;
+    display: grid;
+    justify-content: center;
   }
-  .nav a {
+  .nav-item a {
     text-decoration: none;
     color: #FFFFFF;
     font-size: x-large;
