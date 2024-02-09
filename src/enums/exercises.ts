@@ -9,7 +9,7 @@ export enum EExercises {
 	BRIDGES='Bridges',
 	CALF_RAISES='Calf Raises',
 	CRUNCHES='Crunches',
-	DIPS='dips',
+	DIPS='Dips',
 	FLUTTERS='Flutters',
 	FORWARD_ARM_CIRCLES='Forward Arm Cirles',
 	HIGH_KNEES='High Knees',
