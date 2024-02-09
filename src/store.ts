@@ -6,25 +6,13 @@ import type { TCardRank } from './types/cardRank';
 import type { TSuit } from './types/suit';
 import { createPlayingCard } from './functions/createPlayingCard';
 import type {TPlayingCard} from './types/playingCard';
+import { createDeckOfCards } from './functions/createDeckOfCards';
+import type {TExercise} from './types/exercises';
+import type {TSuitExercise} from './types/suitExercise';
 
-const createDeckOfCards = () => {
-	let result: PlayingCard[] = [];
-	const suits = Object.keys(ESuit);
-	const ranks = Object.keys(ECardRank);
-	for (let i = 0; i < suits.length; i++) {
-		let suit = suits[i];
-		for (let j = 0; j < ranks.length; j++) {
-			let rank = ranks[j];
-			const playingCard = createPlayingCard(PlayingCard, rank as TCardRank, suit as TSuit);
-			result.push(playingCard);
-		}
-	}
-	return result;
-}
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
-
 	return {
 		subscribe,
 		shuffle: () => set(createDeckOfCards()),
@@ -32,8 +20,32 @@ function createTheDeckOfCards() {
 			deck[someRandomNumber].hasBeenPlucked = true;
 			return deck;
 		}),
-	}
-}
+	};
+};
+
+function createSuitExercise() {
+	const thisSuitExercise: TSuitExercise = {
+		suit: undefined,
+		exercise: undefined
+	};
+
+	const { subscribe, set, update } = writable(thisSuitExercise);
+
+	return {
+		subscribe,
+		updateSuit: (suit: TSuit) =>
+			update((result) => {
+			result.suit = suit;
+			return result;
+		}),
+		updateExercise: (exercise: TExercise) =>
+			update((result) => {
+			result.exercise = exercise;
+			return result;
+		}),
+		reset: () => set({suit: undefined, exercise: undefined}),
+	};
+};
 
 function usedCards() {
 	let emptyArray: TPlayingCard<TCardRank, TSuit>[] = [];
@@ -87,6 +99,11 @@ export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 		return !card.hasBeenPlucked;
 	});
 });
+
+export const clubsExercise = createSuitExercise();
+export const diamondsExercise = createSuitExercise();
+export const heartsExercise = createSuitExercise();
+export const spadesExercise = createSuitExercise();
 
 export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {
 	let result = -1;
