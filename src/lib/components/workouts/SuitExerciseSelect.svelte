@@ -12,7 +12,7 @@
   }
 
   export let suitExercise;
-  let suitName = $suitExercise.suit;
+  let suitName: string = $suitExercise.suit;
   let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
   let selected: string;
   let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
@@ -33,9 +33,10 @@
     bind:value={selected}
     on:change={handleSelect}
   >
-    {#each exercises as  exercise, i (exercise)}
-      <option value={exerciseKeys[i]}>{exercise}</option>
-    {/each}
+    <option value={undefined}>{`${suitName} Exercise`}</option>
+  {#each exercises as  exercise, i (exercise)}
+    <option value={exerciseKeys[i]}>{exercise}</option>
+  {/each}
   </select>
 </div>
 
