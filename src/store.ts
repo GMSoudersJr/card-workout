@@ -23,9 +23,9 @@ function createTheDeckOfCards() {
 	};
 };
 
-function createSuitExercise() {
-	const thisSuitExercise: TSuitExercise = {
-		suit: undefined,
+function createSuitExercise(suit: TSuit) {
+	const thisSuitExercise: TSuitExercise<TSuit> = {
+		suit: suit,
 		exercise: undefined
 	};
 
@@ -33,17 +33,12 @@ function createSuitExercise() {
 
 	return {
 		subscribe,
-		updateSuit: (suit: TSuit) =>
-			update((result) => {
-			result.suit = suit;
-			return result;
-		}),
 		updateExercise: (exercise: TExercise) =>
 			update((result) => {
 			result.exercise = exercise;
 			return result;
 		}),
-		reset: () => set({suit: undefined, exercise: undefined}),
+		reset: () => set({suit: suit, exercise: undefined}),
 	};
 };
 
@@ -100,10 +95,10 @@ export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	});
 });
 
-export const clubsExercise = createSuitExercise();
-export const diamondsExercise = createSuitExercise();
-export const heartsExercise = createSuitExercise();
-export const spadesExercise = createSuitExercise();
+export const clubsExercise = createSuitExercise("CLUBS");
+export const diamondsExercise = createSuitExercise("DIAMONDS");
+export const heartsExercise = createSuitExercise("HEARTS");
+export const spadesExercise = createSuitExercise("SPADES");
 
 export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {
 	let result = -1;

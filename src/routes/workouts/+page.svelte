@@ -1,5 +1,7 @@
 <script lang="ts">
   import WorkoutSelect from '$lib/components/workouts/WorkoutSelect.svelte';
+	import SuitExerciseWidget from '$lib/components/workouts/SuitExerciseWidget.svelte';
+
 </script>
 
 <div class="page-container">
@@ -7,6 +9,7 @@
     id="workout-by-suit-container"
     class="workout-by-suit-container"
   >
+    <SuitExerciseWidget />
     <!--
     Will have 4 sections, one for each suit
     where exercises will be chosen for each.
