@@ -10,10 +10,6 @@
     class="workout-by-suit-container"
   >
     <SuitExerciseWidget />
-    <!--
-    Will have 4 sections, one for each suit
-    where exercises will be chosen for each.
-    -->
   </div>
   <div
     id="exercises-based-workout"
@@ -30,7 +26,6 @@
 
 <style>
   .page-container {
-    border: 1px solid black;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;

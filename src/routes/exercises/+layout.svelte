@@ -6,7 +6,7 @@
     <a href="/" class="nav-link">
       ⬅ Home
     </a>
-    <h1 class="heading">Workouts</h1>
+    <h1 class="heading">Exercises</h1>
   </div>
   <slot />
 </main>
