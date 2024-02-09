@@ -33,12 +33,12 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
-    row-gap: 1rem;
+    row-gap: 1.5rem;
     justify-items: center;
   }
   .suit-exercise-container {
     display: grid;
-    row-gap: 0.75rem;
+    row-gap: 1rem;
   }
 </style>
 

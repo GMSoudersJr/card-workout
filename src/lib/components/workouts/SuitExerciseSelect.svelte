@@ -1,11 +1,13 @@
 <script lang="ts">
 	import {EExercises} from "../../../enums/exercises";
+	import {ESuitColors} from "../../../enums/suitColors";
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
 
   export let suitExercise;
   let suitName = $suitExercise.suit;
   let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
   let selected: string;
+  let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
   const exercises = Object.values(EExercises);
 </script>
 
@@ -14,8 +16,9 @@
     class="exercise-selection-label"
     id={`${suitName}-exercise-selection-label`}
     for={`${suitName}-exercise-selection`}
+    style:color={labelColor}
   >
-    {@html icon}:
+    {@html icon}
   </label>
   <select
     name="suit-exercise-selection"
