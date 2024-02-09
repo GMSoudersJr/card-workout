@@ -4,6 +4,12 @@
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
 
   const exercises = Object.values(EExercises);
+  const exerciseKeys = Object.keys(EExercises);
+
+  function handleSelect() {
+    suitExercise.updateExercise(selected);
+    console.log($suitExercise);
+  }
 
   export let suitExercise;
   let suitName = $suitExercise.suit;
@@ -25,9 +31,10 @@
     name="suit-exercise-selection"
     id={`${suitName}-exercise-selection`}
     bind:value={selected}
+    on:change={handleSelect}
   >
-    {#each exercises as exercise (exercise)}
-      <option value={exercise}>{exercise}</option>
+    {#each exercises as  exercise, i (exercise)}
+      <option value={exerciseKeys[i]}>{exercise}</option>
     {/each}
   </select>
 </div>
