@@ -3,9 +3,7 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link">
-      ⬅ Home
-    </a>
+    <a href="/" class="nav-link"> ⬅ Home </a>
     <h1 class="heading">Exercises</h1>
   </div>
   <slot />
@@ -18,6 +16,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
+    row-gap: 1rem;
   }
   .nav-and-heading {
     width: 100%;
