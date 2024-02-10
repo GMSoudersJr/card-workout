@@ -1,7 +1,5 @@
 <script lang="ts">
-  import WorkoutSelect from '$lib/components/workouts/WorkoutSelect.svelte';
-	import SuitExerciseWidget from '$lib/components/workouts/SuitExerciseWidget.svelte';
-
+	import SuitExerciseWidget from '$lib/components/exercises/SuitExerciseWidget.svelte';
 </script>
 
 <div class="page-container">
