@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { suitExercises } from "../../../store";
+  import { suitExercises, theDeckOfCards } from "../../../store";
+  import { goto } from "$app/navigation";
 
-  function handleClick() {
-    console.log($suitExercises);
+  async function handleClick() {
+    theDeckOfCards.setExercises($suitExercises);
+    await goto('/cards');
   }
 </script>
 

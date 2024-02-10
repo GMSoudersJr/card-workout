@@ -8,7 +8,7 @@ import type { TSuitExercise } from '../types/suitExercise';
 import type {TExercise} from '../types/exercises';
 
 export const createDeckOfCards = (
-	aSelectionOfSuitExercises: TSuitExercise<TSuit>[] | undefined
+	aSelectionOfSuitExercises?: TSuitExercise<TSuit>[]
 ) => {
 	let result: PlayingCard[] = [];
 	const suits = Object.keys(ESuit);

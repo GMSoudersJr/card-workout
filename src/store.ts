@@ -8,7 +8,6 @@ import type {TExercise} from './types/exercises';
 import type {TSuitExercise} from './types/suitExercise';
 import {createSuitExercises} from './functions/createSuitExercises';
 
-
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
 	return {
@@ -18,6 +17,8 @@ function createTheDeckOfCards() {
 			deck[someRandomNumber].hasBeenPlucked = true;
 			return deck;
 		}),
+		setExercises: (anArrayOfSuitExercises: TSuitExercise<TSuit>[]) =>
+			set(createDeckOfCards(anArrayOfSuitExercises)),
 	};
 };
 
@@ -83,14 +84,13 @@ function createCurrentCard() {
 export const currentCard = createCurrentCard();
 export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
+export const suitExercises = createSuitExercisesStore();
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {
 		return !card.hasBeenPlucked;
 	});
 });
-
-export const suitExercises = createSuitExercisesStore();
 
 export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {
 	let result = -1;
