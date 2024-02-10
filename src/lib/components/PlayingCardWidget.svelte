@@ -13,7 +13,6 @@
 	import {tick} from 'svelte';
 
   async function handleClick() {
-    console.log($theCurrentCard);
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     //@ts-ignore
