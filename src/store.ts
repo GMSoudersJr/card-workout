@@ -1,14 +1,12 @@
 import { writable, derived } from 'svelte/store';
 import { PlayingCard } from './classes/playingCard';
-import { ESuit } from './enums/suit';
-import { ECardRank } from './enums/cardRank';
 import type { TCardRank } from './types/cardRank';
 import type { TSuit } from './types/suit';
-import { createPlayingCard } from './functions/createPlayingCard';
 import type {TPlayingCard} from './types/playingCard';
 import { createDeckOfCards } from './functions/createDeckOfCards';
 import type {TExercise} from './types/exercises';
 import type {TSuitExercise} from './types/suitExercise';
+import {createSuitExercises} from './functions/createSuitExercises';
 
 
 function createTheDeckOfCards() {
@@ -23,23 +21,20 @@ function createTheDeckOfCards() {
 	};
 };
 
-function createSuitExercise(suit: TSuit) {
-	const thisSuitExercise: TSuitExercise<TSuit> = {
-		suit: suit,
-		exercise: undefined
-	};
-
-	const { subscribe, set, update } = writable(thisSuitExercise);
+function createSuitExercisesStore() {
+	const suitExercises = createSuitExercises();
+	const { subscribe, set, update } = writable(suitExercises);
 
 	return {
 		subscribe,
-		updateExercise: (exercise: TExercise) =>
-			update((result) => {
-			result.exercise = exercise;
+		updateExercise: (suit: TSuit, exercise: TExercise) => update((result) => {
+			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
+			const indexOfThisSuit = result.findIndex(isThisSuit);
+			result = result.with(indexOfThisSuit, {suit: suit, exercise: exercise})
 			return result;
 		}),
-		reset: () => set({suit: suit, exercise: undefined}),
-	};
+		reset: () => set(suitExercises),
+	}
 };
 
 function usedCards() {
@@ -95,10 +90,7 @@ export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	});
 });
 
-export const clubsExercise = createSuitExercise("CLUBS");
-export const diamondsExercise = createSuitExercise("DIAMONDS");
-export const heartsExercise = createSuitExercise("HEARTS");
-export const spadesExercise = createSuitExercise("SPADES");
+export const suitExercises = createSuitExercisesStore();
 
 export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {
 	let result = -1;

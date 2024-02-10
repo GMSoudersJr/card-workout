@@ -2,19 +2,24 @@
 	import {EExercises} from "../../../enums/exercises";
 	import {ESuitColors} from "../../../enums/suitColors";
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
+  import type { TSuitExercise } from "../../../types/suitExercise";
+  import type { TSuit } from "../../../types/suit";
+	import type { TExercise } from "../../../types/exercises";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
 
   const exercises = Object.values(EExercises);
   const exerciseKeys = Object.keys(EExercises);
 
-  function handleSelect() {
-    suitExercise.updateExercise(selected);
-    console.log($suitExercise);
+  function handleChange() {
+    dispatch('exerciseSelected', {suit: suitName, exercise: selected});
   }
 
-  export let suitExercise;
-  let suitName: string = $suitExercise.suit;
+  export let suitExercise: TSuitExercise<TSuit>;
+  let suitName = suitExercise.suit;
   let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
-  let selected: string;
+  let selected: string | undefined = suitExercise.exercise;
   let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
 </script>
 
@@ -31,7 +36,7 @@
     name="suit-exercise-selection"
     id={`${suitName}-exercise-selection`}
     bind:value={selected}
-    on:change={handleSelect}
+    on:change={handleChange}
   >
     <option value={undefined}>{`${suitName} Exercise`}</option>
   {#each exercises as  exercise, i (exercise)}

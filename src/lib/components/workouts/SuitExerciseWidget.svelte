@@ -1,18 +1,17 @@
 <script lang="ts">
-  import {
-    clubsExercise,
-    diamondsExercise,
-    heartsExercise,
-    spadesExercise,
-  } from '../../../store'
+  import { suitExercises, } from '../../../store'
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
-  const suitExercises = [
-    clubsExercise,
-    diamondsExercise,
-    heartsExercise,
-    spadesExercise,
-  ];
+  function handleClick() {
+    console.log($suitExercises);
+  }
+  function handleExcerciseSelected(event: CustomEvent) {
+    console.log('Exercise Selected:', event.detail);
+    const {suit, exercise} = event.detail;
+    suitExercises.updateExercise(suit, exercise);
+    console.log($suitExercises);
+  }
+  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exercise === undefined})
 </script>
 
 <div
@@ -21,10 +20,20 @@
 >
   <h3>Select an exercise for each suit</h3>
   <section class="suit-exercise-container">
-  {#each suitExercises as suitExercise (suitExercise)}
-    <SuitExerciseSelect {suitExercise} />
+  {#each $suitExercises as suitExercise (suitExercise)}
+    <SuitExerciseSelect {suitExercise} on:exerciseSelected={handleExcerciseSelected} />
   {/each}
   </section>
+  {#if someSuitExercisesHaveNotBeenChosen}
+    <p>100 reps per suit!</p>
+  {:else}
+    <button
+      class="set-workouts-button"
+      on:click={handleClick}
+    >
+      Let's Go!
+    </button>
+  {/if}
 
 </div>
 
