@@ -1,15 +1,16 @@
 <script lang="ts">
   import {
     theDeckOfCards,
-    currentCard,
+    theCurrentCard,
     randomCardIndex
   } from '../../store';
 
   function handleStart() {
     const randomCard = $theDeckOfCards.at($randomCardIndex)
     theDeckOfCards.pluck($randomCardIndex);
-    randomCard && currentCard.data(randomCard);
+    randomCard && theCurrentCard.data(randomCard);
   }
+
 </script>
 
 <button on:click={handleStart}>

@@ -3,7 +3,7 @@
   import { flip } from 'svelte/animate';
   import {
     discardedCards,
-    currentCard,
+    theCurrentCard,
   } from '../../store';
 	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
 	import StartButton from '$lib/components/StartButton.svelte';
@@ -11,10 +11,10 @@
 </script>
 
 <main>
-  {#if $currentCard.length == 0 && $discardedCards.length == 0}
+  {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
   <StartButton />
-  {:else if $currentCard.length > 0}
-    {#each $currentCard as currentCard (currentCard.name)}
+  {:else if $theCurrentCard.length > 0}
+    {#each $theCurrentCard as currentCard (currentCard.name)}
       <div class="card-outer-container"
         out:send={{ key: currentCard.name }}
         in:send={{ key: currentCard.name }}
@@ -29,7 +29,7 @@
         />
       </div>
     {/each}
-  {:else if $discardedCards.length == 52 && $currentCard.length == 0}
+  {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
   <ShuffleButton />
   {/if}
 </main>

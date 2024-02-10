@@ -2,9 +2,9 @@
   import {
     theDeckOfCards,
     discardedCards,
-    currentCard,
     theRemainingDeck,
     randomCardIndex,
+    theCurrentCard,
   } from '../../store';
   import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
@@ -13,6 +13,7 @@
 	import {tick} from 'svelte';
 
   async function handleClick() {
+    console.log($theCurrentCard);
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     //@ts-ignore
@@ -21,7 +22,7 @@
       widthOfUnderCard = clientWidth / 52;
     }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
-      discardedCards.add($currentCard[0]);
+      discardedCards.add($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
       await tick();
@@ -36,12 +37,12 @@
         });
       }
       if ( $theRemainingDeck.length == 0 ) {
-        currentCard.reset();
+        theCurrentCard.reset();
       } else {
         //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
         const randomCard = $theDeckOfCards.at($randomCardIndex)
         theDeckOfCards.pluck($randomCardIndex);
-        randomCard && currentCard.data(randomCard);
+        randomCard && theCurrentCard.data(randomCard);
       }
   }
 

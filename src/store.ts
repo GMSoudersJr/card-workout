@@ -17,6 +17,10 @@ function createTheDeckOfCards() {
 			deck[someRandomNumber].hasBeenPlucked = true;
 			return deck;
 		}),
+		discard: (someRandomNumber: number) => update((deck) => {
+			deck[someRandomNumber].hasBeenDiscarded = true;
+			return deck;
+		}),
 		setExercises: (anArrayOfSuitExercises: TSuitExercise<TSuit>[]) =>
 			set(createDeckOfCards(anArrayOfSuitExercises)),
 	};
@@ -60,7 +64,7 @@ function usedCards() {
 
 };
 
-function createCurrentCard() {
+function createTheCurrentCard() {
 	let emptyArray: PlayingCard[] = [];
 	const { subscribe, update } = writable(emptyArray);
 
@@ -81,10 +85,11 @@ function createCurrentCard() {
 	};
 };
 
-export const currentCard = createCurrentCard();
+export const theCurrentCard = createTheCurrentCard();
 export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
+
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {

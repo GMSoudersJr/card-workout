@@ -1,6 +1,6 @@
 <script lang="ts">
   import {
-    currentCard,
+    theCurrentCard,
     theDeckOfCards,
     discardedCards,
   } from '../../store';
@@ -8,7 +8,7 @@
   function handleShuffle() {
     theDeckOfCards.shuffle();
     discardedCards.reset();
-    currentCard.reset();
+    theCurrentCard.reset();
   }
 
 </script>
