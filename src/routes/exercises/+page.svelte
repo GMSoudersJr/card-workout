@@ -16,12 +16,11 @@
     class="exercises-based-workout"
   >
     <!--
-    A scrollable area, with boxes for each exercise
-    based on the workout type that is chosen below.
+    Possibly an area that shows a video of
+    the exercise that has been chosen above.
     -->
   </div>
 
-  <WorkoutSelect />
 </div>
 
 <style>
