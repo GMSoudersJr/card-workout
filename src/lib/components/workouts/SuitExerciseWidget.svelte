@@ -1,15 +1,11 @@
 <script lang="ts">
-  import { suitExercises, } from '../../../store'
+  import { suitExercises } from '../../../store'
+	import ExerciseSelectionCompleteButton from './ExerciseSelectionCompleteButton.svelte';
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
-  function handleClick() {
-    console.log($suitExercises);
-  }
   function handleExcerciseSelected(event: CustomEvent) {
-    console.log('Exercise Selected:', event.detail);
     const {suit, exercise} = event.detail;
     suitExercises.updateExercise(suit, exercise);
-    console.log($suitExercises);
   }
   $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exercise === undefined})
 </script>
@@ -27,12 +23,7 @@
   {#if someSuitExercisesHaveNotBeenChosen}
     <p>100 reps per suit!</p>
   {:else}
-    <button
-      class="set-workouts-button"
-      on:click={handleClick}
-    >
-      Let's Go!
-    </button>
+    <ExerciseSelectionCompleteButton />
   {/if}
 
 </div>
