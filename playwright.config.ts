@@ -1,4 +1,5 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 	webServer: {
@@ -6,7 +7,26 @@ const config: PlaywrightTestConfig = {
 		port: 4173
 	},
 	testDir: 'tests',
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/
+	fullyParallel: true,
+	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+	projects: [
+		{
+			name: 'chromium',
+			use: { ...devices['Desktop Chrome'] },
+		},
+		{
+			name: 'firefox',
+			use: { ...devices['Desktop Firefox'] },
+		},
+		{
+			name: 'Mobile Chrome',
+			use: { ...devices['Pixel 7'] },
+		},
+		{
+			name: 'Mobile Firefox',
+			use: { ...devices['Pixel 7'] },
+		},
+	]
 };
 
 export default config;

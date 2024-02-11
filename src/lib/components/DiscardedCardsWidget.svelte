@@ -6,7 +6,11 @@
 
 </script>
 
-<ul id="discarded-cards-only" class="discarded-cards">
+<ul
+  id="discarded-cards-only"
+  class="discarded-cards"
+  title="discard cards area"
+>
 {#if $discardedCards}
 {#each $discardedCards as card (card.name)}
   <li
