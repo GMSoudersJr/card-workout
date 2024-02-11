@@ -16,8 +16,10 @@
     <PlayingCardWidget
       id={`${card.name}-discarded`}
       rankSymbol={card.rank}
+      exercise={card.exercise}
       suitSymbol={card.suit}
       textColor={card.textColor}
+      reps={card.value}
       disabled
     />
   </li>

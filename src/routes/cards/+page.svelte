@@ -24,7 +24,9 @@
           id={currentCard.name}
           rankSymbol={currentCard.rank}
           suitSymbol={currentCard.suit}
+          exercise={currentCard.exercise}
           textColor={currentCard.textColor}
+          reps={currentCard.value}
           disabled={false}
         />
       </div>

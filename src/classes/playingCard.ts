@@ -6,6 +6,7 @@ import { ECardRank } from '../enums/cardRank';
 import {ECardValue} from '../enums/cardValue';
 import {ECardRankSymbol} from '../enums/cardRankSymbol';
 import {ESuitColors} from '../enums/suitColors';
+import type {TExercise} from '../types/exercises';
 
 export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	suit: TSuit;
@@ -16,11 +17,13 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	) {
 		this.suit = suit;
 		this.rank = rank;
+		this.exercise = undefined;
 		this.hasBeenPlucked = false;
 		this.hasBeenDiscarded = false;
 	}
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
+	exercise?: TExercise
 	get name(): string {
 		return `${ECardRank[this.rank]} of ${ESuit[this.suit]}`;
 	}
