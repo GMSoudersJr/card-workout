@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type {ComponentType} from "svelte";
 
+  import { theCurrentCard } from "../../store";
+
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
+  import RepsInfoWidget from "./RepsInfoWidget.svelte";
 
   interface InfoWidgets {
     [key: string]: ComponentType
@@ -13,6 +16,7 @@
     deck: DeckInfoWidget,
     rank: RankInfoWidget,
     suit: SuitInfoWidget,
+    reps: RepsInfoWidget,
   };
 
   interface InfoChoice {
@@ -41,6 +45,14 @@
       innerHtml: "Suit",
       widget: SuitInfoWidget,
     },
+/*
+    {
+      id: "radio-reps",
+      value: "reps",
+      innerHtml: "Reps",
+      widget: RepsInfoWidget,
+    },
+*/
   ];
 
   $: group = '';
