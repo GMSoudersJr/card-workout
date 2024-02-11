@@ -82,7 +82,8 @@
     class="card-exercise-name"
   >
   {#if exercise}
-    <p>{reps} {exerciseName}</p>
+    <p>{reps}</p>
+    <p>{exerciseName}</p>
   {/if}
   </section>
 
