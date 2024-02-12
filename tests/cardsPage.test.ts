@@ -13,6 +13,12 @@ test('card page has start button', async ({ page }) => {
 	await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
 });
 
+test('clicking start shows a card', async ({ page }) => {
+	page.getByRole('button', { name: 'Start' }).click();
+	await expect(page.getByTestId('playing-card')).toHaveCount(1);
+	await expect(page.getByTestId('playing-card')).toBeVisible();
+});
+
 test('card page has deck radio button', async ({ page }) => {
 	await expect(page.getByLabel('Deck', { exact: true })).toBeVisible();
 });
