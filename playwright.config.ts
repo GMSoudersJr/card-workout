@@ -10,13 +10,10 @@ const config: PlaywrightTestConfig = {
 	fullyParallel: true,
 	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
 	projects: [
+		/*
 		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] },
-		},
-		{
-			name: 'firefox',
-			use: { ...devices['Desktop Firefox'] },
 		},
 		{
 			name: 'Mobile Chrome',
@@ -25,6 +22,11 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'Mobile Firefox',
 			use: { ...devices['Pixel 7'] },
+		},
+		*/
+		{
+			name: 'firefox',
+			use: { ...devices['Desktop Firefox'] },
 		},
 	]
 };

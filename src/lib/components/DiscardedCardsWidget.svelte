@@ -9,13 +9,14 @@
 <ul
   id="discarded-cards-only"
   class="discarded-cards"
-  title="discard cards area"
+  data-testid="discarded-cards-list"
 >
 {#if $discardedCards}
 {#each $discardedCards as card (card.name)}
   <li
     in:receive={{ key: card.name }}
     animate:flip={{ duration: 200 }}
+    data-testid="discarded-card-listitem"
   >
     <PlayingCardWidget
       id={`${card.name}-discarded`}

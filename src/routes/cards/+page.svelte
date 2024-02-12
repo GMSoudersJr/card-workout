@@ -27,7 +27,7 @@
           exercise={currentCard.exercise}
           textColor={currentCard.textColor}
           reps={currentCard.value}
-          disabled={false}
+          disabled={currentCard.hasBeenDiscarded}
         />
       </div>
     {/each}

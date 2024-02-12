@@ -9,6 +9,10 @@ test('card link goes to correct page', async ({ page }) => {
 	await expect(page.getByRole('heading', { name: 'Cards' })).toBeVisible();
 });
 
+test('discarded cards area is empty', async ({ page }) => {
+	await expect(page.getByTestId('discarded-cards-list')).toBeEmpty();
+});
+
 test('card page has start button', async ({ page }) => {
 	await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
 });
