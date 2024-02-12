@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 	await page.getByRole('button', { name: 'Start' }).click();
 });
 
-test('discarded card goes to discard pile', async ({ page }) => {
+test('after clicking a card, it goes to its expected place', async ({ page }) => {
 	await page.getByTestId('playing-card').click();
 	await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 	await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
@@ -14,7 +14,7 @@ test('discarded card goes to discard pile', async ({ page }) => {
 		     .getByTestId('playing-card')).toBeDisabled();
 });
 
-test('only one card is enabled', async ({ page }) => {
+test('after clicking the first card, only one card is expected to be enabled', async ({ page }) => {
 	await page.getByTestId('playing-card').click();
 	const currentCard =
 		page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
@@ -22,7 +22,7 @@ test('only one card is enabled', async ({ page }) => {
 	await expect(currentCard).toHaveCount(1);
 });
 
-test('can click through all the cards', async ({ page }) => {
+test('after all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
 	test.setTimeout(51 * 1000);
 	await page.getByTestId('playing-card').click();
 	let discardedCardsListItem = page.getByTestId('discarded-card-listitem');

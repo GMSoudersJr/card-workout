@@ -5,7 +5,10 @@ test.beforeEach(async ({ page }) => {
 	await page.getByRole('link', { name: 'Exercises' }).click();
 });
 
-test('exercise link goes to correct page', async ({ page }) => {
+test('exercise link goes to expected page', async ({ page }) => {
 	await expect(page.getByRole('heading', { name: 'Exercises' })).toBeVisible();
 });
 
+test('exercise page has expected 4 select elements', async ({ page }) => {
+	await expect(page.getByRole('combobox')).toHaveCount(4);
+});
