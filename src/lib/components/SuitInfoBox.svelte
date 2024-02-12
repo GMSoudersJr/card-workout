@@ -7,7 +7,10 @@
   export let color: string;
 </script>
 
-<div class="suit-info-box">
+<div
+  data-testid="suit-info-box"
+  class="suit-info-box"
+>
   <div style:color={color} class="suit" >
     {@html icon}
   </div>

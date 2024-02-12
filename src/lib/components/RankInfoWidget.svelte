@@ -17,7 +17,7 @@
 </script>
 
 <div class="rank-info-widget">
-  <ul>
+  <ul data-testid="card rank list">
   {#each ranks as rank}
     <li class={`rank-${rank.symbol}`}>
       <RankInfoBox rank={rank.symbol} count={rank.count} />

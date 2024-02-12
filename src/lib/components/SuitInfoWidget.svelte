@@ -19,7 +19,11 @@
   });
 </script>
 
-<div id="suit-info-widget" class="suit-info-widget">
+<div
+  id="suit-info-widget"
+  data-testid="suit-info-widget"
+  class="suit-info-widget"
+>
   {#each suits as suit (suit.name)}
     <SuitInfoBox icon={suit.icon} color={suit.color} count={suit.count} />
   {/each}

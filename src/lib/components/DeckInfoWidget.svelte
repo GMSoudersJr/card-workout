@@ -7,7 +7,10 @@
 </script>
 
 <div class="deck-info-container">
-  <div class="info-wrapper">
+  <div
+    class="info-wrapper"
+    data-testid="cards remaining"
+  >
     <p class="cards-left-text">Remaining:</p>
     <h3 class="cards-left-number">
       {$theRemainingDeck.length}
