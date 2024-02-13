@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('exercise link goes to expected page', async ({ page }) => {
-	await expect(page.getByRole('heading', { name: 'Exercises' })).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'Exercises', level: 1 })).toBeVisible();
 });
 
 test('exercise page has expected considerations list', async ({ page }) => {
