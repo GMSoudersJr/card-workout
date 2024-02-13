@@ -60,5 +60,8 @@
   li {
     list-style: none;
   }
+  li:not(:last-child) {
+    margin-bottom: 4px;
+  }
 </style>
 

@@ -63,6 +63,9 @@
       color: #FF0000;
     }
   }
+  li:not(:last-child) {
+    margin-bottom: 4px;
+  }
   p {
     padding-left: 0.5rem;
   }
