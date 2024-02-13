@@ -26,7 +26,6 @@
   }
   .rank,
   .count {
-    padding: 2px 3px;
     text-align: center;
     font-weight: 600;
     font-size: large;

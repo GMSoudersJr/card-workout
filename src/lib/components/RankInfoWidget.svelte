@@ -80,7 +80,6 @@
     grid-area: ACE;
   }
   li {
-    font-size: 1.1rem;
     list-style: none;
   }
 </style>
