@@ -26,6 +26,7 @@ export enum EExercises {
 	LATERAL_LEG_RAISES='Lateral Leg Raises',
 	LEG_RAISES='Leg Raises',
 	LUNGES='Lunges',
+	MOUNTAIN_CLIMBERS='Mountain Climbers',
 	NECK_ROLLS='Neck Rolls',
 	PLANKS='Planks',
 	PULL_UPS='Pull-ups',
@@ -37,6 +38,7 @@ export enum EExercises {
 	SEATED_CALF_RAISES='Seated Calf Raises',
 	SHOULDER_PRESSES='Shoulder Presses',
 	SIDE_PLANKS='Side Planks',
+	SPEED_SKATERS='Speed Skaters',
 	SQUATS='Squats',
 	SUPERHUMANS='Superhumans',
 	TOE_CURLS='Toe Curls',
@@ -45,6 +47,6 @@ export enum EExercises {
 	TOE_TOUCHES='Toe Touches',
 	UPWARD_FACING_DOG='Upward-Facing Dog',
 	TRUNK_TWISTS='Trunk Twists',
-	WALKOUT_PUSH_UPS='Walkout Push-ups',
+	WALKOUT_PLANKS='Walkout Planks',
 	WRIST_ROLLS='Wrist Rolls',
 };
