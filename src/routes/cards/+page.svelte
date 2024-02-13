@@ -38,9 +38,9 @@
       </div>
     {/each}
   {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
-    <p>The Deck is Finished!</p>
+    <p class="oswald-header">THE DECK IS FINISHED</p>
     <ShuffleButton />
-    <p>Shuffling cleans the cards!</p>
+    <p class="oswald-header">SHUFFLING CLEANS THE CARDS</p>
   {/if}
 </main>
 

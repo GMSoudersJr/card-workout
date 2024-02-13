@@ -14,9 +14,10 @@
 </script>
 
   <button
+    class="oswald-header"
     on:click={handleShuffle}
   >
-  Shuffle
+  SHUFFLE
 </button>
 
 <style>
