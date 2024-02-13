@@ -3,9 +3,9 @@
 
   const listOfConsiderations = [
     `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercises) / 'C' for Cardio`,
-    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 Limbs Move / 4 Points of Contact`,
-    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love / 'Heart' pumper`,
-    `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercises) / 'S' for Side... Single...`,
+    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 Limbs Move`,
+    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love`,
+    `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercises) / 'S' for Side...`,
     `Make it yours and have fun!`,
   ];
 
