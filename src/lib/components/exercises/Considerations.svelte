@@ -6,8 +6,8 @@
     `Available space and positioning`,
     `WARM-UP & KISS! Keep It Simple, Seriously`,
     `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercise)`,
-    `${ESuitSymbolUnicode.DIAMONDS} - Four corners, 4 body parts move`,
-    `${ESuitSymbolUnicode.HEARTS} - An exercise you love`,
+    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 limbs move`,
+    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love`,
     `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercise)`,
     `Each suit is 100 reps, so 400 in total!`,
     `Make it yours and have fun!`,
@@ -43,6 +43,9 @@
 <style>
   .considerations-container {
     justify-self: center;
+    display: grid;
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 4px;
   }
   ul {
     list-style-position: inside;

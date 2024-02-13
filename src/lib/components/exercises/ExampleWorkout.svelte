@@ -40,6 +40,9 @@
   .example-workout-section {
     justify-self: center;
     width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 4px;
   }
   ul {
     list-style-position: inside;
