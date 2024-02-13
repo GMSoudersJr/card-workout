@@ -59,9 +59,6 @@
     grid-area: heading;
     place-self: center;
   }
-  .heading:nth-child(3) {
-      color: #FF0000;
-    }
   .discarded-cards-aside {
     width: 100%;
     display: grid;
