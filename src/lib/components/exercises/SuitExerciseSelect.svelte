@@ -64,5 +64,6 @@
     color: #000080;
     background: #FFFFFF;
     border: none;
+    width: 100%;
   }
 </style>

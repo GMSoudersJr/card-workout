@@ -26,5 +26,6 @@
     border-radius: 8px;
     font-size: medium;
     color: #000080;
+    width: 100%;
   }
 </style>

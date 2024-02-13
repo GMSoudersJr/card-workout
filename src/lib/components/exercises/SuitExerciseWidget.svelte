@@ -1,5 +1,6 @@
 <script lang="ts">
   import { suitExercises } from '../../../store'
+	import ExampleWorkout from './ExampleWorkout.svelte';
 	import ExerciseSelectionCompleteButton from './ExerciseSelectionCompleteButton.svelte';
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
@@ -21,7 +22,7 @@
   {/each}
   </section>
   {#if someSuitExercisesHaveNotBeenChosen}
-    <p>100 reps per suit!</p>
+    <ExampleWorkout />
   {:else}
     <ExerciseSelectionCompleteButton />
   {/if}
@@ -34,7 +35,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
     row-gap: 1.5rem;
-    justify-items: center;
   }
   .suit-exercise-container {
     display: grid;
