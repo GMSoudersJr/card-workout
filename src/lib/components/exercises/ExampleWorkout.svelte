@@ -27,7 +27,9 @@
          data-testid="example-workout-listitem"
          id="example-workout-listitem"
        >
-         {@html anExample}
+         <p>
+           {@html anExample}
+         </p>
        </li>
      {/each}
   </ul>
@@ -37,8 +39,17 @@
 <style>
   .example-workout-section {
     justify-self: center;
-    padding-left: 1rem;
     width: 100%;
+  }
+  ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+  }
+  li:nth-child(2),
+  li:nth-child(3) {
+    & p::first-letter {
+      color: #FF0000;
+    }
   }
   li {
     list-style: none;

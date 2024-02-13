@@ -4,7 +4,7 @@
   const listOfConsiderations = [
     `100 reps per suit = 400 total reps`,
     `Full body Vs. Isolated group`,
-    `KISS! Keep It Simple, Seriously`,
+    `WARM-UP & KISS! Keep It Simple, Seriously`,
     `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercise)`,
     `${ESuitSymbolUnicode.DIAMONDS} - Four corners, 4 body parts move`,
     `${ESuitSymbolUnicode.HEARTS} - An exercise you love`,
@@ -51,6 +51,12 @@
   }
   li {
     list-style: '*';
+  }
+  li:nth-child(5),
+  li:nth-child(6) {
+    & p::first-letter {
+      color: #FF0000;
+    }
   }
   p {
     padding-left: 0.5rem;
