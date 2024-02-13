@@ -3,8 +3,10 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link source-sans-3-text"> ⬅ Home </a>
+    <a href="/" class="nav-link oswald-header home-link">HOME</a>
     <h1 class="heading oswald-header">EXERCISES</h1>
+    <a href="/cards" class="suit-yourself-link oswald-header">SUIT YOURSELF</a>
+
   </div>
   <slot />
 </main>
@@ -22,15 +24,23 @@
   .nav-and-heading {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    grid-template-areas: "nav heading .";
+    grid-template-areas: "homeLink heading suitYourselfLink";
   }
-  .nav-link {
-    grid-area: nav;
-    font-size: large;
+  .home-link {
+    grid-area: homeLink;
     text-decoration: none;
-    color: #000000;
+    justify-self: start;
+    padding-left: 10px;
+    color: #000080;
+  }
+  .suit-yourself-link {
+    grid-area: suitYourselfLink;
+    text-decoration: none;
+    justify-self: end;
+    padding-right: 10px;
+    color: #000080;
   }
   .heading {
     grid-area: heading;
