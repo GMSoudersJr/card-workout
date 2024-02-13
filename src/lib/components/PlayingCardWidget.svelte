@@ -69,7 +69,7 @@
 >
   <section class="rank-and-suit">
 
-      <div class="rank" style:color={textColor}>
+      <div class="rank source-sans-3-text" style:color={textColor}>
         {rank || ''}
       </div>
 
@@ -83,8 +83,8 @@
     class="card-exercise-name"
   >
   {#if exercise}
-    <p>{reps}</p>
-    <p>{exerciseName}</p>
+    <p class="oswald-header">{reps}</p>
+    <p class="oswald-header">{exerciseName.toLocaleUpperCase()}</p>
   {/if}
   </section>
 
@@ -94,7 +94,7 @@
         {@html suit || ''}
       </div>
 
-      <div class="rank rank-vertical-horizontal-flip" style:color={textColor}>
+      <div class="rank rank-vertical-horizontal-flip source-sans-3-text" style:color={textColor}>
         {rank ?? ''}
       </div>
 
@@ -124,6 +124,8 @@
   .card-exercise-name {
     grid-area: exercise-name;
     color: #000080;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .rank, .suit {
     height: 100%;
