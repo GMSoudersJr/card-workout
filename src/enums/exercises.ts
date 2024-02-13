@@ -3,6 +3,7 @@ export enum EExercises {
 	ANKLE_DORSIFLEXIONS='Ankle Dorsiflexions',
 	ANKLE_EVERSIONS='Ankle Eversions',
 	ANKLE_INVERSIONS='Ankle Inversions',
+	ANKLE_ROLLS='Ankle Rolls',
 	ARCH_LIFTS='Arch Lifts',
 	ARM_EXTENSIONS='Arm Extensions',
 	ATG_SPLIT_SQUATS='ATG Split Squats',
