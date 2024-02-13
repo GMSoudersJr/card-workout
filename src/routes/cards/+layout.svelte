@@ -5,10 +5,17 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link source-sans-3-text">
-      ⬅ Home
+    <a href="/" class="home-link source-sans-3-text">
+       Home
     </a>
-    <h1 class="heading oswald-header">CARDS</h1>
+    <h1 class="heading oswald-header">SUIT YOURSELF</h1>
+    <a
+      href="/exercises"
+      id="exercises-link"
+      class="nav-link oswald-header exercise-link"
+    >
+      EXERCISES
+    </a>
   </div>
   <aside class="discarded-cards-aside">
     <DiscardedCardsWidget />
@@ -28,22 +35,33 @@
     grid-template-rows: min-content 181.8px 1fr min-content;
   }
   .nav-and-heading {
-    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    grid-template-areas: "nav heading .";
+    grid-template-areas: "homeLink heading exerciseLink";
   }
-  .nav-link {
-    grid-area: nav;
+  .home-link {
+    grid-area: homeLink;
     font-size: large;
     text-decoration: none;
-    color: #000000;
+    color: #000080;
+    justify-self: start;
+    padding-left: 10px;
+  }
+  .exercise-link {
+    grid-area: exerciseLink;
+    text-decoration: none;
+    color: #000080;
+    justify-self: end;
+    padding-right: 10px;
   }
   .heading {
     grid-area: heading;
     place-self: center;
   }
+  .heading:nth-child(3) {
+      color: #FF0000;
+    }
   .discarded-cards-aside {
     width: 100%;
     display: grid;
