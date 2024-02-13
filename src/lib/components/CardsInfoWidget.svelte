@@ -58,7 +58,7 @@
   $: group = '';
 </script>
 
-<div class="deck-of-cards-info-widget-container">
+<div class="cards-info-widget-container">
     <div class="radio-buttons-container">
       {#each infoChoices as choice}
         <label
@@ -80,10 +80,9 @@
 </div>
 
 <style>
-  .deck-of-cards-info-widget-container {
+  .cards-info-widget-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content);
     grid-template-rows: min-content;
     justify-items: center;
     align-items: center;
