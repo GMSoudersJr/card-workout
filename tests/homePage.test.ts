@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('home page has expected h1', async ({ page }) => {
-	await expect(page.getByRole('heading', { name: 'Suits You Best' })).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
 });
 
 test('home page has link for cards', async ({ page }) => {

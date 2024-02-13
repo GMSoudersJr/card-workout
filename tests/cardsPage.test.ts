@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('card link goes to expected page', async ({ page }) => {
-	await expect(page.getByRole('heading', { name: 'Cards' })).toBeVisible();
+	await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
 });
 
 test('the page has expected start button', async ({ page }) => {
