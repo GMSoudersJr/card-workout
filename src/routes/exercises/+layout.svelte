@@ -16,6 +16,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
+    justify-content: center;
     row-gap: 1rem;
   }
   .nav-and-heading {

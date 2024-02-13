@@ -43,7 +43,6 @@
 <style>
   .considerations-container {
     justify-self: center;
-    width: 100%;
   }
   ul {
     list-style-position: inside;
