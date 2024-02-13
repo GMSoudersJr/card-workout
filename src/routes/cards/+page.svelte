@@ -12,7 +12,13 @@
 
 <main>
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
+    <p>
+      Press Start to Begin!
+    </p>
   <StartButton />
+    <p>
+      Tap the Card to Discard it!
+    </p>
   {:else if $theCurrentCard.length > 0}
     {#each $theCurrentCard as currentCard (currentCard.name)}
       <div class="card-outer-container"
@@ -32,7 +38,9 @@
       </div>
     {/each}
   {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
-  <ShuffleButton />
+    <p>The Deck is Finished!</p>
+    <ShuffleButton />
+    <p>Shuffling cleans the cards!</p>
   {/if}
 </main>
 
@@ -40,7 +48,7 @@
   main {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     justify-items: center;
     align-items: center;
   }
