@@ -4,7 +4,7 @@
 
   const anExampleWorkoutList = [
     `${ESuitSymbolUnicode.CLUBS} ${EExercises.CRUNCHES}`,
-    `${ESuitSymbolUnicode.DIAMONDS} ${EExercises.BEAR_CRAWLS}`,
+    `${ESuitSymbolUnicode.DIAMONDS} ${EExercises.JUMPING_JACKS}`,
     `${ESuitSymbolUnicode.HEARTS} ${EExercises.PUSH_UPS}`,
     `${ESuitSymbolUnicode.SPADES} ${EExercises.ATG_SPLIT_SQUATS}`,
   ];
@@ -15,7 +15,7 @@
   data-testid="example-workout-section"
   id="example-workout-section"
 >
-  <h4>Example:</h4>
+  <h4>Example Workout:</h4>
   <ul
     class="example-workout-list"
     data-testid="example-workout-list"
