@@ -64,7 +64,7 @@
     list-style: none;
   }
   li:not(:last-child) {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
 </style>
 
