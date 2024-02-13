@@ -17,7 +17,7 @@ export enum EExercises {
 	CAT_COW_POSES='Cat Cow Poses',
 	CRUNCHES='Crunches',
 	DIPS='Dips',
-	DOWNWARD_DOG_POSES='Downwar Dog Poses',
+	DOWNWARD_DOG_POSES='Downward Dog Poses',
 	FLUTTER_KICKS='Flutter Kicks',
 	FORWARD_ARM_CIRCLES='Forward Arm Cirles',
 	HIGH_KNEES='High Knees',
