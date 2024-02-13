@@ -2,14 +2,14 @@
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
 
   const listOfConsiderations = [
-    `100 reps per suit = 400 total reps`,
     `Full body Vs. Isolated group`,
+    `Available space and positioning`,
     `WARM-UP & KISS! Keep It Simple, Seriously`,
     `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercise)`,
     `${ESuitSymbolUnicode.DIAMONDS} - Four corners, 4 body parts move`,
     `${ESuitSymbolUnicode.HEARTS} - An exercise you love`,
     `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercise)`,
-    `Available space and positioning`,
+    `Each suit is 100 reps, so 400 in total!`,
     `Make it yours and have fun!`,
   ];
 
