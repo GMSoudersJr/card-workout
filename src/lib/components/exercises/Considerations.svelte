@@ -67,7 +67,7 @@
     }
   }
   li:not(:last-child) {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   p {
     padding-left: 0.5rem;
