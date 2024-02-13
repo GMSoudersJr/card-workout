@@ -5,7 +5,7 @@
   <div class="nav-and-heading">
     <a href="/" class="nav-link oswald-header home-link">HOME</a>
     <h1 class="heading oswald-header">EXERCISES</h1>
-    <a href="/cards" class="suit-yourself-link oswald-header">SUIT YOURSELF</a>
+    <a href="/cards" class="suit-yourself-link oswald-header">CARDS</a>
 
   </div>
   <slot />
