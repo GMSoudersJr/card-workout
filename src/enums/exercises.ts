@@ -45,7 +45,7 @@ export enum EExercises {
 	TOE_RAISES='Toe Raises',
 	TOE_SPLAYS='Toe Splays',
 	TOE_TOUCHES='Toe Touches',
-	UPWARD_FACING_DOG='Upward-Facing Dog',
+	UPWARD_DOG_POSES='Upward Dog Poses',
 	TRUNK_TWISTS='Trunk Twists',
 	WALKOUT_PLANKS='Walkout Planks',
 	WRIST_ROLLS='Wrist Rolls',
