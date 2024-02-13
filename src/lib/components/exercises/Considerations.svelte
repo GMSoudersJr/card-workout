@@ -2,14 +2,10 @@
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
 
   const listOfConsiderations = [
-    `Full body Vs. Isolated group`,
-    `Available space and positioning`,
-    `WARM-UP & KISS! Keep It Simple, Seriously`,
     `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercise)`,
     `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 limbs move`,
     `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love`,
     `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercise)`,
-    `Each suit is 100 reps, so 400 in total!`,
     `Make it yours and have fun!`,
   ];
 
@@ -54,14 +50,14 @@
   li {
     list-style: '*';
   }
-  li:nth-child(4),
-  li:nth-child(7) {
+  li:nth-child(1),
+  li:nth-child(4) {
     & p::first-letter {
       color: #000000;
     }
   }
-  li:nth-child(5),
-  li:nth-child(6) {
+  li:nth-child(2),
+  li:nth-child(3) {
     & p::first-letter {
       color: #FF0000;
     }
