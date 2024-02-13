@@ -15,11 +15,11 @@
   id="suit-exercise-widget"
   class="suit-exercise-widget"
 >
-  <h3>Select an exercise for each suit</h3>
   <section class="suit-exercise-container">
-  {#each $suitExercises as suitExercise (suitExercise)}
+    <h3>Select your exercises below</h3>
+    {#each $suitExercises as suitExercise (suitExercise)}
     <SuitExerciseSelect {suitExercise} on:exerciseSelected={handleExcerciseSelected} />
-  {/each}
+    {/each}
   </section>
   {#if someSuitExercisesHaveNotBeenChosen}
     <ExampleWorkout />

@@ -4,7 +4,6 @@
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import type { TSuitExercise } from "../../../types/suitExercise";
   import type { TSuit } from "../../../types/suit";
-	import type { TExercise } from "../../../types/exercises";
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
