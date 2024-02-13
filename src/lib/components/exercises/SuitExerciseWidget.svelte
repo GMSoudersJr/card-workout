@@ -16,7 +16,7 @@
   class="suit-exercise-widget"
 >
   <section class="suit-exercise-container">
-    <h3>Select your exercises below</h3>
+    <h3 class="selection-header">Select your exercises below</h3>
     {#each $suitExercises as suitExercise (suitExercise)}
     <SuitExerciseSelect {suitExercise} on:exerciseSelected={handleExcerciseSelected} />
     {/each}
@@ -39,6 +39,9 @@
   .suit-exercise-container {
     display: grid;
     row-gap: 1rem;
+  }
+  .selection-header {
+    color: #000080;
   }
 </style>
 
