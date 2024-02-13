@@ -45,6 +45,12 @@
     list-style-position: inside;
     padding-left: 0.5rem;
   }
+  li:nth-child(1),
+  li:nth-child(4) {
+    & p::first-letter {
+      color: #000000;
+    }
+  }
   li:nth-child(2),
   li:nth-child(3) {
     & p::first-letter {

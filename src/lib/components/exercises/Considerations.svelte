@@ -52,6 +52,12 @@
   li {
     list-style: '*';
   }
+  li:nth-child(4),
+  li:nth-child(7) {
+    & p::first-letter {
+      color: #000000;
+    }
+  }
   li:nth-child(5),
   li:nth-child(6) {
     & p::first-letter {
