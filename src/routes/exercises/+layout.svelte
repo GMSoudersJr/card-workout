@@ -3,8 +3,8 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link"> ⬅ Home </a>
-    <h1 class="heading">Exercises</h1>
+    <a href="/" class="nav-link source-sans-3-text"> ⬅ Home </a>
+    <h1 class="heading oswald-header">EXERCISES</h1>
   </div>
   <slot />
 </main>

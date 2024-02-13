@@ -61,7 +61,10 @@
 <div class="deck-of-cards-info-widget-container">
     <div class="radio-buttons-container">
       {#each infoChoices as choice}
-      <label for={choice.id}>
+        <label
+          for={choice.id}
+          class="source-sans-3-text"
+        >
         {choice.innerHtml}
         <input
           bind:group={group}

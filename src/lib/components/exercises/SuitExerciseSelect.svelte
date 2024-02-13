@@ -36,8 +36,13 @@
     id={`${suitName}-exercise-selection`}
     bind:value={selected}
     on:change={handleChange}
+    class="source-sans-3-text"
   >
-    <option value={undefined}>{`${suitName} Exercise`}</option>
+    <option
+      value={undefined}
+    >
+      {`${suitName} Exercise`}
+    </option>
   {#each exercises as  exercise, i (exercise)}
     <option value={exerciseKeys[i]}>{exercise}</option>
   {/each}

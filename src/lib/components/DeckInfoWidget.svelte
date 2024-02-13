@@ -11,8 +11,8 @@
     class="info-wrapper"
     data-testid="cards remaining"
   >
-    <p class="cards-left-text">Remaining:</p>
-    <h3 class="cards-left-number">
+    <p class="cards-left-text source-sans-3-text">Remaining:</p>
+    <h3 class="cards-left-number oswald-header">
       {$theRemainingDeck.length}
     </h3>
   </div>
@@ -44,9 +44,11 @@
   .cards-left-text {
     place-self: end;
     color: #000080;
+    font-size: large;
   }
   .cards-left-number {
     color: #000080;
+    font-size: large;
   }
   .card-lines-container {
     display: grid;

@@ -5,10 +5,10 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link">
+    <a href="/" class="nav-link source-sans-3-text">
       ⬅ Home
     </a>
-    <h1 class="heading">Cards</h1>
+    <h1 class="heading oswald-header">CARDS</h1>
   </div>
   <aside class="discarded-cards-aside">
     <DiscardedCardsWidget />

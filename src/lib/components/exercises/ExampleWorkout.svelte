@@ -15,7 +15,7 @@
   data-testid="example-workout-section"
   id="example-workout-section"
 >
-  <h4>Example Workout:</h4>
+  <h4 class="oswald-header">EXAMPLE WORKOUT:</h4>
   <ul
     class="example-workout-list"
     data-testid="example-workout-list"
@@ -23,7 +23,7 @@
   >
      {#each anExampleWorkoutList as anExample (anExample)}
        <li 
-         class="example-workout-listitem"
+         class="example-workout-listitem source-sans-3-text"
          data-testid="example-workout-listitem"
          id="example-workout-listitem"
        >

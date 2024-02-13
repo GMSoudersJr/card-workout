@@ -13,8 +13,11 @@
 
 </script>
 
-<button on:click={handleStart}>
-  Start
+<button
+  on:click={handleStart}
+  class="oswald-header"
+>
+  START
 </button>
 
 <style>

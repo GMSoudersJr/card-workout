@@ -12,12 +12,12 @@
 
 <main>
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
-    <p>
-      Press Start to Begin!
+    <p class="oswald-header">
+      PRESS START TO BEGIN
     </p>
   <StartButton />
-    <p>
-      Tap the Card to Discard it!
+    <p class="oswald-header">
+      TAP THE CARD TO DISCARD IT
     </p>
   {:else if $theCurrentCard.length > 0}
     {#each $theCurrentCard as currentCard (currentCard.name)}

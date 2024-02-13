@@ -16,7 +16,11 @@
   class="suit-exercise-widget"
 >
   <section class="suit-exercise-container">
-    <h3 class="selection-header">Select your exercises below</h3>
+    <h4
+      class="selection-header oswald-header"
+    >
+      SELECT YOUR EXERCISES BELOW
+    </h4>
     {#each $suitExercises as suitExercise (suitExercise)}
     <SuitExerciseSelect {suitExercise} on:exerciseSelected={handleExcerciseSelected} />
     {/each}

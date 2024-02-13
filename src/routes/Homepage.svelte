@@ -3,15 +3,16 @@
 
 <main>
   <div class="header">
-    <h1>Suits You Best</h1>
+    <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
   <nav class="nav-container">
-    <div class="nav-item">
-      <a href="/cards">Cards</a>
-    </div>
-    <div class="nav-item">
-      <a href="/exercises">Exercises</a>
-    </div>
+      <a href="/cards" class="nav-item oswald-header">CARDS</a>
+      <a
+        href="/exercises"
+        class="nav-item oswald-header"
+      >
+        EXERCISES
+      </a>
   </nav>
 </main>
 
@@ -29,21 +30,21 @@
     color: #FFFFFF;
   }
   .nav-container {
+    width: 300px;
     display: grid;
-    grid-template-columns: min-content;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     row-gap: 1rem;
   }
   .nav-item {
+    width: 100%;
     padding: 12px 15px;
-    border: 4px solid #FFFFFF;
+    border: 4px solid #000080;
     border-radius: 8px;
     display: grid;
     justify-content: center;
-  }
-  .nav-item a {
     text-decoration: none;
-    color: #FFFFFF;
+    color: #000080;
     font-size: x-large;
   }
 </style>

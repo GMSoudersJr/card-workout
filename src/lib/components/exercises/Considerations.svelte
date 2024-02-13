@@ -20,9 +20,9 @@
   data-testid="considerations-container"
   id="considerations-container"
 >
-  <h4>Considerations:</h4>
+  <h4 class="oswald-header">CONSIDERATIONS:</h4>
   <ul
-    class="exercise-hint-list"
+    class="exercise-hint-list source-sans-3-text"
     data-testid="exercise-consideration-list"
     id="exercise-consideration-list"
   >
