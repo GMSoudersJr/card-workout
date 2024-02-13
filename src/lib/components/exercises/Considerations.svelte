@@ -2,10 +2,10 @@
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
 
   const listOfConsiderations = [
-    `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercise)`,
-    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 limbs move`,
-    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love`,
-    `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercise)`,
+    `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercises) / 'C' for Cardio`,
+    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 Limbs Move / 4 Points of Contact`,
+    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love / 'Heart' pumper`,
+    `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercises) / 'S' for Side... Single...`,
     `Make it yours and have fun!`,
   ];
 
