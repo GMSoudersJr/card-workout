@@ -5,8 +5,8 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="home-link source-sans-3-text">
-       Home
+    <a href="/" class="home-link oswald-header">
+       HOME
     </a>
     <h1 class="heading oswald-header">SUIT YOURSELF</h1>
     <a
@@ -42,7 +42,6 @@
   }
   .home-link {
     grid-area: homeLink;
-    font-size: large;
     text-decoration: none;
     color: #000080;
     justify-self: start;
