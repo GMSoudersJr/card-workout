@@ -1,12 +1,12 @@
 <script lang="ts">
   import { suitExercises } from "../../store";
-	import RepsProgressBox from "./RepsProgressBox.svelte";
+	import RepsMeterBox from "./RepsMeterBox.svelte";
 
 </script>
 
 <div class="reps-info-widget">
   {#each $suitExercises as data (data.suit)}
-    <RepsProgressBox reps={data.completedReps} exercise={data.exercise}/>
+    <RepsMeterBox reps={data.completedReps} exercise={data.exercise}/>
   {/each}
 </div>
 

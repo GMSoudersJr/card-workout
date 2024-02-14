@@ -12,12 +12,13 @@
   data-testid="reps-info-box"
   class="reps-info-box"
 >
-  <div class="exercise oswald-header" >
-    {exerciseName}: {reps}
-  </div>
+  <label for={`${exerciseName.toUpperCase()}`} class="exercise oswald-header" >
+    {exerciseName.toUpperCase()}: {reps}
+  </label>
   <meter
     id={`${exerciseName.toUpperCase()}`}
     class="reps source-sans-3-text"
+    min="0"
     max="100"
     value={reps}
   >
@@ -37,7 +38,7 @@
   }
   .exercise {
     color: #000080;
-    font-size: large;
+    font-size: small;
   }
 </style>
 
