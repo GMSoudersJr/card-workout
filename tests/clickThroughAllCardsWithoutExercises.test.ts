@@ -42,15 +42,11 @@ test.describe('info widgets', () => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		await expect(page.getByRole('radio', {checked: true})).toBeChecked();
 		const cardTicks = await page.locator('.card-tick').all();
-		const cardTicksNew = await page.locator('.card-tick').evaluateAll(element => element.forEach(subElement => window.getComputedStyle(subElement).getPropertyValue('visibility')));
-		console.log("Card Ticks New",cardTicksNew);
-		/*
 		cardTicks.forEach(async (tick, i) => {
 			const visibilityValue = await tick.evaluate(element => window.getComputedStyle(element).getPropertyValue('height') );
 		        console.log(`visibility value [${i}]:`, visibilityValue);
 			await expect(tick).toHaveCSS('visibility', 'hidden');
 		});
-			*/
 	});
 	
 	test('the rank widget is expected to have 0 for each rank', async ({ page }) => {
