@@ -11,7 +11,6 @@
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
-    console.log($suitExercises);
   }
 
 </script>
