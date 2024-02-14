@@ -20,8 +20,8 @@
     {#each $theDeckOfCards as card (card?.name)}
       <div
         id={`card-line ${card.name}`}
-        class={`card-line ${card.name}`}
-        style:opacity={card.hasBeenPlucked ? '0' : '1'}
+        class={`card-line ${card.name} card-tick`}
+        style:visibility={card.hasBeenPlucked ? 'hidden' : 'visible'}
       >
       </div>
     {/each}
