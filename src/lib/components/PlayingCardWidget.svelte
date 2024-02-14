@@ -5,6 +5,7 @@
     theRemainingDeck,
     randomCardIndex,
     theCurrentCard,
+	suitExercises,
   } from '../../store';
   import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../enums/cardRankSymbol";
@@ -24,6 +25,7 @@
     }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($theCurrentCard[0]);
+      suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
       await tick();

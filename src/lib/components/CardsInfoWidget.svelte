@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type {ComponentType} from "svelte";
 
-  import { theCurrentCard } from "../../store";
+  import { suitExercises } from "../../store";
 
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
   import RepsInfoWidget from "./RepsInfoWidget.svelte";
+	import type {TSuitExercise} from "../../types/suitExercise";
+	import type {TSuit} from "../../types/suit";
 
   interface InfoWidgets {
     [key: string]: ComponentType
@@ -26,7 +28,7 @@
     widget: ComponentType
   }
 
-  const infoChoices: InfoChoice[] = [
+  let infoChoices: InfoChoice[] = [
     {
       id: "radio-deck",
       value: "deck",
@@ -45,25 +47,35 @@
       innerHtml: "Suit",
       widget: SuitInfoWidget,
     },
-/*
     {
       id: "radio-reps",
       value: "reps",
       innerHtml: "Reps",
       widget: RepsInfoWidget,
     },
-*/
   ];
+
+  const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
+    return entry.exercise === undefined;
+  }
+
+  $: radioButtons = () => {
+    if ( $suitExercises.some(exercisesHaveNotBeenChosen) ) {
+    return infoChoices.slice(0, -1);
+    } else {
+      return infoChoices;
+    }
+  };
 
   $: group = '';
 </script>
 
 <div class="cards-info-widget-container">
     <div class="radio-buttons-container">
-      {#each infoChoices as choice}
+      {#each radioButtons() as choice}
         <label
           for={choice.id}
-          class="source-sans-3-text"
+          class="listitem-label source-sans-3-text"
         >
         {choice.innerHtml}
         <input
@@ -92,22 +104,24 @@
     display: grid;
     place-content: center;
   }
-  label {
+  .listitem-label {
     display: grid;
     grid-template-columns: min-content;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    justify-content: center;
     align-items: center;
     font-size: large;
     color: #000080;
   }
   .radio-buttons-container {
-    justify-content: center;
+    width: max-content;
     background: #F1F2F2;
     padding: 8px 15px;
     border-radius: 8px;
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    grid-template-rows: min-content;
-    gap: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
   input[type='radio'] {
     appearance: none;
