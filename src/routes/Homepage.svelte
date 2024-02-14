@@ -3,18 +3,23 @@
 
 <main>
   <div class="header">
-    <h1>Suits You Best</h1>
+    <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
-  <div class="nav">
-    <a href="/cards">Cards</a>
-  </div>
+  <nav class="nav-container">
+      <a href="/cards" class="nav-item oswald-header">CARDS</a>
+      <a
+        href="/exercises"
+        class="nav-item oswald-header"
+      >
+        EXERCISES
+      </a>
+  </nav>
 </main>
 
 <style>
   main {
     height: 100%;
     width: 100%;
-    border: 1px solid gold;
     background: radial-gradient(circle at bottom center, #39FF14, #000080);
     display: grid;
     justify-content: center;
@@ -24,14 +29,22 @@
   .header {
     color: #FFFFFF;
   }
-  .nav {
-    padding: 12px 15px;
-    border: 4px solid #FFFFFF;
-    border-radius: 8px;
+  .nav-container {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    row-gap: 1rem;
   }
-  .nav a {
+  .nav-item {
+    width: 100%;
+    padding: 12px 15px;
+    border: 4px solid #000080;
+    border-radius: 8px;
+    display: grid;
+    justify-content: center;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #000080;
     font-size: x-large;
   }
 </style>

@@ -5,10 +5,17 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="nav-link">
-      ⬅ Home
+    <a href="/" class="home-link oswald-header">
+       HOME
     </a>
-    <h1 class="heading">Cards</h1>
+    <h1 class="heading oswald-header">SUIT YOURSELF</h1>
+    <a
+      href="/exercises"
+      id="exercises-link"
+      class="nav-link oswald-header exercise-link"
+    >
+      EXERCISES
+    </a>
   </div>
   <aside class="discarded-cards-aside">
     <DiscardedCardsWidget />
@@ -28,17 +35,24 @@
     grid-template-rows: min-content 181.8px 1fr min-content;
   }
   .nav-and-heading {
-    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    grid-template-areas: "nav heading .";
+    grid-template-areas: "homeLink heading exerciseLink";
   }
-  .nav-link {
-    grid-area: nav;
-    font-size: large;
+  .home-link {
+    grid-area: homeLink;
     text-decoration: none;
-    color: #000000;
+    color: #000080;
+    justify-self: start;
+    padding-left: 10px;
+  }
+  .exercise-link {
+    grid-area: exerciseLink;
+    text-decoration: none;
+    color: #000080;
+    justify-self: end;
+    padding-right: 10px;
   }
   .heading {
     grid-area: heading;

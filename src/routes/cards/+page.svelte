@@ -3,7 +3,7 @@
   import { flip } from 'svelte/animate';
   import {
     discardedCards,
-    currentCard,
+    theCurrentCard,
   } from '../../store';
 	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
 	import StartButton from '$lib/components/StartButton.svelte';
@@ -11,10 +11,16 @@
 </script>
 
 <main>
-  {#if $currentCard.length == 0 && $discardedCards.length == 0}
+  {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
+    <p class="oswald-header">
+      PRESS START TO BEGIN
+    </p>
   <StartButton />
-  {:else if $currentCard.length > 0}
-    {#each $currentCard as currentCard (currentCard.name)}
+    <p class="oswald-header">
+      TAP THE CARD TO DISCARD IT
+    </p>
+  {:else if $theCurrentCard.length > 0}
+    {#each $theCurrentCard as currentCard (currentCard.name)}
       <div class="card-outer-container"
         out:send={{ key: currentCard.name }}
         in:send={{ key: currentCard.name }}
@@ -24,13 +30,17 @@
           id={currentCard.name}
           rankSymbol={currentCard.rank}
           suitSymbol={currentCard.suit}
+          exercise={currentCard.exercise}
           textColor={currentCard.textColor}
-          disabled={false}
+          reps={currentCard.value}
+          disabled={currentCard.hasBeenDiscarded}
         />
       </div>
     {/each}
-  {:else if $discardedCards.length == 52 && $currentCard.length == 0}
-  <ShuffleButton />
+  {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
+    <p class="oswald-header">THE DECK IS FINISHED</p>
+    <ShuffleButton />
+    <p class="oswald-header">SHUFFLING CLEANS THE CARDS</p>
   {/if}
 </main>
 
@@ -38,7 +48,7 @@
   main {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     justify-items: center;
     align-items: center;
   }

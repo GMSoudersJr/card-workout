@@ -1,22 +1,26 @@
 <script lang="ts">
   import {
-    currentCard,
+    theCurrentCard,
     theDeckOfCards,
     discardedCards,
+    suitExercises,
   } from '../../store';
 
   function handleShuffle() {
     theDeckOfCards.shuffle();
     discardedCards.reset();
-    currentCard.reset();
+    theCurrentCard.reset();
+    suitExercises.reset();
+    console.log($suitExercises);
   }
 
 </script>
 
   <button
+    class="oswald-header"
     on:click={handleShuffle}
   >
-  Shuffle
+  SHUFFLE
 </button>
 
 <style>

@@ -13,3 +13,28 @@ body {
   grid-template-rows: 100vh;
   overflow: hidden;
 }
+/*
+ * <uniquifier>: Use a uniquifier for the class name
+ * <weight>: Use a value from 300 to 700
+ */
+
+.noto-emoji-font {
+  font-family: "Noto Emoji", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-header {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.source-sans-3-text {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

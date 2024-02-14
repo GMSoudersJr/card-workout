@@ -1,30 +1,15 @@
 import { writable, derived } from 'svelte/store';
 import { PlayingCard } from './classes/playingCard';
-import { ESuit } from './enums/suit';
-import { ECardRank } from './enums/cardRank';
 import type { TCardRank } from './types/cardRank';
 import type { TSuit } from './types/suit';
-import { createPlayingCard } from './functions/createPlayingCard';
 import type {TPlayingCard} from './types/playingCard';
-
-const createDeckOfCards = () => {
-	let result: PlayingCard[] = [];
-	const suits = Object.keys(ESuit);
-	const ranks = Object.keys(ECardRank);
-	for (let i = 0; i < suits.length; i++) {
-		let suit = suits[i];
-		for (let j = 0; j < ranks.length; j++) {
-			let rank = ranks[j];
-			const playingCard = createPlayingCard(PlayingCard, rank as TCardRank, suit as TSuit);
-			result.push(playingCard);
-		}
-	}
-	return result;
-}
+import { createDeckOfCards } from './functions/createDeckOfCards';
+import type {TExercise} from './types/exercises';
+import type {TSuitExercise} from './types/suitExercise';
+import {createSuitExercises} from './functions/createSuitExercises';
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
-
 	return {
 		subscribe,
 		shuffle: () => set(createDeckOfCards()),
@@ -32,8 +17,44 @@ function createTheDeckOfCards() {
 			deck[someRandomNumber].hasBeenPlucked = true;
 			return deck;
 		}),
+		discard: (someRandomNumber: number) => update((deck) => {
+			deck[someRandomNumber].hasBeenDiscarded = true;
+			return deck;
+		}),
+		setExercises: (anArrayOfSuitExercises: TSuitExercise<TSuit>[]) =>
+			set(createDeckOfCards(anArrayOfSuitExercises)),
+	};
+};
+
+function createSuitExercisesStore() {
+	const suitExercises = createSuitExercises();
+	const { subscribe, set, update } = writable(suitExercises);
+
+	return {
+		subscribe,
+		updateExercise: (suit: TSuit, exercise: TExercise) => update((result) => {
+			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
+			const indexOfThisSuit = result.findIndex(isThisSuit);
+			result = result.with(indexOfThisSuit, {suit: suit, exercise: exercise, completedReps: 0})
+			return result;
+		}),
+		addReps: (aDiscardedCard: TPlayingCard<TCardRank, TSuit>) => update((result) => {
+			const theSuitOfTheDiscardedCard = aDiscardedCard.suit;
+			const theValueOfTheDiscardedCard = aDiscardedCard.value;
+			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === theSuitOfTheDiscardedCard;
+			const indexOfThisSuit = result.findIndex(isThisSuit);
+			const updatedData = {
+				suit: result[indexOfThisSuit].suit,
+				exercise: result[indexOfThisSuit].exercise,
+				completedReps: result[indexOfThisSuit].completedReps + theValueOfTheDiscardedCard
+			}
+			result = result.with(indexOfThisSuit, updatedData);
+			return result
+		}),
+
+		reset: () => set(suitExercises),
 	}
-}
+};
 
 function usedCards() {
 	let emptyArray: TPlayingCard<TCardRank, TSuit>[] = [];
@@ -57,7 +78,7 @@ function usedCards() {
 
 };
 
-function createCurrentCard() {
+function createTheCurrentCard() {
 	let emptyArray: PlayingCard[] = [];
 	const { subscribe, update } = writable(emptyArray);
 
@@ -78,9 +99,11 @@ function createCurrentCard() {
 	};
 };
 
-export const currentCard = createCurrentCard();
+export const theCurrentCard = createTheCurrentCard();
 export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
+export const suitExercises = createSuitExercisesStore();
+
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {

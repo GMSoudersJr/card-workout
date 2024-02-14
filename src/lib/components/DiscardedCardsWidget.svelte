@@ -6,18 +6,25 @@
 
 </script>
 
-<ul id="discarded-cards-only" class="discarded-cards">
+<ul
+  id="discarded-cards-only"
+  class="discarded-cards"
+  data-testid="discarded-cards-list"
+>
 {#if $discardedCards}
 {#each $discardedCards as card (card.name)}
   <li
     in:receive={{ key: card.name }}
     animate:flip={{ duration: 200 }}
+    data-testid="discarded-card-listitem"
   >
     <PlayingCardWidget
       id={`${card.name}-discarded`}
       rankSymbol={card.rank}
+      exercise={card.exercise}
       suitSymbol={card.suit}
       textColor={card.textColor}
+      reps={card.value}
       disabled
     />
   </li>

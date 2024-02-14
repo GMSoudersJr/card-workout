@@ -5,15 +5,15 @@
 </script>
 
 <div class="rank-info-box">
-  <div class="rank">
+  <p class="rank source-sans-3-text">
     {rank}
-  </div>
-  <div
-    class="count"
+  </p>
+  <p
+    class="count source-sans-3-text"
     style={`filter: grayscale(${grayscale}%);`}
   >
     {count}
-  </div>
+  </p>
 </div>
 
 <style>
@@ -26,10 +26,9 @@
   }
   .rank,
   .count {
-    padding: 2px 3px;
     text-align: center;
     font-weight: 600;
-    font-size: medium;
+    font-size: large;
   }
   .rank {
     background: #FFFFFF;
