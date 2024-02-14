@@ -40,13 +40,13 @@ function createSuitExercisesStore() {
 		}),
 		addReps: (aDiscardedCard: TPlayingCard<TCardRank, TSuit>) => update((result) => {
 			const theSuitOfTheDiscardedCard = aDiscardedCard.suit;
-			const valueOfTheDiscardedCard = aDiscardedCard.value;
+			const theValueOfTheDiscardedCard = aDiscardedCard.value;
 			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === theSuitOfTheDiscardedCard;
 			const indexOfThisSuit = result.findIndex(isThisSuit);
 			const updatedData = {
 				suit: result[indexOfThisSuit].suit,
 				exercise: result[indexOfThisSuit].exercise,
-				completedReps: result[indexOfThisSuit].completedReps + valueOfTheDiscardedCard
+				completedReps: result[indexOfThisSuit].completedReps + theValueOfTheDiscardedCard
 			}
 			result = result.with(indexOfThisSuit, updatedData);
 			return result
