@@ -37,16 +37,15 @@ test.describe('info widgets', () => {
 		await expect(page.getByRole('heading',{ name: '0', level: 3 })).toBeVisible();
 	});
 
-	test('the deck widget is expected to not have any visible ticks', async ({ page }) => {
-		test.setTimeout(60 * 1000);
+	test('the deck widget is expected to not have any visible ticks', async ({ page }, testInfo) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-		const cardTicks = await page.locator('.card-tick').all();
-		cardTicks.forEach(async (tick, i) => {
-			const visibilityValue = await tick.evaluate(element => window.getComputedStyle(element).getPropertyValue('height') );
-		        console.log(`visibility value [${i}]:`, visibilityValue);
-			await expect(tick).toHaveCSS('visibility', 'hidden');
-		});
+		const cardTicks = await page.locator('#card-tick-container').locator('div').all();
+		let iterator = 0;
+		while (iterator < cardTicks.length) {
+			await expect(cardTicks[iterator]).not.toBeVisible();
+			iterator++;
+		}
 	});
 	
 	test('the rank widget is expected to have 0 for each rank', async ({ page }) => {
