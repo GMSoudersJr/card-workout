@@ -141,8 +141,8 @@
     height: 0.65em;
     border-radius: 50%;
     transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em #259259;
+    transition: 220ms transform ease-in-out;
+    box-shadow: inset 1em 1em #39FF14;
   }
   input[type='radio']:checked::before {
     transform: scale(1);

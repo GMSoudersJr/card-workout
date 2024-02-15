@@ -54,7 +54,7 @@
     border-radius: 8px;
   }
   .reps::-webkit-progress-value {
-    background-color: #259259;
+    background-color: #39FF14;
     border-radius: 8px;
     box-shadow: 1px 1px 5px 3px #000080;
   }
