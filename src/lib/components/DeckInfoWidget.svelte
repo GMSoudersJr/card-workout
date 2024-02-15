@@ -3,6 +3,7 @@
     theDeckOfCards,
     theRemainingDeck,
   } from "../../store";
+	import MiniCardTicks from "./MiniCardTicks.svelte";
 
 </script>
 
@@ -16,16 +17,13 @@
       {$theRemainingDeck.length}
     </h3>
   </div>
-  <div class="card-lines-container">
+  <div
+    class="card-lines-container"
+    id="card-tick-container"
+  >
     {#each $theDeckOfCards as card (card?.name)}
-      <div
-        id={`card-line ${card.name}`}
-        class={`card-line ${card.name}`}
-        style:opacity={card.hasBeenPlucked ? '0' : '1'}
-      >
-      </div>
+      <MiniCardTicks name={card.name} hasBeenPlucked={card.hasBeenPlucked}/>
     {/each}
-
   </div>
 </div>
 
@@ -55,14 +53,5 @@
     grid-template-columns: repeat(52, 1px);
     column-gap: 4px;
     align-self: center;
-  }
-  .card-line {
-    width: 3px;
-    height: 30px;
-    border: 1px solid #000080;
-    background: #39FF14;
-  }
-  .plucked {
-    background: #000000;
   }
 </style>
