@@ -35,7 +35,7 @@
     grid-template-rows: repeat(2, min-content);
     border-radius: 4px;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
   }
   .exercise {
     color: #000080;
@@ -44,10 +44,19 @@
   }
   .reps {
     width: 100%;
-    background: #259259;
     height: 5px;
-    border-radius: 30px;
-    transition: ease;
+    border-radius: 8px;
+    background-color: #259259;
+    box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+  }
+  .reps::-webkit-progress-bar {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+  }
+  .reps::-webkit-progress-value {
+    background-color: #259259;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px 3px #000080;
   }
 </style>
 
