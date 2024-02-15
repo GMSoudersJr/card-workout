@@ -33,7 +33,7 @@ export enum EExercises {
 	PULL_UPS='Pull-ups',
 	PUSH_UPS='Push-ups',
 	RAISED_ARM_EXTENSIONS='Raised Arm Extensions',
-	REVERSE_ARM_CIRCLES='Reverse Arm Cirles',
+	REVERSE_ARM_CIRCLES='Reverse Arm Circles',
 	REVERSE_FLY='Reverse Fly',
 	SCISSOR_KICKS='Scissor Kicks',
 	SEATED_CALF_RAISES='Seated Calf Raises',
