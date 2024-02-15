@@ -37,7 +37,7 @@ test.describe('info widgets', () => {
 		await expect(page.getByRole('heading',{ name: '0', level: 3 })).toBeVisible();
 	});
 
-	test('the deck widget is expected to not have any visible ticks', async ({ page }, testInfo) => {
+	test('the deck widget is expected to not have any visible ticks', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		await expect(page.getByRole('radio', {checked: true})).toBeChecked();
 		const cardTicks = await page.locator('#card-tick-container').locator('div').all();
