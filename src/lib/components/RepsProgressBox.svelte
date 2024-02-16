@@ -31,7 +31,7 @@
 <style>
   .reps-info-box {
     display: grid;
-    grid-template-columns: 120px;
+    grid-template-columns: 135px;
     grid-template-rows: repeat(2, min-content);
     border-radius: 4px;
     align-items: center;
