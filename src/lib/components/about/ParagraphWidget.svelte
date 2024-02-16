@@ -16,5 +16,11 @@
 </section>
 
 <style>
+  .about-section-header {
+    color: #259259;
+  }
+  p:not(:last-child) {
+    padding-bottom: 0.25rem;
+  }
 </style>
 

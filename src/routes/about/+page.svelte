@@ -5,6 +5,9 @@
     motivation,
     repCount,
     howToUse,
+    exercises,
+    suggestions,
+    problems,
   } from "$lib/strings/forAboutPage";
 
 </script>
@@ -15,6 +18,14 @@
     listOfParagraphs={motivation.list}
   />
   <ListWidget
+    heading={problems.heading}
+    unorderedList={problems.list}
+  />
+  <ListWidget
+    heading={exercises.heading}
+    unorderedList={exercises.list}
+  />
+  <ListWidget
     heading={repCount.heading}
     unorderedList={repCount.list}
   />
@@ -22,13 +33,27 @@
     heading={howToUse.heading}
     unorderedList={howToUse.list}
   />
+  <ListWidget
+    heading={suggestions.heading}
+    unorderedList={suggestions.list}
+  />
 </div>
 
 <style>
   .about-page {
+    padding-top: 0.5rem;
     height: 100%;
     max-width: 600px;
     justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 1rem;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .about-page::-webkit-scrollbar {
+    display: none;
   }
 </style>

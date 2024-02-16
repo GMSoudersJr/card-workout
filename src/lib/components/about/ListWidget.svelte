@@ -18,6 +18,9 @@
 </section>
 
 <style>
+  .about-section-header {
+    color: #259259;
+  }
   .about-list {
     list-style-position: inside;
   }
