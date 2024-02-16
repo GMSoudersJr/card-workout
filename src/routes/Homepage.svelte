@@ -6,13 +6,24 @@
     <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
   <nav class="nav-container">
-      <a href="/cards" class="nav-item oswald-header">CARDS</a>
-      <a
-        href="/exercises"
-        class="nav-item oswald-header"
-      >
-        EXERCISES
-      </a>
+    <a
+      class="nav-item oswald-header"
+      href="/about"
+    >
+      ABOUT
+    </a>
+    <a
+      class="nav-item oswald-header"
+      href="/cards"
+    >
+      CARDS
+    </a>
+    <a
+      class="nav-item oswald-header"
+      href="/exercises"
+    >
+      EXERCISES
+    </a>
   </nav>
 </main>
 
