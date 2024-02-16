@@ -104,24 +104,22 @@
     display: grid;
     place-content: center;
   }
-  .listitem-label {
-    display: grid;
-    grid-template-columns: min-content;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    justify-content: center;
-    align-items: center;
-    font-size: large;
-    color: #000080;
-  }
   .radio-buttons-container {
-    width: max-content;
+    width: 80.9%;
     background: #F1F2F2;
     padding: 8px 15px;
     border-radius: 8px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+  }
+  .listitem-label {
+    display: grid;
+    grid-template-columns: min-content;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    color: #000080;
   }
   input[type='radio'] {
     appearance: none;
