@@ -16,25 +16,22 @@
 
 </script>
 
-<div class="rank-info-widget">
-  <ul data-testid="card rank list">
-  {#each ranks as rank}
-    <li class={`rank-${rank.symbol} rank-listitem`} >
-      <RankInfoBox rank={rank.symbol} count={rank.count} />
-    </li>
-  {/each}
-  </ul>
-</div>
+<ul class="rank-list" data-testid="card rank list">
+{#each ranks as rank}
+  <li class={`rank-${rank.symbol} rank-listitem`} >
+    <RankInfoBox rank={rank.symbol} count={rank.count} />
+  </li>
+{/each}
+</ul>
 
 <style>
   ul {
     display: grid;
     grid-template-columns: repeat(5, max-content);
     grid-template-rows: repeat(3, min-content);
-    column-gap: 1rem;
-    row-gap: 0.5rem;
-    justify-items: center;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
     grid-template-areas: 
     "TWO THREE  FOUR FIVE SIX"
     ". SEVEN EIGHT NINE ."

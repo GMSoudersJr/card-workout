@@ -88,23 +88,20 @@
       </label>
       {/each}
     </div>
-    <svelte:component this={infoWidgets[group]} />
+    <div class="widget-container">
+      <svelte:component this={infoWidgets[group]} />
+    </div>
 </div>
 
 <style>
   .cards-info-widget-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content;
+    grid-template-rows: min-content 1fr;
     justify-items: center;
-    align-items: center;
-  }
-  input {
-    margin-top: 0.5rem;
-    display: grid;
-    place-content: center;
   }
   .radio-buttons-container {
+    border: 1px solid blue;
     width: 80.9%;
     background: #F1F2F2;
     padding: 8px 15px;
@@ -120,6 +117,15 @@
     align-items: center;
     font-size: medium;
     color: #000080;
+  }
+  .widget-container {
+    border: 1px solid blue;
+    place-self: center;
+  }
+  input {
+    margin-top: 0.5rem;
+    display: grid;
+    place-content: center;
   }
   input[type='radio'] {
     appearance: none;
