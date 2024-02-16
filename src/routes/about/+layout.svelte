@@ -1,6 +1,4 @@
 <script lang="ts">
-  import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
-	import DiscardedCardsWidget from "$lib/components/DiscardedCardsWidget.svelte";
 </script>
 
 <main>
@@ -9,7 +7,7 @@
        HOME
     </a>
     <h1 class="heading oswald-header">
-      SUIT YOURSELF
+      ABOUT
     </h1>
     <a
       href="/exercises"
@@ -19,22 +17,16 @@
       EXERCISES
     </a>
   </div>
-  <aside class="discarded-cards-aside">
-    <DiscardedCardsWidget />
-  </aside>
   <slot />
-  <aside class="deck-of-cards-info-aside">
-    <CardsInfoWidget />
-  </aside>
 </main>
 
 <style>
   main {
-    height: 100%;
+    height: calc(100svh - 25px);
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content 181.8px 1fr min-content;
+    grid-template-rows: min-content 1fr;
   }
   .nav-and-heading {
     display: grid;
@@ -59,23 +51,5 @@
   .heading {
     grid-area: heading;
     place-self: center;
-  }
-  .discarded-cards-aside {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    background: #259259;
-    overflow: hidden;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  .deck-of-cards-info-aside {
-    width: 100%;
-    height: 25svh;
-    background-color: #D9D9D9;
-    display: grid;
-    padding: 1rem;
-    padding-bottom: 0;
   }
 </style>

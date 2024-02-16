@@ -1,4 +1,18 @@
-<script>
+<script lang="ts">
+  const theHomepageLinks = [
+    {
+      href: '/about',
+      text: 'ABOUT',
+    },
+    {
+      href: '/cards',
+      text: 'CARDS',
+    },
+    {
+      href: '/exercises',
+      text: 'EXERCISES',
+    },
+  ];
 </script>
 
 <main>
@@ -6,26 +20,14 @@
     <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
   <nav class="nav-container">
-    <!--
+  {#each theHomepageLinks as homepageLink (homepageLink.text)}
     <a
       class="nav-item oswald-header"
-      href="/about"
+      href={homepageLink.href}
     >
-      ABOUT
+      {homepageLink.text}
     </a>
-    -->
-    <a
-      class="nav-item oswald-header"
-      href="/cards"
-    >
-      CARDS
-    </a>
-    <a
-      class="nav-item oswald-header"
-      href="/exercises"
-    >
-      EXERCISES
-    </a>
+  {/each}
   </nav>
 </main>
 
