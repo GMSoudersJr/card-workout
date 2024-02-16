@@ -1,6 +1,6 @@
-# [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
+# <h1 align='center'>[SUIT YOURSELF](https://card-workout-tau.vercel.app/)</h1>
 
-A **mobile-first**, ***web-based*** card workout app [`SUIT YOURSELF`](https://card-workout-tau.vercel.app/)
+<p align='center'>A <em>mobile-first</em>, <em>web-based</em> card workout app <a href='https://card-workout-tau.vercel.app/'>SUIT YOURSELF</p>
 
 ## Motivation
 
