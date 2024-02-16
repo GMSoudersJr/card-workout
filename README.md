@@ -1,38 +1,36 @@
-# create-svelte
+# [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A **mobile-first** web-based card workout app [`SUIT YOURSELF`](https://card-workout-tau.vercel.app/)
 
-## Creating a project
+## Motivation
 
-If you're seeing this, you've probably already done this step. Congrats!
+During the pandemic, I was intrigued by a video of a boxer using a deck of cards to determine the number of push-ups he would do.
+After trying it a few times, doing only push-ups was **OVERKILL**.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+My *spin* on it was to have each suit represent a different exercise instead of a full deck of push-ups.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+♣️ = Crunches (core exercise)
 
-## Developing
+♦️ = Jumping Jacks (4 corners, 4 body parts move)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+♥️ = Push-ups (an exercise I love)
 
-```bash
-npm run dev
+♠️ = Squats (leg exercise)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Also, friends wanted to try it, but they did not want to carry around a deck of cards
 
-## Building
+## The Exercises
+The exercises are calisthenics, movement, and yoga based. No need for added weight, use yourself.
 
-To create a production version of your app:
+## Current Status
 
-```bash
-npm run build
-```
+The app can be used, but there is no tracking of progress.
 
-You can preview the production build with `npm run preview`.
+## Future Plans
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Connect a backend so users can:
+- login and track their exercises / workouts
+- save a workout and continue later
+- time workouts
+- save completed workouts
+- repeat workouts to see improvements in conditioning
