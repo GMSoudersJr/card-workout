@@ -101,7 +101,6 @@
     justify-items: center;
   }
   .radio-buttons-container {
-    border: 1px solid blue;
     width: 80.9%;
     background: #F1F2F2;
     padding: 8px 15px;
@@ -119,7 +118,6 @@
     color: #000080;
   }
   .widget-container {
-    border: 1px solid blue;
     place-self: center;
   }
   input {
