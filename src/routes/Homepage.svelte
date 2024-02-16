@@ -6,12 +6,14 @@
     <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
   <nav class="nav-container">
+    <!--
     <a
       class="nav-item oswald-header"
       href="/about"
     >
       ABOUT
     </a>
+    -->
     <a
       class="nav-item oswald-header"
       href="/cards"
