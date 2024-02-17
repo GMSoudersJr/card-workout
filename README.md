@@ -27,7 +27,7 @@
 
 
 ## Overview
-A *mobile-first*, *web-based* card workout [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
+A *mobile-first*, *web-based* card workout app: [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
 
 During the pandemic, I was intrigued by a video of a boxer using a deck of cards to determine the number of push-ups he would do.
 After trying it a few times...
