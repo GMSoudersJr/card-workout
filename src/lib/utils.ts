@@ -1,6 +1,6 @@
 import { ESuit } from '../enums/suit';
 import { ECardRank } from '../enums/cardRank';
-import { PlayingCard } from '../classes/PlayingCard'
+import { PlayingCard } from '../classes/playingCard';
 import type { TSuit } from '../types/suit';
 import type { TCardRank } from '../types/cardRank';
 
@@ -17,4 +17,9 @@ export const createDeckOfCards = () => {
 		}
 	}
 	return result;
+}
+
+export const thisYear = () => {
+	const date = new Date(Date.now());
+	return date.getFullYear();
 }

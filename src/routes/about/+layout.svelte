@@ -2,7 +2,7 @@
 </script>
 
 <main>
-  <div class="nav-and-heading">
+  <div class="header">
     <a href="/" class="home-link oswald-header">
        HOME
     </a>
@@ -28,7 +28,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
   }
-  .nav-and-heading {
+  .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
