@@ -5,7 +5,7 @@
 
 <footer>
   <Socials />
-  <p>{copyright}</p>
+  <p class="source-sans-3-text">{copyright}</p>
 </footer>
 
 <style>
@@ -21,7 +21,6 @@
   }
 
   footer p {
-    font-family: var(--fontFamilyRegular);
     font-size: 16px;
     line-height: 24px;
   }
