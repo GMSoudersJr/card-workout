@@ -22,9 +22,9 @@
 <style>
   button {
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #000080;
     width: 100%;
-    height: 40px;
+    height: 60px;
   }
 </style>
