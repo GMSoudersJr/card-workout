@@ -15,8 +15,8 @@ export const motivation = {
 export const problems = {
 	heading: `problems`,
 	list: [
-		`Taking a deck of cards to workout.`,
-		`Which exercise?`
+		`Carrying around a deck of cards`,
+		`Hmm... I was doing which exercise for clubs?`
 	],
 };
 
@@ -58,9 +58,9 @@ export const howToUse = {
 export const suggestions = {
 	heading: 'suggestions',
 	list: [
-		`Choose exercises to get a full body workout`,
-		`Warmed up and stretch before hand`,
-		`Use your imagination`,
+		`Choose exercises to get a full body workout!`,
+		`Warm up and stretch before hand!`,
+		`Use your imagination!`,
 		`Have fun!`,
 	],
 };
