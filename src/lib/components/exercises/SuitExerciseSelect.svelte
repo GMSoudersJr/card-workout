@@ -55,19 +55,23 @@
     border: 2px solid #000080;
     border-radius: 8px;
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: 1fr 6fr;
     grid-template-rows: min-content;
     justify-items: center;
-    padding: 5px 8px;
-    column-gap: 0.5rem;
+    align-items: center;
+    padding: 0px 0px;
   }
   .exercise-selection-label {
     font-size: x-large;
+    justify-self: center;
   }
   select {
     color: #000080;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     border: none;
+    border-radius: 8px;
     width: 100%;
+    font-size: 1rem;
+    height: 40px;
   }
 </style>

@@ -15,17 +15,16 @@
   }
 </script>
 
-<button on:click={handleClick}>
-  Let's Go!
+<button on:click={handleClick} class="oswald-header">
+  LET'S GO!
 </button>
 
 <style>
   button {
-    justify-self: center;
-    padding: 8px 15px;
     border-radius: 8px;
-    font-size: medium;
+    font-size: 1rem;
     color: #000080;
     width: 100%;
+    height: 40px;
   }
 </style>
