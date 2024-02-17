@@ -47,6 +47,9 @@
   }
   li:not(:first-child) {
     margin-left: -75px;
+    & button {
+          box-shadow: -2px 0px 3.236px #000000;
+    }
   }
   li {
     list-style: none;

@@ -122,6 +122,7 @@
     background: #FFF;
     transform: scale(1.618);
     overflow: hidden;
+    box-shadow: 5px 5px 15px #D9D9D9;
   }
   .card-exercise-name {
     grid-area: exercise-name;
@@ -157,5 +158,6 @@
     background: #D9D9D9;
     filter: grayscale(10%);
     transform: scale(1);
+    box-shadow: none;
   }
 </style>
