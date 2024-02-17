@@ -1,3 +1,5 @@
+import { thisYear } from "$lib/utils";
+
 export const motivation = {
 	heading: 'motivation',
 	list: [
@@ -62,3 +64,5 @@ export const suggestions = {
 		`Have fun!`,
 	],
 };
+
+export const copyright = `© ${thisYear()} by Gerald M. Souders Jr.`

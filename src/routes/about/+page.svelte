@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ListWidget from "$lib/components/about/ListWidget.svelte";
+	import Footer from "$lib/components/about/Footer.svelte";
+import ListWidget from "$lib/components/about/ListWidget.svelte";
 	import ParagraphWidget from "$lib/components/about/ParagraphWidget.svelte";
   import {
     motivation,
@@ -37,6 +38,7 @@
     heading={suggestions.heading}
     unorderedList={suggestions.list}
   />
+  <Footer />
 </div>
 
 <style>
