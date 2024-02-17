@@ -101,13 +101,13 @@
     justify-items: center;
   }
   .radio-buttons-container {
-    width: 80.9%;
+    width: 300px;
     background: #F1F2F2;
-    padding: 8px 15px;
+    padding: 0.7rem 0;
     border-radius: 8px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .listitem-label {
     display: grid;
