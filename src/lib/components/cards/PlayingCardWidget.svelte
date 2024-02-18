@@ -28,6 +28,7 @@
       suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
+      // This will change the animation. Test it later to see what users like more
       await tick();
       //@ts-ignore
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
