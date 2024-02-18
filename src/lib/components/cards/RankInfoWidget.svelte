@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { theRemainingDeck } from "../../store";
-  import { ECardRankSymbol } from "../../enums/cardRankSymbol";
+  import { theRemainingDeck } from "../../../store";
+  import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
 	import RankInfoBox from "./RankInfoBox.svelte";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);

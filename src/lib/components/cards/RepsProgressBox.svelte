@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { EExerciseNames } from "../../enums/exerciseNames";
-	import type { TExerciseName } from "../../types/exerciseName";
+  import { EExerciseNames } from "../../../enums/exerciseNames";
+  import type { TExerciseName } from "../../../types/exerciseName";
 
   export let reps: number;
   export let exercise: TExerciseName | undefined;

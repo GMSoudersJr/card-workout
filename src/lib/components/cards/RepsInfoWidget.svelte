@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { suitExercises } from "../../store";
+  import { suitExercises } from "../../../store";
 	import RepsProgressBox from "./RepsProgressBox.svelte";
 
 </script>

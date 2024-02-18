@@ -5,9 +5,9 @@
     discardedCards,
     theCurrentCard,
   } from '../../store';
-	import PlayingCardWidget from '$lib/components/PlayingCardWidget.svelte';
-	import StartButton from '$lib/components/StartButton.svelte';
-	import ShuffleButton from '$lib/components/ShuffleButton.svelte';
+  import PlayingCardWidget from '$lib/components/cards/PlayingCardWidget.svelte';
+  import StartButton from '$lib/components/cards/StartButton.svelte';
+  import ShuffleButton from '$lib/components/cards/ShuffleButton.svelte';
 </script>
 
 <main>
@@ -30,7 +30,7 @@
           id={currentCard.name}
           rankSymbol={currentCard.rank}
           suitSymbol={currentCard.suit}
-          exercise={currentCard.exercise}
+          exercise={currentCard.exerciseName}
           textColor={currentCard.textColor}
           reps={currentCard.value}
           disabled={currentCard.hasBeenDiscarded}

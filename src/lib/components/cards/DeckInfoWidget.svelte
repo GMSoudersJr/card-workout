@@ -2,7 +2,7 @@
   import {
     theDeckOfCards,
     theRemainingDeck,
-  } from "../../store";
+  } from "../../../store";
 	import MiniCardTicks from "./MiniCardTicks.svelte";
 
 </script>

@@ -2,7 +2,7 @@
   import { receive } from "$lib/transition";
   import { flip } from "svelte/animate";
   import PlayingCardWidget from "./PlayingCardWidget.svelte";
-  import { discardedCards } from "../../store";
+  import { discardedCards } from "../../../store";
 
 </script>
 

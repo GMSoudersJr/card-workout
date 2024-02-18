@@ -3,7 +3,7 @@
     theDeckOfCards,
     theCurrentCard,
     randomCardIndex
-  } from '../../store';
+  } from '../../../store';
 
   function handleStart() {
     const randomCard = $theDeckOfCards.at($randomCardIndex)

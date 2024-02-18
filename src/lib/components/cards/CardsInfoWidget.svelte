@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type {ComponentType} from "svelte";
 
-  import { suitExercises } from "../../store";
+  import { suitExercises } from "../../../store";
 
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
   import RepsInfoWidget from "./RepsInfoWidget.svelte";
-	import type {TSuitExercise} from "../../types/suitExercise";
-	import type {TSuit} from "../../types/suit";
+  import type {TSuitExercise} from "../../../types/suitExercise";
+  import type {TSuit} from "../../../types/suit";
 
   interface InfoWidgets {
     [key: string]: ComponentType

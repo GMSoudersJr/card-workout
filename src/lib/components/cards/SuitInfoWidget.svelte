@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { theRemainingDeck } from "../../store";
-  import { ESuit } from "../../enums/suit";
-	import {ESuitSymbolUnicode} from "../../enums/suitSymbolUnicode";
-  import { ESuitColors } from "../../enums/suitColors";
+  import { theRemainingDeck } from "../../../store";
+  import { ESuit } from "../../../enums/suit";
+  import {ESuitSymbolUnicode} from "../../../enums/suitSymbolUnicode";
+  import { ESuitColors } from "../../../enums/suitColors";
 	import SuitInfoBox from "./SuitInfoBox.svelte";
 
   let suitNames: string[] = Object.keys(ESuit);

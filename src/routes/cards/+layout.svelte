@@ -1,6 +1,6 @@
 <script lang="ts">
-  import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
-	import DiscardedCardsWidget from "$lib/components/DiscardedCardsWidget.svelte";
+  import CardsInfoWidget from "$lib/components/cards/CardsInfoWidget.svelte";
+  import DiscardedCardsWidget from "$lib/components/cards/DiscardedCardsWidget.svelte";
 </script>
 
 <main>

@@ -4,7 +4,7 @@
     theDeckOfCards,
     discardedCards,
     suitExercises,
-  } from '../../store';
+  } from '../../../store';
 
   function handleShuffle() {
     theDeckOfCards.shuffle();

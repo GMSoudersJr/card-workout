@@ -6,14 +6,14 @@
     randomCardIndex,
     theCurrentCard,
 	suitExercises,
-  } from '../../store';
-  import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
-  import { ECardRankSymbol } from "../../enums/cardRankSymbol";
-	import type { TCardRank } from '../../types/cardRank';
-	import type { TSuit } from '../../types/suit';
+  } from '../../../store';
+  import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
+  import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
+  import type { TCardRank } from '../../../types/cardRank';
+  import type { TSuit } from '../../../types/suit';
 	import {tick} from 'svelte';
-	import type { TExerciseName } from '../../types/exerciseName';
-	import { EExerciseNames } from '../../enums/exerciseNames';
+  import type { TExerciseName } from '../../../types/exerciseName';
+  import { EExerciseNames } from '../../../enums/exerciseNames';
 
   async function handleClick() {
     let widthOfUnderCard = 25;
