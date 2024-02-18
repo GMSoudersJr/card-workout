@@ -1,9 +1,21 @@
 import { expect, test } from '@playwright/test';
 import { ESuit } from '../src/enums/suit';
-import { EExercises } from '../src/enums/exercises';
+import { EExerciseNames } from '../src/enums/exerciseNames';
 
-const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
-const [ exercise1, exercise2, exercise3, exercise4, ...theRestOfTheExercises ] = Object.keys(EExercises);
+const [
+	clubs,
+	diamonds,
+	hearts,
+	spades
+] = Object.keys(ESuit);
+
+const [
+	exercise1,
+	exercise2,
+	exercise3,
+	exercise4,
+	...theRestOfTheExercises
+] = Object.keys(EExerciseNames);
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');

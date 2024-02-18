@@ -12,8 +12,8 @@
 	import type { TCardRank } from '../../types/cardRank';
 	import type { TSuit } from '../../types/suit';
 	import {tick} from 'svelte';
-	import type {TExercise} from '../../types/exercises';
-	import {EExercises} from '../../enums/exercises';
+	import type { TExerciseName } from '../../types/exerciseName';
+	import { EExerciseNames } from '../../enums/exerciseNames';
 
   async function handleClick() {
     let widthOfUnderCard = 25;
@@ -53,9 +53,9 @@
   export let suitSymbol: TSuit;
   export let id: string;
   export let textColor: string;
-  export let exercise: TExercise | undefined;
+  export let exercise: TExerciseName | undefined;
   export let reps: number | undefined;
-  $: exerciseName = EExercises[exercise as keyof typeof EExercises];
+  $: exerciseName = EExerciseNames[exercise as keyof typeof EExerciseNames];
   $: rank = ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol]
   $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
   export let disabled: boolean;

@@ -2,11 +2,11 @@ import { writable, derived } from 'svelte/store';
 import { PlayingCard } from './classes/playingCard';
 import type { TCardRank } from './types/cardRank';
 import type { TSuit } from './types/suit';
-import type {TPlayingCard} from './types/playingCard';
+import type { TPlayingCard } from './types/playingCard';
 import { createDeckOfCards } from './functions/createDeckOfCards';
-import type {TExercise} from './types/exercises';
-import type {TSuitExercise} from './types/suitExercise';
-import {createSuitExercises} from './functions/createSuitExercises';
+import type { TExerciseName } from './types/exerciseName';
+import type { TSuitExercise } from './types/suitExercise';
+import { createSuitExercises } from './functions/createSuitExercises';
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
@@ -32,7 +32,7 @@ function createSuitExercisesStore() {
 
 	return {
 		subscribe,
-		updateExercise: (suit: TSuit, exercise: TExercise) => update((result) => {
+		updateExercise: (suit: TSuit, exercise: TExerciseName) => update((result) => {
 			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
 			const indexOfThisSuit = result.findIndex(isThisSuit);
 			result = result.with(indexOfThisSuit, {suit: suit, exercise: exercise, completedReps: 0})

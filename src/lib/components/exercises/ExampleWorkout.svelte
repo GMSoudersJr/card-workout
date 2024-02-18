@@ -1,12 +1,12 @@
 <script>
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
-  import { EExercises } from "../../../enums/exercises";
+  import { EExerciseNames } from "../../../enums/exerciseNames";
 
   const anExampleWorkoutList = [
-    `${ESuitSymbolUnicode.CLUBS} ${EExercises.CRUNCHES}`,
-    `${ESuitSymbolUnicode.DIAMONDS} ${EExercises.JUMPING_JACKS}`,
-    `${ESuitSymbolUnicode.HEARTS} ${EExercises.PUSH_UPS}`,
-    `${ESuitSymbolUnicode.SPADES} ${EExercises.ATG_SPLIT_SQUATS}`,
+    `${ESuitSymbolUnicode.CLUBS} ${EExerciseNames.CRUNCHES}`,
+    `${ESuitSymbolUnicode.DIAMONDS} ${EExerciseNames.JUMPING_JACKS}`,
+    `${ESuitSymbolUnicode.HEARTS} ${EExerciseNames.PUSH_UPS}`,
+    `${ESuitSymbolUnicode.SPADES} ${EExerciseNames.ATG_SPLIT_SQUATS}`,
   ];
 </script>
 

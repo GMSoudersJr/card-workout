@@ -1,10 +1,10 @@
 <script lang="ts">
-	import {EExercises} from "../../enums/exercises";
-	import type {TExercise} from "../../types/exercises";
+	import { EExerciseNames } from "../../enums/exerciseNames";
+	import type { TExerciseName } from "../../types/exerciseName";
 
   export let reps: number;
-  export let exercise: TExercise | undefined;
-  $: exerciseName = EExercises[exercise as keyof typeof EExercises];
+  export let exercise: TExerciseName | undefined;
+  $: exerciseName = EExerciseNames[exercise as keyof typeof EExerciseNames];
 </script>
 
 {#if exercise}
@@ -18,7 +18,6 @@
   <progress
     id={`${exerciseName.toUpperCase()}`}
     class="reps source-sans-3-text"
-    min="0"
     max="100"
     title="reps"
     value={reps}

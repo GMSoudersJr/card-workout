@@ -1,4 +1,4 @@
-export enum EExercises {
+export enum EExerciseNames {
 	ALTERNATE_TOE_TAPS='Alternate Toe Taps',
 	ANKLE_DORSIFLEXIONS='Ankle Dorsiflexions',
 	ANKLE_EVERSIONS='Ankle Eversions',

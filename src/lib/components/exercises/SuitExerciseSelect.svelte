@@ -1,6 +1,6 @@
 <script lang="ts">
-	import {EExercises} from "../../../enums/exercises";
-	import {ESuitColors} from "../../../enums/suitColors";
+	import { EExerciseNames } from "../../../enums/exerciseNames";
+	import { ESuitColors } from "../../../enums/suitColors";
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import type { TSuitExercise } from "../../../types/suitExercise";
   import type { TSuit } from "../../../types/suit";
@@ -8,8 +8,8 @@
 
   const dispatch = createEventDispatcher();
 
-  const exercises = Object.values(EExercises);
-  const exerciseKeys = Object.keys(EExercises);
+  const exercises = Object.values(EExerciseNames);
+  const exerciseKeys = Object.keys(EExerciseNames);
 
   function handleChange() {
     dispatch('exerciseSelected', {suit: suitName, exercise: selected});
