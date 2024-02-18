@@ -1,0 +1,20 @@
+export enum muscles {
+	FOREARM='Forearm',
+	BICEPS='Biceps',
+	TRICEPS='Triceps',
+	INTERNAL_OBLIQUES='Internal Obliques',
+	EXTERNAL_OBLIQUES='External Obliques',
+	RECTUS_ABDOMINUS='Rectus Abdominus',
+	ROTATOR_CUFF='Rotator Cuff',
+	Pecs='Pecs',
+	TRAPS='Traps',
+	LATS='Lats',
+	HAMSTRING='Hamstring',
+	QUADS='Quads',
+	CALVES='Calves',
+	ADDUCTORS='Adductors',
+	ABDUCTORS='Abductors',
+	GLUTES='Glutes',
+	EXTENSORS='Extensors',
+	FLEXORS='Flexors'
+};

@@ -1,0 +1,16 @@
+export enum EBodyParts {
+	ARMS='Arms',
+	FINGERS='Fingers',
+	HANDS='Hands',
+	FEET='Feet',
+	TOES='Toes',
+	FOREARMS='Forearm',
+	UPPER_ARMS='Upper Arm',
+	SHOULDERS='Shoulders',
+	TORSO='Torso',
+	NECK='Neck',
+	ABDOMINAL='Abdominal',
+	LOWER_LEG='Lower Leg',
+	UPPER_LEG='Upper Leg',
+	HIPS='Hips',
+};
