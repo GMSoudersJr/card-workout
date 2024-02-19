@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ComponentType} from "svelte";
+  import { radioButtonLabelNames } from '$lib/strings/forCardsPage';
 
   import { suitExercises } from "../../../store";
 
@@ -24,7 +25,7 @@
   interface InfoChoice {
     id: string;
     value: string;
-    innerHtml: string;
+    labelName: string;
     widget: ComponentType
   }
 
@@ -32,25 +33,25 @@
     {
       id: "radio-deck",
       value: "deck",
-      innerHtml: "Deck",
+      labelName: radioButtonLabelNames.deck,
       widget: DeckInfoWidget,
     },
     {
       id: "radio-rank",
       value: "rank",
-      innerHtml: "Rank",
+      labelName: radioButtonLabelNames.rank,
       widget: RankInfoWidget,
     },
     {
       id: "radio-suit",
       value: "suit",
-      innerHtml: "Suit",
+      labelName: radioButtonLabelNames.suit,
       widget: SuitInfoWidget,
     },
     {
       id: "radio-reps",
       value: "reps",
-      innerHtml: "Reps",
+      labelName: radioButtonLabelNames.reps,
       widget: RepsInfoWidget,
     },
   ];
@@ -77,7 +78,7 @@
           for={choice.id}
           class="listitem-label source-sans-3-text"
         >
-        {choice.innerHtml}
+        {choice.labelName}
         <input
           bind:group={group}
           type="radio"

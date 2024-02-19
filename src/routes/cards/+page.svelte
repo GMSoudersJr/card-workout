@@ -8,6 +8,10 @@
   import PlayingCardWidget from '$lib/components/cards/PlayingCardWidget.svelte';
   import StartButton from '$lib/components/cards/StartButton.svelte';
   import ShuffleButton from '$lib/components/cards/ShuffleButton.svelte';
+  import {
+    instructionsAboveTheStartButton,
+    instructionsBelowTheStartButton
+  } from '$lib/strings/forCardsPage';
 </script>
 
 <div class="page-container">
@@ -18,11 +22,11 @@
   <section class="current-card-section" id="current-card-section">
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
     <p class="oswald-header">
-      PRESS START TO BEGIN
+      {instructionsAboveTheStartButton.toUpperCase()}
     </p>
   <StartButton />
     <p class="oswald-header">
-      TAP THE CARD TO DISCARD IT
+      {instructionsBelowTheStartButton.toUpperCase()}
     </p>
   {:else if $theCurrentCard.length > 0}
     {#each $theCurrentCard as currentCard (currentCard.name)}

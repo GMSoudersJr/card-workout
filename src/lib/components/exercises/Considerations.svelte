@@ -1,14 +1,5 @@
 <script lang="ts">
-  import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
-
-  const listOfConsiderations = [
-    `${ESuitSymbolUnicode.CLUBS} - 'C' for Core (Ab exercises) / 'C' for Cardio`,
-    `${ESuitSymbolUnicode.DIAMONDS} - 'D' for Dynamic / 4 Limbs Move`,
-    `${ESuitSymbolUnicode.HEARTS} - 'H' for HIIT / An exercise you love`,
-    `${ESuitSymbolUnicode.SPADES} - 'S' for Squats (Leg exercises) / 'S' for Side...`,
-    `Make it yours and have fun!`,
-  ];
-
+  import { considerations } from '$lib/strings/forExercisePage';
 </script>
 
 <section
@@ -16,13 +7,15 @@
   data-testid="considerations-container"
   id="considerations-container"
 >
-  <h4 class="oswald-header">CONSIDERATIONS:</h4>
+  <h4 class="oswald-header">
+    {considerations.header}
+  </h4>
   <ul
     class="exercise-hint-list source-sans-3-text"
     data-testid="exercise-consideration-list"
     id="exercise-consideration-list"
   >
-     {#each listOfConsiderations as aConsideration (aConsideration)}
+     {#each considerations.list as aConsideration (aConsideration)}
        <li
          class="exercise-consideration-listitem"
          data-testid="exercise-consideration-listitem"

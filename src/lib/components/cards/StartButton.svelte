@@ -1,4 +1,6 @@
 <script lang="ts">
+	import {startButtonText} from '$lib/strings/forCardsPage';
+
   import {
     theDeckOfCards,
     theCurrentCard,
@@ -17,7 +19,7 @@
   on:click={handleStart}
   class="oswald-header"
 >
-  START
+  {startButtonText.toUpperCase()}
 </button>
 
 <style>

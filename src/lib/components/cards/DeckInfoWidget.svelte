@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { remainingCardsString} from "$lib/strings/forCardsPage";
+
   import {
     theDeckOfCards,
     theRemainingDeck,
@@ -12,7 +14,9 @@
     class="info-wrapper"
     data-testid="cards remaining"
   >
-    <p class="cards-left-text source-sans-3-text">Remaining:</p>
+    <p class="cards-left-text source-sans-3-text">
+      {remainingCardsString}
+    </p>
     <h3 class="cards-left-number oswald-header">
       {$theRemainingDeck.length}
     </h3>
