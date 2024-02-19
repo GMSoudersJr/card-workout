@@ -13,7 +13,12 @@
   class="reps-info-box"
 >
   <label for={`${exerciseName.toUpperCase()}`} class="exercise oswald-header" >
-    {exerciseName.toUpperCase()}: {reps}
+    <p class="reps-info-exercise-name">
+      {exerciseName.toUpperCase()}
+    </p>
+    <p class="reps-info-reps">
+      {reps}
+    </p>
   </label>
   <progress
     id={`${exerciseName.toUpperCase()}`}
@@ -28,6 +33,11 @@
 {/if}
 
 <style>
+  label {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: 1fr;
+  }
   .reps-info-box {
     display: grid;
     grid-template-columns: 135px;
