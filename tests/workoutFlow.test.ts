@@ -11,17 +11,20 @@ const [
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.getByRole('link', { name: 'Exercises' }).click();
+	const suitExerciseSelects = await page.getByRole('combobox').all();
 	const [
 		clubsExerciseSelectLocation,
 		diamondsExerciseSelectLocation,
 		heartsExerciseSelectLocation,
 		spadesExerciseSelectLocation,
-	] = await page.getByRole('combobox').all();
+	] = suitExerciseSelects;
+
 
 	await clubsExerciseSelectLocation.selectOption(exercise1);
 	await diamondsExerciseSelectLocation.selectOption(exercise2);
 	await heartsExerciseSelectLocation.selectOption(exercise3);
 	await spadesExerciseSelectLocation.selectOption(exercise4);
+	
 	const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 	await letsGoButton.click();
 
@@ -89,6 +92,7 @@ test.describe('initial visibilities', () => {
 				EExerciseNames[exercise4 as keyof typeof EExerciseNames].toUpperCase(),
 			]);
 	});
+});
 
 	test.describe('click start', () => {
 		test('the fist card has reps and exercise name on it', async ({ page }) => {
@@ -104,7 +108,40 @@ test.describe('initial visibilities', () => {
 			await expect(firstCardReps).toBeVisible();
 			await expect(firstCardExerciseName).toBeVisible();
 		});
+
+		test.describe('continue clicking an exercise card', () => {
+
+			test('expect exercise information to be visible on each card', async ({ page }) => {
+				test.setTimeout(51 * 1_000);
+				const startButton = page.getByRole('button', { name: "START" });
+				await expect(startButton).toBeVisible();
+				await expect(startButton).toBeEnabled();
+				await startButton.click();
+				const firstCard = page.getByTestId('playing-card');
+				const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
+				await expect(firstCardExerciseInfo).toBeVisible().then(async () => {
+					await firstCard.click();
+				}).catch(( error ) => {
+					console.log(error);
+				});
+				let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+				const currentCard =
+					page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+				while (await discardedCardsListItem.count() < 52) {
+					await expect(currentCard).toHaveCount(1).then(async () => {
+						const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
+						await expect(currentCardExerciseInfo).toBeVisible().then(async () => {
+							await currentCard.click();
+						}).catch(( error ) => {
+							console.log(error);
+						});
+					}).catch(( error ) => {
+						console.log(error);
+					});
+				}
+			});
+
+		});
 	});
 
-});
 

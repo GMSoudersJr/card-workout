@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import {error} from '@sveltejs/kit';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -27,20 +28,49 @@ test.describe('a user has clicked the Start button', () => {
 		await expect(currentCard).toHaveCount(1);
 	});
 
-	test('after all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
-		test.setTimeout(51 * 1000);
-		await page.getByTestId('playing-card').click();
-		let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
-		const currentCard =
-			page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
-		while (await discardedCardsListItem.count() < 52) {
-			await expect(currentCard).toHaveCount(1).then(async () => {
-				await currentCard.click();
+	test.describe('continues to click the current card', () => {
+
+		test('expect exercise information to be hidden on each card', async ({ page }) => {
+			test.setTimeout(51 * 1_000);
+			const firstCard = page.getByTestId('playing-card');
+			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
+			await expect(firstCardExerciseInfo).toBeHidden().then(async () => {
+				await firstCard.click();
 			}).catch(( error ) => {
 				console.log(error);
 			});
-		}
-		await expect(discardedCardsListItem).toHaveCount(52);
-		await expect(page.getByRole('button', { name: 'Shuffle' })).toBeVisible();
+			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			const currentCard =
+				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+			while (await discardedCardsListItem.count() < 52) {
+				await expect(currentCard).toHaveCount(1).then(async () => {
+					const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
+					await expect(currentCardExerciseInfo).toBeHidden().then(async () => {
+						await currentCard.click();
+					}).catch(( error ) => {
+						console.log(error);
+					});
+				}).catch(( error ) => {
+					console.log(error);
+				});
+			}
+		});
+
+		test('all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
+			test.setTimeout(51 * 1000);
+			await page.getByTestId('playing-card').click();
+			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			const currentCard =
+				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+			while (await discardedCardsListItem.count() < 52) {
+				await expect(currentCard).toHaveCount(1).then(async () => {
+					await currentCard.click();
+				}).catch(( error ) => {
+					console.log(error);
+				});
+			}
+			await expect(discardedCardsListItem).toHaveCount(52);
+			await expect(page.getByRole('button', { name: 'Shuffle' })).toBeVisible();
+		});
 	});
 });
