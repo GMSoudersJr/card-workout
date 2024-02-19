@@ -10,7 +10,12 @@
   import ShuffleButton from '$lib/components/cards/ShuffleButton.svelte';
 </script>
 
-<main>
+<div class="page-container">
+  <aside id="exercise-info" class="exercise-info">
+    Info
+  </aside>
+
+  <section class="current-card-section" id="current-card-section">
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
     <p class="oswald-header">
       PRESS START TO BEGIN
@@ -42,10 +47,23 @@
     <ShuffleButton />
     <p class="oswald-header">SHUFFLING CLEANS THE CARDS</p>
   {/if}
-</main>
+  </section>
+
+  <aside id="exercise-demo" class="exercise-demo">
+    Demo
+  </aside>
+</div>
 
 <style>
-  main {
+  .page-container {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+  .current-card-section {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
