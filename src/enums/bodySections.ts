@@ -1,4 +1,4 @@
-export enum bodySections {
+export enum EBodySections {
 	ARMS='Arms',
 	BACK='Back',
 	CHEST='Chest',
