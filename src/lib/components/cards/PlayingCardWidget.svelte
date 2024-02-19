@@ -16,6 +16,7 @@
   import { EExerciseNames } from '../../../enums/exerciseNames';
 
   async function handleClick() {
+    console.log($theCurrentCard);
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     //@ts-ignore
@@ -54,9 +55,9 @@
   export let suitSymbol: TSuit;
   export let id: string;
   export let textColor: string;
-  export let exercise: TExerciseName | undefined;
+  export let exerciseName: TExerciseName | undefined;
   export let reps: number | undefined;
-  $: exerciseName = EExerciseNames[exercise as keyof typeof EExerciseNames];
+  $: exerciseNameText = EExerciseNames[exerciseName as keyof typeof EExerciseNames];
   $: rank = ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol]
   $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
   export let disabled: boolean;
@@ -82,12 +83,10 @@
 
   </section>
 
-  <section
-    class="card-exercise-name"
-  >
-  {#if exercise}
-    <p class="oswald-header">{reps}</p>
-    <p class="oswald-header">{exerciseName.toLocaleUpperCase()}</p>
+  <section class="card-exercise-info">
+  {#if exerciseName}
+    <p class="oswald-header card-exercise-reps">{reps}</p>
+    <p class="oswald-header card-exercise-name">{exerciseNameText.toUpperCase()}</p>
   {/if}
   </section>
 
@@ -125,7 +124,7 @@
     overflow: hidden;
     box-shadow: 5px 5px 15px #D9D9D9;
   }
-  .card-exercise-name {
+  .card-exercise-info {
     grid-area: exercise-name;
     color: #000080;
     padding-left: 10px;
@@ -138,7 +137,6 @@
     font-size: medium;
     font-weight: 400;
   }
-
   .rank-and-suit {
     grid-area: rank-and-suit;
     display: grid;

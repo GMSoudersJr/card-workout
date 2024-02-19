@@ -9,6 +9,7 @@
 
   async function handleClick() {
     theDeckOfCards.setExercises($suitExercises);
+    console.log($theDeckOfCards);
     discardedCards.reset();
     theCurrentCard.reset();
     await goto('/cards');

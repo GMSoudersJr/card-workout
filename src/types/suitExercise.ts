@@ -1,7 +1,7 @@
-import type {TExercise} from "./exercises";
+import type {TExerciseName} from "./exerciseName";
 
 export type TSuitExercise<TSuit> = {
 	suit: TSuit
-	exercise: TExercise | undefined;
+	exerciseName: TExerciseName | undefined;
 	completedReps: number;
 };

@@ -21,7 +21,7 @@
     <PlayingCardWidget
       id={`${card.name}-discarded`}
       rankSymbol={card.rank}
-      exercise={card.exercise}
+      exerciseName={card.exerciseName}
       suitSymbol={card.suit}
       textColor={card.textColor}
       reps={card.value}

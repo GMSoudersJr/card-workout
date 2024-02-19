@@ -35,7 +35,7 @@ function createSuitExercisesStore() {
 		updateExercise: (suit: TSuit, exercise: TExerciseName) => update((result) => {
 			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
 			const indexOfThisSuit = result.findIndex(isThisSuit);
-			result = result.with(indexOfThisSuit, {suit: suit, exercise: exercise, completedReps: 0})
+			result = result.with(indexOfThisSuit, {suit: suit, exerciseName: exercise, completedReps: 0})
 			return result;
 		}),
 		addReps: (aDiscardedCard: TPlayingCard<TCardRank, TSuit>) => update((result) => {
@@ -45,7 +45,7 @@ function createSuitExercisesStore() {
 			const indexOfThisSuit = result.findIndex(isThisSuit);
 			const updatedData = {
 				suit: result[indexOfThisSuit].suit,
-				exercise: result[indexOfThisSuit].exercise,
+				exerciseName: result[indexOfThisSuit].exerciseName,
 				completedReps: result[indexOfThisSuit].completedReps + theValueOfTheDiscardedCard
 			}
 			result = result.with(indexOfThisSuit, updatedData);

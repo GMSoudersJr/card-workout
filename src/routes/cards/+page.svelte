@@ -35,7 +35,7 @@
           id={currentCard.name}
           rankSymbol={currentCard.rank}
           suitSymbol={currentCard.suit}
-          exercise={currentCard.exerciseName}
+          exerciseName={currentCard.exerciseName}
           textColor={currentCard.textColor}
           reps={currentCard.value}
           disabled={currentCard.hasBeenDiscarded}

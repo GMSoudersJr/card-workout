@@ -56,7 +56,7 @@
   ];
 
   const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
-    return entry.exercise === undefined;
+    return entry.exerciseName === undefined;
   }
 
   $: radioButtons = () => {

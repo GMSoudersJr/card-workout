@@ -6,7 +6,7 @@
 
 <div class="reps-info-widget">
   {#each $suitExercises as data (data.suit)}
-    <RepsProgressBox reps={data.completedReps} exercise={data.exercise}/>
+    <RepsProgressBox reps={data.completedReps} exercise={data.exerciseName}/>
   {/each}
 </div>
 

@@ -61,7 +61,7 @@ test.describe('suit exercise selector visibility test', () => {
 	});
 });
 
-test.describe('select an exercise for each suit', () => {
+test.describe('example workout list visibility', () => {
 	test(`select ${EExerciseNames[exercise1 as keyof typeof EExerciseNames]} for ${clubs}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		const location = page.locator(`id=${clubs}-exercise-selection`)
