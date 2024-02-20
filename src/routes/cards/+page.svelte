@@ -87,7 +87,7 @@
 <style>
   .page-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 161.8px 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
@@ -105,6 +105,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
     align-items: center;
+    justify-content: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   .right-aside,
   .left-aside {

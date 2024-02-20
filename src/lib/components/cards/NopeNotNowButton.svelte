@@ -35,13 +35,14 @@
   id="nope-not-now-button"
   on:click={handleClick}
 >
-  NOPE NOT NOW
+  HMM... NO!
 </button>
 
 
 <style>
   .nope-not-now-button {
-    width: 80%;
+    width: 100%;
+    max-width: 100px;
     aspect-ratio: 1 / 1;
     color: #000080;
     border: 2px solid #000080;
@@ -51,7 +52,7 @@
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
-    place-self: center;
+    place-self: start;
   }
 </style>
 
