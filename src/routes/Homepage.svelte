@@ -45,7 +45,7 @@
     color: #FFFFFF;
   }
   .nav-container {
-    width: 300px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);

@@ -7,23 +7,34 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +28 src/routes/Homepage.svelte
-badd +31 src/routes/about/+page.svelte
-badd +1 src/routes/cards/+layout.svelte
-badd +29 src/routes/about/+layout.svelte
-badd +12 src/lib/components/about/ListWidget.svelte
-badd +15 src/lib/strings/forAboutPage.ts
-badd +10 src/lib/components/about/ParagraphWidget.svelte
-badd +11 src/routes/+layout.svelte
-badd +0 fugitive:///home/gmsoudersjr/svelte_projects/card-workout/.git//0/src/routes/+layout.svelte
+badd +23 src/routes/cards/+layout.svelte
+badd +2 tests/cardFlow.test.ts
+badd +18 src/lib/components/cards/PlayingCardWidget.svelte
+badd +21 src/lib/components/cards/DeckInfoWidget.svelte
+badd +79 src/routes/cards/+page.svelte
+badd +13 src/lib/components/cards/StartButton.svelte
+badd +9 src/types/playingCard.ts
+badd +42 tests/clickingAllCards.test.ts
+badd +1 src/lib/components/cards/NopeNotNowButton.svelte
+badd +21 src/classes/playingCard.ts
+badd +121 src/store.ts
+badd +28 src/functions/createDeckOfCards.ts
+badd +9 src/functions/createPlayingCard.ts
+badd +8 src/lib/components/cards/MiniCardTicks.svelte
+badd +1 src/\*\*/tests
+badd +21 tests/nopeNotNowButton.ts
+badd +11 src/lib/components/cards/PluckedTheSameCard.svelte
 argglobal
 %argdel
 $argadd .
-edit fugitive:///home/gmsoudersjr/svelte_projects/card-workout/.git//0/src/routes/+layout.svelte
+edit src/lib/components/cards/NopeNotNowButton.svelte
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -32,29 +43,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 23 + 24) / 48)
-exe '2resize ' . ((&lines * 22 + 24) / 48)
+exe 'vert 1resize ' . ((&columns * 94 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 93 + 141) / 282)
+exe 'vert 3resize ' . ((&columns * 93 + 141) / 282)
 argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-silent! normal! zE
-1,7fold
-let s:l = 4 - ((3 * winheight(0) + 11) / 23)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-4
-normal! 0
-lcd ~/svelte_projects/card-workout
-wincmd w
-argglobal
-if bufexists("~/svelte_projects/card-workout/src/routes/about/+page.svelte") | buffer ~/svelte_projects/card-workout/src/routes/about/+page.svelte | else | edit ~/svelte_projects/card-workout/src/routes/about/+page.svelte | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -64,16 +56,55 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 32 - ((17 * winheight(0) + 11) / 22)
+let s:l = 24 - ((23 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-32
-normal! 05|
+24
+normal! 023|
 lcd ~/svelte_projects/card-workout
 wincmd w
-exe '1resize ' . ((&lines * 23 + 24) / 48)
-exe '2resize ' . ((&lines * 22 + 24) / 48)
+argglobal
+if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/PluckedTheSameCard.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/PluckedTheSameCard.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/PluckedTheSameCard.svelte | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 12 - ((11 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+12
+normal! 03|
+lcd ~/svelte_projects/card-workout
+wincmd w
+argglobal
+if bufexists("~/svelte_projects/card-workout/tests/cardFlow.test.ts") | buffer ~/svelte_projects/card-workout/tests/cardFlow.test.ts | else | edit ~/svelte_projects/card-workout/tests/cardFlow.test.ts | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 10 - ((9 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 0
+lcd ~/svelte_projects/card-workout
+wincmd w
+exe 'vert 1resize ' . ((&columns * 94 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 93 + 141) / 282)
+exe 'vert 3resize ' . ((&columns * 93 + 141) / 282)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
