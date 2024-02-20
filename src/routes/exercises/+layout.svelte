@@ -24,7 +24,7 @@
   .nav-and-heading {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     align-items: center;
     grid-template-areas: "homeLink heading suitYourselfLink";
   }
