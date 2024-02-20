@@ -16,10 +16,13 @@
 <style>
   .reps-info-widget {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.4rem;
     row-gap: 1rem;
-    column-gap: 2rem;
   }
 </style>
 

@@ -35,7 +35,10 @@
   .deck-info-container {
     display: grid;
     grid-template-columns: max-content;
-    grid-template-rows: repeat(2, 40px);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
   }
   .info-wrapper {
     display: grid;

@@ -27,15 +27,18 @@
 <style>
   ul {
     display: grid;
+    height: 100%;
     grid-template-columns: repeat(5, max-content);
     grid-template-rows: repeat(3, min-content);
     justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
+    align-content: center;
+    column-gap: 0.65rem;
+    row-gap: 0.2rem;
     grid-template-areas: 
     "TWO THREE  FOUR FIVE SIX"
     ". SEVEN EIGHT NINE ."
     "TEN JACK QUEEN KING ACE";
+    justify-content: stretch;
   }
   .rank-2 {
     grid-area: TWO;

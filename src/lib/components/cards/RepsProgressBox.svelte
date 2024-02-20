@@ -33,23 +33,29 @@
 {/if}
 
 <style>
-  label {
-    display: grid;
-    grid-template-columns: 1fr min-content;
-    grid-template-rows: 1fr;
-  }
   .reps-info-box {
     display: grid;
-    grid-template-columns: 135px;
+    grid-template-columns: 105px;
     grid-template-rows: repeat(2, min-content);
     border-radius: 4px;
     align-items: center;
     gap: 8px;
   }
   .exercise {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: min-content;
     color: #000080;
     font-size: 0.75rem;
     width: 100%;
+  }
+  .reps-info-exercise-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .reps-info-reps {
+    place-self: end;
   }
   .reps {
     width: 100%;

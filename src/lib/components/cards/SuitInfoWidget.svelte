@@ -34,6 +34,6 @@
     display: grid;
     grid-template-rows: repeat(2, min-content);
     grid-template-columns: repeat(2, max-content);
-    gap: 1.618rem;
+    gap: 0.81rem;
   }
 </style>

@@ -19,13 +19,16 @@
 <style>
   .rank-info-box {
     display: grid;
-    grid-template-columns: 32px 20px;
-    grid-template-rows: min-content;
+    grid-template-columns: 25.9px 16px;
+    grid-template-rows: 25.9px;
     border: 1px solid #000080;
     border-radius: 4px;
   }
   .rank,
   .count {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     font-weight: 600;
     font-size: large;

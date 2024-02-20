@@ -102,7 +102,7 @@
     justify-items: center;
   }
   .radio-buttons-container {
-    width: 300px;
+    width: 100%;
     background: #F1F2F2;
     padding: 0.7rem 0;
     border-radius: 8px;
@@ -119,7 +119,11 @@
     color: #000080;
   }
   .widget-container {
-    place-self: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
   input {
     margin-top: 0.5rem;

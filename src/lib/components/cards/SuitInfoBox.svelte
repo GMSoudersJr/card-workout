@@ -25,7 +25,7 @@
 <style>
   .suit-info-box {
     display: grid;
-    grid-template-columns: 25px 40px;
+    grid-template-columns: 25.9px 25.9px;
     grid-template-rows: min-content;
     border: 1px solid #000080;
     border-radius: 4px;
@@ -46,6 +46,9 @@
   }
   .suit,
   .count {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     padding: 2px 3px;
     text-align: center;
     font-weight: 600;

@@ -34,6 +34,7 @@
 
 <style>
   .discarded-cards {
+    width: 100%;
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
