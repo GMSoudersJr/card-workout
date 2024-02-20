@@ -13,6 +13,22 @@
     instructionsBelowTheStartButton
   } from '$lib/strings/forCardsPage';
 	import NopeNotNowButton from '$lib/components/cards/NopeNotNowButton.svelte';
+	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
+
+  function handlePluckedTheSameCard(event: CustomEvent) {
+    nopeNotNowMessage = event.detail.message;
+    displayNopeNotNowMessage = true;
+    setTimeout(() => {
+      displayNopeNotNowMessage = false;
+    }, 1_250);
+  }
+  function handlePluckedDifferentCard(event: CustomEvent) {
+    nopeNotNowMessage = event.detail.message;
+    displayNopeNotNowMessage = false;
+  }
+
+  $: displayNopeNotNowMessage = false;
+  let nopeNotNowMessage: string;
 </script>
 
 <div class="page-container">
@@ -54,9 +70,16 @@
   </section>
 
   <aside id="right-aside" class="right-aside">
-    <p></p>
+    <div>
+      {#if displayNopeNotNowMessage && $discardedCards.length <= 50}
+        <PluckedTheSameCard {nopeNotNowMessage} />
+      {/if}
+    </div>
     {#if $theCurrentCard.length > 0 && $discardedCards.length <= 50 }
-      <NopeNotNowButton />
+      <NopeNotNowButton
+        on:pluckedDifferentCard={handlePluckedDifferentCard}
+        on:pluckedTheSameCard={handlePluckedTheSameCard}
+      />
     {/if}
   </aside>
 </div>
@@ -81,6 +104,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
+    align-items: center;
   }
   .right-aside,
   .left-aside {

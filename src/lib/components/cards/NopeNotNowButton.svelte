@@ -10,32 +10,22 @@
   const dispatch = createEventDispatcher();
 
   function handleClick() {
-    const hasNotBeenPluckedCount = $theDeckOfCards.filter((card) => {
-      return card.hasBeenPlucked === false
-    }).length;
-    //console.log($theDeckOfCards);
-    //console.log("has not been plucked count", hasNotBeenPluckedCount);
     let theDeckIndexOfTheCardToPutBack: number;
     if ( $theCurrentCard[0] ) {
 
-      //console.log(`the last card was: `, $theCurrentCard[0])
-      //console.log($theCurrentCard[0].name, $randomCardIndex, $theDeckOfCards);
       theDeckIndexOfTheCardToPutBack = $theCurrentCard[0].deckIndex;
-      //console.log("RandomIndex# Before card put back", $randomCardIndex);
-      //console.log(`Putting the card at ${$theCurrentCard[0].deckIndex} back`);
       theDeckOfCards.putBack(theDeckIndexOfTheCardToPutBack);
-      //console.log(`the card at ${theDeckIndexOfTheCardToPutBack} was put back`, $theDeckOfCards);
-      //console.log("RandomIndex# After card put back", $randomCardIndex);
-      //console.log(`the card at ${$randomCardIndex} will be plucked.`);
       if ( $randomCardIndex === theDeckIndexOfTheCardToPutBack ) {
-        //console.log("PLUCKED THE SAME CARD");
         dispatch('pluckedTheSameCard', {
-          message: 'Plucked the same card. Try again!'
+          message: 'Plucked same card! Try again!'
+        });
+      } else {
+        dispatch('pluckedDifferentCard', {
+          message: 'I hope you like it'
         });
       }
       theCurrentCard.data($theDeckOfCards[$randomCardIndex]);
       theDeckOfCards.pluck($randomCardIndex);
-      //console.log($theDeckOfCards);
     }
   }
 </script>
