@@ -20,9 +20,11 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 		this.exerciseName = undefined;
 		this.hasBeenPlucked = false;
 		this.hasBeenDiscarded = false;
+		this.index = 0;
 	}
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
+	index: number;
 	exerciseName?: TExerciseName
 	get name(): string {
 		return `${ECardRank[this.rank]} of ${ESuit[this.suit]}`;
