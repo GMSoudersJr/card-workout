@@ -23,6 +23,11 @@ function createTheDeckOfCards() {
 		}),
 		setExercises: (anArrayOfSuitExercises: TSuitExercise<TSuit>[]) =>
 			set(createDeckOfCards(anArrayOfSuitExercises)),
+
+		putBack: (theDeckIndexOfTheCurrentCard: number) => update((deck) => {
+			deck[theDeckIndexOfTheCurrentCard].hasBeenPlucked = false;
+			return deck;
+		}),
 	};
 };
 

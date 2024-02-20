@@ -5,7 +5,7 @@
 
 <div
   id={`mini-card-tick-${name}`}
-  class={`mini-card-tick ${hasBeenPlucked ? 'plucked' : ''}`}
+  class={`mini-card-tick ${hasBeenPlucked ? 'plucked' : 'in-deck'}`}
 >
 </div>
 
@@ -18,6 +18,9 @@
   }
   .plucked {
     visibility: hidden;
+  }
+  .in-deck {
+    visibility: visible;
   }
 </style>
 

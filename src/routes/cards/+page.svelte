@@ -17,7 +17,6 @@
 
 <div class="page-container">
   <aside id="left-aside" class="left-aside">
-    Info
   </aside>
 
   <section class="current-card-section" id="current-card-section">
@@ -48,17 +47,17 @@
       </div>
     {/each}
   {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
-    <p class="oswald-header">THE DECK IS FINISHED</p>
+    <p class="oswald-header above-shuffle-button">THE DECK IS FINISHED</p>
     <ShuffleButton />
-    <p class="oswald-header">SHUFFLING CLEANS THE CARDS</p>
+    <p class="oswald-header below-shuffle-button">SHUFFLING CLEANS THE CARDS</p>
   {/if}
   </section>
 
   <aside id="right-aside" class="right-aside">
-    <p>
-      Coming Soon!
-    </p>
-    <NopeNotNowButton />
+    <p></p>
+    {#if $theCurrentCard.length > 0 && $discardedCards.length <= 50 }
+      <NopeNotNowButton />
+    {/if}
   </aside>
 </div>
 
@@ -87,12 +86,13 @@
   .left-aside {
     height: 100%;
     width: 100%;
-    border: 1px solid green;
     text-align: center;
     align-content: center;
   }
   .above-start-button,
-  .below-start-button {
+  .below-start-button,
+  .above-shuffle-button,
+  .below-shuffle-button {
     text-align: center;
   }
 </style>
