@@ -31,9 +31,13 @@
 
 <style>
   .suit-info-widget {
+    padding: 0.5rem;
     display: grid;
+    grid-template-columns: repeat(2, minmax(102px, 103.6px));
     grid-template-rows: repeat(2, min-content);
-    grid-template-columns: repeat(2, max-content);
-    gap: 0.81rem;
+    justify-content: center;
+    align-content: center;
+    column-gap: 6.18%;
+    row-gap: 15%;
   }
 </style>

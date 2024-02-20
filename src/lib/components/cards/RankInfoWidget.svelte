@@ -28,17 +28,21 @@
   ul {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(5, max-content);
-    grid-template-rows: repeat(3, min-content);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     justify-content: center;
     align-content: center;
-    column-gap: 0.65rem;
-    row-gap: 0.2rem;
     grid-template-areas: 
     "TWO THREE  FOUR FIVE SIX"
     ". SEVEN EIGHT NINE ."
     "TEN JACK QUEEN KING ACE";
-    justify-content: stretch;
+    padding: 0.15rem;
+  }
+  li {
+    list-style: none;
+    display: grid;
+    justify-content: center;
+    align-items: center;
   }
   .rank-2 {
     grid-area: TWO;
@@ -78,9 +82,6 @@
   }
   .rank-A {
     grid-area: ACE;
-  }
-  li {
-    list-style: none;
   }
 </style>
 

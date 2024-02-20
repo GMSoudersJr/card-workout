@@ -25,24 +25,21 @@
 <style>
   .suit-info-box {
     display: grid;
-    grid-template-columns: 25.9px 25.9px;
+    grid-template-columns: 1fr 1.616fr;
     grid-template-rows: min-content;
     border: 1px solid #000080;
     border-radius: 4px;
-    align-items: center;
-    background: #FFFFFF;
+  }
+  .suit {
+    background-color: #FFFFFF;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
   }
   .count {
     color: #FFFFFF;
     background: #39FF14;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-  }
-  .suit {
-    background-color: #FFFFFF;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    align-self: center;
   }
   .suit,
   .count {

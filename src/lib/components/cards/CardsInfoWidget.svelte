@@ -120,8 +120,7 @@
   }
   .widget-container {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    justify-items: stretch;
     width: 100%;
     height: 100%;
   }
