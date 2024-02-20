@@ -1,11 +1,11 @@
 <script>
   import {
     theDeckOfCards,
-    randomCardIndex,
+    theCurrentCard,
   } from "../../../store";
 
   function handleClick() {
-    console.log($randomCardIndex, $theDeckOfCards);
+    console.log($theCurrentCard, $theDeckOfCards);
   }
 </script>
 

@@ -6,7 +6,7 @@ export type TPlayingCard<TCardRank, TSuit> = {
 	exerciseName?: TExerciseName;
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
-	index: number;
+	deckIndex: number;
 	get name(): string;
 	get value(): number;
 	get symbol(): string;

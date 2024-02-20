@@ -11,7 +11,7 @@ export const createDeckOfCards = (
 	aSelectionOfSuitExercises?: TSuitExercise<TSuit>[]
 ) => {
 	let result: PlayingCard[] = [];
-	let index: number = 0;
+	let deckIndex: number = 0;
 	const suits = Object.keys(ESuit);
 	const ranks = Object.keys(ECardRank);
 	for (let i = 0; i < suits.length; i++) {
@@ -27,9 +27,9 @@ export const createDeckOfCards = (
 			let rank = ranks[j];
 			const playingCard = createPlayingCard(PlayingCard, rank as TCardRank, suit as TSuit);
 			playingCard.exerciseName = exerciseName;
-			playingCard.index = index;
+			playingCard.deckIndex = deckIndex;
 			result.push(playingCard);
-			index++;
+			deckIndex++;
 		}
 	}
 	return result;
