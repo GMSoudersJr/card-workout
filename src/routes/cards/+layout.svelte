@@ -59,6 +59,7 @@
   .heading {
     grid-area: heading;
     place-self: center;
+    text-align: center;
   }
   .discarded-cards-aside {
     width: 100%;

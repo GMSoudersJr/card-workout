@@ -12,20 +12,21 @@
     instructionsAboveTheStartButton,
     instructionsBelowTheStartButton
   } from '$lib/strings/forCardsPage';
+	import NopeNotNowButton from '$lib/components/cards/NopeNotNowButton.svelte';
 </script>
 
 <div class="page-container">
-  <aside id="exercise-info" class="exercise-info">
+  <aside id="left-aside" class="left-aside">
     Info
   </aside>
 
   <section class="current-card-section" id="current-card-section">
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
-    <p class="oswald-header">
+    <p class="oswald-header above-start-button">
       {instructionsAboveTheStartButton.toUpperCase()}
     </p>
   <StartButton />
-    <p class="oswald-header">
+    <p class="oswald-header below-start-button">
       {instructionsBelowTheStartButton.toUpperCase()}
     </p>
   {:else if $theCurrentCard.length > 0}
@@ -53,15 +54,18 @@
   {/if}
   </section>
 
-  <aside id="exercise-demo" class="exercise-demo">
-    Demo
+  <aside id="right-aside" class="right-aside">
+    <p>
+      Coming Soon!
+    </p>
+    <NopeNotNowButton />
   </aside>
 </div>
 
 <style>
   .page-container {
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
@@ -73,5 +77,22 @@
     grid-template-rows: auto;
     justify-items: center;
     align-items: center;
+  }
+  .right-aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .right-aside,
+  .left-aside {
+    height: 100%;
+    width: 100%;
+    border: 1px solid green;
+    text-align: center;
+    align-content: center;
+  }
+  .above-start-button,
+  .below-start-button {
+    text-align: center;
   }
 </style>
