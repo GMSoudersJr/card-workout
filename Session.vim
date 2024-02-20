@@ -24,7 +24,7 @@ badd +1 src/lib/components/cards/MiniCardTicks.svelte
 badd +1 src/\*\*/tests
 badd +20 tests/nopeNotNowButton.ts
 badd +12 src/lib/components/cards/PluckedTheSameCard.svelte
-badd +8 src/lib/components/cards/CardsInfoWidget.svelte
+badd +22 src/lib/components/cards/CardsInfoWidget.svelte
 badd +1 ~/svelte_projects/card-workout
 badd +11 src/routes/+layout.svelte
 badd +5 src/routes/+page.svelte
@@ -33,7 +33,7 @@ badd +1 src/routes/exercises/+layout.svelte
 badd +29 src/routes/about/+layout.svelte
 badd +37 src/lib/components/cards/DiscardedCardsWidget.svelte
 badd +23 src/lib/components/cards/RankInfoBox.svelte
-badd +54 src/lib/components/cards/RepsProgressBox.svelte
+badd +44 src/lib/components/cards/RepsProgressBox.svelte
 badd +12 src/lib/components/cards/RepsInfoWidget.svelte
 badd +36 src/lib/components/cards/SuitInfoWidget.svelte
 badd +39 src/lib/components/cards/RankInfoWidget.svelte
@@ -66,13 +66,13 @@ set winminwidth=0
 set winwidth=1
 exe '1resize ' . ((&lines * 32 + 33) / 66)
 exe '2resize ' . ((&lines * 31 + 33) / 66)
-exe 'vert 2resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 69 + 141) / 282)
 exe '3resize ' . ((&lines * 31 + 33) / 66)
 exe 'vert 3resize ' . ((&columns * 70 + 141) / 282)
 exe '4resize ' . ((&lines * 31 + 33) / 66)
 exe 'vert 4resize ' . ((&columns * 70 + 141) / 282)
 exe '5resize ' . ((&lines * 31 + 33) / 66)
-exe 'vert 5resize ' . ((&columns * 69 + 141) / 282)
+exe 'vert 5resize ' . ((&columns * 70 + 141) / 282)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -83,12 +83,31 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 123 - ((18 * winheight(0) + 16) / 32)
+let s:l = 129 - ((24 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-123
-normal! 026|
+129
+normal! 018|
+lcd ~/svelte_projects/card-workout
+wincmd w
+argglobal
+if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 37 - ((13 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+37
+normal! 05|
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
@@ -148,34 +167,15 @@ normal! zt
 normal! 020|
 lcd ~/svelte_projects/card-workout
 wincmd w
-argglobal
-if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/RepsProgressBox.svelte | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 44 - ((22 * winheight(0) + 15) / 31)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-44
-normal! 013|
-lcd ~/svelte_projects/card-workout
-wincmd w
 exe '1resize ' . ((&lines * 32 + 33) / 66)
 exe '2resize ' . ((&lines * 31 + 33) / 66)
-exe 'vert 2resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 69 + 141) / 282)
 exe '3resize ' . ((&lines * 31 + 33) / 66)
 exe 'vert 3resize ' . ((&columns * 70 + 141) / 282)
 exe '4resize ' . ((&lines * 31 + 33) / 66)
 exe 'vert 4resize ' . ((&columns * 70 + 141) / 282)
 exe '5resize ' . ((&lines * 31 + 33) / 66)
-exe 'vert 5resize ' . ((&columns * 69 + 141) / 282)
+exe 'vert 5resize ' . ((&columns * 70 + 141) / 282)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

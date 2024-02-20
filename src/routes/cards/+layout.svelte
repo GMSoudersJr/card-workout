@@ -11,6 +11,7 @@
     <h1 class="heading oswald-header">
       SUIT YOURSELF
     </h1>
+    <!--
     <a
       href="/exercises"
       id="exercises-link"
@@ -18,6 +19,7 @@
     >
       EXERCISES
     </a>
+    -->
   </div>
   <aside class="discarded-cards-aside">
     <DiscardedCardsWidget />
@@ -38,7 +40,7 @@
   }
   .nav-and-heading {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
     grid-template-areas: "homeLink heading exerciseLink";
   }
