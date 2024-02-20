@@ -15,12 +15,14 @@
 
 <style>
   .reps-info-widget {
+    padding: 5px;
     display: grid;
     width: 100%;
+    height: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     justify-content: center;
-    align-items: center;
+    align-content: center;
     column-gap: 1.4rem;
     row-gap: 1rem;
   }

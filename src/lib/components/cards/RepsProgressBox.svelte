@@ -34,17 +34,19 @@
 
 <style>
   .reps-info-box {
+    height: 100%;
     display: grid;
-    grid-template-columns: 105px;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
-    border-radius: 4px;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
+    align-content: center;
+    gap: 0.5rem;
   }
   .exercise {
     display: grid;
     grid-template-columns: 5fr 1fr;
-    grid-template-rows: min-content;
+    grid-template-rows: 1fr;
     color: #000080;
     font-size: 0.75rem;
     width: 100%;
