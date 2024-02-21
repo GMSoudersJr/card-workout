@@ -14,6 +14,7 @@
     height: 100%;
     border: 1px solid #000080;
     background: #39FF14;
+    border-radius: 2px;
   }
   .plucked {
     visibility: hidden;

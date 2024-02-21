@@ -35,7 +35,7 @@
   id="nope-not-now-button"
   on:click={handleClick}
 >
-  HMM... NO!
+  NOT NOW!
 </button>
 
 
@@ -44,15 +44,20 @@
     width: 100%;
     max-width: 100px;
     aspect-ratio: 1 / 1;
-    color: #000080;
-    border: 2px solid #000080;
+    color: #FFFFFF;
+    border: 1px solid #000080;
     border-radius: 50%;
     display: grid;
     grid-template-columns: min-content;
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
-    place-self: start;
+    border-radius: 50px;
+    background: radial-gradient(circle at right, #F0F0F0, #259259);
+  }
+  .nope-not-now-button:active {
+    transform: translateX(2px);
+    box-shadow: inset -8px 8px 16px #F0F0F0;
   }
 </style>
 
