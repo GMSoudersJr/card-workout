@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {cubicInOut} from "svelte/easing";
+	import {cubicOut} from "svelte/easing";
 
   import { fade, slide } from "svelte/transition";
   import { suitExercises } from "../../../store";
@@ -10,8 +10,8 @@
 <div 
   class="reps-info-widget"
   data-testid="reps-info-widget"
-  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
-  out:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
+  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicOut }}
+  out:slide={{ axis: 'y', delay: 0, duration: 400, easing: cubicOut }}
 >
   {#each $suitExercises as data (data.suit)}
     <RepsProgressBox reps={data.completedReps} exercise={data.exerciseName}/>

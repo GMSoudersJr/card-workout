@@ -5,7 +5,7 @@
   import {ESuitSymbolUnicode} from "../../../enums/suitSymbolUnicode";
   import { ESuitColors } from "../../../enums/suitColors";
 	import SuitInfoBox from "./SuitInfoBox.svelte";
-	import {cubicInOut} from "svelte/easing";
+	import {cubicOut} from "svelte/easing";
 
   let suitNames: string[] = Object.keys(ESuit);
   $: suits = suitNames.map((suitName) => {
@@ -25,8 +25,8 @@
   id="suit-info-widget"
   data-testid="suit-info-widget"
   class="suit-info-widget"
-  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
-  out:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
+  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicOut }}
+  out:slide={{ axis: 'y', delay: 0, duration: 400, easing: cubicOut }}
 >
   {#each suits as suit (suit.name)}
     <SuitInfoBox icon={suit.icon} color={suit.color} count={suit.count} />

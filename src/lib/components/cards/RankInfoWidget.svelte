@@ -3,7 +3,7 @@
   import { theRemainingDeck } from "../../../store";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
 	import RankInfoBox from "./RankInfoBox.svelte";
-	import {cubicInOut} from "svelte/easing";
+	import {cubicOut} from "svelte/easing";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);
   $: ranks = rankSymbols.map((rankSymbol) => {
@@ -19,8 +19,8 @@
 </script>
 
 <ul
-  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut}}
-  out:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut}}
+  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicOut}}
+  out:slide={{ axis: 'y', delay: 0, duration: 400, easing: cubicOut}}
   class="rank-list"
   data-testid="card rank list"
 >

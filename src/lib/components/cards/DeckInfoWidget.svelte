@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { linear, cubicInOut } from "svelte/easing";
+  import { cubicOut } from "svelte/easing";
   import { fade, slide } from "svelte/transition";
 	import { remainingCardsString} from "$lib/strings/forCardsPage";
 
@@ -12,8 +12,8 @@
 </script>
 
 <div
-  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
-  out:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut }}
+  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicOut }}
+  out:slide={{ axis: 'y', delay: 0, duration: 400, easing: cubicOut }}
   class="deck-info-container"
 >
   <div
