@@ -4,7 +4,9 @@
   export let count: number;
 </script>
 
-<div class="rank-info-box">
+<div
+  class="rank-info-box"
+>
   <p class="rank source-sans-3-text">
     {rank}
   </p>

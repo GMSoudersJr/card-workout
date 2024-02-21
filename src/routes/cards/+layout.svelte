@@ -40,14 +40,13 @@
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
+    justify-items: center;
     grid-template-areas: "homeLink heading exerciseLink";
   }
   .home-link {
     grid-area: homeLink;
     text-decoration: none;
     color: #000080;
-    justify-self: start;
-    padding-left: 10px;
   }
   .emoji-nav-link {
     font-size: 1.5rem;
@@ -56,8 +55,6 @@
     grid-area: exerciseLink;
     text-decoration: none;
     color: #000080;
-    justify-self: end;
-    padding-right: 10px;
   }
   .heading {
     grid-area: heading;

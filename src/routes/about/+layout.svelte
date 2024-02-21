@@ -3,8 +3,8 @@
 
 <main>
   <div class="header">
-    <a href="/" class="home-link oswald-header">
-       HOME
+    <a href="/" class="home-link emoji-nav-link noto-emoji-font">
+      🏠
     </a>
     <h1 class="heading oswald-header">
       ABOUT
@@ -12,9 +12,9 @@
     <a
       href="/exercises"
       id="exercises-link"
-      class="nav-link oswald-header exercise-link"
+      class="nav-link emoji-nav-link noto-emoji-font exercise-link"
     >
-      EXERCISES
+      🤸
     </a>
   </div>
   <slot />
@@ -30,23 +30,23 @@
   }
   .header {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
+    justify-items: center;
     grid-template-areas: "homeLink heading exerciseLink";
+  }
+  .emoji-nav-link {
+    font-size: 1.5rem;
   }
   .home-link {
     grid-area: homeLink;
     text-decoration: none;
     color: #000080;
-    justify-self: start;
-    padding-left: 10px;
   }
   .exercise-link {
     grid-area: exerciseLink;
     text-decoration: none;
     color: #000080;
-    justify-self: end;
-    padding-right: 10px;
   }
   .heading {
     grid-area: heading;

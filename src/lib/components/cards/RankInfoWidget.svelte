@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { fade, slide } from "svelte/transition";
   import { theRemainingDeck } from "../../../store";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
 	import RankInfoBox from "./RankInfoBox.svelte";
+	import {cubicInOut} from "svelte/easing";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);
   $: ranks = rankSymbols.map((rankSymbol) => {
@@ -17,6 +19,8 @@
 </script>
 
 <ul
+  in:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut}}
+  out:slide={{ axis: 'y', delay: 400, duration: 400, easing: cubicInOut}}
   class="rank-list"
   data-testid="card rank list"
 >

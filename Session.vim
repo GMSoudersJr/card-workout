@@ -7,16 +7,27 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +17 src/lib/components/cards/MiniCardTicks.svelte
-badd +41 src/lib/components/cards/DeckInfoWidget.svelte
+badd +38 src/lib/components/cards/NopeNotNowButton.svelte
+badd +2 src/lib/components/cards/DeckInfoWidget.svelte
+badd +1 src/lib/components/cards/RankInfoBox.svelte
+badd +2 src/lib/components/cards/CardsInfoWidget.svelte
+badd +54 src/routes/cards/+layout.svelte
+badd +1 src/lib/components/cards/RankInfoWidget.svelte
+badd +1 src/lib/components/cards/SuitInfoWidget.svelte
 argglobal
 %argdel
 $argadd .
-edit src/lib/components/cards/DeckInfoWidget.svelte
+edit src/lib/components/cards/RankInfoWidget.svelte
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+3wincmd h
+wincmd w
+wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -25,8 +36,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 32 + 33) / 66)
-exe '2resize ' . ((&lines * 31 + 33) / 66)
+exe 'vert 1resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 3resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 4resize ' . ((&columns * 69 + 141) / 282)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -37,16 +50,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 43 - ((13 * winheight(0) + 16) / 32)
+let s:l = 1 - ((0 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-43
-normal! 016|
+1
+normal! 0
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
-if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/MiniCardTicks.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/MiniCardTicks.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/MiniCardTicks.svelte | endif
+if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/SuitInfoWidget.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/SuitInfoWidget.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/SuitInfoWidget.svelte | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -56,16 +69,56 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((9 * winheight(0) + 15) / 31)
+let s:l = 26 - ((25 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
+26
+normal! 0
+lcd ~/svelte_projects/card-workout
+wincmd w
+argglobal
+if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/RankInfoWidget.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/RankInfoWidget.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/RankInfoWidget.svelte | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 2 - ((1 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
 normal! 03|
 lcd ~/svelte_projects/card-workout
 wincmd w
-exe '1resize ' . ((&lines * 32 + 33) / 66)
-exe '2resize ' . ((&lines * 31 + 33) / 66)
+argglobal
+if bufexists("~/svelte_projects/card-workout/src/lib/components/cards/DeckInfoWidget.svelte") | buffer ~/svelte_projects/card-workout/src/lib/components/cards/DeckInfoWidget.svelte | else | edit ~/svelte_projects/card-workout/src/lib/components/cards/DeckInfoWidget.svelte | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 13 - ((12 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+13
+normal! 03|
+lcd ~/svelte_projects/card-workout
+wincmd w
+exe 'vert 1resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 3resize ' . ((&columns * 70 + 141) / 282)
+exe 'vert 4resize ' . ((&columns * 69 + 141) / 282)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

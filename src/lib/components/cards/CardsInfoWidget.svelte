@@ -123,6 +123,7 @@
     justify-items: stretch;
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
   }
   input {
     margin-top: 0.5rem;
