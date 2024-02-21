@@ -84,11 +84,9 @@ function handleChange(event: Event) {
   const target = event.target as HTMLInputElement;
   // @ts-ignore
   if ( !document.startViewTransition ) {
-    console.log("not gonna be able to do it")
     group = target.value;
     showThisWidget = group;
   } else {
-    console.log("should be able to do it")
     transition(() => showThisWidget = group);
   }
 }
