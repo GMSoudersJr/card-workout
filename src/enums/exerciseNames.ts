@@ -20,7 +20,7 @@ export enum EExerciseNames {
 	DIPS='Dips',
 	DOWNWARD_DOG_POSES='Downward Dog Poses',
 	FLUTTER_KICKS='Flutter Kicks',
-	FORWARD_ARM_CIRCLES='Forward Arm Cirles',
+	FORWARD_ARM_CIRCLES='Forward Arm Circles',
 	HIGH_KNEES='High Knees',
 	JUMPING_JACKS='Jumping Jacks',
 	KNEE_RAISES='Knee Raises',
