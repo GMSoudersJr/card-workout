@@ -26,11 +26,11 @@ test('exercise page has expected h1', async ({ page }) => {
 
 test.describe('exercise page has correct links', () => {
 	test('exercise page has expected link to home page', async ({ page }) => {
-		await expect(page.getByRole('link', { name: 'HOME' })).toBeVisible();
+		await expect(page.getByRole('link', { name: '🏠' })).toBeVisible();
 	});
 
 	test('exercise page has expected link to cards page', async ({ page }) => {
-		await expect(page.getByRole('link', { name: 'CARDS' })).toBeVisible();
+		await expect(page.getByRole('link', { name: '🃏' })).toBeVisible();
 	});
 });
 

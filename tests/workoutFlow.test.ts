@@ -37,8 +37,8 @@ test.describe('initial visibilities', () => {
 	});
 
 	test('has expected "HOME" and "EXERCISES" links', async ({ page }) => {
-		const homeLink = page.getByRole('link', { name: 'HOME' });
-		const exercisesLink = page.getByRole('link', { name: 'EXERCISES' });
+		const homeLink = page.getByRole('link', { name: '🏠' });
+		const exercisesLink = page.getByRole('link', { name: '🤸' });
 		await expect(homeLink).toBeVisible();
 		await expect(homeLink).toBeEnabled();
 		await expect(exercisesLink).toBeVisible();
