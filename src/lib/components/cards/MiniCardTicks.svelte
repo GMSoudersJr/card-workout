@@ -11,8 +11,7 @@
 
 <style>
   .mini-card-tick {
-    width: 3px;
-    height: 30px;
+    height: 100%;
     border: 1px solid #000080;
     background: #39FF14;
   }

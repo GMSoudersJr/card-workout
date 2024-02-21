@@ -34,16 +34,16 @@
 <style>
   .deck-info-container {
     display: grid;
-    grid-template-columns: max-content;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
-    row-gap: 0.5rem;
+    padding: 5px;
   }
   .info-wrapper {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    grid-template-rows: min-content;
+    grid-template-rows: 1fr;
     column-gap: 0.5rem;
   }
   .cards-left-text {
@@ -57,8 +57,10 @@
   }
   .card-lines-container {
     display: grid;
-    grid-template-columns: repeat(52, 1px);
-    column-gap: 4px;
-    align-self: center;
+    grid-template-columns: repeat(52, 1fr);
+    grid-template-rows: 35px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.2rem;
   }
 </style>
