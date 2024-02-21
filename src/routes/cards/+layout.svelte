@@ -5,21 +5,19 @@
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="home-link oswald-header">
-       HOME
+    <a href="/" class="home-link noto-emoji-font emoji-nav-link">
+      🏠
     </a>
     <h1 class="heading oswald-header">
       SUIT YOURSELF
     </h1>
-    <!--
     <a
       href="/exercises"
       id="exercises-link"
-      class="nav-link oswald-header exercise-link"
+      class="emoji-nav-link noto-emoji-font exercise-link"
     >
-      EXERCISES
+      🤸
     </a>
-    -->
   </div>
   <aside class="discarded-cards-aside">
     <DiscardedCardsWidget />
