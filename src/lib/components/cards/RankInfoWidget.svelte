@@ -16,7 +16,10 @@
 
 </script>
 
-<ul class="rank-list" data-testid="card rank list">
+<ul
+  class="rank-list"
+  data-testid="card rank list"
+>
 {#each ranks as rank}
   <li class={`rank-${rank.symbol} rank-listitem`} >
     <RankInfoBox rank={rank.symbol} count={rank.count} />

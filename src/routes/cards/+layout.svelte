@@ -49,6 +49,9 @@
     justify-self: start;
     padding-left: 10px;
   }
+  .emoji-nav-link {
+    font-size: 1.5rem;
+  }
   .exercise-link {
     grid-area: exerciseLink;
     text-decoration: none;

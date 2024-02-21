@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {createEventDispatcher} from "svelte";
+  import { fade } from "svelte/transition";
 
   import {
     theDeckOfCards,
@@ -34,6 +35,7 @@
   class="nope-not-now-button oswald-header"
   id="nope-not-now-button"
   on:click={handleClick}
+  transition:fade={{ delay: 250, duration: 300 }}
 >
   NOT NOW!
 </button>

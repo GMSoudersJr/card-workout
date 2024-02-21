@@ -9,7 +9,9 @@
 
 </script>
 
-<div class="deck-info-container">
+<div
+  class="deck-info-container"
+>
   <div
     class="info-wrapper"
     data-testid="cards remaining"
