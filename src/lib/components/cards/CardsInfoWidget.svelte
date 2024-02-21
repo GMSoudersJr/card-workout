@@ -15,6 +15,7 @@
     [key: string]: ComponentType
   }
 
+  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
     rank: RankInfoWidget,
@@ -68,7 +69,32 @@
     }
   };
 
-  $: group = '';
+function transition(action: () => void) {
+  // @ts-ignore
+  if (!document.startViewTransition) {
+    return action
+  } else {
+    // @ts-ignore
+    document.startViewTransition(action);
+  }
+}
+
+
+function handleChange(event: Event) {
+  const target = event.target as HTMLInputElement;
+  // @ts-ignore
+  if ( !document.startViewTransition ) {
+    console.log("not gonna be able to do it")
+    group = target.value;
+    showThisWidget = group;
+  } else {
+    console.log("should be able to do it")
+    transition(() => showThisWidget = group);
+  }
+}
+
+  let group: Group = '';
+  let showThisWidget = group;
 </script>
 
 <div class="cards-info-widget-container">
@@ -85,12 +111,13 @@
           id={choice.id}
           name="deck-of-cards-info"
           value={choice.value}
+          on:change={handleChange}
         >
       </label>
       {/each}
     </div>
     <div class="widget-container">
-      <svelte:component this={infoWidgets[group]} />
+      <svelte:component this={infoWidgets[showThisWidget]} />
     </div>
 </div>
 

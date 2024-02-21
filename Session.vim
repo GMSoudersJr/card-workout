@@ -8,12 +8,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +36 src/lib/components/cards/NopeNotNowButton.svelte
-badd +16 src/lib/components/cards/DeckInfoWidget.svelte
+badd +3 src/lib/components/cards/DeckInfoWidget.svelte
 badd +16 src/lib/components/cards/RankInfoBox.svelte
 badd +131 src/lib/components/cards/CardsInfoWidget.svelte
 badd +27 src/routes/cards/+layout.svelte
-badd +23 src/lib/components/cards/RankInfoWidget.svelte
-badd +8 src/lib/components/cards/SuitInfoWidget.svelte
+badd +2 src/lib/components/cards/RankInfoWidget.svelte
+badd +29 src/lib/components/cards/SuitInfoWidget.svelte
 badd +90 src/routes/cards/+page.svelte
 badd +124 src/lib/components/cards/PlayingCardWidget.svelte
 badd +20 src/lib/components/cards/MiniCardTicks.svelte
@@ -22,7 +22,7 @@ badd +23 src/enums/exerciseNames.ts
 badd +1 src/routes/about/+layout.svelte
 badd +30 src/routes/exercises/+layout.svelte
 badd +5 src/lib/components/SuitYourselfEmojiCombo.svelte
-badd +14 src/lib/components/cards/RepsInfoWidget.svelte
+badd +2 src/lib/components/cards/RepsInfoWidget.svelte
 badd +13 src/routes/+layout.svelte
 badd +36 src/app.css
 badd +33 tests/exercisesPage.test.ts
@@ -63,17 +63,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 32) / 64)
+let s:l = 6 - ((5 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-let s:c = 67 - ((60 * winwidth(0) + 35) / 70)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 67 . '|'
-else
-  normal! 067|
-endif
+6
+normal! 03|
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
@@ -87,17 +82,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((22 * winheight(0) + 32) / 64)
+let s:l = 2 - ((1 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
-let s:c = 67 - ((60 * winwidth(0) + 35) / 70)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 67 . '|'
-else
-  normal! 067|
-endif
+2
+normal! 011|
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
@@ -111,12 +101,17 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 32) / 64)
+let s:l = 29 - ((28 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 016|
+29
+let s:c = 65 - ((60 * winwidth(0) + 35) / 70)
+if s:c > 0
+  exe 'normal! ' . s:c . '|zs' . 65 . '|'
+else
+  normal! 065|
+endif
 lcd ~/svelte_projects/card-workout
 wincmd w
 argglobal
@@ -130,17 +125,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 14 - ((13 * winheight(0) + 32) / 64)
+let s:l = 2 - ((1 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-14
-let s:c = 67 - ((59 * winwidth(0) + 34) / 69)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 67 . '|'
-else
-  normal! 067|
-endif
+2
+normal! 011|
 lcd ~/svelte_projects/card-workout
 wincmd w
 exe 'vert 1resize ' . ((&columns * 70 + 141) / 282)

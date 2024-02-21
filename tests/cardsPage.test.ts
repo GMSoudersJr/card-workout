@@ -53,7 +53,8 @@ test('expect the suit radio button to be checked when clicked', async ({ page })
 test('expect deck info to show 52 cards remaining', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-	await expect(page.getByTestId('cards remaining')).toBeVisible();
+	const element = page.getByTestId('cards remaining');
+	await element.waitFor({ state: 'attached' });
 	await expect(page.getByRole('heading',{ name: '52', level: 3 })).toBeVisible();
 });
 
