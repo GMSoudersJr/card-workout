@@ -106,7 +106,7 @@
     grid-template-rows: repeat(2, 1fr);
     align-items: center;
     justify-content: center;
-    padding-left: 0.5rem;
+    padding-left: 0.8rem;
     padding-right: 0.5rem;
   }
   .right-aside,
