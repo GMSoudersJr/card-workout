@@ -101,7 +101,6 @@
     align-items: center;
   }
   .right-aside {
-    border: 1px solid black;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
