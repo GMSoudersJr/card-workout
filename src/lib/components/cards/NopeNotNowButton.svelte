@@ -56,6 +56,7 @@
     align-items: center;
     border-radius: 50px;
     background: radial-gradient(circle at right, #F0F0F0, #259259);
+    place-self: center;
   }
   .nope-not-now-button:active {
     transform: translateX(2px);
