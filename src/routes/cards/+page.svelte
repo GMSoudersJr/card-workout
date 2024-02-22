@@ -101,13 +101,13 @@
     align-items: center;
   }
   .right-aside {
+    border: 1px solid black;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
-    align-items: center;
-    justify-content: center;
-    padding-left: 0.8rem;
-    padding-right: 0.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
   }
   .right-aside,
   .left-aside {
