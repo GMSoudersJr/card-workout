@@ -2,7 +2,10 @@
   export let nopeNotNowMessage: string;
 </script>
 
-<p class="oswald-header">
+<p
+  id="plucked-same-card-message"
+  class="oswald-header"
+>
   {nopeNotNowMessage.toUpperCase()}
 </p>
 
