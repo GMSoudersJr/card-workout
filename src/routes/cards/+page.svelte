@@ -1,16 +1,19 @@
 <script lang="ts">
-  import { receive, send } from '$lib/transition';
+  import { send } from '$lib/transition';
   import { flip } from 'svelte/animate';
   import {
     discardedCards,
     theCurrentCard,
+    suitExercises,
   } from '../../store';
   import PlayingCardWidget from '$lib/components/cards/PlayingCardWidget.svelte';
   import StartButton from '$lib/components/cards/StartButton.svelte';
   import ShuffleButton from '$lib/components/cards/ShuffleButton.svelte';
   import {
-    instructionsAboveTheStartButton,
-    instructionsBelowTheStartButton
+    messageAboveTheStartButton,
+    messageBelowTheStartButton,
+    messageAboveTheShuffleButton,
+    messageBelowTheShuffleButton
   } from '$lib/strings/forCardsPage';
 	import NopeNotNowButton from '$lib/components/cards/NopeNotNowButton.svelte';
 	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
@@ -38,11 +41,19 @@
   <section class="current-card-section" id="current-card-section">
   {#if $theCurrentCard.length == 0 && $discardedCards.length == 0}
     <p class="oswald-header above-start-button">
-      {instructionsAboveTheStartButton.toUpperCase()}
+      {#if !$suitExercises[0].exerciseName}
+        {messageAboveTheStartButton.forPlainCards.toUpperCase()}
+        {:else}
+        {messageAboveTheStartButton.forExerciseCards.toUpperCase()}
+      {/if}
     </p>
   <StartButton />
     <p class="oswald-header below-start-button">
-      {instructionsBelowTheStartButton.toUpperCase()}
+      {#if !$suitExercises[0].exerciseName}
+        {messageBelowTheStartButton.forPlainCards.toUpperCase()}
+        {:else}
+        {messageBelowTheStartButton.forExerciseCards.toUpperCase()}
+      {/if}
     </p>
   {:else if $theCurrentCard.length > 0}
     {#each $theCurrentCard as currentCard (currentCard.name)}
@@ -63,9 +74,21 @@
       </div>
     {/each}
   {:else if $discardedCards.length == 52 && $theCurrentCard.length == 0}
-    <p class="oswald-header above-shuffle-button">THE DECK IS FINISHED</p>
+    <p class="oswald-header above-shuffle-button">
+      {#if !$suitExercises[0].exerciseName}
+        {messageAboveTheShuffleButton.forPlainCards.toUpperCase()}
+        {:else}
+        {messageAboveTheShuffleButton.forExerciseCards.toUpperCase()}
+      {/if}
+    </p>
     <ShuffleButton />
-    <p class="oswald-header below-shuffle-button">SHUFFLING CLEANS THE CARDS</p>
+    <p class="oswald-header below-shuffle-button">
+      {#if !$suitExercises[0].exerciseName}
+        {messageBelowTheShuffleButton.forPlainCards.toUpperCase()}
+        {:else}
+        {messageBelowTheShuffleButton.forExerciseCards.toUpperCase()}
+      {/if}
+    </p>
   {/if}
   </section>
 
@@ -104,9 +127,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
+    justify-items: center;
   }
   .right-aside,
   .left-aside {

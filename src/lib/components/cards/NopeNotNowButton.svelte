@@ -43,6 +43,7 @@
 
 <style>
   .nope-not-now-button {
+    align-self: end;
     width: 100%;
     max-width: 100px;
     aspect-ratio: 1 / 1;
@@ -56,7 +57,6 @@
     align-items: center;
     border-radius: 50px;
     background: radial-gradient(circle at right, #F0F0F0, #259259);
-    place-self: end;
   }
   .nope-not-now-button:active {
     transform: translateX(2px);

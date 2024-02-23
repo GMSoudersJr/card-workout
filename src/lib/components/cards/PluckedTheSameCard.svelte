@@ -12,6 +12,7 @@
 <style>
   p {
     color: #000080;
+    place-self: center;
   }
 </style>
 
