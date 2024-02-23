@@ -7,21 +7,32 @@
   } from "../../../store";
   import { goto } from "$app/navigation";
   import { setFocus } from '$lib/utils';
+	import type { TSuitExercise } from "../../../types/suitExercise";
+  import type { TSuit } from "../../../types/suit";
 
   async function handleClick() {
+    console.log($suitExercises);
     theDeckOfCards.setExercises($suitExercises);
     discardedCards.reset();
     theCurrentCard.reset();
     await goto('/cards');
   }
+  const repsHaveBeenCompleted = (exercise: TSuitExercise<TSuit>) =>
+    exercise.completedReps > 0;
+  let disabled = $suitExercises.some(repsHaveBeenCompleted);
 </script>
 
 <button
   on:click={handleClick}
   class="oswald-header"
   use:setFocus
+  {disabled}
 >
-  LET'S GO!
+  {#if disabled}
+    YOU GOT THIS!
+  {:else}
+    LET'S GO!
+  {/if}
 </button>
 
 <style>
