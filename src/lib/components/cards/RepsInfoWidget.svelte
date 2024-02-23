@@ -15,7 +15,7 @@
 
 <style>
   .reps-info-widget {
-    padding: 5px;
+    padding: 10px;
     display: grid;
     width: 100%;
     height: 100%;
@@ -24,7 +24,7 @@
     justify-content: center;
     align-content: center;
     column-gap: 1.4rem;
-    row-gap: 1rem;
+    row-gap: 0.8rem;
   }
 </style>
 
