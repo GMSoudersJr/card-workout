@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {startButtonText} from '$lib/strings/forCardsPage';
+  import { setFocus } from '$lib/utils';
 
   import {
     theDeckOfCards,
@@ -18,6 +19,7 @@
 <button
   on:click={handleStart}
   class="oswald-header"
+  use:setFocus
 >
   {startButtonText.toUpperCase()}
 </button>

@@ -14,6 +14,7 @@
 	import {tick} from 'svelte';
   import type { TExerciseName } from '../../../types/exerciseName';
   import { EExerciseNames } from '../../../enums/exerciseNames';
+  import { setFocus } from '$lib/utils';
 
   async function handleClick() {
     let widthOfUnderCard = 25;
@@ -69,6 +70,7 @@
   on:click={handleClick}
   aria-disabled={disabled}
   disabled={disabled}
+  use:setFocus
 >
   <section class="rank-and-suit">
 

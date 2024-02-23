@@ -23,3 +23,12 @@ export const thisYear = () => {
 	const date = new Date(Date.now());
 	return date.getFullYear();
 }
+
+export function setFocus(element: HTMLElement) {
+	element.focus();
+	return {
+		destroy() {
+		}
+	}
+};
+

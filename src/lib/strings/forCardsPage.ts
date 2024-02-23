@@ -23,7 +23,7 @@ export const messageBelowTheStartButton = {
 };
 
 export const messageAboveTheShuffleButton = {
-	forPlainCards: 'deck complete',
+	forPlainCards: 'you finished the deck',
 	forExerciseCards: 'workout finished'
 };
 
