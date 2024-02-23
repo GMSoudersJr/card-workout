@@ -2,6 +2,7 @@
   import { suitExercises } from '../../../store'
 	import ExampleWorkout from './ExampleWorkout.svelte';
 	import ExerciseSelectionCompleteButton from './ExerciseSelectionCompleteButton.svelte';
+	import ResetExerciseSelectionsButton from './ResetExerciseSelectionsButton.svelte';
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
   function handleExcerciseSelected(event: CustomEvent) {
@@ -29,6 +30,7 @@
     <ExampleWorkout />
   {:else}
     <ExerciseSelectionCompleteButton />
+    <ResetExerciseSelectionsButton />
   {/if}
 
 </div>
