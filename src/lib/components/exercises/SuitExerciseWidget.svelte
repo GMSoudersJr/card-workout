@@ -5,10 +5,10 @@
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
   function handleExcerciseSelected(event: CustomEvent) {
-    const {suit, exercise} = event.detail;
-    suitExercises.updateExercise(suit, exercise);
+    const {suit, exerciseName} = event.detail;
+    suitExercises.updateExercise(suit, exerciseName);
   }
-  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exercise === undefined})
+  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exerciseName === undefined})
 </script>
 
 <div

@@ -1,9 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { ESuit } from '../src/enums/suit';
-import { EExercises } from '../src/enums/exercises';
+import { EExerciseNames } from '../src/enums/exerciseNames';
 
-const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
-const [ exercise1, exercise2, exercise3, exercise4 ] = Object.keys(EExercises);
+const [
+	clubs,
+	diamonds,
+	hearts,
+	spades
+] = Object.keys(ESuit);
+const [
+	exercise1,
+	exercise2,
+	exercise3,
+	exercise4
+] = Object.keys(EExerciseNames);
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -16,11 +26,11 @@ test('exercise page has expected h1', async ({ page }) => {
 
 test.describe('exercise page has correct links', () => {
 	test('exercise page has expected link to home page', async ({ page }) => {
-		await expect(page.getByRole('link', { name: 'HOME' })).toBeVisible();
+		await expect(page.getByRole('link', { name: '🏠' })).toBeVisible();
 	});
 
 	test('exercise page has expected link to cards page', async ({ page }) => {
-		await expect(page.getByRole('link', { name: 'CARDS' })).toBeVisible();
+		await expect(page.getByRole('link', { name: '🃏' })).toBeVisible();
 	});
 });
 
@@ -51,8 +61,8 @@ test.describe('suit exercise selector visibility test', () => {
 	});
 });
 
-test.describe('select an exercise for each suit', () => {
-	test(`select ${EExercises[exercise1 as keyof typeof EExercises]} for ${clubs}`, async ({ page }) => {
+test.describe('example workout list visibility', () => {
+	test(`select ${EExerciseNames[exercise1 as keyof typeof EExerciseNames]} for ${clubs}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		const location = page.locator(`id=${clubs}-exercise-selection`)
 		const [ firstSelection ] = await location.selectOption(exercise1);
@@ -61,7 +71,7 @@ test.describe('select an exercise for each suit', () => {
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
-	test(`select ${EExercises[exercise2 as keyof typeof EExercises]} for ${diamonds}`, async ({ page }) => {
+	test(`select ${EExerciseNames[exercise2 as keyof typeof EExerciseNames]} for ${diamonds}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		const location = page.locator(`id=${diamonds}-exercise-selection`)
 		const [ secondSelection ] = await location.selectOption(exercise2);
@@ -70,7 +80,7 @@ test.describe('select an exercise for each suit', () => {
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
-	test(`select ${EExercises[exercise3 as keyof typeof EExercises]} for ${hearts}`, async ({ page }) => {
+	test(`select ${EExerciseNames[exercise3 as keyof typeof EExerciseNames]} for ${hearts}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		const location = page.locator(`id=${hearts}-exercise-selection`)
 		const [ thirdSelection ] = await location.selectOption(exercise3);
@@ -79,7 +89,7 @@ test.describe('select an exercise for each suit', () => {
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
-	test(`select ${EExercises[exercise4 as keyof typeof EExercises]} for ${spades}`, async ({ page }) => {
+	test(`select ${EExerciseNames[exercise4 as keyof typeof EExerciseNames]} for ${spades}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		const location = page.locator(`id=${spades}-exercise-selection`)
 		const [ fourthSelection ] = await location.selectOption(exercise4);

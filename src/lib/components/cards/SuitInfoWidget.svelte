@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { theRemainingDeck } from "../../store";
-  import { ESuit } from "../../enums/suit";
-	import {ESuitSymbolUnicode} from "../../enums/suitSymbolUnicode";
-  import { ESuitColors } from "../../enums/suitColors";
+  import { theRemainingDeck } from "../../../store";
+  import { ESuit } from "../../../enums/suit";
+  import {ESuitSymbolUnicode} from "../../../enums/suitSymbolUnicode";
+  import { ESuitColors } from "../../../enums/suitColors";
 	import SuitInfoBox from "./SuitInfoBox.svelte";
 
   let suitNames: string[] = Object.keys(ESuit);
@@ -31,9 +31,13 @@
 
 <style>
   .suit-info-widget {
+    padding: 0.5rem;
     display: grid;
+    grid-template-columns: repeat(2, minmax(102px, 103.6px));
     grid-template-rows: repeat(2, min-content);
-    grid-template-columns: repeat(2, max-content);
-    gap: 1.618rem;
+    justify-content: center;
+    align-content: center;
+    column-gap: 6.18%;
+    row-gap: 15%;
   }
 </style>

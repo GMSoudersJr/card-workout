@@ -2,7 +2,7 @@
   import { receive } from "$lib/transition";
   import { flip } from "svelte/animate";
   import PlayingCardWidget from "./PlayingCardWidget.svelte";
-  import { discardedCards } from "../../store";
+  import { discardedCards } from "../../../store";
 
 </script>
 
@@ -21,7 +21,7 @@
     <PlayingCardWidget
       id={`${card.name}-discarded`}
       rankSymbol={card.rank}
-      exercise={card.exercise}
+      exerciseName={card.exerciseName}
       suitSymbol={card.suit}
       textColor={card.textColor}
       reps={card.value}
@@ -34,6 +34,7 @@
 
 <style>
   .discarded-cards {
+    width: 100%;
     display: flex;
     flex-direction: row;
     overflow-x: scroll;

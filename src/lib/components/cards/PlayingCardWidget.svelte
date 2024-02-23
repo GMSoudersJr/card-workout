@@ -6,14 +6,15 @@
     randomCardIndex,
     theCurrentCard,
 	suitExercises,
-  } from '../../store';
-  import { ESuitSymbolUnicode } from "../../enums/suitSymbolUnicode";
-  import { ECardRankSymbol } from "../../enums/cardRankSymbol";
-	import type { TCardRank } from '../../types/cardRank';
-	import type { TSuit } from '../../types/suit';
+  } from '../../../store';
+  import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
+  import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
+  import type { TCardRank } from '../../../types/cardRank';
+  import type { TSuit } from '../../../types/suit';
 	import {tick} from 'svelte';
-	import type {TExercise} from '../../types/exercises';
-	import {EExercises} from '../../enums/exercises';
+  import type { TExerciseName } from '../../../types/exerciseName';
+  import { EExerciseNames } from '../../../enums/exerciseNames';
+  import { setFocus } from '$lib/utils';
 
   async function handleClick() {
     let widthOfUnderCard = 25;
@@ -28,6 +29,7 @@
       suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
+      // This will change the animation. Test it later to see what users like more
       await tick();
       //@ts-ignore
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
@@ -53,9 +55,9 @@
   export let suitSymbol: TSuit;
   export let id: string;
   export let textColor: string;
-  export let exercise: TExercise | undefined;
+  export let exerciseName: TExerciseName | undefined;
   export let reps: number | undefined;
-  $: exerciseName = EExercises[exercise as keyof typeof EExercises];
+  $: exerciseNameText = EExerciseNames[exerciseName as keyof typeof EExerciseNames];
   $: rank = ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol]
   $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
   export let disabled: boolean;
@@ -68,6 +70,7 @@
   on:click={handleClick}
   aria-disabled={disabled}
   disabled={disabled}
+  use:setFocus
 >
   <section class="rank-and-suit">
 
@@ -81,12 +84,10 @@
 
   </section>
 
-  <section
-    class="card-exercise-name"
-  >
-  {#if exercise}
-    <p class="oswald-header">{reps}</p>
-    <p class="oswald-header">{exerciseName.toLocaleUpperCase()}</p>
+  <section class="card-exercise-info">
+  {#if exerciseName}
+    <p class="oswald-header card-exercise-reps">{reps}</p>
+    <p class="oswald-header card-exercise-name">{exerciseNameText.toUpperCase()}</p>
   {/if}
   </section>
 
@@ -122,9 +123,9 @@
     background: #FFF;
     transform: scale(1.618);
     overflow: hidden;
-    box-shadow: 5px 5px 15px #D9D9D9;
+    box-shadow: -5px 5px 10px #D9D9D9, 3px 0px 10px #D9D9D9;
   }
-  .card-exercise-name {
+  .card-exercise-info {
     grid-area: exercise-name;
     color: #000080;
     padding-left: 10px;
@@ -137,7 +138,6 @@
     font-size: medium;
     font-weight: 400;
   }
-
   .rank-and-suit {
     grid-area: rank-and-suit;
     display: grid;

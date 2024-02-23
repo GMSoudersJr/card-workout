@@ -1,19 +1,21 @@
 <script lang="ts">
 	import type {ComponentType} from "svelte";
+  import { radioButtonLabelNames } from '$lib/strings/forCardsPage';
 
-  import { suitExercises } from "../../store";
+  import { suitExercises } from "../../../store";
 
 	import DeckInfoWidget from "./DeckInfoWidget.svelte";
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
   import RepsInfoWidget from "./RepsInfoWidget.svelte";
-	import type {TSuitExercise} from "../../types/suitExercise";
-	import type {TSuit} from "../../types/suit";
+  import type {TSuitExercise} from "../../../types/suitExercise";
+  import type {TSuit} from "../../../types/suit";
 
   interface InfoWidgets {
     [key: string]: ComponentType
   }
 
+  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
     rank: RankInfoWidget,
@@ -24,7 +26,7 @@
   interface InfoChoice {
     id: string;
     value: string;
-    innerHtml: string;
+    labelName: string;
     widget: ComponentType
   }
 
@@ -32,31 +34,31 @@
     {
       id: "radio-deck",
       value: "deck",
-      innerHtml: "Deck",
+      labelName: radioButtonLabelNames.deck,
       widget: DeckInfoWidget,
     },
     {
       id: "radio-rank",
       value: "rank",
-      innerHtml: "Rank",
+      labelName: radioButtonLabelNames.rank,
       widget: RankInfoWidget,
     },
     {
       id: "radio-suit",
       value: "suit",
-      innerHtml: "Suit",
+      labelName: radioButtonLabelNames.suit,
       widget: SuitInfoWidget,
     },
     {
       id: "radio-reps",
       value: "reps",
-      innerHtml: "Reps",
+      labelName: radioButtonLabelNames.reps,
       widget: RepsInfoWidget,
     },
   ];
 
   const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
-    return entry.exercise === undefined;
+    return entry.exerciseName === undefined;
   }
 
   $: radioButtons = () => {
@@ -67,7 +69,30 @@
     }
   };
 
-  $: group = '';
+function transition(action: () => void) {
+  // @ts-ignore
+  if (!document.startViewTransition) {
+    return action
+  } else {
+    // @ts-ignore
+    document.startViewTransition(action);
+  }
+}
+
+
+function handleChange(event: Event) {
+  const target = event.target as HTMLInputElement;
+  // @ts-ignore
+  if ( !document.startViewTransition ) {
+    group = target.value;
+    showThisWidget = group;
+  } else {
+    transition(() => showThisWidget = group);
+  }
+}
+
+  let group: Group = '';
+  let showThisWidget = group;
 </script>
 
 <div class="cards-info-widget-container">
@@ -77,19 +102,20 @@
           for={choice.id}
           class="listitem-label source-sans-3-text"
         >
-        {choice.innerHtml}
+        {choice.labelName}
         <input
           bind:group={group}
           type="radio"
           id={choice.id}
           name="deck-of-cards-info"
           value={choice.value}
+          on:change={handleChange}
         >
       </label>
       {/each}
     </div>
     <div class="widget-container">
-      <svelte:component this={infoWidgets[group]} />
+      <svelte:component this={infoWidgets[showThisWidget]} />
     </div>
 </div>
 
@@ -101,7 +127,7 @@
     justify-items: center;
   }
   .radio-buttons-container {
-    width: 300px;
+    width: 100%;
     background: #F1F2F2;
     padding: 0.7rem 0;
     border-radius: 8px;
@@ -118,7 +144,11 @@
     color: #000080;
   }
   .widget-container {
-    place-self: center;
+    display: grid;
+    justify-items: stretch;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
   }
   input {
     margin-top: 0.5rem;

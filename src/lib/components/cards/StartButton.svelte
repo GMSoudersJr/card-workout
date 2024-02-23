@@ -1,9 +1,12 @@
 <script lang="ts">
+	import {startButtonText} from '$lib/strings/forCardsPage';
+  import { setFocus } from '$lib/utils';
+
   import {
     theDeckOfCards,
     theCurrentCard,
     randomCardIndex
-  } from '../../store';
+  } from '../../../store';
 
   function handleStart() {
     const randomCard = $theDeckOfCards.at($randomCardIndex)
@@ -16,8 +19,9 @@
 <button
   on:click={handleStart}
   class="oswald-header"
+  use:setFocus
 >
-  START
+  {startButtonText.toUpperCase()}
 </button>
 
 <style>

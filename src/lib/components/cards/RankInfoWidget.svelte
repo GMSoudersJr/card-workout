@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { theRemainingDeck } from "../../store";
-  import { ECardRankSymbol } from "../../enums/cardRankSymbol";
+  import { theRemainingDeck } from "../../../store";
+  import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
 	import RankInfoBox from "./RankInfoBox.svelte";
 
   let rankSymbols: string[] = Object.keys(ECardRankSymbol);
@@ -16,7 +16,10 @@
 
 </script>
 
-<ul class="rank-list" data-testid="card rank list">
+<ul
+  class="rank-list"
+  data-testid="card rank list"
+>
 {#each ranks as rank}
   <li class={`rank-${rank.symbol} rank-listitem`} >
     <RankInfoBox rank={rank.symbol} count={rank.count} />
@@ -27,15 +30,22 @@
 <style>
   ul {
     display: grid;
-    grid-template-columns: repeat(5, max-content);
-    grid-template-rows: repeat(3, min-content);
+    height: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
+    align-content: center;
     grid-template-areas: 
     "TWO THREE  FOUR FIVE SIX"
     ". SEVEN EIGHT NINE ."
     "TEN JACK QUEEN KING ACE";
+    padding: 0.15rem;
+  }
+  li {
+    list-style: none;
+    display: grid;
+    justify-content: center;
+    align-items: center;
   }
   .rank-2 {
     grid-area: TWO;
@@ -75,9 +85,6 @@
   }
   .rank-A {
     grid-area: ACE;
-  }
-  li {
-    list-style: none;
   }
 </style>
 

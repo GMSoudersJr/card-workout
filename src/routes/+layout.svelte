@@ -1,7 +1,9 @@
 <script>
+  import ViewTransition from './navigation.svelte';
   import '../app.css';
 </script>
 
+<ViewTransition />
 <main>
   <slot />
 </main>

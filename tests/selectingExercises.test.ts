@@ -1,9 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { ESuit } from '../src/enums/suit';
-import { EExercises } from '../src/enums/exercises';
+import { EExerciseNames } from '../src/enums/exerciseNames';
 
-const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
-const [ exercise1, exercise2, exercise3, exercise4, ...theRestOfTheExercises ] = Object.keys(EExercises);
+const [
+	exercise1,
+	exercise2,
+	exercise3,
+	exercise4,
+] = Object.keys(EExerciseNames);
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -21,13 +24,17 @@ test.beforeEach(async ({ page }) => {
 	await spadesExerciseSelectLocation.selectOption(exercise4);
 });
 
-test.describe('a user has selected their exercises', () => {
+test.describe('a user has selected an exercise for each suit', () => {
+
+	test('Example Workout List expected to NOT be visible', async ({ page }) => {
+		const exampleWorkoutListItem = page.getByTestId('example-workout-listitem');
+		await expect(exampleWorkoutListItem).not.toBeVisible();
+	});
 
 	test(`"Let's Go" button expected to be visible and enabled`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		await expect(letsGoButton).toBeVisible();
 		await expect(letsGoButton).toBeEnabled();
-		await expect(page.getByTestId('example-workout-listitem')).not.toBeVisible()
 	});
 
 	test(`"Let's Go" button navigates to the expected page`, async ({ page }) => {

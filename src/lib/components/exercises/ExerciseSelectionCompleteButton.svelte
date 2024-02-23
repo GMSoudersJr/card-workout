@@ -6,6 +6,7 @@
 	theCurrentCard,
   } from "../../../store";
   import { goto } from "$app/navigation";
+  import { setFocus } from '$lib/utils';
 
   async function handleClick() {
     theDeckOfCards.setExercises($suitExercises);
@@ -15,7 +16,11 @@
   }
 </script>
 
-<button on:click={handleClick} class="oswald-header">
+<button
+  on:click={handleClick}
+  class="oswald-header"
+  use:setFocus
+>
   LET'S GO!
 </button>
 

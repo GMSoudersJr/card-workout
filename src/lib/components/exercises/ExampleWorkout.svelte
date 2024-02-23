@@ -1,13 +1,5 @@
 <script>
-  import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
-  import { EExercises } from "../../../enums/exercises";
-
-  const anExampleWorkoutList = [
-    `${ESuitSymbolUnicode.CLUBS} ${EExercises.CRUNCHES}`,
-    `${ESuitSymbolUnicode.DIAMONDS} ${EExercises.JUMPING_JACKS}`,
-    `${ESuitSymbolUnicode.HEARTS} ${EExercises.PUSH_UPS}`,
-    `${ESuitSymbolUnicode.SPADES} ${EExercises.ATG_SPLIT_SQUATS}`,
-  ];
+  import { exampleWorkout } from "$lib/strings/forExercisePage";
 </script>
 
 <section
@@ -15,20 +7,22 @@
   data-testid="example-workout-section"
   id="example-workout-section"
 >
-  <h4 class="oswald-header">EXAMPLE WORKOUT:</h4>
+  <h4 class="oswald-header">
+{exampleWorkout.header}
+  </h4>
   <ul
     class="example-workout-list"
     data-testid="example-workout-list"
     id="example-workout-list"
   >
-     {#each anExampleWorkoutList as anExample (anExample)}
-       <li 
+     {#each exampleWorkout.list as anExampleExercise (anExampleExercise)}
+       <li
          class="example-workout-listitem source-sans-3-text"
          data-testid="example-workout-listitem"
          id="example-workout-listitem"
        >
          <p>
-           {@html anExample}
+           {@html anExampleExercise}
          </p>
        </li>
      {/each}

@@ -4,7 +4,8 @@
     theDeckOfCards,
     discardedCards,
     suitExercises,
-  } from '../../store';
+  } from '../../../store';
+  import { setFocus } from '$lib/utils';
 
   function handleShuffle() {
     theDeckOfCards.shuffle();
@@ -18,6 +19,7 @@
   <button
     class="oswald-header"
     on:click={handleShuffle}
+    use:setFocus
   >
   SHUFFLE
 </button>

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import CardsInfoWidget from "$lib/components/CardsInfoWidget.svelte";
-	import DiscardedCardsWidget from "$lib/components/DiscardedCardsWidget.svelte";
+  import CardsInfoWidget from "$lib/components/cards/CardsInfoWidget.svelte";
+  import DiscardedCardsWidget from "$lib/components/cards/DiscardedCardsWidget.svelte";
 </script>
 
 <main>
   <div class="nav-and-heading">
-    <a href="/" class="home-link oswald-header">
-       HOME
+    <a href="/" class="home-link noto-emoji-font emoji-nav-link">
+      🏠
     </a>
     <h1 class="heading oswald-header">
       SUIT YOURSELF
@@ -14,9 +14,9 @@
     <a
       href="/exercises"
       id="exercises-link"
-      class="nav-link oswald-header exercise-link"
+      class="emoji-nav-link noto-emoji-font exercise-link"
     >
-      EXERCISES
+      🤸
     </a>
   </div>
   <aside class="discarded-cards-aside">
@@ -38,27 +38,28 @@
   }
   .nav-and-heading {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
+    justify-items: center;
     grid-template-areas: "homeLink heading exerciseLink";
   }
   .home-link {
     grid-area: homeLink;
     text-decoration: none;
     color: #000080;
-    justify-self: start;
-    padding-left: 10px;
+  }
+  .emoji-nav-link {
+    font-size: 1.5rem;
   }
   .exercise-link {
     grid-area: exerciseLink;
     text-decoration: none;
     color: #000080;
-    justify-self: end;
-    padding-right: 10px;
   }
   .heading {
     grid-area: heading;
     place-self: center;
+    text-align: center;
   }
   .discarded-cards-aside {
     width: 100%;

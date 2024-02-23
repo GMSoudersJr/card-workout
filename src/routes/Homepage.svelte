@@ -3,14 +3,17 @@
     {
       href: '/about',
       text: 'ABOUT',
+      emoji: '📝'
     },
     {
       href: '/cards',
       text: 'CARDS',
+      emoji: '🃏'
     },
     {
       href: '/exercises',
       text: 'EXERCISES',
+      emoji: '🤸'
     },
   ];
 </script>
@@ -25,7 +28,12 @@
       class="nav-item oswald-header"
       href={homepageLink.href}
     >
+      <p>
       {homepageLink.text}
+      </p>
+      <p class="emoji-link noto-emoji-font">
+      {homepageLink.emoji}
+      </p>
     </a>
   {/each}
   </nav>
@@ -45,7 +53,7 @@
     color: #FFFFFF;
   }
   .nav-container {
-    width: 300px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
@@ -57,6 +65,9 @@
     border: 4px solid #000080;
     border-radius: 8px;
     display: grid;
+    grid-template-columns: repeat(2, min-content);
+    column-gap: 0.5rem;
+    align-items: center;
     justify-content: center;
     text-decoration: none;
     color: #000080;

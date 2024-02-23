@@ -1,11 +1,12 @@
-import type {TExercise} from "./exercises";
+import type { TExerciseName } from "./exerciseName";
 
 export type TPlayingCard<TCardRank, TSuit> = {
 	rank: TCardRank;
 	suit: TSuit;
-	exercise?: TExercise;
+	exerciseName?: TExerciseName;
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
+	deckIndex: number;
 	get name(): string;
 	get value(): number;
 	get symbol(): string;

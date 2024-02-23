@@ -1,6 +1,6 @@
 <script lang="ts">
-	import {EExercises} from "../../../enums/exercises";
-	import {ESuitColors} from "../../../enums/suitColors";
+	import { EExerciseNames } from "../../../enums/exerciseNames";
+	import { ESuitColors } from "../../../enums/suitColors";
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import type { TSuitExercise } from "../../../types/suitExercise";
   import type { TSuit } from "../../../types/suit";
@@ -8,17 +8,17 @@
 
   const dispatch = createEventDispatcher();
 
-  const exercises = Object.values(EExercises);
-  const exerciseKeys = Object.keys(EExercises);
+  const exerciseNames = Object.values(EExerciseNames);
+  const exerciseKeys = Object.keys(EExerciseNames);
 
   function handleChange() {
-    dispatch('exerciseSelected', {suit: suitName, exercise: selected});
+    dispatch('exerciseSelected', {suit: suitName, exerciseName: selected});
   }
 
   export let suitExercise: TSuitExercise<TSuit>;
   let suitName = suitExercise.suit;
   let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
-  let selected: string | undefined = suitExercise.exercise;
+  let selected: string | undefined = suitExercise.exerciseName;
   let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
 </script>
 
@@ -43,8 +43,8 @@
     >
       {`${suitName} Exercise`}
     </option>
-  {#each exercises as  exercise, i (exercise)}
-    <option value={exerciseKeys[i]}>{exercise}</option>
+  {#each exerciseNames as  exerciseName, i (exerciseName)}
+    <option value={exerciseKeys[i]}>{exerciseName}</option>
   {/each}
   </select>
 </div>
