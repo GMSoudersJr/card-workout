@@ -2,13 +2,14 @@
   import { suitExercises } from '../../../store'
 	import ExampleWorkout from './ExampleWorkout.svelte';
 	import ExerciseSelectionCompleteButton from './ExerciseSelectionCompleteButton.svelte';
+	import ResetExerciseSelectionsButton from './ResetExerciseSelectionsButton.svelte';
 	import SuitExerciseSelect from './SuitExerciseSelect.svelte';
 
   function handleExcerciseSelected(event: CustomEvent) {
     const {suit, exerciseName} = event.detail;
     suitExercises.updateExercise(suit, exerciseName);
   }
-  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exerciseName === undefined})
+  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exercise?.name === undefined});
 </script>
 
 <div
@@ -29,6 +30,7 @@
     <ExampleWorkout />
   {:else}
     <ExerciseSelectionCompleteButton />
+    <ResetExerciseSelectionsButton />
   {/if}
 
 </div>

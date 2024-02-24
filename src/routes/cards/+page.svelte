@@ -46,7 +46,7 @@
       class="no-cards-showing"
     >
       <p class="oswald-header above-start-button">
-        {#if !$suitExercises[0].exerciseName}
+        {#if !$suitExercises[0].exercise?.name}
           {messageAboveTheStartButton.forPlainCards.toUpperCase()}
           {:else}
           {messageAboveTheStartButton.forExerciseCards.toUpperCase()}
@@ -54,7 +54,7 @@
       </p>
       <StartButton />
       <p class="oswald-header below-start-button">
-        {#if !$suitExercises[0].exerciseName}
+        {#if !$suitExercises[0].exercise?.name}
           {messageBelowTheStartButton.forPlainCards.toUpperCase()}
           {:else}
           {messageBelowTheStartButton.forExerciseCards.toUpperCase()}
@@ -85,7 +85,7 @@
       class="no-cards-showing"
     >
       <p class="oswald-header above-shuffle-button">
-        {#if !$suitExercises[0].exerciseName}
+        {#if !$suitExercises[0].exercise?.name}
           {messageAboveTheShuffleButton.forPlainCards.toUpperCase()}
           {:else}
           {messageAboveTheShuffleButton.forExerciseCards.toUpperCase()}
@@ -93,7 +93,7 @@
       </p>
       <ShuffleButton />
       <p class="oswald-header below-shuffle-button">
-        {#if !$suitExercises[0].exerciseName}
+        {#if !$suitExercises[0].exercise?.name}
           {messageBelowTheShuffleButton.forPlainCards.toUpperCase()}
           {:else}
           {messageBelowTheShuffleButton.forExerciseCards.toUpperCase()}

@@ -18,7 +18,7 @@
   export let suitExercise: TSuitExercise<TSuit>;
   let suitName = suitExercise.suit;
   let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
-  let selected: string | undefined = suitExercise.exerciseName;
+  let selected: string | undefined = suitExercise.exercise?.name;
   let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
 </script>
 
