@@ -21,7 +21,7 @@ export const createDeckOfCards = (
 			const thisSuitExercise = aSelectionOfSuitExercises.find((entry) => {
 				return entry.suit === suit;
 			});
-			exerciseName = thisSuitExercise?.exerciseName;
+			exerciseName = thisSuitExercise?.exercise?.name;
 		}
 		for (let j = 0; j < ranks.length; j++) {
 			let rank = ranks[j];
