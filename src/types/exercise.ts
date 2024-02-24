@@ -4,7 +4,7 @@ import type { TMuscle } from './muscle';
 import type { TBodySection } from './bodySection';
 
 export type TExercise<TExerciseName> = {
-	name: TExerciseName;
+	name: TExerciseName | undefined;
 	positions?: string[] | undefined;
 	bodySections?: TBodySection[] | undefined;
 	bodyParts?: TBodyPart[] | undefined;

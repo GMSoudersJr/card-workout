@@ -9,7 +9,7 @@
     const {suit, exerciseName} = event.detail;
     suitExercises.updateExercise(suit, exerciseName);
   }
-  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exerciseName === undefined})
+  $: someSuitExercisesHaveNotBeenChosen = $suitExercises.some(( entry ) => {return entry.exercise?.name === undefined});
 </script>
 
 <div
