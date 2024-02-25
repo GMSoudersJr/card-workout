@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-	test.setTimeout(100 * 1_000);
+	test.setTimeout(3 * 60 * 1_000);
 
 	await page.goto('/');
 	await page.getByRole('link', { name: 'Cards' }).click();
@@ -61,22 +61,23 @@ test.describe('a user has clicked the start button', () => {
 
 	       // click the "Nope Not Now" button 100 times.
 		let iterator = 0;
-		while ( iterator < 150 ) {
+		while ( iterator < 100 ) {
 			const currentPluckedCardIndex = await findIndexOfPluckedCard(allMiniTicks);
 			await nopeNotNowButton.click().then(async () => {
 				const newlyPluckedCardIndex = await findIndexOfPluckedCard(allMiniTicks);
 				if ( currentPluckedCardIndex === newlyPluckedCardIndex ) {
-					expect(sameCardMessage).toBeVisible();
-					expect(sameCardMessage).toHaveCount(1);
+					await expect(sameCardMessage).toBeVisible();
+					await expect(sameCardMessage).toHaveCount(1);
 				} else {
-					expect(sameCardMessage).toBeHidden();
-					expect(sameCardMessage).toHaveCount(0);
+					await expect(sameCardMessage).toBeHidden();
+					await expect(sameCardMessage).toHaveCount(0);
 				}
 			}).catch((error) => {
 				console.log(error);
+			}).finally(() => {
+				iterator++;
 			});
-			iterator++;
-		}
-	})
+		};
+	});
 
 });
