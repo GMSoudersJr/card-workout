@@ -51,7 +51,8 @@ test.describe('a user has clicked the start button', () => {
 			let result = -1;
 			for (let i = 0; i < allMiniTicks.length; i++) {
 				const tickClass = await allMiniTicks[i].getAttribute('class');
-				if (tickClass && tickClass.includes('plucked')) {
+				if (tickClass === undefined || tickClass === null) return;
+				if (tickClass.includes('plucked')) {
 					result = i;
 					return result;
 				}
