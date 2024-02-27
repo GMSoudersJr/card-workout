@@ -10,14 +10,8 @@ test.beforeEach(async ({ page }) => {
 	// End of before each
 });
 
-test.describe('a user has clicked the start button', () => {
-	test.fixme('"NOPE NOT NOW" button expected to be visible and enabled', async ({ page }) => {
-		const nopeNotNowButton = page.locator('#nope-not-now-button');
-		await expect(nopeNotNowButton).toBeVisible();
-		await expect(nopeNotNowButton).toBeEnabled();
-	});
-
-	test.fixme('click NNN button; expect reamining card count to stay the same', async ({ page }) => {
+test.describe('user clicked start button', () => {
+	test.fixme('click NNN button; expect reamining card count to stay same', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		const numberOfCardsLeftTextElement = page.locator('.cards-left-number');
 		const nopeNotNowButton = page.locator('#nope-not-now-button');
