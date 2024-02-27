@@ -15,7 +15,6 @@
     messageAboveTheShuffleButton,
     messageBelowTheShuffleButton
   } from '$lib/strings/forCardsPage';
-	import NopeNotNowButton from '$lib/components/cards/NopeNotNowButton.svelte';
 	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
 
   function handlePluckedTheSameCard(event: CustomEvent) {
@@ -24,11 +23,6 @@
     setTimeout(() => {
       displayNopeNotNowMessage = false;
     }, 1_250);
-  };
-
-  function handlePluckedDifferentCard(event: CustomEvent) {
-    nopeNotNowMessage = event.detail.message;
-    displayNopeNotNowMessage = false;
   };
 
   $: displayNopeNotNowMessage = false;
@@ -110,12 +104,6 @@
         <PluckedTheSameCard {nopeNotNowMessage} />
       {/if}
     </div>
-    {#if $theCurrentCard.length > 0 && $discardedCards.length <= 50 }
-      <NopeNotNowButton
-        on:pluckedDifferentCard={handlePluckedDifferentCard}
-        on:pluckedTheSameCard={handlePluckedTheSameCard}
-      />
-    {/if}
   </aside>
 </div>
 
