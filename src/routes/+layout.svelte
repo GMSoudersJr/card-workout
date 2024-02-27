@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import ViewTransition from './navigation.svelte';
   import '../app.css';
 </script>

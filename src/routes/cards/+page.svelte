@@ -76,6 +76,7 @@
           textColor={currentCard.textColor}
           reps={currentCard.value}
           disabled={currentCard.hasBeenDiscarded}
+          on:pluckedTheSameCard={handlePluckedTheSameCard}
         />
       </div>
     {/each}
