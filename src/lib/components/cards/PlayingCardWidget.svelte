@@ -15,6 +15,7 @@
   import type { TExerciseName } from '../../../types/exerciseName';
   import { EExerciseNames } from '../../../enums/exerciseNames';
   import { setFocus } from '$lib/utils';
+	import type {TSavedWorkout} from '../../../types/savedWorkout';
 
   async function handleClick() {
     let widthOfUnderCard = 25;
@@ -40,6 +41,28 @@
           left: lengthToScroll,
           behavior: 'smooth'
         });
+      }
+      if ( $discardedCards.length === 52 ) {
+        const pw = localStorage.getItem('workouts');
+        let previousWorkouts: TSavedWorkout[];
+        if (pw === null || pw === undefined) {
+          previousWorkouts = [];
+        } else {
+          previousWorkouts = JSON.parse(pw) as TSavedWorkout[];
+        }
+        let workout: TSavedWorkout = {
+          exercises: $suitExercises.map((suitExercise) => {
+            if (suitExercise.exercise?.name === undefined ||
+                suitExercise.exercise?.name == null) return;
+            return suitExercise.exercise.name;
+          }),
+          time: {
+            end: Date.now(),
+          }
+        };
+        previousWorkouts.push(workout);
+
+        localStorage.setItem('workouts', JSON.stringify(previousWorkouts));
       }
       if ( $theRemainingDeck.length == 0 ) {
         theCurrentCard.reset();

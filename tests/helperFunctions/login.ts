@@ -1,6 +1,8 @@
 import { type BrowserContext } from '@playwright/test';
+import type {TExerciseName} from '../../src/types/exerciseName';
+import type { TSavedWorkout } from '../../src/types/savedWorkout';
 
-async function getLocalStorageData(browswerContext: BrowserContext) {
+export async function getLocalStorageData(browswerContext: BrowserContext) {
 	let result: {name: string, value: string}[];
 	const storageState = await browswerContext.storageState();
 	const { origins } = storageState;
@@ -9,6 +11,20 @@ async function getLocalStorageData(browswerContext: BrowserContext) {
 			return entry;
 		});
 	}).flat();
+
+	return result;
+};
+
+export async function getLocalStorageWorkouts(
+	browswerContext: BrowserContext
+): Promise<TSavedWorkout[] | undefined> {
+	let result: TSavedWorkout[] | undefined;
+	const localStorageData = await getLocalStorageData(browswerContext);
+	const localStorageWorkouts = localStorageData.find(( entry ) => {
+		return entry.name === 'workouts';
+	});
+	if ( localStorageWorkouts === undefined || localStorageWorkouts === null ) return;
+	result = JSON.parse(localStorageWorkouts.value);
 
 	return result;
 };

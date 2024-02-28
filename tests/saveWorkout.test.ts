@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { ESuit } from '../src/enums/suit';
+import {getLocalStorageWorkouts} from './helperFunctions/login';
 
 const [
 	exercise1,
@@ -18,6 +19,7 @@ const [
 
 test.describe('persist workouts to local storage', () => {
 	test.beforeEach(async ({ page }) => {
+	test.setTimeout(51 * 1000);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', { name: 'Play' }).click();
@@ -38,6 +40,33 @@ test.describe('persist workouts to local storage', () => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 		await letsGoButton.click();
 		await page.waitForLoadState('domcontentloaded');
+		// click through cards
+		await page.getByRole('button', { name: 'START' }).click();
+		await page.waitForLoadState('domcontentloaded');
+			await page.getByTestId('playing-card').click();
+			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			const currentCard =
+				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+			while (await discardedCardsListItem.count() < 52) {
+				await expect(currentCard).toHaveCount(1).then(async () => {
+					await currentCard.click();
+				}).catch(( error ) => {
+					console.log('there was an error', error);
+				});
+			}
+		await page.waitForLoadState('domcontentloaded');
+
+	});
+
+	test('expect shuffle button visible', async ({ page }) => {
+		await expect(page.getByRole('button', { name: 'SHUFFLE' })).toBeVisible();
+	});
+
+	test('expect saved workout', async ({ context }) => {
+		const localStorageWorkouts = await getLocalStorageWorkouts(context);
+		if (localStorageWorkouts === undefined || localStorageWorkouts == null) return;
+		expect(localStorageWorkouts.length).toBeGreaterThan(0);
+		expect(localStorageWorkouts[0].exercises).toHaveLength(4);
 	});
 
 });

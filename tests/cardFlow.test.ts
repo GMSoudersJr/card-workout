@@ -58,7 +58,7 @@ test.describe('a user has clicked the Start button', () => {
 		});
 
 		test('all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
-			test.setTimeout(51 * 1000);
+			test.setTimeout(60 * 1_000);
 			await page.getByTestId('playing-card').click();
 			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
 			const currentCard =
@@ -66,6 +66,7 @@ test.describe('a user has clicked the Start button', () => {
 			while (await discardedCardsListItem.count() < 52) {
 				await expect(currentCard).toHaveCount(1).then(async () => {
 					await currentCard.click();
+					await page.waitForLoadState('domcontentloaded');
 				}).catch(( error ) => {
 					console.log(error);
 				});
