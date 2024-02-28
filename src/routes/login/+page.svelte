@@ -21,7 +21,6 @@
 
     return async ({ result, update }) => {
 
-
     }
   };
 </script>
@@ -81,13 +80,10 @@
     color: #FFFFFF;
   }
   .login-container {
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
-    justify-items: center;
     row-gap: 1rem;
-    place-self: center;
   }
   .login-form {
     display: grid;
@@ -105,5 +101,12 @@
     padding: 8px 12px;
     font-size: 1rem;
     color: #000080;
+  }
+  a {
+    text-decoration: none;
+    color: #000080;
+  }
+  a:hover {
+    color: #FFFFFF;
   }
 </style>
