@@ -9,7 +9,7 @@
   function handleSubmit(event: Event) {
     console.log(event);
   }
-  const enhancements: SubmitFunction = async ({ formData, formElement, action, cancel, submitter}) => {
+  const enhancements: SubmitFunction = async ({ formData, cancel}) => {
     const username = formData.get('username')?.toString().trim();
     if (username === undefined || username === null) return;
     localStorage.setItem('username', username);
@@ -19,7 +19,7 @@
     cancel();
     await goto('/');
 
-    return async ({ result, update }) => {
+    return async () => {
 
     }
   };
