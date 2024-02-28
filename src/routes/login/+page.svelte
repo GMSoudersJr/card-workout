@@ -28,7 +28,7 @@
 
 
 <div id="login-container" class="login-container">
-  <h1 class="oswald-header">LOGIN</h1>
+  <h1 class="oswald-header header">LOGIN</h1>
   <form
     class="form login-form"
     id="login-form"
@@ -37,7 +37,7 @@
     use:enhance={enhancements}
   >
   <label
-    class="source-sans-3-text"
+    class="source-sans-3-text label-text"
     id="username-label"
     for="username-input"
   >
@@ -62,7 +62,7 @@
         <p>Your username will be:</p>
         <p class="username-confirm-text">{username}</p>
       {:else}
-        <a href="/">
+        <a href="/" class="source-sans-3-text">
           Play without logging in
         </a>
       {/if}
@@ -76,10 +76,15 @@
 </div>
 
 <style>
+  .header,
+  .label-text {
+    color: #FFFFFF;
+  }
   .login-container {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, min-content);
+    grid-template-rows: repeat(3, min-content);
     justify-items: center;
     row-gap: 1rem;
     place-self: center;
@@ -90,12 +95,15 @@
     grid-template-rows: repeat(auto-fill, min-content);
     row-gap: 0.5rem;
   }
-  .input-text,
-  .input-submit {
-    padding: 5px 8px;
-  }
   .username-confirm-text {
     text-align: center;
     border: 1px solid black;
+  }
+  input[type=submit],
+  input[type=text] {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #000080;
   }
 </style>
