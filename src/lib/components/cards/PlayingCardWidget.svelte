@@ -5,7 +5,8 @@
     theRemainingDeck,
     randomCardIndex,
     theCurrentCard,
-	suitExercises,
+    suitExercises,
+    workoutTimer,
   } from '../../../store';
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
@@ -53,13 +54,14 @@
       }
       if ( $discardedCards.length === 52 ) {
         if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
-        const pw = localStorage.getItem('workouts');
+        const localStorageWorkoutState = localStorage.getItem('workouts');
         let previousWorkouts: TSavedWorkout[];
-        if (pw === null || pw === undefined) {
+        if (localStorageWorkoutState === null || localStorageWorkoutState === undefined) {
           previousWorkouts = [];
         } else {
-          previousWorkouts = JSON.parse(pw) as TSavedWorkout[];
+          previousWorkouts = JSON.parse(localStorageWorkoutState) as TSavedWorkout[];
         }
+        workoutTimer.end(Date.now());
         let workout: TSavedWorkout = {
           exercises: $suitExercises.map((suitExercise) => {
             if (suitExercise.exercise?.name === undefined ||
@@ -67,7 +69,8 @@
             return suitExercise.exercise.name;
           }),
           time: {
-            end: Date.now(),
+            start: $workoutTimer.start,
+            end: $workoutTimer.end
           }
         };
         previousWorkouts.push(workout);

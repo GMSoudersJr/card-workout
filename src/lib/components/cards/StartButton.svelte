@@ -1,17 +1,23 @@
 <script lang="ts">
 	import {startButtonText} from '$lib/strings/forCardsPage';
-  import { setFocus } from '$lib/utils';
+  import { exercisesHaveNotBeenChosen, setFocus } from '$lib/utils';
 
   import {
     theDeckOfCards,
     theCurrentCard,
-    randomCardIndex
+    randomCardIndex,
+    workoutTimer,
+    suitExercises,
   } from '../../../store';
 
   function handleStart() {
     const randomCard = $theDeckOfCards.at($randomCardIndex)
     theDeckOfCards.pluck($randomCardIndex);
     randomCard && theCurrentCard.data(randomCard);
+
+    if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
+
+    workoutTimer.start(Date.now());
   }
 
 </script>
