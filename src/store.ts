@@ -49,7 +49,7 @@ function createTimer() {
 			timer.end = endTimer;
 			return timer
 		}),
-		reset: () => set(initialTimer)
+		reset: () => set({start: 0, end: 0})
 	}
 }
 

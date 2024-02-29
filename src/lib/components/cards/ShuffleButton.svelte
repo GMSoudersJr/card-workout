@@ -4,6 +4,7 @@
     theDeckOfCards,
     discardedCards,
     suitExercises,
+    workoutTimer,
   } from '../../../store';
   import { setFocus } from '$lib/utils';
 
@@ -12,6 +13,7 @@
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
+    workoutTimer.reset();
   }
 
 </script>
