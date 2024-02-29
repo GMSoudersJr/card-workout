@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page, type Locator } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -7,14 +7,95 @@ test.beforeEach(async ({ page }) => {
 	await page.getByRole('link', { name: 'Cards' }).click();
 	await page.getByRole('button', { name: 'Start' }).click();
 });
-test.describe('a user has clicked the Start button', () => {
+test.describe('user has clicked Start button', () => {
 	test(`the first card is expected to be visible`, async ({ page }) => {
 		const theFirstCard = page.getByTestId('playing-card');
 		await expect(theFirstCard).toBeVisible();
 	});
 
-	test('a discarded card goes to its expected place', async ({ page }) => {
+	test('expect click to discard card', async ({ page }) => {
 		await page.getByTestId('playing-card').click();
+		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
+		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
+		await expect(page.getByTestId('discarded-card-listitem')
+			     .getByTestId('playing-card')).toBeDisabled();
+	});
+
+	async function getCenterPositionOf(locator: Locator):
+		Promise<{x: number, y: number} | undefined> {
+		const boundingBox = await locator.boundingBox();
+		if (boundingBox === null) return;
+		const result = {
+			x: boundingBox.x + boundingBox.width / 2,
+			y: boundingBox.y + boundingBox.height / 2
+		};
+
+		return result;
+	};
+
+	async function mimicSwipe(
+		swipeDirection: 'up' | 'down' | 'left' | 'right',
+		page: Page,
+		position: {x: number, y: number}
+	) {
+		if (position === undefined) return;
+		await page.mouse.move(position.x, position.y);
+		await page.mouse.down();
+		switch (swipeDirection) {
+			case 'up':
+				await page.mouse.move(position.x, position.y - 100);
+				break;
+			case 'down':
+				await page.mouse.move(position.x, position.y + 100);
+				break;
+			case 'left':
+				await page.mouse.move(position.x - 50, position.y);
+				break;
+			case 'right':
+				await page.mouse.move(position.x + 50, position.y);
+				break;
+		};
+		await page.mouse.up();
+	};
+
+	test.fixme('expect swipe up to discard card', async ({ page }) => {
+		const thePlayingCard = page.getByTestId('playing-card');
+		const position = await getCenterPositionOf(thePlayingCard);
+		if (position === undefined) return;
+		await mimicSwipe('up', page, position);
+
+		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
+		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
+		await expect(page.getByTestId('discarded-card-listitem')
+			     .getByTestId('playing-card')).toBeDisabled();
+	});
+
+	test.fixme('expect swipe down to re-pluck', async ({ page }) => {
+		const thePlayingCard = page.getByTestId('playing-card');
+		const position = await getCenterPositionOf(thePlayingCard);
+		if (position === undefined) return;
+		await mimicSwipe('down', page, position);
+
+		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
+		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
+	});
+
+	test.fixme('expect swipe left to re-pluck', async ({ page }) => {
+		const thePlayingCard = page.getByTestId('playing-card');
+		const position = await getCenterPositionOf(thePlayingCard);
+		if (position === undefined) return;
+		await mimicSwipe('left', page, position);
+
+		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
+		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
+	});
+
+	test.fixme('expect swipe right to discard card', async ({ page }) => {
+		const thePlayingCard = page.getByTestId('playing-card');
+		const position = await getCenterPositionOf(thePlayingCard);
+		if (position === undefined) return;
+		await mimicSwipe('right', page, position);
+
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
 		await expect(page.getByTestId('discarded-card-listitem')

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
+import { ESuit } from '../src/enums/suit';
 
 const [
 	exercise1,
@@ -7,23 +8,24 @@ const [
 	exercise3,
 	exercise4,
 ] = Object.keys(EExerciseNames);
+const [
+	clubs,
+	diamonds,
+	hearts,
+	spades,
+] = Object.keys(ESuit);
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
 	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Exercises' }).click();
-	const [
-		clubsExerciseSelectLocation,
-		diamondsExerciseSelectLocation,
-		heartsExerciseSelectLocation,
-		spadesExerciseSelectLocation,
-	] = await page.getByRole('combobox').all();
+	await page.waitForLoadState('domcontentloaded');
 
-	await clubsExerciseSelectLocation.selectOption(exercise1);
-	await diamondsExerciseSelectLocation.selectOption(exercise2);
-	await heartsExerciseSelectLocation.selectOption(exercise3);
-	await spadesExerciseSelectLocation.selectOption(exercise4);
+	await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);
+	await page.locator(`#${diamonds}-exercise-select`).selectOption(exercise2);
+	await page.locator(`#${hearts}-exercise-select`).selectOption(exercise3);
+	await page.locator(`#${spades}-exercise-select`).selectOption(exercise4);
 });
 
 test.describe('a user has selected an exercise for each suit', () => {

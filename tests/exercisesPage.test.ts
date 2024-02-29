@@ -54,12 +54,11 @@ test.describe('exercise page example workout tests', () => {
 });
 
 test.describe('suit exercise selector visibility test', () => {
-	const suits = Object.keys(ESuit);
 	test('expect each suit exercise selector to be visible', async ({ page }) => {
-		await expect(page.locator(`id=${suits[0]}-exercise-select`)).toBeVisible();
-		await expect(page.locator(`id=${suits[1]}-exercise-select`)).toBeVisible();
-		await expect(page.locator(`id=${suits[2]}-exercise-select`)).toBeVisible();
-		await expect(page.locator(`id=${suits[3]}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${clubs}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${diamonds}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${hearts}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${spades}-exercise-select`)).toBeVisible();
 	});
 });
 

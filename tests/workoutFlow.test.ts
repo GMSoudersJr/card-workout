@@ -21,17 +21,13 @@ test.beforeEach(async ({ page }) => {
 	await page.waitForLoadState('domcontentloaded');
 	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Exercises' }).click();
+	await page.waitForLoadState('domcontentloaded');
 
-	const clubsSelect = page.locator(`#${clubs}-exercise-select`);
-	const diamondsSelect = page.locator(`#${diamonds}-exercise-select`);
-	const heartsSelect = page.locator(`#${hearts}-exercise-select`);
-	const spadesSelect = page.locator(`#${spades}-exercise-select`);
+	await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);
+	await page.locator(`#${diamonds}-exercise-select`).selectOption(exercise2);
+	await page.locator(`#${hearts}-exercise-select`).selectOption(exercise3);
+	await page.locator(`#${spades}-exercise-select`).selectOption(exercise4);
 
-	await clubsSelect.selectOption(exercise1);
-	await diamondsSelect.selectOption(exercise2);
-	await heartsSelect.selectOption(exercise3);
-	await spadesSelect.selectOption(exercise4);
-	
 	const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 	await letsGoButton.click();
 
