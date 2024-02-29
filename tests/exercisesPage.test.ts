@@ -52,19 +52,18 @@ test.describe('exercise page example workout tests', () => {
 });
 
 test.describe('suit exercise selector visibility test', () => {
-	const suits = Object.keys(ESuit);
 	test('expect each suit exercise selector to be visible', async ({ page }) => {
-		await expect(page.locator(`id=${suits[0]}-exercise-selection`)).toBeVisible();
-		await expect(page.locator(`id=${suits[1]}-exercise-selection`)).toBeVisible();
-		await expect(page.locator(`id=${suits[2]}-exercise-selection`)).toBeVisible();
-		await expect(page.locator(`id=${suits[3]}-exercise-selection`)).toBeVisible();
+		await expect(page.locator(`#${clubs}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${diamonds}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${hearts}-exercise-select`)).toBeVisible();
+		await expect(page.locator(`#${spades}-exercise-select`)).toBeVisible();
 	});
 });
 
 test.describe('example workout list visibility', () => {
 	test(`select ${EExerciseNames[exercise1 as keyof typeof EExerciseNames]} for ${clubs}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-		const location = page.locator(`id=${clubs}-exercise-selection`)
+		const location = page.locator(`#${clubs}-exercise-select`)
 		const [ firstSelection ] = await location.selectOption(exercise1);
 		expect(firstSelection).toBe(exercise1);
 		await expect(page.getByTestId('example-workout-list')).toBeVisible();
@@ -73,7 +72,7 @@ test.describe('example workout list visibility', () => {
 
 	test(`select ${EExerciseNames[exercise2 as keyof typeof EExerciseNames]} for ${diamonds}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-		const location = page.locator(`id=${diamonds}-exercise-selection`)
+		const location = page.locator(`#${diamonds}-exercise-select`)
 		const [ secondSelection ] = await location.selectOption(exercise2);
 		expect(secondSelection).toBe(exercise2);
 		await expect(page.getByTestId('example-workout-list')).toBeVisible();
@@ -82,7 +81,7 @@ test.describe('example workout list visibility', () => {
 
 	test(`select ${EExerciseNames[exercise3 as keyof typeof EExerciseNames]} for ${hearts}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-		const location = page.locator(`id=${hearts}-exercise-selection`)
+		const location = page.locator(`#${hearts}-exercise-select`)
 		const [ thirdSelection ] = await location.selectOption(exercise3);
 		expect(thirdSelection).toBe(exercise3);
 		await expect(page.getByTestId('example-workout-list')).toBeVisible();
@@ -91,7 +90,7 @@ test.describe('example workout list visibility', () => {
 
 	test(`select ${EExerciseNames[exercise4 as keyof typeof EExerciseNames]} for ${spades}`, async ({ page }) => {
 		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-		const location = page.locator(`id=${spades}-exercise-selection`)
+		const location = page.locator(`#${spades}-exercise-select`)
 		const [ fourthSelection ] = await location.selectOption(exercise4);
 		expect(fourthSelection).toBe(exercise4);
 		await expect(page.getByTestId('example-workout-list')).toBeVisible();

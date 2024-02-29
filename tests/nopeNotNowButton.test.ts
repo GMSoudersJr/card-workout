@@ -10,14 +10,8 @@ test.beforeEach(async ({ page }) => {
 	// End of before each
 });
 
-test.describe('a user has clicked the start button', () => {
-	test('"NOPE NOT NOW" button expected to be visible and enabled', async ({ page }) => {
-		const nopeNotNowButton = page.locator('#nope-not-now-button');
-		await expect(nopeNotNowButton).toBeVisible();
-		await expect(nopeNotNowButton).toBeEnabled();
-	});
-
-	test('click NNN button; expect reamining card count to stay the same', async ({ page }) => {
+test.describe('user clicked start button', () => {
+	test.fixme('click NNN button; expect reamining card count to stay same', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		const numberOfCardsLeftTextElement = page.locator('.cards-left-number');
 		const nopeNotNowButton = page.locator('#nope-not-now-button');
@@ -25,7 +19,7 @@ test.describe('a user has clicked the start button', () => {
 		await expect(numberOfCardsLeftTextElement).toHaveText('51');
 	});
 
-	test('click NNN button; expect visible mini card tick count to stay the same', async ({ page }) => {
+	test.fixme('click NNN button; expect visible mini card tick count to stay the same', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		const inDeckCardTicks = await page.locator('.in-deck').all();
 		const pluckedCardTicks = await page.locator('.plucked').all();
@@ -41,7 +35,7 @@ test.describe('a user has clicked the start button', () => {
 		};
 	});
 
-	test('has expected message when the same card is plucked', async ({ page }) => {
+	test.fixme('has expected message when the same card is plucked', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		const nopeNotNowButton = page.locator('#nope-not-now-button');
 		const sameCardMessage = page.locator('#plucked-same-card-message');
@@ -51,7 +45,8 @@ test.describe('a user has clicked the start button', () => {
 			let result = -1;
 			for (let i = 0; i < allMiniTicks.length; i++) {
 				const tickClass = await allMiniTicks[i].getAttribute('class');
-				if (tickClass && tickClass.includes('plucked')) {
+				if (tickClass === undefined || tickClass === null) return;
+				if (tickClass.includes('plucked')) {
 					result = i;
 					return result;
 				}

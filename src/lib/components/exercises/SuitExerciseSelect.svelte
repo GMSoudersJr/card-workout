@@ -26,14 +26,14 @@
   <label
     class="exercise-selection-label"
     id={`${suitName}-exercise-selection-label`}
-    for={`${suitName}-exercise-selection`}
+    for={`${suitName}-exercise-select`}
     style:color={labelColor}
   >
     {@html icon}
   </label>
   <select
     name="suit-exercise-selection"
-    id={`${suitName}-exercise-selection`}
+    id={`${suitName}-exercise-select`}
     bind:value={selected}
     on:change={handleChange}
     class="source-sans-3-text"

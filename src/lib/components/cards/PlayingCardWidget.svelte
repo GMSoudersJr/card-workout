@@ -19,9 +19,8 @@
   async function handleClick() {
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
-    //@ts-ignore
+    if ( clientWidth === undefined) return; 
     if ( clientWidth / 52 > 25 ) {
-      //@ts-ignore
       widthOfUnderCard = clientWidth / 52;
     }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
@@ -29,12 +28,8 @@
       suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
-      // This will change the animation. Test it later to see what users like more
-      await tick();
-      //@ts-ignore
+//await tick();
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
-        //@ts-ignore
-        // document.getElementById('discarded-cards-only').scrollLeft = lengthToScroll;
         document.getElementById('discarded-cards-only')?.scrollTo({
           top: 0,
           left: lengthToScroll,

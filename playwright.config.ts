@@ -13,20 +13,20 @@ const config: PlaywrightTestConfig = {
 		/*
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'] },
+			use: { ...devices['Desktop Chrome'], hasTouch: true },
 		},
 		{
 			name: 'Mobile Chrome',
-			use: { ...devices['Pixel 7'] },
+			use: { ...devices['Pixel 7'], hasTouch: true },
 		},
 		{
 			name: 'Mobile Firefox',
-			use: { ...devices['Pixel 7'] },
+			use: { ...devices['Pixel 7'], hasTouch: true },
 		},
 		*/
 		{
 			name: 'firefox',
-			use: { ...devices['Desktop Firefox'] },
+			use: { ...devices['Desktop Firefox'], hasTouch: true },
 		},
 	]
 };
