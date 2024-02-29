@@ -16,6 +16,7 @@
   import { EExerciseNames } from '../../../enums/exerciseNames';
   import { setFocus } from '$lib/utils';
 	import type {TSavedWorkout} from '../../../types/savedWorkout';
+  import { exercisesHaveNotBeenChosen } from "$lib/utils";
 
   async function handleClick() {
     let widthOfUnderCard = 25;
@@ -42,7 +43,16 @@
           behavior: 'smooth'
         });
       }
+      if ( $theRemainingDeck.length == 0 ) {
+        theCurrentCard.reset();
+      } else {
+        //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+        const randomCard = $theDeckOfCards.at($randomCardIndex)
+        theDeckOfCards.pluck($randomCardIndex);
+        randomCard && theCurrentCard.data(randomCard);
+      }
       if ( $discardedCards.length === 52 ) {
+        if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
         const pw = localStorage.getItem('workouts');
         let previousWorkouts: TSavedWorkout[];
         if (pw === null || pw === undefined) {
@@ -63,14 +73,6 @@
         previousWorkouts.push(workout);
 
         localStorage.setItem('workouts', JSON.stringify(previousWorkouts));
-      }
-      if ( $theRemainingDeck.length == 0 ) {
-        theCurrentCard.reset();
-      } else {
-        //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-        const randomCard = $theDeckOfCards.at($randomCardIndex)
-        theDeckOfCards.pluck($randomCardIndex);
-        randomCard && theCurrentCard.data(randomCard);
       }
   }
 

@@ -3,6 +3,7 @@ import { ECardRank } from '../enums/cardRank';
 import { PlayingCard } from '../classes/playingCard';
 import type { TSuit } from '../types/suit';
 import type { TCardRank } from '../types/cardRank';
+import type { TSuitExercise } from '../types/suitExercise';
 
 export const createDeckOfCards = () => {
 	let result: PlayingCard[] = [];
@@ -31,4 +32,8 @@ export function setFocus(element: HTMLElement) {
 		}
 	}
 };
+
+export const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
+	return entry.exercise?.name === undefined;
+}
 
