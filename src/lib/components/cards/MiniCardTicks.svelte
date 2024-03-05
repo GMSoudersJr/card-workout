@@ -18,8 +18,8 @@
 <style>
   .mini-card-tick {
     height: 100%;
-    border: 1px solid #FFF;
-    background: #000080;
+    border: 1px solid #000080;
+    background: #39FF14;
     border-radius: 2px;
   }
   .plucked {
