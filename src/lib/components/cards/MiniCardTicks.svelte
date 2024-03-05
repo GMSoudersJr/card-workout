@@ -23,7 +23,7 @@
     border-radius: 2px;
   }
   .plucked {
-    border: 1px solid #000080;
+    border: 1px solid #FFF;
     background: #FFF;
     border-radius: 2px;
     transition: ease-out 400ms;
