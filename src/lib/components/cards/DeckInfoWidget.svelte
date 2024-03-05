@@ -28,7 +28,11 @@
     id="card-tick-container"
   >
     {#each $theDeckOfCards as card (card.deckIndex)}
-      <MiniCardTicks name={card.name} hasBeenPlucked={card.hasBeenPlucked}/>
+      <MiniCardTicks
+        name={card.name}
+        hasBeenPlucked={card.hasBeenPlucked}
+        hasBeenDiscarded={card.hasBeenDiscarded}
+      />
     {/each}
   </div>
 </div>

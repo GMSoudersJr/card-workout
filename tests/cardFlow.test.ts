@@ -1,5 +1,4 @@
 import { expect, test, type Page, type Locator } from '@playwright/test';
-import {error} from '@sveltejs/kit';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
