@@ -20,30 +20,29 @@
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     if ( clientWidth === undefined) return; 
-    if ( clientWidth / 52 > 25 ) {
-      widthOfUnderCard = clientWidth / 52;
-    }
+    if ( clientWidth / 52 > 25 ) { widthOfUnderCard = clientWidth / 52; }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($theCurrentCard[0]);
+      theDeckOfCards.discard($theCurrentCard[0].deckIndex);
       suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
-//await tick();
+      //await tick();
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
-        document.getElementById('discarded-cards-only')?.scrollTo({
-          top: 0,
-          left: lengthToScroll,
-          behavior: 'smooth'
-        });
-      }
-      if ( $theRemainingDeck.length == 0 ) {
-        theCurrentCard.reset();
-      } else {
-        //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-        const randomCard = $theDeckOfCards.at($randomCardIndex)
-        theDeckOfCards.pluck($randomCardIndex);
-        randomCard && theCurrentCard.data(randomCard);
-      }
+      document.getElementById('discarded-cards-only')?.scrollTo({
+        top: 0,
+        left: lengthToScroll,
+        behavior: 'smooth'
+      });
+    }
+    if ( $theRemainingDeck.length == 0 ) {
+      theCurrentCard.reset();
+    } else {
+      //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+      const randomCard = $theDeckOfCards.at($randomCardIndex)
+      theDeckOfCards.pluck($randomCardIndex);
+      randomCard && theCurrentCard.data(randomCard);
+    }
   }
 
   export let rankSymbol: TCardRank;
