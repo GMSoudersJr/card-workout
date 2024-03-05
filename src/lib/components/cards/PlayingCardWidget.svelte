@@ -71,6 +71,9 @@
     let xDiff = xDown - xUp;
     let yDiff = yDown - yUp;
 
+    // return early if swipe is less than or equal to 20 pixels.
+    if (Math.abs(xDiff) <= 20 && Math.abs(yDiff) <= 20) return cardAction;
+
     // Decides what to do with the card based on value of the slope
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
       if ( xDiff > 0 ) {
