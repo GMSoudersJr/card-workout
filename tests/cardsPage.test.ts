@@ -35,20 +35,45 @@ test('the page has expected suit radio button', async ({ page }) => {
 	await expect(page.getByLabel('Suit', { exact: true })).toBeVisible();
 });
 
-test('expect the deck radio button to be checked when clicked', async ({ page }) => {
+test('expect deck radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true, name: 'Deck'})).toBeChecked();
 });
 
-test('expect the rank radio button to be checked when clicked', async ({ page }) => {
+test('expect rank radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Rank', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true, name: 'Rank'})).toBeChecked();
 });
 
-test('expect the suit radio button to be checked when clicked', async ({ page }) => {
+test('expect suit radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Suit', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true, name: 'Suit'})).toBeChecked();
 });
+
+test.describe('uncheck radio button', () => {
+
+	test('expect deck radio button unchecked after repeat check', async ({ page }) => {
+		const deckRadioLabel = page.getByLabel('Deck', {exact: true});
+		const deckRadioButton = page.getByRole('radio', {name: 'Deck'});
+		await deckRadioLabel.check();
+		await expect(deckRadioButton).toBeChecked();
+		await deckRadioLabel.uncheck();
+		await expect(deckRadioButton).not.toBeChecked();
+	});
+
+	test('expect stat info widget to be empty a', async ({ page }) => {
+		const deckRadioLabel = page.getByLabel('Deck', {exact: true});
+		const deckRadioButton = page.getByRole('radio', {name: 'Deck'});
+		const deckStatWidget = page.locator('.widget-container');
+		await deckRadioLabel.check();
+		await expect(deckRadioButton).toBeChecked();
+		await deckRadioLabel.uncheck();
+		await expect(deckRadioButton).not.toBeChecked();
+		await expect(deckStatWidget).toBeEmpty();
+	});
+
+});
+
 
 test('expect deck info to show 52 cards remaining', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
