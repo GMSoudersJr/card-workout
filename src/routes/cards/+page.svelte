@@ -39,22 +39,34 @@
       id="cards-intro"
       class="no-cards-showing"
     >
+    {#if !$suitExercises[0].exercise?.name}
+      {#each messageAboveTheStartButton.forPlainCards as message (message)}
       <p class="oswald-header above-start-button">
-        {#if !$suitExercises[0].exercise?.name}
-          {messageAboveTheStartButton.forPlainCards.toUpperCase()}
-          {:else}
-          {messageAboveTheStartButton.forExerciseCards.toUpperCase()}
-        {/if}
+        {message.toUpperCase()}
       </p>
-      <StartButton />
-      <p class="oswald-header below-start-button">
-        {#if !$suitExercises[0].exercise?.name}
-          {messageBelowTheStartButton.forPlainCards.toUpperCase()}
-          {:else}
-          {messageBelowTheStartButton.forExerciseCards.toUpperCase()}
-        {/if}
+      {/each}
+    {:else}
+      {#each messageAboveTheStartButton.forExerciseCards as message (message)}
+      <p class="oswald-header above-start-button">
+        {message.toUpperCase()}
       </p>
-    </div>
+      {/each}
+    {/if}
+    <StartButton />
+    {#if !$suitExercises[0].exercise?.name}
+      {#each messageBelowTheStartButton.forPlainCards as message (message)}
+    <p class="oswald-header below-start-button">
+      {message.toUpperCase()}
+    </p>
+      {/each}
+    {:else}
+      {#each messageBelowTheStartButton.forExerciseCards as message (message)}
+    <p class="oswald-header below-start-button">
+      {message.toUpperCase()}
+    </p>
+      {/each}
+    {/if}
+  </div>
   {:else if $theCurrentCard.length > 0}
     {#each $theCurrentCard as currentCard (currentCard.name)}
       <div class="card-outer-container"
@@ -79,21 +91,33 @@
       id="cards-outro"
       class="no-cards-showing"
     >
+    {#if !$suitExercises[0].exercise?.name}
+      {#each messageAboveTheShuffleButton.forPlainCards as message (message)}
       <p class="oswald-header above-shuffle-button">
-        {#if !$suitExercises[0].exercise?.name}
-          {messageAboveTheShuffleButton.forPlainCards.toUpperCase()}
-          {:else}
-          {messageAboveTheShuffleButton.forExerciseCards.toUpperCase()}
-        {/if}
+        {message.toUpperCase()}
       </p>
+      {/each}
+    {:else}
+      {#each messageAboveTheShuffleButton.forExerciseCards as message (message)}
+      <p class="oswald-header above-shuffle-button">
+        {message.toUpperCase()}
+      </p>
+      {/each}
+    {/if}
       <ShuffleButton />
+      {#if !$suitExercises[0].exercise?.name}
+        {#each messageBelowTheShuffleButton.forPlainCards as message (message)}
       <p class="oswald-header below-shuffle-button">
-        {#if !$suitExercises[0].exercise?.name}
-          {messageBelowTheShuffleButton.forPlainCards.toUpperCase()}
-          {:else}
-          {messageBelowTheShuffleButton.forExerciseCards.toUpperCase()}
-        {/if}
+        {message.toUpperCase()}
       </p>
+        {/each}
+      {:else}
+        {#each messageBelowTheShuffleButton.forExerciseCards as message (message)}
+      <p class="oswald-header below-shuffle-button">
+        {message.toUpperCase()}
+      </p>
+        {/each}
+      {/if}
     </div>
   {/if}
   </section>
@@ -127,7 +151,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
     align-items: center;
   }
   .right-aside {
@@ -149,5 +173,6 @@
   .above-shuffle-button,
   .below-shuffle-button {
     text-align: center;
+    color: #000080;
   }
 </style>
