@@ -16,6 +16,7 @@
   }
 
   type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
+
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
     rank: RankInfoWidget,
@@ -65,30 +66,36 @@
     }
   };
 
-function transition(action: () => void) {
-  // @ts-ignore
-  if (!document.startViewTransition) {
-    return action
-  } else {
+  function transition(action: () => void) {
     // @ts-ignore
-    document.startViewTransition(action);
+    if (!document.startViewTransition) {
+      return action
+    } else {
+      // @ts-ignore
+      document.startViewTransition(action);
+    }
   }
-}
 
-
-function handleChange(event: Event) {
-  const target = event.target as HTMLInputElement;
-  // @ts-ignore
-  if ( !document.startViewTransition ) {
-    group = target.value;
-    showThisWidget = group;
-  } else {
-    transition(() => showThisWidget = group);
+  function handleChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    // @ts-ignore
+    if ( !document.startViewTransition ) {
+      group = target.value;
+      showThisWidget = group;
+    } else {
+      transition(() => showThisWidget = group);
+    }
   }
-}
 
-  let group: Group = '';
-  let showThisWidget = group;
+  function handleClick(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if ( group === target.value ) {
+      group = '';
+    }
+  }
+
+  let group: Group = 'deck';
+  let showThisWidget: string | undefined = group;
 </script>
 
 <div class="cards-info-widget-container">
@@ -106,12 +113,15 @@ function handleChange(event: Event) {
           name="deck-of-cards-info"
           value={choice.value}
           on:change={handleChange}
+          on:click={handleClick}
         >
       </label>
       {/each}
     </div>
     <div class="widget-container">
+      {#if group !== ''}
       <svelte:component this={infoWidgets[showThisWidget]} />
+      {/if}
     </div>
 </div>
 

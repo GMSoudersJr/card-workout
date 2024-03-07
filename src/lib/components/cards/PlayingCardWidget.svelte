@@ -12,40 +12,82 @@
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
   import type { TCardRank } from '../../../types/cardRank';
   import type { TSuit } from '../../../types/suit';
-	import {tick} from 'svelte';
+	import {onMount, tick, createEventDispatcher} from 'svelte';
   import type { TExerciseName } from '../../../types/exerciseName';
   import { EExerciseNames } from '../../../enums/exerciseNames';
   import { setFocus } from '$lib/utils';
 	import type {TSavedWorkout} from '../../../types/savedWorkout';
   import { exercisesHaveNotBeenChosen } from "$lib/utils";
+  import { getTouches } from '../../../functions/forSwiping';
+
+  const dispatch = createEventDispatcher();
 
   async function handleClick() {
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     if ( clientWidth === undefined) return; 
-    if ( clientWidth / 52 > 25 ) {
-      widthOfUnderCard = clientWidth / 52;
-    }
+    if ( clientWidth / 52 > 25 ) { widthOfUnderCard = clientWidth / 52; }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($theCurrentCard[0]);
+      theDeckOfCards.discard($theCurrentCard[0].deckIndex);
       suitExercises.addReps($theCurrentCard[0]);
       let numberOfDiscardedCards = $discardedCards.length;
       let widthOfCards = 100 + ((numberOfDiscardedCards - 1) * widthOfUnderCard);
-//await tick();
+      //await tick();
       let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
-        document.getElementById('discarded-cards-only')?.scrollTo({
-          top: 0,
-          left: lengthToScroll,
-          behavior: 'smooth'
-        });
-      }
-      if ( $theRemainingDeck.length == 0 ) {
-        theCurrentCard.reset();
+      document.getElementById('discarded-cards-only')?.scrollTo({
+        top: 0,
+        left: lengthToScroll,
+        behavior: 'smooth'
+      });
+    }
+    if ( $theRemainingDeck.length == 0 ) {
+      theCurrentCard.reset();
+    } else {
+      //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
+      const randomCard = $theDeckOfCards.at($randomCardIndex)
+      theDeckOfCards.pluck($randomCardIndex);
+      randomCard && theCurrentCard.data(randomCard);
+    }
+  }
+
+  let xDown: number;
+  let yDown: number;
+  function handleStart(event: TouchEvent) {
+    event.preventDefault();
+    const firstTouch = getTouches(event)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleEnd(event: TouchEvent) {
+    if ( !xDown || !yDown ) {
+      return;
+    }
+
+    let cardAction: 'discard' | 'putBack' | undefined;
+
+    let xUp = event.changedTouches[0].clientX;
+    let yUp = event.changedTouches[0].clientY;
+
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+
+    // return early if swipe is less than or equal to 20 pixels.
+    if (Math.abs(xDiff) <= 20 && Math.abs(yDiff) <= 20) return cardAction;
+
+    // Decides what to do with the card based on value of the slope
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+      if ( xDiff > 0 ) {
+        cardAction = "putBack";
       } else {
-        //const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
-        const randomCard = $theDeckOfCards.at($randomCardIndex)
-        theDeckOfCards.pluck($randomCardIndex);
-        randomCard && theCurrentCard.data(randomCard);
+        cardAction = "discard";
+      }
+    } else {
+      if ( yDiff > 0 ) {
+        cardAction = "discard";
+      } else {
+        cardAction = "putBack";
       }
       if ( $discardedCards.length === 52 ) {
         if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
@@ -72,7 +114,33 @@
 
         localStorage.setItem('workouts', JSON.stringify(previousWorkouts));
       }
+    }
+
+    if ( cardAction === 'discard' ) handleClick();
+    if ( cardAction === 'putBack' ) handlePutBack();
   }
+
+  function handlePutBack() {
+    let theDeckIndexOfTheCardToPutBack: number;
+    if ( $theCurrentCard[0] ) {
+      theDeckIndexOfTheCardToPutBack = $theCurrentCard[0].deckIndex;
+      theDeckOfCards.putBack(theDeckIndexOfTheCardToPutBack);
+      if ( $randomCardIndex === theDeckIndexOfTheCardToPutBack ) {
+        dispatch('pluckedTheSameCard', {
+          message: 'Plucked same card! Try again!'
+        });
+      }
+      theCurrentCard.data($theDeckOfCards[$randomCardIndex]);
+      theDeckOfCards.pluck($randomCardIndex);
+    }
+  }
+
+  onMount(async () => {
+    if ( id.includes('discarded') ) return;
+    let card = document.getElementById(`${id}`);
+    card?.addEventListener('touchstart', handleStart);
+    card?.addEventListener('touchend', handleEnd);
+  });
 
   export let rankSymbol: TCardRank;
   export let suitSymbol: TSuit;
@@ -80,10 +148,10 @@
   export let textColor: string;
   export let exerciseName: TExerciseName | undefined;
   export let reps: number | undefined;
+  export let disabled: boolean;
   $: exerciseNameText = EExerciseNames[exerciseName as keyof typeof EExerciseNames];
   $: rank = ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol]
   $: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode]
-  export let disabled: boolean;
 </script>
 
 <button

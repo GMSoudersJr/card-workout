@@ -36,11 +36,13 @@ test.describe('user has clicked Start button', () => {
 	async function mimicSwipe(
 		swipeDirection: 'up' | 'down' | 'left' | 'right',
 		page: Page,
-		position: {x: number, y: number}
+		position: {x: number, y: number},
+		card: Locator,
 	) {
 		if (position === undefined) return;
 		await page.mouse.move(position.x, position.y);
 		await page.mouse.down();
+		await card.dispatchEvent('touchstart');
 		switch (swipeDirection) {
 			case 'up':
 				await page.mouse.move(position.x, position.y - 100);
@@ -55,14 +57,15 @@ test.describe('user has clicked Start button', () => {
 				await page.mouse.move(position.x + 50, position.y);
 				break;
 		};
-		await page.mouse.up();
+		await card.dispatchEvent('touchend');
+		// await page.mouse.up();
 	};
 
 	test.fixme('expect swipe up to discard card', async ({ page }) => {
 		const thePlayingCard = page.getByTestId('playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
-		await mimicSwipe('up', page, position);
+		await mimicSwipe('up', page, position, thePlayingCard);
 
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
@@ -74,7 +77,7 @@ test.describe('user has clicked Start button', () => {
 		const thePlayingCard = page.getByTestId('playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
-		await mimicSwipe('down', page, position);
+		await mimicSwipe('down', page, position, thePlayingCard);
 
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
@@ -84,7 +87,7 @@ test.describe('user has clicked Start button', () => {
 		const thePlayingCard = page.getByTestId('playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
-		await mimicSwipe('left', page, position);
+		await mimicSwipe('left', page, position, thePlayingCard);
 
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
@@ -94,7 +97,7 @@ test.describe('user has clicked Start button', () => {
 		const thePlayingCard = page.getByTestId('playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
-		await mimicSwipe('right', page, position);
+		await mimicSwipe('right', page, position, thePlayingCard);
 
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
