@@ -3,7 +3,7 @@ import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 	webServer: {
-		command: 'npm run build && npm run preview',
+		command: 'npm run build && npm run preview -- --host',
 		port: 4173
 	},
 	testDir: 'tests',
@@ -27,7 +27,15 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'firefox',
 			use: { ...devices['Desktop Firefox'], hasTouch: true },
+			testIgnore: /android/,
 		},
+		/*
+		{
+			name: 'android',
+			testMatch: /android/,
+			use: { hasTouch: true }
+		}
+		*/
 	]
 };
 
