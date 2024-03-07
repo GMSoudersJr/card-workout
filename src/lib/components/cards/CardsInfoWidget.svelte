@@ -15,7 +15,7 @@
     [key: string]: ComponentType
   }
 
-  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string | undefined;
+  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
 
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
@@ -98,7 +98,7 @@
     }
   }
 
-  let group: Group = undefined;
+  let group: Group = 'deck';
   let showThisWidget: string | undefined = group;
 </script>
 
