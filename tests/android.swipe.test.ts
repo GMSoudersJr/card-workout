@@ -1,6 +1,5 @@
 import {
 	expect,
-	selectors,
 	test,
 	_android as android,
 	type Page,
@@ -40,8 +39,8 @@ async function getCenterPositionOf(locator: Locator):
 	const boundingBox = await locator.boundingBox();
 	if (boundingBox === null) return;
 	const result = {
-		x: boundingBox.x + boundingBox.width / 2,
-		y: boundingBox.y + boundingBox.height / 2
+		x: Math.floor(boundingBox.x + boundingBox.width / 2),
+		y: Math.floor(boundingBox.y + boundingBox.height / 2)
 	};
 
 	return result;
@@ -65,18 +64,25 @@ test.describe('swipe a card', () => {
 		await expect(startButton).toBeVisible();
 		await expect(startButton).toBeEnabled();
 		await startButton.click();
+		await page.getByLabel('Deck').check();
+		await page.waitForLoadState('domcontentloaded');
 		const theFirstCard = page.getByTestId('playing-card');
 		await expect(theFirstCard).toBeVisible();
 		await expect(theFirstCard).toBeEnabled();
 		const centerOfTheFirstCard = await getCenterPositionOf(theFirstCard);
 		if ( centerOfTheFirstCard === undefined || centerOfTheFirstCard === null ) return;
-		await device.input.swipe(centerOfTheFirstCard, [{x: 0, y: -50}], 100);
+		const segments = [
+			centerOfTheFirstCard,
+			{x: 0, y: 50}
+		];
+		const steps = 100;
+		await device.input.swipe(centerOfTheFirstCard, segments, steps);
+		await device.input.swipe({x: 0, y: 0}, segments, steps);
+		await device.input.tap(centerOfTheFirstCard);
 		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
 		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
 		await expect(page.getByTestId('discarded-card-listitem')
 			     .getByTestId('playing-card')).toBeDisabled();
-
-
 		await page.close();
 		await context.close();
 		await device.shell('am force-stop com.android.chrome');

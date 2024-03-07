@@ -23,16 +23,19 @@ const config: PlaywrightTestConfig = {
 			name: 'Mobile Firefox',
 			use: { ...devices['Pixel 7'], hasTouch: true },
 		},
+		*/
 		{
 			name: 'firefox',
 			use: { ...devices['Desktop Firefox'], hasTouch: true },
 			testIgnore: /android/,
 		},
-		*/
+		/*
 		{
 			name: 'android',
 			testMatch: /android/,
+			use: { hasTouch: true }
 		}
+		*/
 	]
 };
 

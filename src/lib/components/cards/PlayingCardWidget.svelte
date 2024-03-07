@@ -108,7 +108,7 @@
   }
 
   onMount(async () => {
-    if (id.includes('discarded')) return;
+    if ( id.includes('discarded') ) return;
     let card = document.getElementById(`${id}`);
     card?.addEventListener('touchstart', handleStart);
     card?.addEventListener('touchend', handleEnd);

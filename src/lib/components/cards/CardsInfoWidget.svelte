@@ -15,7 +15,7 @@
     [key: string]: ComponentType
   }
 
-  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
+  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string | undefined;
 
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
@@ -80,7 +80,6 @@
     }
   }
 
-
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;
     // @ts-ignore
@@ -91,6 +90,7 @@
       transition(() => showThisWidget = group);
     }
   }
+
   function handleClick(event: Event) {
     const target = event.target as HTMLInputElement;
     if ( group === target.value ) {
@@ -98,8 +98,8 @@
     }
   }
 
-  let group: Group = '';
-  let showThisWidget = group;
+  let group: Group = undefined;
+  let showThisWidget: string | undefined = group;
 </script>
 
 <div class="cards-info-widget-container">
