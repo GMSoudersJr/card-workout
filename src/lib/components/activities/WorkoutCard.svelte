@@ -59,38 +59,37 @@ $: exercises = workout.exercises.map((exercise) => {
 
 <style>
   .workout-card {
-    width: 280px;
-    height: calc(280px / 1.618);
-    border: 1px solid green;
+    width: calc(100%);
+    border: 1px solid #259259;
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content) 1fr;
+    border-radius: 8px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: linear-gradient(135deg, #D9D9D9, #FFF 30%);
+    row-gap: 0.5rem;
   }
   .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: min-content;
     justify-content: center;
+    align-items: baseline;
+    color: #000080;
   }
+  .workout-number,
+  .workout-name,
   .workout-date {
-    border: 1px solid green;
     display: grid;
     justify-content: center;
-  }
-  .workout-name {
-    font-size: large;
-    border: 1px solid green;
-    display: grid;
-    justify-content: center;
-  }
-  .workout-number {
-    border: 1px solid green;
-    display: grid;
-    justify-content: center;
+    color: #000080;
   }
   .workout-time {
     display: grid;
     text-align: center;
     font-size: x-large;
+    color: #000080;
   }
   .exercises-container {
     display: grid;
@@ -99,6 +98,8 @@ $: exercises = workout.exercises.map((exercise) => {
   }
   .exercise-name {
     font-size: medium;
+    text-align: center;
+    color: #000080;
   }
 </style>
 

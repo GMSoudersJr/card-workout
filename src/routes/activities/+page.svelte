@@ -28,6 +28,7 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 1rem;
+    justify-items: center;
   }
 </style>
 
