@@ -26,64 +26,59 @@
 </script>
 
 
-<div id="login-container" class="login-container">
-  <h1 class="oswald-header header">LOGIN</h1>
-  <form
-    class="form login-form"
-    id="login-form"
-    method="post"
-    action="?/login"
-    use:enhance={enhancements}
-  >
-  <label
-    class="source-sans-3-text label-text"
-    id="username-label"
-    for="username-input"
-  >
-    Username:
-  </label>
-  <input
-    class="input-text source-sans-3-text"
-    id="username-input"
-    name="username"
-    type="text"
-    value={form?.username ?? ''}
-  >
-    <input
-      id="login-input-submit"
-      class="input-submit oswald-header"
-      type="submit"
-      on:submit={handleSubmit}
-      value="SUBMIT"
+<div class="login-page-container">
+  <h1 class="oswald-header title">SUIT YOURSELF</h1>
+  <div class="login-container">
+    <h2 class="oswald-header header">LOGIN</h2>
+    <form
+      class="form login-form"
+      id="login-form"
+      method="post"
+      action="?/login"
+      use:enhance={enhancements}
     >
-  </form>
-      {#if username}
-        <p>Your username will be:</p>
-        <p class="username-confirm-text">{username}</p>
-      {:else}
-        <a href="/" class="source-sans-3-text">
-          Play without logging in
-        </a>
-      {/if}
-
-{#if form?.success}
-  Logged in as {data.username}
-{/if}
-{#if form?.missing}
-  idiot
-{/if}
+      <label
+        class="source-sans-3-text label-text"
+        id="username-label"
+        for="username-input"
+      >
+        Username:
+      </label>
+      <input
+        class="input-text source-sans-3-text"
+        id="username-input"
+        name="username"
+        type="text"
+        value={form?.username ?? ''}
+      >
+      <input
+        id="login-input-submit"
+        class="input-submit oswald-header"
+        type="submit"
+        on:submit={handleSubmit}
+        value="SUBMIT"
+      >
+    </form>
+    <a href="/" class="source-sans-3-text">
+      Play without logging in
+    </a>
+  </div>
 </div>
 
 <style>
   .header,
-  .label-text {
+  .label-text,
+  .title {
     color: #FFFFFF;
   }
-  .login-container {
+  .title {
+    place-self: center;
+  }
+  .login-page-container {
     display: grid;
+    height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, min-content);
-    row-gap: 1rem;
+    grid-template-rows: repeat(auto-fill, 1fr);
   }
   .login-form {
     display: grid;
@@ -91,9 +86,12 @@
     grid-template-rows: repeat(auto-fill, min-content);
     row-gap: 0.5rem;
   }
-  .username-confirm-text {
-    text-align: center;
-    border: 1px solid black;
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 1rem;
+
   }
   input[type=submit],
   input[type=text] {

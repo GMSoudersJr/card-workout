@@ -11,6 +11,5 @@
     background: radial-gradient(circle at bottom center, #39FF14, #000080);
     display: grid;
     justify-content: center;
-    align-content: center;
   }
 </style>

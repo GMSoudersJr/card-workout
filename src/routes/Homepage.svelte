@@ -18,7 +18,7 @@
   ];
 </script>
 
-<main>
+<div class="page-container">
   <div class="header">
     <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
@@ -37,10 +37,10 @@
     </a>
   {/each}
   </nav>
-</main>
+</div>
 
 <style>
-  main {
+  .page-container {
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at bottom center, #39FF14, #000080);
