@@ -8,6 +8,7 @@
     let savedWorkouts = localStorage.getItem('workouts');
     if (savedWorkouts === undefined || savedWorkouts === null) return;
     workouts = JSON.parse(savedWorkouts) as TWorkout<TExerciseName>[];
+    workouts.reverse();
   });
   let workouts: TWorkout<TExerciseName>[];
 </script>
