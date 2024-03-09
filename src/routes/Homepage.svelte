@@ -1,19 +1,30 @@
 <script lang="ts">
+  import {
+    memoEmoji,
+    cardEmoji,
+    exerciseEmoji,
+    recieptEmoji,
+  } from '$lib/emojis';
   const theHomepageLinks = [
     {
       href: '/about',
       text: 'ABOUT',
-      emoji: '📝'
+      emoji: memoEmoji
+    },
+    {
+      href: '/activities',
+      text: 'ACTIVITIES',
+      emoji: recieptEmoji
     },
     {
       href: '/cards',
       text: 'CARDS',
-      emoji: '🃏'
+      emoji: cardEmoji
     },
     {
       href: '/exercises',
       text: 'EXERCISES',
-      emoji: '🤸'
+      emoji: exerciseEmoji
     },
   ];
 </script>

@@ -24,11 +24,21 @@
 </div>
 
 <style>
+  .activities-page-container {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
   .workout-cards-grid {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 1rem;
     justify-items: center;
+  }
+  .activities-page-container::-webkit-scrollbar {
+    display: none;
   }
 </style>
 

@@ -62,6 +62,7 @@
       }
       workoutTimer.end(Date.now());
       let workout: TSavedWorkout = {
+        name: `Workout # ${previousWorkouts.length + 1}`,
         exercises: $suitExercises.map((suitExercise) => {
           if (suitExercise.exercise?.name === undefined ||
               suitExercise.exercise?.name == null) return;
@@ -70,7 +71,7 @@
         time: {
           start: $workoutTimer.start,
           end: $workoutTimer.end
-        }
+        },
       };
       previousWorkouts.push(workout);
 

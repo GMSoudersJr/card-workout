@@ -2,19 +2,15 @@
   import type { TWorkout } from "../../../types/workout";
   import type { TExerciseName } from "../../../types/exerciseName";
 	import {EExerciseNames} from "../../../enums/exerciseNames";
+	import {repeatEmoji} from "$lib/emojis";
+
   export let workout: TWorkout<TExerciseName>;
   export let index: number;
-  $: workoutName = workout.name ? workout.name : `Workout # ${index + 1}`
-  $: workoutNumber = () => {
-    let indexString = index.toString();
-    let workoutNumberArray = indexString.split('');
-    const lengthOfWorkoutNumber = 4;
-    while (workoutNumberArray.length < lengthOfWorkoutNumber) {
-      workoutNumberArray.unshift('0');
-    };
-    return workoutNumberArray.join('')
-  };
+
+  $: workoutName = workout.name ? workout.name : `Workout # ${index + 1}`;
+
   $: workoutDate = new Date(workout.time?.start as number).toLocaleDateString();
+
   $: workoutTime = () => {
     if (workout.time === undefined || workout.time === null) return;
     if (workout.time.start === undefined || workout.time.start === null) return;
@@ -38,21 +34,31 @@
     let time = `${minutesString}:${secondsString}`;
     return time;
   }
-$: exercises = workout.exercises.map((exercise) => {
-  return EExerciseNames[exercise as keyof typeof EExerciseNames]
-});
+
+  $: exercises = workout.exercises.map((exercise) => {
+    return EExerciseNames[exercise as keyof typeof EExerciseNames]
+  });
 </script>
 
 <div class="workout-card">
   <div class="header">
-    <div class="workout-number">{workoutNumber()}</div>
-    <div class="workout-name">{workoutName}</div>
-    <div class="workout-date">{workoutDate}</div>
+    <div class="workout-date source-sans-3-text">{workoutDate}</div>
+    <div class="workout-name oswald-header">{workoutName}</div>
+    <div class="workout-repeat">
+      <button disabled class="workout-repeat-button">
+        <p class="source-sans-3-text">
+          AGAIN
+        <span class="noto-emoji-font">
+          {repeatEmoji}
+        </span>
+        </p>
+      </button>
+    </div>
   </div>
-  <div class="workout-time">{workoutTime()}</div>
+  <div class="workout-time oswald-header">{workoutTime()}</div>
   <div class="exercises-container">
     {#each exercises as exercise, index (index)}
-    <div class="exercise-name">{exercise}</div>
+    <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
     {/each}
   </div>
 </div>
@@ -60,14 +66,12 @@ $: exercises = workout.exercises.map((exercise) => {
 <style>
   .workout-card {
     width: calc(100%);
-    border: 1px solid #259259;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content) 1fr;
     border-radius: 8px;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    background: linear-gradient(135deg, #D9D9D9, #FFF 30%);
+    padding: 0.5rem 0;
+    background: linear-gradient(180deg, #D9D9D9, #f1f1f1);
     row-gap: 0.5rem;
   }
   .header {
@@ -78,7 +82,7 @@ $: exercises = workout.exercises.map((exercise) => {
     align-items: baseline;
     color: #000080;
   }
-  .workout-number,
+  .workout-repeat,
   .workout-name,
   .workout-date {
     display: grid;
@@ -89,7 +93,7 @@ $: exercises = workout.exercises.map((exercise) => {
     display: grid;
     text-align: center;
     font-size: x-large;
-    color: #000080;
+    color: #259259;
   }
   .exercises-container {
     display: grid;
@@ -100,6 +104,10 @@ $: exercises = workout.exercises.map((exercise) => {
     font-size: medium;
     text-align: center;
     color: #000080;
+  }
+  .workout-repeat-button {
+    border-radius: 8px;
+    padding: 3px 7px;
   }
 </style>
 
