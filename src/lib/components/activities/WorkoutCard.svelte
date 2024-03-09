@@ -2,7 +2,7 @@
   import type { TWorkout } from "../../../types/workout";
   import type { TExerciseName } from "../../../types/exerciseName";
 	import {EExerciseNames} from "../../../enums/exerciseNames";
-	import {repeatEmoji} from "$lib/emojis";
+	import RepeatWorkoutButton from "./RepeatWorkoutButton.svelte";
 
   export let workout: TWorkout<TExerciseName>;
   export let index: number;
@@ -45,14 +45,10 @@
     <div class="workout-date source-sans-3-text">{workoutDate}</div>
     <div class="workout-name oswald-header">{workoutName}</div>
     <div class="workout-repeat">
-      <button disabled class="workout-repeat-button">
-        <p class="source-sans-3-text">
-          AGAIN
-        <span class="noto-emoji-font">
-          {repeatEmoji}
-        </span>
-        </p>
-      </button>
+      <RepeatWorkoutButton
+        exercisesToRepeat={workout.exercises}
+        {workoutName}
+      />
     </div>
   </div>
   <div class="workout-time oswald-header">{workoutTime()}</div>
@@ -78,16 +74,24 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: min-content;
-    justify-content: center;
-    align-items: baseline;
+    align-items: center;
     color: #000080;
   }
   .workout-repeat,
   .workout-name,
   .workout-date {
     display: grid;
-    justify-content: center;
+    align-items: center;
     color: #000080;
+  }
+  .workout-date {
+    padding-left: 0.9rem;
+  }
+  .workout-name {
+    justify-content: center;
+  }
+  .workout-repeat {
+    padding-right: 0.5rem;
   }
   .workout-time {
     display: grid;
@@ -104,10 +108,6 @@
     font-size: medium;
     text-align: center;
     color: #000080;
-  }
-  .workout-repeat-button {
-    border-radius: 8px;
-    padding: 3px 7px;
   }
 </style>
 
