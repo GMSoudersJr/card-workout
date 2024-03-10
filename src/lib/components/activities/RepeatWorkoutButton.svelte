@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TExerciseName } from "../../../types/exerciseName";
   import { repeatEmoji } from '$lib/emojis';
-  import { suitExercises } from "../../../store";
+  import { discardedCards, suitExercises, theCurrentCard, theDeckOfCards } from "../../../store";
   import { ESuit } from "../../../enums/suit";
 	import type {TSuit} from "../../../types/suit";
 	import {goto} from "$app/navigation";
@@ -14,6 +14,10 @@
       suitExercises.updateExercise(suits[index] as TSuit, exercise);
     });
 
+    theDeckOfCards.setExercises($suitExercises);
+    discardedCards.reset();
+    theCurrentCard.reset();
+
     await goto('/cards');
 
   };
@@ -23,15 +27,10 @@
 </script>
 
 <button
-  class="workout-repeat-button"
+  class="workout-repeat-button noto-emoji-font"
   on:click={handleClick}
 >
-  <p class="source-sans-3-text">
-    RETRY
-  <span class="noto-emoji-font">
-    {repeatEmoji}
-  </span>
-  </p>
+  {repeatEmoji}
 </button>
 
 <style>

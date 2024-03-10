@@ -1,24 +1,40 @@
 <script lang="ts">
+  import { flip } from "svelte/animate";
+  import { quintOut } from "svelte/easing";
 	import {onMount} from 'svelte';
-	import type { TWorkout } from '../../types/workout';
+	import type { TSavedWorkout } from '../../types/savedWorkout';
   import type { TExerciseName } from '../../types/exerciseName';
 	import WorkoutCard from '$lib/components/activities/WorkoutCard.svelte';
+	import {getLocalStorageWorkouts} from '$lib/utils';
 
   onMount(async () => {
-    let savedWorkouts = localStorage.getItem('workouts');
-    if (savedWorkouts === undefined || savedWorkouts === null) return;
-    workouts = JSON.parse(savedWorkouts) as TWorkout<TExerciseName>[];
+    workouts = getLocalStorageWorkouts();
     workouts.reverse();
   });
-  let workouts: TWorkout<TExerciseName>[];
+
+  function handleWorkoutDeleted() {
+    workouts = getLocalStorageWorkouts();
+    workouts = workouts.reverse();
+  }
+
+  let workouts: TSavedWorkout[];
 </script>
 
 
 <div class="activities-page-container">
   <section class="workout-cards-grid">
     {#if workouts}
-      {#each workouts as workout, index (index)}
-      <WorkoutCard {workout} {index} />
+      {#each workouts as workout, index (workout.time?.start)}
+        <div
+          class="workout-card-conatiner"
+          animate:flip={{ delay: 400, duration: 400, easing: quintOut }}
+        >
+          <WorkoutCard
+            {workout}
+            {index}
+            on:workoutDeleted={handleWorkoutDeleted}
+          />
+        </div>
       {/each}
     {/if}
   </section>
@@ -36,7 +52,6 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 1rem;
-    justify-items: center;
   }
   .activities-page-container::-webkit-scrollbar {
     display: none;

@@ -9,3 +9,5 @@ export const rightEmoji = '➡';
 export const recieptEmoji = '🧾';
 export const cardIndexEmoji = '📇';
 export const repeatEmoji = '🔁';
+export const wasteBasketEmoji = '🗑';
+export const crossMarkEmoji = '❌';

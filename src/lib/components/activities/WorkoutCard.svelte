@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { slide } from "svelte/transition";
   import type { TWorkout } from "../../../types/workout";
   import type { TExerciseName } from "../../../types/exerciseName";
 	import {EExerciseNames} from "../../../enums/exerciseNames";
 	import RepeatWorkoutButton from "./RepeatWorkoutButton.svelte";
+	import DeleteWorkoutButton from "./DeleteWorkoutButton.svelte";
+	import {quintOut} from "svelte/easing";
 
   export let workout: TWorkout<TExerciseName>;
   export let index: number;
@@ -40,14 +43,21 @@
   });
 </script>
 
-<div class="workout-card">
+<div
+  class="workout-card"
+  out:slide={{ duration: 400, axis: 'y', easing: quintOut}}
+>
   <div class="header">
     <div class="workout-date source-sans-3-text">{workoutDate}</div>
     <div class="workout-name oswald-header">{workoutName}</div>
-    <div class="workout-repeat">
+    <div class="workout-actions">
       <RepeatWorkoutButton
         exercisesToRepeat={workout.exercises}
         {workoutName}
+      />
+      <DeleteWorkoutButton
+        workoutStartTime={workout.time?.start}
+        on:workoutDeleted
       />
     </div>
   </div>
@@ -77,7 +87,6 @@
     align-items: center;
     color: #000080;
   }
-  .workout-repeat,
   .workout-name,
   .workout-date {
     display: grid;
@@ -90,8 +99,13 @@
   .workout-name {
     justify-content: center;
   }
-  .workout-repeat {
+  .workout-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+    justify-content: center;
     padding-right: 0.5rem;
+    column-gap: 0.5rem;
   }
   .workout-time {
     display: grid;

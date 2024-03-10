@@ -16,6 +16,7 @@
     messageBelowTheShuffleButton
   } from '$lib/strings/forCardsPage';
 	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
+	import WorkoutCompleteButton from '$lib/components/cards/WorkoutCompleteButton.svelte';
 
   function handlePluckedTheSameCard(event: CustomEvent) {
     nopeNotNowMessage = event.detail.message;
@@ -42,13 +43,13 @@
     {#if !$suitExercises[0].exercise?.name}
       {#each messageAboveTheStartButton.forPlainCards as message (message)}
       <p class="oswald-header above-start-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
       {/each}
     {:else}
       {#each messageAboveTheStartButton.forExerciseCards as message (message)}
       <p class="oswald-header above-start-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
       {/each}
     {/if}
@@ -56,13 +57,13 @@
     {#if !$suitExercises[0].exercise?.name}
       {#each messageBelowTheStartButton.forPlainCards as message (message)}
     <p class="oswald-header below-start-button">
-      {message.toUpperCase()}
+      {@html message.toUpperCase()}
     </p>
       {/each}
     {:else}
       {#each messageBelowTheStartButton.forExerciseCards as message (message)}
     <p class="oswald-header below-start-button">
-      {message.toUpperCase()}
+      {@html message.toUpperCase()}
     </p>
       {/each}
     {/if}
@@ -94,27 +95,31 @@
     {#if !$suitExercises[0].exercise?.name}
       {#each messageAboveTheShuffleButton.forPlainCards as message (message)}
       <p class="oswald-header above-shuffle-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
       {/each}
     {:else}
       {#each messageAboveTheShuffleButton.forExerciseCards as message (message)}
       <p class="oswald-header above-shuffle-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
       {/each}
     {/if}
+    {#if !$suitExercises[0].exercise?.name}
       <ShuffleButton />
+    {:else}
+      <WorkoutCompleteButton />
+    {/if}
       {#if !$suitExercises[0].exercise?.name}
         {#each messageBelowTheShuffleButton.forPlainCards as message (message)}
       <p class="oswald-header below-shuffle-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
         {/each}
       {:else}
         {#each messageBelowTheShuffleButton.forExerciseCards as message (message)}
       <p class="oswald-header below-shuffle-button">
-        {message.toUpperCase()}
+        {@html message.toUpperCase()}
       </p>
         {/each}
       {/if}

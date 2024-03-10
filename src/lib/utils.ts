@@ -4,6 +4,7 @@ import { PlayingCard } from '../classes/playingCard';
 import type { TSuit } from '../types/suit';
 import type { TCardRank } from '../types/cardRank';
 import type { TSuitExercise } from '../types/suitExercise';
+import type { TSavedWorkout } from '../types/savedWorkout';
 
 export const createDeckOfCards = () => {
 	let result: PlayingCard[] = [];
@@ -37,3 +38,13 @@ export const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
 	return entry.exercise?.name === undefined;
 }
 
+export function getLocalStorageWorkouts():TSavedWorkout[] {
+	let result: TSavedWorkout[];
+	const localStorageWorkoutState = localStorage.getItem('workouts');
+	if (localStorageWorkoutState === null || localStorageWorkoutState === undefined) {
+		result = [];
+	} else {
+		result = JSON.parse(localStorageWorkoutState) as TSavedWorkout[];
+	}
+	return result
+};

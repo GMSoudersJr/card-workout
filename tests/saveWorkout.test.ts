@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { ESuit } from '../src/enums/suit';
-import {getLocalStorageWorkouts} from './helperFunctions/login';
+import { getLocalStorageWorkouts } from './helperFunctions/login';
 
 const [
 	exercise1,
