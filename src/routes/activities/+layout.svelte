@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    cardEmoji,
-    homeEmoji
-  } from '$lib/emojis';
+      cardEmoji,
+      homeEmoji
+    } from '$lib/emojis';
 </script>
 
 <main>

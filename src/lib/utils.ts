@@ -48,3 +48,29 @@ export function getLocalStorageWorkouts():TSavedWorkout[] {
 	}
 	return result
 };
+
+export function deleteWorkoutFromLocalStorageWith(workoutStartTime: number | undefined) {
+	const workouts = getLocalStorageWorkouts();
+	const indexOfWorkoutToDelete = workouts.findIndex((workout) => {
+		return workout.time?.start === workoutStartTime
+	});
+	workouts.splice(indexOfWorkoutToDelete, 1);
+	localStorage.setItem('workouts', JSON.stringify(workouts));
+};
+
+export function clickOutside(node: Node) {
+	const handleClick = (event: Event) => {
+		const target = event.target as Node;
+		if (!node.contains(target)) {
+			node.dispatchEvent(new CustomEvent('outclick', {detail: 'clicked outside'}));
+		}
+	};
+
+	document.addEventListener('click', handleClick, true);
+
+	return {
+		destroy() {
+			document.removeEventListener('click', handleClick, true);
+		}
+	}
+}

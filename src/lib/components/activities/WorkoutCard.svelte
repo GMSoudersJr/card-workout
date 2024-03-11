@@ -58,6 +58,7 @@
       <DeleteWorkoutButton
         workoutStartTime={workout.time?.start}
         on:workoutDeleted
+        on:workoutSelectedForDeletion
       />
     </div>
   </div>

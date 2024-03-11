@@ -1,26 +1,40 @@
 <script lang="ts">
+  import DeleteDialog from '$lib/components/activities/DeleteDialog.svelte';
   import { flip } from "svelte/animate";
   import { quintOut } from "svelte/easing";
 	import {onMount} from 'svelte';
 	import type { TSavedWorkout } from '../../types/savedWorkout';
-  import type { TExerciseName } from '../../types/exerciseName';
 	import WorkoutCard from '$lib/components/activities/WorkoutCard.svelte';
-	import {getLocalStorageWorkouts} from '$lib/utils';
+	import {deleteWorkoutFromLocalStorageWith, getLocalStorageWorkouts} from '$lib/utils';
 
   onMount(async () => {
-    workouts = getLocalStorageWorkouts();
-    workouts.reverse();
+    setWorkouts();
   });
 
-  function handleWorkoutDeleted() {
+  function setWorkouts() {
     workouts = getLocalStorageWorkouts();
     workouts = workouts.reverse();
   }
 
+  function handleDialogClose(event: CustomEvent) {
+    const dialogDetail = event.detail;
+    if ( dialogDetail.value !== 'deleteIt' ) return;
+    deleteWorkoutFromLocalStorageWith(startTimeOfSelectedWorkoutToDelete);
+    setWorkouts();
+  }
+
+  function setWorkoutStartTimeToDelete(event: CustomEvent) {
+    const dialogDetail = event.detail; 
+    startTimeOfSelectedWorkoutToDelete = dialogDetail.chosenWorkoutStartTime;
+  }
+
+  let startTimeOfSelectedWorkoutToDelete: number | undefined;
   let workouts: TSavedWorkout[];
 </script>
 
-
+<DeleteDialog
+  on:dialogClosed={handleDialogClose}
+/>
 <div class="activities-page-container">
   <section class="workout-cards-grid">
     {#if workouts}
@@ -32,7 +46,7 @@
           <WorkoutCard
             {workout}
             {index}
-            on:workoutDeleted={handleWorkoutDeleted}
+            on:workoutSelectedForDeletion={setWorkoutStartTimeToDelete}
           />
         </div>
       {/each}

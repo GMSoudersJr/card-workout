@@ -1,18 +1,21 @@
 <script lang="ts">
   import { wasteBasketEmoji } from '$lib/emojis';
-	import {getLocalStorageWorkouts} from '$lib/utils';
 	import {createEventDispatcher} from 'svelte';
 
   const dispatch = createEventDispatcher();
 
   async function handleClick() {
-    const workouts = getLocalStorageWorkouts();
-    const indexOfWorkoutToDelete = workouts.findIndex((workout) => {
-      return workout.time?.start === workoutStartTime
+    dispatch('workoutSelectedForDeletion', {
+      chosenWorkoutStartTime: workoutStartTime
     });
-    workouts.splice(indexOfWorkoutToDelete, 1);
-    localStorage.setItem('workouts', JSON.stringify(workouts));
-    dispatch('workoutDeleted');
+    const deleteDialog = document.getElementById('delete-dialog') as HTMLDialogElement;
+    deleteDialog.showModal();
+    /*
+    if ( dialogAnswer === 'deleteIt' ) {
+      deleteWorkoutFromLocalStorage();
+      //dispatch('workoutDeleted');
+    }
+    */
   };
 
   export let workoutStartTime: number | undefined;
