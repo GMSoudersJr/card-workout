@@ -14,6 +14,8 @@
     });
   };
 
+  export let dialogMessage: string | undefined;
+
 </script>
 
 <dialog
@@ -21,17 +23,10 @@
   class="delete-dialog"
   use:clickOutside
 >
-  <button
-    class="close-dialog noto-emoji-text"
-    value="close"
-    on:click={handleClick}
-  >
-    {crossMarkEmoji}
-  </button>
-  <h1 class="title">Really?!</h1>
-  <div class="buttons-container">
+  <h1 class="title">Deletion</h1>
+  <p class="message">{dialogMessage}</p>
     <button
-      class="action-button"
+      class="action-button cancel"
       id="delete-cancel"
       value="cancel"
       on:click={handleClick}
@@ -39,45 +34,63 @@
       Cancel
     </button>
     <button
-      class="action-button"
+      class="action-button confirm"
       id="delete-confirm"
       value="deleteIt"
       on:click={handleClick}
     >
-      Delete
+      Confirm
     </button>
 
-  </div>
 </dialog>
 
 <style>
   .delete-dialog[open] {
-    width: 61.8vw;
+    width: 85%;
     position: absolute;
-    margin-left: 19.1%;
+    margin-left: 7.5%;
     margin-top: 25%;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, min-content);
-    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "title title . ."
+    "message message message message"
+    ". . cancel confirm";
     row-gap: 0.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    border-color: #FF0000;
+    border-width: 2px;
+    border-radius: 8px;
   }
   .close-dialog {
-    justify-self: end;
+    grid-area: close;
     color: #000000;
-    padding: 3px;
+    place-self: end;
+  }
+  .message {
+    grid-area: message;
+    color: #000080;
   }
   .title {
+    grid-area: title;
     text-align: center;
+    color: #000080;
+  }
+  .cancel {
+    grid-area: cancel;
+  }
+  .confirm {
+    grid-area: confirm;
   }
   .action-button {
-    padding: 3px 5px;
-  }
-  .buttons-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 5px 8px;
+    border-radius: 8px;
+    color: #000080;
   }
   ::backdrop {
     backdrop-filter: blur(1px);

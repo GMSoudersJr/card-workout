@@ -1,31 +1,28 @@
 <script lang="ts">
   import { wasteBasketEmoji } from '$lib/emojis';
 	import {createEventDispatcher} from 'svelte';
+	import type { TSavedWorkout } from '../../../types/savedWorkout';
 
   const dispatch = createEventDispatcher();
 
   async function handleClick() {
+    if (workout.time?.start === undefined || workout.time.start === null) return
     dispatch('workoutSelectedForDeletion', {
-      chosenWorkoutStartTime: workoutStartTime
+      chosenWorkoutStartTime: workout.time.start,
+      message: `Delete ${workout.name} from ${new Date(workout.time.start).toLocaleDateString()}?`
     });
     const deleteDialog = document.getElementById('delete-dialog') as HTMLDialogElement;
     deleteDialog.showModal();
-    /*
-    if ( dialogAnswer === 'deleteIt' ) {
-      deleteWorkoutFromLocalStorage();
-      //dispatch('workoutDeleted');
-    }
-    */
   };
 
-  export let workoutStartTime: number | undefined;
+  export let workout: TSavedWorkout;
 </script>
 
 <button
   class="workout-delete-button noto-emoji-font"
   on:click={handleClick}
 >
-    {wasteBasketEmoji}
+  {wasteBasketEmoji}
 </button>
 
 <style>

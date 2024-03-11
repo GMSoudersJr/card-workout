@@ -24,15 +24,22 @@
   }
 
   function setWorkoutStartTimeToDelete(event: CustomEvent) {
-    const dialogDetail = event.detail; 
+    const dialogDetail = event.detail;
     startTimeOfSelectedWorkoutToDelete = dialogDetail.chosenWorkoutStartTime;
   }
 
+  function setDialogMessage(event: CustomEvent) {
+    const dialogDetail = event.detail;
+    dialogMessage = dialogDetail.message;
+  };
+
   let startTimeOfSelectedWorkoutToDelete: number | undefined;
+  let dialogMessage: string | undefined;
   let workouts: TSavedWorkout[];
 </script>
 
 <DeleteDialog
+  {dialogMessage}
   on:dialogClosed={handleDialogClose}
 />
 <div class="activities-page-container">
@@ -47,6 +54,7 @@
             {workout}
             {index}
             on:workoutSelectedForDeletion={setWorkoutStartTimeToDelete}
+            on:workoutSelectedForDeletion={setDialogMessage}
           />
         </div>
       {/each}
