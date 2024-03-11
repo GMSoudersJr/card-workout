@@ -58,8 +58,8 @@ test.describe('persist workouts to local storage', () => {
 
 	});
 
-	test('expect shuffle button visible', async ({ page }) => {
-		await expect(page.getByRole('button', { name: 'SHUFFLE' })).toBeVisible();
+	test('expect activities button visible', async ({ page }) => {
+		await expect(page.getByRole('button', { name: 'ACTIVITIES' })).toBeVisible();
 	});
 
 	test('expect saved workout', async ({ context }) => {

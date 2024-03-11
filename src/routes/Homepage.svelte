@@ -5,6 +5,7 @@
     exerciseEmoji,
     recieptEmoji,
   } from '$lib/emojis';
+	import {onMount} from 'svelte';
   const theHomepageLinks = [
     {
       href: '/about',
@@ -27,6 +28,11 @@
       emoji: exerciseEmoji
     },
   ];
+
+  onMount(async () => {
+    hasPreviousWorkouts = !!localStorage.getItem('workouts');
+  });
+  let hasPreviousWorkouts = false;
 </script>
 
 <div class="page-container">
@@ -35,6 +41,7 @@
   </div>
   <nav class="nav-container">
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
+    {#if homepageLink.text !== 'ACTIVITIES'}
     <a
       class="nav-item oswald-header"
       href={homepageLink.href}
@@ -46,6 +53,19 @@
       {homepageLink.emoji}
       </p>
     </a>
+    {:else if hasPreviousWorkouts && homepageLink.text === 'ACTIVITIES'}
+    <a
+      class="nav-item oswald-header"
+      href={homepageLink.href}
+    >
+      <p>
+      {homepageLink.text}
+      </p>
+      <p class="emoji-link noto-emoji-font">
+      {homepageLink.emoji}
+      </p>
+    </a>
+    {/if}
   {/each}
   </nav>
 </div>
