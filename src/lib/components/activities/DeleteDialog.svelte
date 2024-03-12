@@ -1,6 +1,5 @@
 <script lang="ts">
   import { clickOutside } from "$lib/utils";
-	import { crossMarkEmoji } from "$lib/emojis";
 	import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -66,11 +65,6 @@
     border-color: #FF0000;
     border-width: 2px;
     border-radius: 8px;
-  }
-  .close-dialog {
-    grid-area: close;
-    color: #000000;
-    place-self: end;
   }
   .message {
     grid-area: message;

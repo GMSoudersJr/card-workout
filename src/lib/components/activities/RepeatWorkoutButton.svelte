@@ -22,7 +22,8 @@
 
   };
 
-  export let workoutName: string;
+  // Possibly needed after create workout names
+  // export let workoutName: string;
   export let exercisesToRepeat: (TExerciseName | undefined)[];
 </script>
 

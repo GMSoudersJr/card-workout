@@ -3,7 +3,7 @@
   import type { PageData, ActionData } from "./$types";
   import type { SubmitFunction } from "@sveltejs/kit";
 	import {goto} from "$app/navigation";
-  export let data: PageData;
+  // export let data: PageData;
   export let form: ActionData;
   let username: string;
   function handleSubmit(event: Event) {
@@ -60,7 +60,7 @@
       >
     </form>
     <a href="/" class="source-sans-3-text">
-      Play without logging in
+      Play without a username
     </a>
   </div>
 </div>
