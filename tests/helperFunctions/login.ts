@@ -15,6 +15,15 @@ export async function getLocalStorageData(browswerContext: BrowserContext) {
 	return result;
 };
 
+export async function setLocalStorageWorkouts(
+	browswerContext: BrowserContext,
+	workouts: string
+): Promise<void> {
+	await browswerContext.addInitScript(storage => {
+		window.localStorage.setItem('workouts', storage)
+	}, workouts);
+};
+
 export async function getLocalStorageWorkouts(
 	browswerContext: BrowserContext
 ): Promise<TSavedWorkout[] | undefined> {

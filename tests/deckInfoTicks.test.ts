@@ -5,14 +5,15 @@ test.beforeEach(async ({ page }) => {
 	await page.waitForLoadState('domcontentloaded');
 	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Cards' }).click();
+	await page.waitForLoadState('domcontentloaded');
 });
 
 const numberOfCardsInDeck = 52;
 test.describe('check card tick', () => {
 	test('all ticks have same color before start', async ({ page }) => {
 		const deckRadioButton = page.getByRole('radio', {name: 'Deck'});
-		const allMiniCardTicks = await page.locator('.mini-card-tick').all();
 		await expect(deckRadioButton).toBeChecked();
+		const allMiniCardTicks = await page.locator('.mini-card-tick').all();
 		expect(allMiniCardTicks).toHaveLength(numberOfCardsInDeck);
 		for (let i = 0; i < numberOfCardsInDeck; i++) {
 			await expect(allMiniCardTicks[i]).toHaveClass(/in-deck/);

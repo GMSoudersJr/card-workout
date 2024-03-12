@@ -48,8 +48,8 @@
   out:slide={{ duration: 400, axis: 'y', easing: quintOut}}
 >
   <div class="header">
-    <div class="workout-date source-sans-3-text">{workoutDate}</div>
-    <div class="workout-name oswald-header">{workoutName}</div>
+    <date class="workout-date source-sans-3-text">{workoutDate}</date>
+    <h1 class="workout-name oswald-header">{workoutName}</h1>
     <div class="workout-actions">
       <RepeatWorkoutButton
         exercisesToRepeat={workout.exercises}
