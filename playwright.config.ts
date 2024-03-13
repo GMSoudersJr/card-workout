@@ -25,6 +25,7 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'Mobile Firefox',
 			use: { ...devices['Pixel 7'], hasTouch: true },
+			testIgnore: /android/,
 		},
 		{
 			name: 'firefox',
