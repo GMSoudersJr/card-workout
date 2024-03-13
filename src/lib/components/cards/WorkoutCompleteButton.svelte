@@ -25,7 +25,7 @@
   on:click={handleClick}
   use:setFocus
 >
-  {@html activitiesButtonText.toUpperCase()}
+  {activitiesButtonText.toUpperCase()}
 </button>
 
 <style>
