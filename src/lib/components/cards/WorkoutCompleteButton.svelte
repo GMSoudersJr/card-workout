@@ -11,12 +11,12 @@
   } from "../../../store";
 
   async function handleClick() {
+    await goto('/activities');
     theDeckOfCards.shuffle();
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
     workoutTimer.reset();
-    await goto('/activities');
   }
 </script>
 
