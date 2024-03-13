@@ -53,7 +53,6 @@
     <div class="workout-actions">
       <RepeatWorkoutButton
         exercisesToRepeat={workout.exercises}
-        {workoutName}
       />
       <DeleteWorkoutButton
         {workout}

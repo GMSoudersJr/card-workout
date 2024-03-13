@@ -5,6 +5,7 @@
     exerciseEmoji,
     recieptEmoji,
   } from '$lib/emojis';
+	import {getLocalStorageWorkouts} from '$lib/utils';
 	import {onMount} from 'svelte';
   const theHomepageLinks = [
     {
@@ -30,7 +31,8 @@
   ];
 
   onMount(async () => {
-    hasPreviousWorkouts = !!localStorage.getItem('workouts');
+    const previousWorkouts = getLocalStorageWorkouts();
+    hasPreviousWorkouts = !!previousWorkouts.length;
   });
   let hasPreviousWorkouts = false;
 </script>

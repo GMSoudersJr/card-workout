@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {goto} from "$app/navigation";
 	import {activitiesButtonText} from "$lib/strings/forCardsPage";
+  import { setFocus } from "$lib/utils";
 
 
 
@@ -12,6 +13,7 @@
 <button
   class="oswald-header"
   on:click={handleClick}
+  use:setFocus
 >
   {@html activitiesButtonText.toUpperCase()}
 </button>
