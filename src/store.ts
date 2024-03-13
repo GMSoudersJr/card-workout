@@ -53,6 +53,42 @@ function createTimer() {
 	}
 }
 
+function createStopwatch() {
+	const stopwatch = {
+		running: false,
+		startedAt: 0,
+		elapsedTime: 0,
+		_interval: 0
+	};
+
+	const { subscribe, set, update } = writable(stopwatch);
+
+	return {
+		subscribe,
+		start: () => update((stopwatch) => {
+			stopwatch.running = true;
+			stopwatch.startedAt = Date.now();
+			stopwatch._interval = setInterval(() => {
+				stopwatch.elapsedTime = Date.now() - stopwatch.startedAt
+			}, 100);
+			return stopwatch;
+		}),
+		stop: () => update((stopwatch) => {
+			stopwatch.running = false,
+			clearInterval(stopwatch._interval);
+			return stopwatch;
+		}),
+		reset: () => set({
+			running: false,
+			startedAt: 0,
+			elapsedTime: 0,
+			_interval: 0
+		})
+
+	}
+
+}
+
 function createSuitExercisesStore() {
 	const suitExercises = createSuitExercises();
 	const { subscribe, set, update } = writable(suitExercises);
@@ -140,6 +176,7 @@ export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
 export const workoutTimer = createTimer();
+export const workoutStopwatch = createStopwatch();
 
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
