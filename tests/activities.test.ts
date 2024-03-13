@@ -9,6 +9,7 @@ import { expect, test } from '@playwright/test';
 import { setLocalStorageWorkouts, getLocalStorageWorkouts } from './helperFunctions/login';
 
 const workoutsForLocalStorage = JSON.stringify(fakeLocalStorageData);
+const singleWorkoutForLocalStorage = JSON.stringify([fakeLocalStorageData[0]]);
 
 test.describe('new user', () => {
 	test('expect "activities" link not to be visible', async ({ page }) => {
@@ -18,6 +19,52 @@ test.describe('new user', () => {
 		await page.waitForLoadState('domcontentloaded');
 		await expect(page.getByRole('link', {name: 'ACTIVITIES'})).not.toBeVisible();
 	});
+});
+
+test.describe('one saved workout', () => {
+	test.beforeEach(async ({ page, context }) => {
+		await setLocalStorageWorkouts(context, singleWorkoutForLocalStorage);
+		await page.goto('/');
+		await page.waitForLoadState('domcontentloaded');
+		await page.getByRole('link', {name: 'Play'}).click();
+		await page.waitForLoadState('domcontentloaded');
+		await page.getByRole('link', {name: 'ACTIVITIES'}).click();
+		await page.waitForLoadState('domcontentloaded');
+	});
+
+	test('expect one visible workout card', async ({ page }) => {
+		const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+		await expect(heading).toBeVisible();
+		const workoutCards = await page.locator('.workout-card').all();
+		await page.waitForLoadState('domcontentloaded');
+		expect(workoutCards.length).toBe(1);
+	});
+
+	test.describe('delete last workout', () => {
+		test('expect navigation home', async ({ page }) => {
+			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			await expect(heading).toBeVisible();
+			const workoutCards = await page.locator('.workout-card').all();
+			await page.waitForLoadState('domcontentloaded');
+			expect(workoutCards.length).toBe(1);
+			const firstWorkoutCard = workoutCards[0];
+			const deleteButton = firstWorkoutCard.getByRole('button', { name: wasteBasketEmoji });
+			await deleteButton.click();
+			await page.waitForLoadState('domcontentloaded');
+			const deleteDialog = page.getByRole('dialog');
+			await expect(deleteDialog).toBeVisible();
+			const confirmButton = deleteDialog.getByRole('button', { name: 'Confirm' });
+			await expect(confirmButton).toBeVisible();
+			await confirmButton.click();
+			await page.waitForLoadState('domcontentloaded');
+			await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
+			const linkTexts = await page.getByRole('link').allInnerTexts();
+			expect(linkTexts.length).toBeGreaterThan(0);
+			await expect(page.getByRole('link', { name: 'ACTIVITIES' })).not.toBeVisible();
+		});
+
+	});
+
 });
 
 test.describe('returning after workouts have been saved', () => {
