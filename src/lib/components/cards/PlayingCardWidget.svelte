@@ -25,7 +25,7 @@
   async function handleClick() {
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
-    if ( clientWidth === undefined) return; 
+    if ( clientWidth === undefined) return;
 
     if ( clientWidth / 52 > 25 ) { widthOfUnderCard = clientWidth / 52; }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
