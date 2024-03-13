@@ -1,29 +1,31 @@
 <script lang="ts">
+	import {goto} from "$app/navigation";
+	import {activitiesButtonText} from "$lib/strings/forCardsPage";
+  import { setFocus } from "$lib/utils";
   import {
-    theCurrentCard,
-    theDeckOfCards,
     discardedCards,
     suitExercises,
+    theCurrentCard,
+    theDeckOfCards,
     workoutTimer,
-  } from '../../../store';
-  import { setFocus } from '$lib/utils';
+  } from "../../../store";
 
-  function handleShuffle() {
+  async function handleClick() {
+    await goto('/activities');
     theDeckOfCards.shuffle();
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
     workoutTimer.reset();
   }
-
 </script>
 
-  <button
-    class="oswald-header"
-    on:click={handleShuffle}
-    use:setFocus
-  >
-  SHUFFLE
+<button
+  class="oswald-header"
+  on:click={handleClick}
+  use:setFocus
+>
+  {@html activitiesButtonText.toUpperCase()}
 </button>
 
 <style>

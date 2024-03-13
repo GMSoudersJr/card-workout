@@ -17,6 +17,8 @@ const [
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
+	await page.waitForLoadState('domcontentloaded');
+	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Exercises' }).click();
 });
 

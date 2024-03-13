@@ -5,7 +5,8 @@
     theRemainingDeck,
     randomCardIndex,
     theCurrentCard,
-	suitExercises,
+    suitExercises,
+    workoutTimer,
   } from '../../../store';
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
@@ -15,6 +16,8 @@
   import type { TExerciseName } from '../../../types/exerciseName';
   import { EExerciseNames } from '../../../enums/exerciseNames';
   import { setFocus } from '$lib/utils';
+	import type {TSavedWorkout} from '../../../types/savedWorkout';
+  import { exercisesHaveNotBeenChosen } from "$lib/utils";
   import { getTouches } from '../../../functions/forSwiping';
 
   const dispatch = createEventDispatcher();
@@ -23,6 +26,7 @@
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     if ( clientWidth === undefined) return; 
+
     if ( clientWidth / 52 > 25 ) { widthOfUnderCard = clientWidth / 52; }
     if ( $theRemainingDeck.length >= 0 && $discardedCards.length <= 51 ) {
       discardedCards.add($theCurrentCard[0]);
@@ -46,10 +50,40 @@
       theDeckOfCards.pluck($randomCardIndex);
       randomCard && theCurrentCard.data(randomCard);
     }
+
+    if ( $discardedCards.length === 52 ) {
+      if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
+      const localStorageWorkoutState = localStorage.getItem('workouts');
+      let previousWorkouts: TSavedWorkout[];
+      if (localStorageWorkoutState === null || localStorageWorkoutState === undefined) {
+        previousWorkouts = [];
+      } else {
+        previousWorkouts = JSON.parse(localStorageWorkoutState) as TSavedWorkout[];
+      }
+      workoutTimer.end(Date.now());
+      let workout: TSavedWorkout = {
+        name: `Workout # ${previousWorkouts.length + 1}`,
+        exercises: $suitExercises.map((suitExercise) => {
+          if (suitExercise.exercise?.name === undefined ||
+              suitExercise.exercise?.name == null) return;
+          return suitExercise.exercise.name;
+        }),
+        time: {
+          start: $workoutTimer.start,
+          end: $workoutTimer.end
+        },
+      };
+      previousWorkouts.push(workout);
+
+      localStorage.setItem('workouts', JSON.stringify(previousWorkouts));
+    }
+
   }
 
+  // For swiping
   let xDown: number;
   let yDown: number;
+
   function handleStart(event: TouchEvent) {
     event.preventDefault();
     const firstTouch = getTouches(event)[0];
@@ -58,9 +92,7 @@
   }
 
   function handleEnd(event: TouchEvent) {
-    if ( !xDown || !yDown ) {
-      return;
-    }
+    if ( !xDown || !yDown ) return
 
     let cardAction: 'discard' | 'putBack' | undefined;
 
@@ -86,6 +118,7 @@
       } else {
         cardAction = "putBack";
       }
+
     }
 
     if ( cardAction === 'discard' ) handleClick();

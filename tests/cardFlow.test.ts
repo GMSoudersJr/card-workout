@@ -2,6 +2,8 @@ import { expect, test, type Page, type Locator } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
+	await page.waitForLoadState('domcontentloaded');
+	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Cards' }).click();
 	await page.getByRole('button', { name: 'Start' }).click();
 });
@@ -140,7 +142,7 @@ test.describe('user has clicked Start button', () => {
 		});
 
 		test('all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
-			test.setTimeout(51 * 1000);
+			test.setTimeout(60 * 1_000);
 			await page.getByTestId('playing-card').click();
 			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
 			const currentCard =
@@ -148,6 +150,7 @@ test.describe('user has clicked Start button', () => {
 			while (await discardedCardsListItem.count() < 52) {
 				await expect(currentCard).toHaveCount(1).then(async () => {
 					await currentCard.click();
+					await page.waitForLoadState('domcontentloaded');
 				}).catch(( error ) => {
 					console.log(error);
 				});

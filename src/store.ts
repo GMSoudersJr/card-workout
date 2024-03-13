@@ -7,6 +7,7 @@ import { createDeckOfCards } from './functions/createDeckOfCards';
 import type { TExerciseName } from './types/exerciseName';
 import type { TSuitExercise } from './types/suitExercise';
 import { createSuitExercises } from './functions/createSuitExercises';
+import {createWorkout} from './functions/createWorkout';
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
@@ -30,6 +31,27 @@ function createTheDeckOfCards() {
 		}),
 	};
 };
+
+function createTimer() {
+	const initialTimer = {
+		start: 0,
+		end: 0
+	};
+	const { subscribe, set, update } = writable(initialTimer);
+
+	return {
+		subscribe,
+		start: (startTimer: number) => update((timer) => {
+			timer.start = startTimer;
+			return timer
+		}),
+		end: (endTimer: number) => update((timer) => {
+			timer.end = endTimer;
+			return timer
+		}),
+		reset: () => set({start: 0, end: 0})
+	}
+}
 
 function createSuitExercisesStore() {
 	const suitExercises = createSuitExercises();
@@ -117,12 +139,18 @@ export const theCurrentCard = createTheCurrentCard();
 export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
+export const workoutTimer = createTimer();
 
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {
 		return !card.hasBeenPlucked;
 	});
+});
+
+// Need this to not be readable, though. Need to keep track of the time, too.
+export const theWorkout = derived(suitExercises, ($suitExercises) => {
+	return createWorkout($suitExercises);
 });
 
 export const randomCardIndex = derived( theDeckOfCards, ($theDeckOfCards) => {

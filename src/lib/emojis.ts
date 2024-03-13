@@ -1,0 +1,13 @@
+export const cardEmoji = '🃏';
+export const homeEmoji = '🏠';
+export const memoEmoji = '📝';
+export const exerciseEmoji = '🤸';
+export const upEmoji = '⬆';
+export const downEmoji = '⬇';
+export const leftEmoji = '⬅';
+export const rightEmoji = '➡';
+export const recieptEmoji = '🧾';
+export const cardIndexEmoji = '📇';
+export const repeatEmoji = '🔁';
+export const wasteBasketEmoji = '🗑';
+export const crossMarkEmoji = '❌';

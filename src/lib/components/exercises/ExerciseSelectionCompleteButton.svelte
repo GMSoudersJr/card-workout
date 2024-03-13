@@ -11,7 +11,6 @@
   import type { TSuit } from "../../../types/suit";
 
   async function handleClick() {
-    console.log($suitExercises);
     theDeckOfCards.setExercises($suitExercises);
     discardedCards.reset();
     theCurrentCard.reset();

@@ -1,3 +1,4 @@
+import {cardEmoji, downEmoji, leftEmoji, recieptEmoji, rightEmoji, upEmoji} from "$lib/emojis";
 import { ERadioButtonLabelNames } from "../../enums/radioButtonLabelNames"
 
 export const radioButtonLabelNames = {
@@ -10,7 +11,10 @@ export const radioButtonLabelNames = {
 export const remainingCardsString = 'Remaining:';
 export const instructionsAboveTheStartButton = 'press start to begin';
 export const instructionsBelowTheStartButton = 'tap the card to discard it';
+
 export const startButtonText = 'start';
+export const shuffleButtonText = 'shuffle';
+export const activitiesButtonText = `activities`;
 
 export const messageAboveTheStartButton = {
 	forPlainCards: [
@@ -19,18 +23,18 @@ export const messageAboveTheStartButton = {
 	],
 	forExerciseCards: [
 		'ready?!',
-		'3... 2.. 1.',
+		'set!',
 	],
 };
 
 export const messageBelowTheStartButton = {
 	forPlainCards: [
-		`discard:  🃏 ⬆ / ➡ `,
-		`put back: 🃏 ⬇ / ⬅`,
+		`discard: <span class="noto-emoji-text">${cardEmoji} ${upEmoji}</span> / <span class="noto-emoji-text">${rightEmoji}</span>`,
+		`put back: <span class="noto-emoji-text">${cardEmoji} ${downEmoji} / <span class="noto-emoji-text">${leftEmoji}</span>`,
 	],
 	forExerciseCards: [
-		`complete: 🃏 ⬆ / ➡ `,
-		`later: 🃏 ⬇ / ⬅`,
+		`complete: <span class="noto-emoji-text">${cardEmoji} ${upEmoji}</span> / <span class="noto-emoji-text">${rightEmoji} </span>`,
+		`later: <span class="noto-emoji-text">${cardEmoji} ${downEmoji}</span> / <span class="noto-emoji-text">${leftEmoji}</span>`,
 	],
 };
 
@@ -48,7 +52,7 @@ export const messageBelowTheShuffleButton = {
 		'shuffling resets the cards',
 	],
 	forExerciseCards: [
-		'shuffling clears your workout and exercises'
+		'See your time(s) in activities'
 	],
 };
 

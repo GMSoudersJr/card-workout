@@ -1,3 +1,11 @@
-import { EWorkouts } from '../enums/workouts';
+import type { TExerciseName } from './exerciseName';
 
-export type TWorkout = keyof typeof EWorkouts;
+export type TWorkout<TSuitExercise> = {
+	name?: string | undefined,
+	exercises: (TExerciseName | undefined)[],
+	time?: {
+		start?: number | undefined,
+		end?: number | undefined
+	} | undefined
+};
+

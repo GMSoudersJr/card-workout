@@ -1,4 +1,10 @@
 import { thisYear } from "$lib/utils";
+import {
+	upEmoji,
+	downEmoji,
+	leftEmoji,
+	rightEmoji
+} from '$lib/emojis';
 
 export const motivation = {
 	heading: 'motivation',
@@ -49,8 +55,8 @@ export const howToUse = {
 		`On "EXERCISES" page, select an exercise per suit.`,
 		`Tap "Let's Go"!`,
 		`Tap "START" to draw your first card!`,
-		`Complete the reps, discard with a swipe ⬆ or ➡ `,
-		`To put the back in the deck, swipe ⬇ or ⬅`,
+		`Complete the reps, discard with a swipe <span class="noto-emoji-font">${upEmoji}</span> or <span class="noto-emoji-font">${rightEmoji}</span>`,
+		`To put the back in the deck, swipe <span class="noto-emoji-font">${downEmoji}</span> or <span class="noto-emoji-font">${leftEmoji}</span>`,
 		`<em>Play</em> with blank cards on the "CARDS" page.`,
 		`Deck stats available at the bottom of the page.`,
 	],

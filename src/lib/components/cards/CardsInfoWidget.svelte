@@ -8,8 +8,8 @@
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
   import RepsInfoWidget from "./RepsInfoWidget.svelte";
-  import type {TSuitExercise} from "../../../types/suitExercise";
-  import type {TSuit} from "../../../types/suit";
+
+  import { exercisesHaveNotBeenChosen } from "$lib/utils";
 
   interface InfoWidgets {
     [key: string]: ComponentType
@@ -57,10 +57,6 @@
       widget: RepsInfoWidget,
     },
   ];
-
-  const exercisesHaveNotBeenChosen = (entry: TSuitExercise<TSuit>) => {
-    return entry.exercise?.name === undefined;
-  }
 
   $: radioButtons = () => {
     if ( $suitExercises.some(exercisesHaveNotBeenChosen) ) {

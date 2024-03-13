@@ -1,6 +1,15 @@
 <script lang="ts">
   import ViewTransition from './navigation.svelte';
   import '../app.css';
+	import {onMount} from 'svelte';
+	import {goto} from '$app/navigation';
+
+  onMount(async() => {
+    const username = localStorage.getItem('username');
+    if ( username === undefined || username === null ) {
+      await goto('/login');
+    }
+  });
 </script>
 
 <ViewTransition />

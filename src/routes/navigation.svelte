@@ -3,7 +3,7 @@
 
   onNavigate((navigation) => {
     // @ts-ignore
-    if (!document.startViewTransition) return
+    if ( document.startViewTransition === undefined || document.startViewTransition === null ) return
 
     return new Promise(resolve => {
       // @ts-ignore
@@ -14,9 +14,3 @@
     })
   })
 </script>
-
-
-
-<style>
-</style>
-

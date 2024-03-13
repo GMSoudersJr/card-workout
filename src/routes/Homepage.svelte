@@ -1,29 +1,49 @@
 <script lang="ts">
+  import {
+    memoEmoji,
+    cardEmoji,
+    exerciseEmoji,
+    recieptEmoji,
+  } from '$lib/emojis';
+	import {getLocalStorageWorkouts} from '$lib/utils';
+	import {onMount} from 'svelte';
   const theHomepageLinks = [
     {
       href: '/about',
       text: 'ABOUT',
-      emoji: '📝'
+      emoji: memoEmoji
+    },
+    {
+      href: '/activities',
+      text: 'ACTIVITIES',
+      emoji: recieptEmoji
     },
     {
       href: '/cards',
       text: 'CARDS',
-      emoji: '🃏'
+      emoji: cardEmoji
     },
     {
       href: '/exercises',
       text: 'EXERCISES',
-      emoji: '🤸'
+      emoji: exerciseEmoji
     },
   ];
+
+  onMount(async () => {
+    const previousWorkouts = getLocalStorageWorkouts();
+    hasPreviousWorkouts = !!previousWorkouts.length;
+  });
+  let hasPreviousWorkouts = false;
 </script>
 
-<main>
+<div class="page-container">
   <div class="header">
     <h1 class="oswald-header">SUIT YOURSELF</h1>
   </div>
   <nav class="nav-container">
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
+    {#if homepageLink.text !== 'ACTIVITIES'}
     <a
       class="nav-item oswald-header"
       href={homepageLink.href}
@@ -35,12 +55,25 @@
       {homepageLink.emoji}
       </p>
     </a>
+    {:else if hasPreviousWorkouts && homepageLink.text === 'ACTIVITIES'}
+    <a
+      class="nav-item oswald-header"
+      href={homepageLink.href}
+    >
+      <p>
+      {homepageLink.text}
+      </p>
+      <p class="emoji-link noto-emoji-font">
+      {homepageLink.emoji}
+      </p>
+    </a>
+    {/if}
   {/each}
   </nav>
-</main>
+</div>
 
 <style>
-  main {
+  .page-container {
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at bottom center, #39FF14, #000080);

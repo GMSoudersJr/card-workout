@@ -18,6 +18,8 @@ const [
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
+	await page.waitForLoadState('domcontentloaded');
+	await page.getByRole('link', { name: 'Play' }).click();
 	await page.getByRole('link', { name: 'Exercises' }).click();
 	await page.waitForLoadState('domcontentloaded');
 
@@ -25,7 +27,6 @@ test.beforeEach(async ({ page }) => {
 	await page.locator(`#${diamonds}-exercise-select`).selectOption(exercise2);
 	await page.locator(`#${hearts}-exercise-select`).selectOption(exercise3);
 	await page.locator(`#${spades}-exercise-select`).selectOption(exercise4);
-
 
 	const letsGoButton = page.getByRole('button', { name: "Let's Go" });
 	await letsGoButton.click();
