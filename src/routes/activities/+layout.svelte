@@ -1,6 +1,6 @@
 <script lang="ts">
   import {
-      cardEmoji,
+      exerciseEmoji,
       homeEmoji
     } from '$lib/emojis';
 </script>
@@ -11,8 +11,8 @@
       {homeEmoji}
     </a>
     <h1 class="heading oswald-header">Recent Activities</h1>
-    <a href="/cards" class="suit-yourself-link noto-emoji-font emoji-nav-link">
-      {cardEmoji}
+    <a href="/exercises" class="exercises-link noto-emoji-font emoji-nav-link">
+      {exerciseEmoji}
     </a>
   </div>
   <slot />
@@ -34,7 +34,7 @@
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
     justify-items: center;
-    grid-template-areas: "homeLink heading suitYourselfLink";
+    grid-template-areas: "homeLink heading exercisesLink";
   }
   .emoji-nav-link {
     font-size: 1.5rem;
@@ -44,8 +44,8 @@
     text-decoration: none;
     color: #000080;
   }
-  .suit-yourself-link {
-    grid-area: suitYourselfLink;
+  .exercises-link {
+    grid-area: exercisesLink;
     text-decoration: none;
     color: #000080;
   }

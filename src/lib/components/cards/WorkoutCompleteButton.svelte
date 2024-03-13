@@ -2,10 +2,20 @@
 	import {goto} from "$app/navigation";
 	import {activitiesButtonText} from "$lib/strings/forCardsPage";
   import { setFocus } from "$lib/utils";
-
-
+  import {
+    discardedCards,
+    suitExercises,
+    theCurrentCard,
+    theDeckOfCards,
+    workoutTimer,
+  } from "../../../store";
 
   async function handleClick() {
+    theDeckOfCards.shuffle();
+    discardedCards.reset();
+    theCurrentCard.reset();
+    suitExercises.reset();
+    workoutTimer.reset();
     await goto('/activities');
   }
 </script>

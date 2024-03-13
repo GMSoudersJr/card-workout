@@ -1,5 +1,6 @@
 import {
 	cardEmoji,
+	exerciseEmoji,
 	homeEmoji,
 	repeatEmoji,
 	wasteBasketEmoji
@@ -124,8 +125,8 @@ test.describe('on "ACTIVITIES" page', () => {
 			await expect(homeLink).toBeEnabled();
 		});
 
-		test('expect cards link visible and enabled', async ({ page }) => {
-			const cardsLink = page.getByRole('link', { name: cardEmoji });
+		test('expect exercises link visible and enabled', async ({ page }) => {
+			const cardsLink = page.getByRole('link', { name: exerciseEmoji });
 			await expect(cardsLink).toBeVisible();
 			await expect(cardsLink).toBeEnabled();
 		});
@@ -138,11 +139,11 @@ test.describe('on "ACTIVITIES" page', () => {
 				await expect(page.getByRole('heading', {name: 'SUIT YOURSELF'})).toBeVisible();
 			});
 
-			test('expect cards page', async ({ page }) => {
-				const cardsLink = page.getByRole('link', { name: cardEmoji });
+			test('expect exercises page', async ({ page }) => {
+				const cardsLink = page.getByRole('link', { name: exerciseEmoji });
 				await cardsLink.click();
 				await page.waitForLoadState('domcontentloaded');
-				await expect(page.locator('.discarded-cards')).toBeVisible();
+				await expect(page.getByRole('heading', { name: 'EXERCISES', level: 1 })).toBeVisible();
 			});
 
 		});
