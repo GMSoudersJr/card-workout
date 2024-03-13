@@ -7,6 +7,7 @@
 	import WorkoutCard from '$lib/components/activities/WorkoutCard.svelte';
 	import {deleteWorkoutFromLocalStorageWith, getLocalStorageWorkouts} from '$lib/utils';
 	import {goto} from '$app/navigation';
+  import { suitExercises } from '../../store';
 
   onMount(async () => {
     setWorkouts();
@@ -14,7 +15,10 @@
 
   async function setWorkouts() {
     workouts = getLocalStorageWorkouts();
-    if ( workouts.length === 0 ) await goto('/');
+    if ( workouts.length === 0 ) {
+      suitExercises.reset();
+      await goto('/');
+    }
     workouts = workouts.reverse();
   }
 

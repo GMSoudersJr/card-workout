@@ -41,7 +41,7 @@ test.describe('one saved workout', () => {
 	});
 
 	test.describe('delete last workout', () => {
-		test('expect navigation home', async ({ page }) => {
+		test.beforeEach(async ({ page }) => {
 			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
@@ -57,10 +57,19 @@ test.describe('one saved workout', () => {
 			await expect(confirmButton).toBeVisible();
 			await confirmButton.click();
 			await page.waitForLoadState('domcontentloaded');
+		});
+		test('expect navigation home', async ({ page }) => {
 			await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
 			const linkTexts = await page.getByRole('link').allInnerTexts();
 			expect(linkTexts.length).toBeGreaterThan(0);
 			await expect(page.getByRole('link', { name: 'ACTIVITIES' })).not.toBeVisible();
+		});
+
+		test('expect exercises to be reset', async ({ page }) => {
+			await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
+			await page.getByRole('link', { name: 'EXERCISES' }).click();
+			await page.waitForLoadState('domcontentloaded');
+			await expect(page.locator('.example-workout-section')).toBeVisible();
 		});
 
 	});
