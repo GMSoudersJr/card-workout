@@ -1,30 +1,49 @@
-<script>
+<script lang="ts">
   import { workoutStopwatch } from "../../../store";
+  let displayTime = 0
+  let displayInterval: number;
 
-  $: elapsedTime = $workoutStopwatch.elapsedTime;
+  function handleStart() {
+    workoutStopwatch.start();
+    displayInterval = setInterval(() => {
+      displayTime = $workoutStopwatch.elapsedTime;
+    }, 100);
+  }
+
+  function handleStop() {
+    workoutStopwatch.stop();
+    clearInterval(displayInterval);
+  }
+
+  function handleReset() {
+    clearInterval(displayInterval);
+    workoutStopwatch.reset();
+    displayTime = $workoutStopwatch.elapsedTime;
+  }
+
 </script>
 
 <div class="workout-stopwatch-container">
   <div class="workout-stopwatch">
-    <p class="elapsed-time">
-      {elapsedTime}
+    <p class="display-time">
+      Display: {displayTime}
     </p>
   </div>
   <button
     disabled={$workoutStopwatch.running}
-    on:click={workoutStopwatch.start}
+    on:click={handleStart}
   >
     Start
   </button>
   <button
     disabled={!$workoutStopwatch.running}
-    on:click={workoutStopwatch.stop}
+    on:click={handleStop}
   >
     Stop
   </button>
   <button
-    disabled={!$workoutStopwatch.running}
-    on:click={workoutStopwatch.reset}
+    disabled={$workoutStopwatch.running}
+    on:click={handleReset}
   >
     Reset
   </button>

@@ -58,7 +58,7 @@ function createStopwatch() {
 		running: false,
 		startedAt: 0,
 		elapsedTime: 0,
-		_interval: 0
+		_interval: 0,
 	};
 
 	const { subscribe, set, update } = writable(stopwatch);
@@ -74,7 +74,7 @@ function createStopwatch() {
 			return stopwatch;
 		}),
 		stop: () => update((stopwatch) => {
-			stopwatch.running = false,
+			stopwatch.running = false;
 			clearInterval(stopwatch._interval);
 			return stopwatch;
 		}),
