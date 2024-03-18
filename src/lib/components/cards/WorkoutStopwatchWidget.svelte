@@ -1,32 +1,46 @@
 <script lang="ts">
+	import { formatStopWatchTime } from "$lib/utils";
+	import {onMount} from "svelte";
   import { workoutStopwatch } from "../../../store";
-  let displayTime = 0
-  let displayInterval: number;
+
+  let displayTime = $workoutStopwatch.elapsedTime;
+  let displayIntervalId: number;
+
+  onMount(async() => {
+    if ( $workoutStopwatch.running ) {
+      displayIntervalId = setInterval(() => {
+        displayTime = $workoutStopwatch.elapsedTime;
+      }, 10);
+    }
+  })
 
   function handleStart() {
     workoutStopwatch.start();
-    displayInterval = setInterval(() => {
-      displayTime = $workoutStopwatch.elapsedTime;
-    }, 100);
+    workoutStopwatch.updateDisplayIntervalId(
+      setInterval(() => {
+        displayTime = $workoutStopwatch.elapsedTime;
+      }, 10)
+    );
   }
 
   function handleStop() {
     workoutStopwatch.stop();
-    clearInterval(displayInterval);
+    workoutStopwatch.updateDisplayIntervalId(displayIntervalId);
   }
 
   function handleReset() {
-    clearInterval(displayInterval);
     workoutStopwatch.reset();
     displayTime = $workoutStopwatch.elapsedTime;
   }
+
+  $: stopwatchTime = formatStopWatchTime(displayTime);
 
 </script>
 
 <div class="workout-stopwatch-container">
   <div class="workout-stopwatch">
     <p class="display-time">
-      Display: {displayTime}
+      Display: {stopwatchTime}
     </p>
   </div>
   <button

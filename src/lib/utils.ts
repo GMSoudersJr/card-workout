@@ -21,6 +21,28 @@ export const createDeckOfCards = () => {
 	return result;
 }
 
+export function formatStopWatchTime(milliseconds: number): string {
+	let result = `00:00.000`;
+	if (milliseconds === undefined || milliseconds === null) return result;
+	const elapsedSeconds = milliseconds / 1000;
+	let minutes = Math.floor(elapsedSeconds / 60);
+	let minutesString: string;
+	if ( minutes < 10 ) {
+		minutesString = `0${minutes.toString()}`
+	} else {
+		minutesString = minutes.toString();
+	}
+	let seconds = (elapsedSeconds % 60);
+	let secondsString: string;
+	if ( seconds < 10 ) {
+		secondsString = `0${seconds.toFixed(2)}`
+	} else {
+		secondsString = seconds.toFixed(2)
+	}
+	result = `${minutesString}:${secondsString}`;
+	return result;
+}
+
 export const thisYear = () => {
 	const date = new Date(Date.now());
 	return date.getFullYear();

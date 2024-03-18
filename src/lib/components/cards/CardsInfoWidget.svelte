@@ -8,6 +8,7 @@
 	import RankInfoWidget from "./RankInfoWidget.svelte";
 	import SuitInfoWidget from "./SuitInfoWidget.svelte";
   import RepsInfoWidget from "./RepsInfoWidget.svelte";
+  import WorkoutStopwatch from "./WorkoutStopwatchWidget.svelte";
 
   import { exercisesHaveNotBeenChosen } from "$lib/utils";
 
@@ -15,13 +16,14 @@
     [key: string]: ComponentType
   }
 
-  type Group = 'deck' | 'suit' | 'rank' | 'reps' | string;
+  type Group = 'deck' | 'suit' | 'rank' | 'reps' | 'time' | string;
 
   const infoWidgets: InfoWidgets = {
     deck: DeckInfoWidget,
     rank: RankInfoWidget,
     suit: SuitInfoWidget,
     reps: RepsInfoWidget,
+    time: WorkoutStopwatch,
   };
 
   interface InfoChoice {
@@ -56,11 +58,17 @@
       labelName: radioButtonLabelNames.reps,
       widget: RepsInfoWidget,
     },
+    {
+      id: "radio-time",
+      value: "time",
+      labelName: radioButtonLabelNames.time,
+      widget: WorkoutStopwatch,
+    },
   ];
 
   $: radioButtons = () => {
     if ( $suitExercises.some(exercisesHaveNotBeenChosen) ) {
-    return infoChoices.slice(0, -1);
+    return infoChoices.slice(0, -2);
     } else {
       return infoChoices;
     }

@@ -3,4 +3,5 @@ export enum ERadioButtonLabelNames {
 	RANK='Rank',
 	SUIT='Suit',
 	REPS='Reps',
+	TIME='Time'
 };

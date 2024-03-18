@@ -17,7 +17,7 @@
   } from '$lib/strings/forCardsPage';
 	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
 	import WorkoutCompleteButton from '$lib/components/cards/WorkoutCompleteButton.svelte';
-	import WorkoutStopwatch from '$lib/components/cards/WorkoutStopwatch.svelte';
+	import WorkoutStopwatch from '$lib/components/cards/WorkoutStopwatchWidget.svelte';
 
   function handlePluckedTheSameCard(event: CustomEvent) {
     nopeNotNowMessage = event.detail.message;
