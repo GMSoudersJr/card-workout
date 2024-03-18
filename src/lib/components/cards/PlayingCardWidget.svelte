@@ -7,6 +7,7 @@
     theCurrentCard,
     suitExercises,
     workoutTimer,
+    workoutStopwatch,
   } from '../../../store';
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
@@ -61,6 +62,8 @@
         previousWorkouts = JSON.parse(localStorageWorkoutState) as TSavedWorkout[];
       }
       workoutTimer.end(Date.now());
+      workoutStopwatch.stop();
+      workoutStopwatch.clearIntervals();
       let workout: TSavedWorkout = {
         name: `Workout # ${previousWorkouts.length + 1}`,
         exercises: $suitExercises.map((suitExercise) => {

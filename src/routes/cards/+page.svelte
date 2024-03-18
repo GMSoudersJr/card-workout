@@ -5,6 +5,7 @@
     discardedCards,
     theCurrentCard,
     suitExercises,
+	workoutStopwatch,
   } from '../../store';
   import PlayingCardWidget from '$lib/components/cards/PlayingCardWidget.svelte';
   import StartButton from '$lib/components/cards/StartButton.svelte';
@@ -17,7 +18,6 @@
   } from '$lib/strings/forCardsPage';
 	import PluckedTheSameCard from '$lib/components/cards/PluckedTheSameCard.svelte';
 	import WorkoutCompleteButton from '$lib/components/cards/WorkoutCompleteButton.svelte';
-	import WorkoutStopwatch from '$lib/components/cards/WorkoutStopwatchWidget.svelte';
 
   function handlePluckedTheSameCard(event: CustomEvent) {
     nopeNotNowMessage = event.detail.message;
@@ -33,7 +33,6 @@
 
 <div class="page-container">
   <aside id="left-aside" class="left-aside">
-    <WorkoutStopwatch />
   </aside>
 
   <section class="current-card-section" id="current-card-section">

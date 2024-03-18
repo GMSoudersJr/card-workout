@@ -7,11 +7,9 @@
   let displayIntervalId: number;
 
   onMount(async() => {
-    if ( $workoutStopwatch.running ) {
       displayIntervalId = setInterval(() => {
         displayTime = $workoutStopwatch.elapsedTime;
       }, 10);
-    }
   })
 
   function handleStart() {
@@ -34,6 +32,12 @@
   }
 
   $: stopwatchTime = formatStopWatchTime(displayTime);
+
+  export let start: boolean;
+  export let stop: boolean;
+if ( start ) {
+  handleStart();
+}
 
 </script>
 
