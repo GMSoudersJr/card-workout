@@ -7,9 +7,11 @@
   let displayIntervalId: number;
 
   onMount(async() => {
-      displayIntervalId = setInterval(() => {
+    workoutStopwatch.updateDisplayIntervalId(
+      setInterval(() => {
         displayTime = $workoutStopwatch.elapsedTime;
-      }, 10);
+      }, 10)
+    );
   })
 
   function handleStart() {
