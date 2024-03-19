@@ -6,7 +6,6 @@
     randomCardIndex,
     theCurrentCard,
     suitExercises,
-    workoutTimer,
     workoutStopwatch,
   } from '../../../store';
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
@@ -24,6 +23,7 @@
   const dispatch = createEventDispatcher();
 
   async function handleClick() {
+    continueStopwatch();
     let widthOfUnderCard = 25;
     let clientWidth = document.getElementById('discarded-cards-only')?.clientWidth;
     if ( clientWidth === undefined) return;
@@ -61,7 +61,6 @@
       } else {
         previousWorkouts = JSON.parse(localStorageWorkoutState) as TSavedWorkout[];
       }
-      workoutTimer.end(Date.now());
       workoutStopwatch.stop();
       workoutStopwatch.clearIntervals();
       let workout: TSavedWorkout = {
@@ -72,8 +71,8 @@
           return suitExercise.exercise.name;
         }),
         time: {
-          start: $workoutTimer.start,
-          end: $workoutTimer.end
+          startedAt: $workoutStopwatch.startedAt,
+          elapsed: $workoutStopwatch.elapsedTime,
         },
       };
       previousWorkouts.push(workout);
@@ -128,7 +127,13 @@
     if ( cardAction === 'putBack' ) handlePutBack();
   }
 
+  function continueStopwatch(): void {
+    if ( $workoutStopwatch.running ) return;
+    workoutStopwatch.continue();
+  }
+
   function handlePutBack() {
+    continueStopwatch();
     let theDeckIndexOfTheCardToPutBack: number;
     if ( $theCurrentCard[0] ) {
       theDeckIndexOfTheCardToPutBack = $theCurrentCard[0].deckIndex;

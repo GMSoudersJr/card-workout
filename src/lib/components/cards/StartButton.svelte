@@ -6,7 +6,6 @@
     theDeckOfCards,
     theCurrentCard,
     randomCardIndex,
-    workoutTimer,
     suitExercises,
     workoutStopwatch,
   } from '../../../store';
@@ -18,7 +17,6 @@
 
     if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
 
-    workoutTimer.start(Date.now());
     workoutStopwatch.start();
   }
 

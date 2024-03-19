@@ -74,7 +74,7 @@ export function getLocalStorageWorkouts():TSavedWorkout[] {
 export function deleteWorkoutFromLocalStorageWith(workoutStartTime: number | undefined) {
 	const workouts = getLocalStorageWorkouts();
 	const indexOfWorkoutToDelete = workouts.findIndex((workout) => {
-		return workout.time?.start === workoutStartTime
+		return workout.time?.startedAt === workoutStartTime
 	});
 	workouts.splice(indexOfWorkoutToDelete, 1);
 	localStorage.setItem('workouts', JSON.stringify(workouts));

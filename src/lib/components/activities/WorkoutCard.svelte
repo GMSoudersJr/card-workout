@@ -6,19 +6,20 @@
 	import RepeatWorkoutButton from "./RepeatWorkoutButton.svelte";
 	import DeleteWorkoutButton from "./DeleteWorkoutButton.svelte";
 	import {quintOut} from "svelte/easing";
+	import type { TSavedWorkout } from "../../../types/savedWorkout";
 
-  export let workout: TWorkout<TExerciseName>;
+  export let workout: TSavedWorkout;
   export let index: number;
 
   $: workoutName = workout.name ? workout.name : `Workout # ${index + 1}`;
 
-  $: workoutDate = new Date(workout.time?.start as number).toLocaleDateString();
+  $: workoutDate = new Date(workout.time?.startedAt as number).toLocaleDateString();
 
   $: workoutTime = () => {
     if (workout.time === undefined || workout.time === null) return;
-    if (workout.time.start === undefined || workout.time.start === null) return;
-    if (workout.time.end === undefined || workout.time.end === null) return;
-    const elapsedMilliSeconds = workout.time?.end - workout.time?.start;
+    if (workout.time.startedAt === undefined || workout.time.startedAt === null) return;
+    if (workout.time.elapsed === undefined || workout.time.elapsed === null) return;
+    const elapsedMilliSeconds = workout.time?.elapsed;
     const elapsedSeconds = elapsedMilliSeconds / 1000;
     let minutes = Math.floor(elapsedSeconds / 60);
     let minutesString: string;

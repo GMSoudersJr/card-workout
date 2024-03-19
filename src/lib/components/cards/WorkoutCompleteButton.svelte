@@ -7,7 +7,6 @@
     suitExercises,
     theCurrentCard,
     theDeckOfCards,
-    workoutTimer,
     workoutStopwatch,
   } from "../../../store";
 
@@ -17,7 +16,6 @@
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
-    workoutTimer.reset();
     workoutStopwatch.reset();
   }
 </script>

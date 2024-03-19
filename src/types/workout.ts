@@ -4,8 +4,8 @@ export type TWorkout<TSuitExercise> = {
 	name?: string | undefined,
 	exercises: (TExerciseName | undefined)[],
 	time?: {
-		start?: number | undefined,
-		end?: number | undefined
+		startedAt?: number | undefined,
+		elapsed?: number | undefined
 	} | undefined
 };
 

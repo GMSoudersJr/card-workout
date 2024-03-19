@@ -18,7 +18,7 @@ export class Workout implements TWorkout<TSuitExercise<TSuit>[]> {
 	name?: string;
 	exercises: (TExerciseName | undefined)[];
 	time: {
-		start: number | undefined,
-		end: number | undefined
+		startedAt: number | undefined,
+		elapsed: number | undefined,
 	} | undefined;
 }

@@ -7,7 +7,7 @@ import { createDeckOfCards } from './functions/createDeckOfCards';
 import type { TExerciseName } from './types/exerciseName';
 import type { TSuitExercise } from './types/suitExercise';
 import { createSuitExercises } from './functions/createSuitExercises';
-import {createWorkout} from './functions/createWorkout';
+import { createWorkout } from './functions/createWorkout';
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
@@ -32,33 +32,16 @@ function createTheDeckOfCards() {
 	};
 };
 
-function createTimer() {
-	const initialTimer = {
-		start: 0,
-		end: 0
-	};
-	const { subscribe, set, update } = writable(initialTimer);
-
-	return {
-		subscribe,
-		start: (startTimer: number) => update((timer) => {
-			timer.start = startTimer;
-			return timer
-		}),
-		end: (endTimer: number) => update((timer) => {
-			timer.end = endTimer;
-			return timer
-		}),
-		reset: () => set({start: 0, end: 0})
-	}
-}
-
 function createStopwatch() {
 	const stopwatch = {
 		running: false,
 		startedAt: 0,
+		paused: {
+			elapsedTime: 0,
+		},
+		continuedAt: 0,
 		elapsedTime: 0,
-		_interval: 0,
+		_intervalId: 0,
 		displayIntervalId: 0,
 	};
 
@@ -70,7 +53,7 @@ function createStopwatch() {
 		start: () => update((stopwatch) => {
 			stopwatch.running = true;
 			stopwatch.startedAt = Date.now();
-			stopwatch._interval = setInterval(() => {
+			stopwatch._intervalId = setInterval(() => {
 				stopwatch.elapsedTime = Date.now() - stopwatch.startedAt
 			}, 10);
 			return stopwatch;
@@ -78,8 +61,25 @@ function createStopwatch() {
 
 		stop: () => update((stopwatch) => {
 			stopwatch.running = false;
-			clearInterval(stopwatch._interval);
+			clearInterval(stopwatch._intervalId);
 			clearInterval(stopwatch.displayIntervalId);
+			return stopwatch;
+		}),
+
+		pause: () => update((stopwatch) => {
+			clearInterval(stopwatch._intervalId);
+			stopwatch.running = false;
+			stopwatch.paused.elapsedTime = stopwatch.elapsedTime;
+			return stopwatch;
+		}),
+
+		continue: () => update((stopwatch) => {
+			stopwatch.running = true;
+			stopwatch.continuedAt = Date.now();
+			stopwatch._intervalId = setInterval(() => {
+				stopwatch.elapsedTime = stopwatch.paused.elapsedTime + (Date.now() - stopwatch.continuedAt);
+			}, 10);
+			
 			return stopwatch;
 		}),
 
@@ -90,15 +90,19 @@ function createStopwatch() {
 
 		clearIntervals: () => update((stopwatch) => {
 			clearInterval(stopwatch.displayIntervalId);
-			clearInterval(stopwatch._interval);
+			clearInterval(stopwatch._intervalId);
 			return stopwatch;
 		}),
 
 		reset: () => set({
 			running: false,
 			startedAt: 0,
+			paused: {
+				elapsedTime: 0,
+			},
+			continuedAt: 0,
 			elapsedTime: 0,
-			_interval: 0,
+			_intervalId: 0,
 			displayIntervalId: 0,
 		})
 
@@ -192,7 +196,6 @@ export const theCurrentCard = createTheCurrentCard();
 export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
-export const workoutTimer = createTimer();
 export const workoutStopwatch = createStopwatch();
 
 
