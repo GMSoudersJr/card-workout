@@ -80,6 +80,21 @@ export function deleteWorkoutFromLocalStorageWith(workoutStartTime: number | und
 	localStorage.setItem('workouts', JSON.stringify(workouts));
 };
 
+export function reformatLocalStorageWorkouts(): TSavedWorkout[] {
+	const localStorageWorkouts = getLocalStorageWorkouts();
+	if ( localStorageWorkouts.length === 0 ) return localStorageWorkouts;
+	const reformatedLocalStorage = localStorageWorkouts.map((workout) => {
+		if (!!workout.time?.start && !!workout.time.end) {
+			workout.time.startedAt = workout.time.start;
+			workout.time.elapsed = workout.time.end - workout.time.start;
+		}
+		workout.name = workout.name;
+		workout.exercises = workout.exercises
+		return workout;
+	});
+	return reformatedLocalStorage;
+};
+
 export function clickOutside(node: Node) {
 	const handleClick = (event: Event) => {
 		const target = event.target as Node;

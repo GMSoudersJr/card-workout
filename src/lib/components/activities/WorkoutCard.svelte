@@ -1,7 +1,5 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  import type { TWorkout } from "../../../types/workout";
-  import type { TExerciseName } from "../../../types/exerciseName";
 	import {EExerciseNames} from "../../../enums/exerciseNames";
 	import RepeatWorkoutButton from "./RepeatWorkoutButton.svelte";
 	import DeleteWorkoutButton from "./DeleteWorkoutButton.svelte";

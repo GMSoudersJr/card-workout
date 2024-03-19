@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import type { TSavedWorkout } from '../../types/savedWorkout';
 	import WorkoutCard from '$lib/components/activities/WorkoutCard.svelte';
-	import { deleteWorkoutFromLocalStorageWith, getLocalStorageWorkouts } from '$lib/utils';
+	import { deleteWorkoutFromLocalStorageWith, getLocalStorageWorkouts, reformatLocalStorageWorkouts } from '$lib/utils';
 	import { goto } from '$app/navigation';
   import { suitExercises } from '../../store';
 
@@ -14,7 +14,9 @@
   });
 
   async function setWorkouts() {
-    workouts = getLocalStorageWorkouts();
+    //workouts = getLocalStorageWorkouts();
+    workouts = reformatLocalStorageWorkouts();
+    console.log(workouts);
     if ( workouts.length === 0 ) {
       suitExercises.reset();
       await goto('/');
