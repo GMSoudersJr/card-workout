@@ -39,7 +39,7 @@
   </button>
   {:else if !$workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0}
   <button
-    class="pause-button oswald-header"
+    class="continue-button oswald-header"
     on:click={handleContinue}
     disabled={$workoutStopwatch.running}
   >
