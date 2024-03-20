@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { formatStopWatchTime } from "$lib/utils";
 	import { onMount} from "svelte";
-  import { workoutStopwatch } from "../../../store";
+  import {
+    workoutStopwatch,
+    discardedCards
+  } from "../../../store";
 
   let displayTime = $workoutStopwatch.elapsedTime;
 
@@ -37,7 +40,7 @@
   >
     PAUSE
   </button>
-  {:else if !$workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0}
+  {:else if !$workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0 && $discardedCards.length < 52}
   <button
     class="continue-button oswald-header"
     on:click={handleContinue}
@@ -57,16 +60,16 @@
     align-items: center;
     grid-template-areas:
     ". displayTime ."
-    ". pauseButton .";
+    ". stopwatchButton .";
   }
   .display-time {
     color: #000080;
-    display: grid;
     grid-area: displayTime;
     font-size: 2rem;
   }
-  .pause-button {
-    grid-area: pauseButton;
+  .pause-button,
+  .continue-button {
+    grid-area: stopwatchButton;
     padding: 5px 0;
     border-radius: 8px;
     color: #000080;
