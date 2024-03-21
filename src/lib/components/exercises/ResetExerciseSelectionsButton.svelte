@@ -3,8 +3,10 @@
     suitExercises,
     theDeckOfCards,
     discardedCards,
-	theCurrentCard,
+    theCurrentCard,
+    workoutStopwatch,
   } from "../../../store";
+
   import { setFocus } from '$lib/utils';
 
   async function handleClick() {
@@ -12,6 +14,7 @@
     theDeckOfCards.shuffle();
     discardedCards.reset();
     theCurrentCard.reset();
+    workoutStopwatch.reset();
   }
 </script>
 

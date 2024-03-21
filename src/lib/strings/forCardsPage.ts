@@ -56,4 +56,3 @@ export const messageBelowTheShuffleButton = {
 		'See your time(s) in activities'
 	],
 };
-

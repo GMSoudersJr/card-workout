@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { formatStopWatchTime } from "$lib/utils";
 	import { onMount} from "svelte";
+	import { EStopwatchButtonString } from "../../../enums/stopwatchButtonString";
   import {
     workoutStopwatch,
     discardedCards
@@ -38,7 +39,7 @@
     on:click={handlePause}
     disabled={!$workoutStopwatch.running}
   >
-    PAUSE
+    {EStopwatchButtonString.PAUSE}
   </button>
   {:else if !$workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0 && $discardedCards.length < 52}
   <button
@@ -46,7 +47,7 @@
     on:click={handleContinue}
     disabled={$workoutStopwatch.running}
   >
-    CONTINUE
+    {EStopwatchButtonString.RESUME}
   </button>
   {/if}
 </div>
@@ -57,7 +58,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    align-items: center;
     grid-template-areas:
     ". displayTime ."
     ". stopwatchButton .";
@@ -65,10 +65,13 @@
   .display-time {
     color: #000080;
     grid-area: displayTime;
+    align-self: end;
     font-size: 2rem;
+    text-align: center;
   }
   .pause-button,
   .continue-button {
+    align-self: center;
     grid-area: stopwatchButton;
     padding: 5px 0;
     border-radius: 8px;

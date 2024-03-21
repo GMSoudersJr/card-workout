@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { ESuit } from '../src/enums/suit';
 import { EExerciseNames } from '../src/enums/exerciseNames';
+import { EStopwatchButtonString } from '../src/enums/stopwatchButtonString';
+
 
 const [
 	clubs,
@@ -8,6 +10,7 @@ const [
 	hearts,
 	spades
 ] = Object.keys(ESuit);
+
 const [
 	exercise1,
 	exercise2,
@@ -66,23 +69,36 @@ test.describe('stopwatch', () => {
 		});
 
 		test('expect timer greater than 0 seconds', async ({ page }) => {
-			const workoutStopwatchTime = await page.locator('.workout-stopwatch-container').locator('.display-time').allInnerTexts();
+			const workoutStopwatchTime =
+				await page.locator('.workout-stopwatch-container').locator('.display-time').allInnerTexts();
 			expect(workoutStopwatchTime[0]).not.toBe('00:00.00');
 		});
 
 		test('expect "pause" button to be visible and enabled', async ({ page }) => {
 			const workoutStopwatchContainer = page.locator('.workout-stopwatch-container');
-			const stopwatchPauseButton = workoutStopwatchContainer.getByRole('button', { name: 'PAUSE' });
+			const stopwatchPauseButton =
+				workoutStopwatchContainer.getByRole(
+					'button',
+					{ name: `${EStopwatchButtonString.PAUSE}` }
+			);
 			await expect(stopwatchPauseButton).toBeVisible();
 			await expect(stopwatchPauseButton).toBeEnabled();
 		});
 
 		test('expect "continue" to be visible and enabled', async ({ page }) => {
 			const workoutStopwatchContainer = page.locator('.workout-stopwatch-container');
-			const stopwatchPauseButton = workoutStopwatchContainer.getByRole('button', { name: 'PAUSE' });
+			const stopwatchPauseButton =
+				workoutStopwatchContainer.getByRole(
+					'button',
+					{ name: `${EStopwatchButtonString.PAUSE}` }
+			);
 			await stopwatchPauseButton.click();
 			await page.waitForLoadState('domcontentloaded');
-			const workoutStopwatchContinueButton = workoutStopwatchContainer.getByRole('button', { name: 'CONTINUE' });
+			const workoutStopwatchContinueButton =
+				workoutStopwatchContainer.getByRole(
+					'button',
+					{ name: `${EStopwatchButtonString.RESUME}` }
+			);
 			await expect(workoutStopwatchContinueButton).toBeVisible();
 			await expect(workoutStopwatchContinueButton).toBeEnabled();
 		});
