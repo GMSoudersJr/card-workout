@@ -148,6 +148,24 @@
     }
   }
 
+  // Using keyDown because arrow keys only fire on keydown
+  function handleKeyDown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowUp':
+        handleClick();
+      break;
+      case 'ArrowDown':
+        handlePutBack();
+      break;
+      case 'ArrowLeft':
+        handlePutBack();
+      break;
+      case 'ArrowRight':
+        handleClick();
+      break;
+    }
+  }
+
   onMount(async () => {
     if ( id.includes('discarded') ) return;
     let card = document.getElementById(`${id}`);
@@ -175,6 +193,7 @@
   aria-disabled={disabled}
   disabled={disabled}
   use:setFocus
+  on:keydown={handleKeyDown}
 >
   <section class="rank-and-suit">
 

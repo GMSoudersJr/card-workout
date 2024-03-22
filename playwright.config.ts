@@ -10,12 +10,11 @@ const config: PlaywrightTestConfig = {
 	fullyParallel: true,
 	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
 	projects: [
-		/*
 		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'], hasTouch: true },
+			testMatch: /keyboard/
 		},
-		*/
 		{
 			name: 'Mobile Chrome',
 			use: { ...devices['Pixel 7'], hasTouch: true },
