@@ -6,6 +6,7 @@ export const radioButtonLabelNames = {
 	rank: ERadioButtonLabelNames.RANK,
 	suit: ERadioButtonLabelNames.SUIT,
 	reps: ERadioButtonLabelNames.REPS,
+	time: ERadioButtonLabelNames.TIME,
 };
 
 export const remainingCardsString = 'Remaining:';
@@ -55,4 +56,3 @@ export const messageBelowTheShuffleButton = {
 		'See your time(s) in activities'
 	],
 };
-

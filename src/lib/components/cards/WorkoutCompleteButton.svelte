@@ -7,7 +7,7 @@
     suitExercises,
     theCurrentCard,
     theDeckOfCards,
-    workoutTimer,
+    workoutStopwatch,
   } from "../../../store";
 
   async function handleClick() {
@@ -16,7 +16,7 @@
     discardedCards.reset();
     theCurrentCard.reset();
     suitExercises.reset();
-    workoutTimer.reset();
+    workoutStopwatch.reset();
   }
 </script>
 

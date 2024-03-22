@@ -6,8 +6,8 @@
     theDeckOfCards,
     theCurrentCard,
     randomCardIndex,
-    workoutTimer,
     suitExercises,
+    workoutStopwatch,
   } from '../../../store';
 
   function handleStart() {
@@ -17,7 +17,7 @@
 
     if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
 
-    workoutTimer.start(Date.now());
+    workoutStopwatch.start();
   }
 
 </script>

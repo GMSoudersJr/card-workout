@@ -4,7 +4,7 @@ export type TSavedWorkout = {
 	name?: string,
 	exercises: (TExerciseName | undefined)[],
 	time?: {
-		start?: number,
-		end?: number
+		startedAt?: number,
+		elapsed?: number,
 	}
 };

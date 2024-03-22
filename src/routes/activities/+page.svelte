@@ -2,11 +2,14 @@
   import DeleteDialog from '$lib/components/activities/DeleteDialog.svelte';
   import { flip } from "svelte/animate";
   import { quintOut } from "svelte/easing";
-	import {onMount} from 'svelte';
+	import { onMount } from 'svelte';
 	import type { TSavedWorkout } from '../../types/savedWorkout';
 	import WorkoutCard from '$lib/components/activities/WorkoutCard.svelte';
-	import {deleteWorkoutFromLocalStorageWith, getLocalStorageWorkouts} from '$lib/utils';
-	import {goto} from '$app/navigation';
+  import {
+    deleteWorkoutFromLocalStorageWith,
+    reformatLocalStorageWorkouts
+  } from '$lib/utils';
+	import { goto } from '$app/navigation';
   import { suitExercises } from '../../store';
 
   onMount(async () => {
@@ -14,7 +17,8 @@
   });
 
   async function setWorkouts() {
-    workouts = getLocalStorageWorkouts();
+    //workouts = getLocalStorageWorkouts();
+    workouts = reformatLocalStorageWorkouts();
     if ( workouts.length === 0 ) {
       suitExercises.reset();
       await goto('/');
@@ -51,7 +55,7 @@
 <div class="activities-page-container">
   <section class="workout-cards-grid">
     {#if workouts}
-      {#each workouts as workout, index (workout.time?.start)}
+      {#each workouts as workout, index (workout.time?.startedAt)}
         <div
           class="workout-card-conatiner"
           animate:flip={{ delay: 400, duration: 400, easing: quintOut }}
