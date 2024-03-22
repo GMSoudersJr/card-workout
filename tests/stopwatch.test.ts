@@ -85,7 +85,7 @@ test.describe('stopwatch', () => {
 			await expect(stopwatchPauseButton).toBeEnabled();
 		});
 
-		test('expect "continue" to be visible and enabled', async ({ page }) => {
+		test('expect "resume" to be visible and enabled', async ({ page }) => {
 			const workoutStopwatchContainer = page.locator('.workout-stopwatch-container');
 			const stopwatchPauseButton =
 				workoutStopwatchContainer.getByRole(
