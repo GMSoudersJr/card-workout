@@ -4,7 +4,24 @@
 	import {onMount} from 'svelte';
 	import {goto} from '$app/navigation';
 
+  async function detectServiceWorkerUpdate() {
+    const registration = await navigator.serviceWorker.ready;
+
+    registration.addEventListener('updatefound', () => {
+      const newServiceWorker = registration.installing;
+
+      newServiceWorker?.addEventListener('statechange', () => {
+        if (newServiceWorker.state === 'installed') {
+          if (confirm('New update available! Reload to update?')) {
+            window.location.reload();
+          }
+        }
+      });
+    });
+  };
+
   onMount(async() => {
+    detectServiceWorkerUpdate();
     const username = localStorage.getItem('username');
     if ( username === undefined || username === null ) {
       await goto('/login');
