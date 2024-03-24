@@ -66,8 +66,8 @@ self.addEventListener('fetch', (event) => {
 				cache.put(event.request, response.clone())
 			}
 
-
 			return response;
+
 		} catch {
 			// fall back to cache
 			const cachedResponse = await cache.match(url.pathname);
@@ -77,7 +77,7 @@ self.addEventListener('fetch', (event) => {
 
 		}
 
-		return new Response('Not Found', {status: 404})
+		return new Response('Something went wrong', {status: 404})
 	}
 
 	event.respondWith(respond());

@@ -1,0 +1,13 @@
+{
+	"name": "Suit Yourself",
+	"short_name": "Suit URSelf",
+	"version": "1",
+	"start_url": "/",
+	"theme_color": "#259259",
+	"background_color": "#000080",
+	"orientation": "portrait",
+	"description": "A web-based exercise app for based on a deck of playing cards",
+	"display": "standalone",
+	"manifest_version": 2,
+	"icons": []
+}
