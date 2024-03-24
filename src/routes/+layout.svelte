@@ -13,6 +13,7 @@
       newServiceWorker?.addEventListener('statechange', () => {
         if (newServiceWorker.state === 'installed') {
           if (confirm('New update available! Reload to update?')) {
+            newServiceWorker.postMessage({ type: 'SKIP_WAITING' });
             window.location.reload();
           }
         }

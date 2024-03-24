@@ -84,4 +84,10 @@ self.addEventListener('fetch', (event) => {
 
 });
 
-console.log('hi')
+console.log('water');
+
+self.addEventListener('message', event => {
+	if (event.data && event.data.type === 'SKIP_WAITING') {
+		self.skipWaiting();
+	}
+});
