@@ -9,5 +9,30 @@
 	"description": "A web-based exercise app for based on a deck of playing cards",
 	"display": "standalone",
 	"manifest_version": 2,
-	"icons": []
+	"categories": [
+		"entertainment",
+		"fitness",
+		"gamges",
+		"health",
+		"healthe & fitness",
+		"personalization"
+	],
+	"icons": [
+		{
+			"src": "/icons/512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/icons/512-maskable.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/icons/1024.png",
+			"type": "image/png",
+			"sizes": "1024x1024"
+		}
+	]
 }
