@@ -62,6 +62,10 @@ self.addEventListener('fetch', (event) => {
 			const isNotExtension = url.protocol === 'http:';
 			const isSuccess = response.status === 200;
 
+			if (!(response instanceof Response)) {
+				throw new Error('invalid repsonse from fetch');
+			};
+
 			if ( isNotExtension && isSuccess ) {
 				cache.put(event.request, response.clone())
 			}
@@ -77,7 +81,7 @@ self.addEventListener('fetch', (event) => {
 
 		}
 
-		return new Response('Something went wrong', {status: 404})
+		return new Response('Are you offline?', {status: 404})
 	}
 
 	event.respondWith(respond());
