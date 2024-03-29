@@ -85,7 +85,7 @@ self.addEventListener('fetch', (event) => {
 
 		}
 
-		return new Response(`Are you offline?\nLooking for ${url}`, {status: 404})
+		return new Response(`Are you offline?\nLooking for ${url.pathname}`, {status: 404})
 	}
 
 	event.respondWith(respond());
