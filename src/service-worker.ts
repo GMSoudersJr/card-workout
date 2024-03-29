@@ -51,6 +51,7 @@ self.addEventListener('fetch', (event) => {
 			const cachedResponse = await cache.match(url.pathname);
 
 			if (cachedResponse) {
+				console.log("Responding from the cache");
 				return cachedResponse;
 			}
 		}
@@ -59,12 +60,13 @@ self.addEventListener('fetch', (event) => {
 		// fall back to the cache if we're offline
 		try {
 			const response = await fetch(event.request);
+			console.log("response:", response)
 			const isNotExtension = url.protocol === 'http:';
 			const isSuccess = response.status === 200;
 
-			if (!(response instanceof Response)) {
-				throw new Error('invalid repsonse from fetch');
-			};
+			if (event.request.mode === 'navigate') {
+				console.log("navigate mode");
+			}
 
 			if ( isNotExtension && isSuccess ) {
 				cache.put(event.request, response.clone())
@@ -74,14 +76,16 @@ self.addEventListener('fetch', (event) => {
 
 		} catch {
 			// fall back to cache
+			console.log("Falling back to the cache in try catch");
 			const cachedResponse = await cache.match(url.pathname);
+			console.log("Cached Response", cachedResponse);
 			if (cachedResponse) {
 				return cachedResponse;
 			}
 
 		}
 
-		return new Response('Are you offline?', {status: 404})
+		return new Response(`Are you offline?\nLooking for ${url}`, {status: 404})
 	}
 
 	event.respondWith(respond());
