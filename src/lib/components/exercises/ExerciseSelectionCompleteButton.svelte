@@ -12,7 +12,7 @@
   import type { TSuit } from "../../../types/suit";
 
   async function handleClick() {
-    if ( $workoutStopwatch.running ) {
+    if ( $workoutStopwatch.elapsedTime > 0) {
       workoutStopwatch.reset();
     }
     theDeckOfCards.setExercises($suitExercises);
