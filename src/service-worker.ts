@@ -6,6 +6,7 @@
 declare let self: ServiceWorkerGlobalScope;
 
 import { build, files, version } from "$service-worker";
+import { error } from "@sveltejs/kit";
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
@@ -17,6 +18,7 @@ const ASSETS = [
 
 // install service worker
 self.addEventListener('install', (event) => {
+	console.log("ASSETS:", ASSETS);
 	async function addFilesToCache() {
 		const cache = await caches.open(CACHE);
 		await cache.addAll(ASSETS);
@@ -51,7 +53,7 @@ self.addEventListener('fetch', (event) => {
 			const cachedResponse = await cache.match(url.pathname);
 
 			if (cachedResponse) {
-				console.log("Responding from the cache");
+				console.log("This is from the cache:", cachedResponse);
 				return cachedResponse;
 			}
 		}
@@ -60,7 +62,7 @@ self.addEventListener('fetch', (event) => {
 		// fall back to the cache if we're offline
 		try {
 			const response = await fetch(event.request);
-			console.log("response:", response)
+			console.log("response:", response.url);
 			const isNotExtension = url.protocol === 'http:';
 			const isSuccess = response.status === 200;
 
@@ -74,7 +76,7 @@ self.addEventListener('fetch', (event) => {
 
 			return response;
 
-		} catch {
+		} catch (err) {
 			// fall back to cache
 			console.log("Falling back to the cache in try catch");
 			const cachedResponse = await cache.match(url.pathname);
@@ -82,10 +84,11 @@ self.addEventListener('fetch', (event) => {
 			if (cachedResponse) {
 				return cachedResponse;
 			}
+			console.log("no network response", err);
 
+			return new Response(`Are you offline?\nLooking for ${url.pathname}\nReload the page when you are on a network`, {status: 404});
 		}
 
-		return new Response(`Are you offline?\nLooking for ${url.pathname}`, {status: 404})
 	}
 
 	event.respondWith(respond());
