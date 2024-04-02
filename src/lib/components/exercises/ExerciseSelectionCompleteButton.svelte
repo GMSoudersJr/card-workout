@@ -3,7 +3,8 @@
     suitExercises,
     theDeckOfCards,
     discardedCards,
-	theCurrentCard,
+    theCurrentCard,
+    workoutStopwatch,
   } from "../../../store";
   import { goto } from "$app/navigation";
   import { setFocus } from '$lib/utils';
@@ -11,6 +12,9 @@
   import type { TSuit } from "../../../types/suit";
 
   async function handleClick() {
+    if ( $workoutStopwatch.running ) {
+      workoutStopwatch.reset();
+    }
     theDeckOfCards.setExercises($suitExercises);
     discardedCards.reset();
     theCurrentCard.reset();
