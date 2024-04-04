@@ -9,11 +9,6 @@
 	import {onMount} from 'svelte';
   const theHomepageLinks = [
     {
-      href: '/about',
-      text: 'ABOUT',
-      emoji: memoEmoji
-    },
-    {
       href: '/activities',
       text: 'ACTIVITIES',
       emoji: recieptEmoji
@@ -27,6 +22,11 @@
       href: '/exercises',
       text: 'EXERCISES',
       emoji: exerciseEmoji
+    },
+    {
+      href: '/about',
+      text: 'ABOUT',
+      emoji: memoEmoji
     },
   ];
 

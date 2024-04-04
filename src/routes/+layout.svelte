@@ -2,7 +2,8 @@
   import ViewTransition from './navigation.svelte';
   import '../app.css';
 	import {onMount} from 'svelte';
-	import {goto} from '$app/navigation';
+  // commented out this because login is causing errors when user offline
+  //import {goto} from '$app/navigation';
 
   async function detectServiceWorkerUpdate() {
     const registration = await navigator.serviceWorker.ready;
@@ -23,10 +24,12 @@
 
   onMount(async() => {
     detectServiceWorkerUpdate();
+    /*
     const username = localStorage.getItem('username');
     if ( username === undefined || username === null ) {
       await goto('/login');
     }
+    */
   });
 </script>
 
