@@ -14,6 +14,7 @@ const CACHE = `cache-${version}`;
 const ASSETS = [
 	...build, // the app itself
 	...files, // everything in 'static'
+	'/',
 ];
 
 // install service worker
