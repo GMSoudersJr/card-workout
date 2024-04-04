@@ -107,6 +107,7 @@ self.addEventListener('fetch', (event) => {
 							padding-top: 2rem;
 						}
 						.container {
+							height: 100%;
 							display: grid;
 							grid-template-columns: 1fr;
 							grid-template-rows: repeat(auto-fill, min-content);
