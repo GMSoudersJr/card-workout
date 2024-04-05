@@ -46,7 +46,7 @@
         toast.success("Thank you!")
       } else if (outcome === 'dismissed'){
         // Show toast that it wasn't installed
-        toast.error("SUIT YOURSELF NOT installed!")
+        toast.error("NOT installed!", { duration: 3500 });
       }
     }
   };
