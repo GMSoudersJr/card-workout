@@ -82,7 +82,7 @@
     deferredPrompt = event as BeforeInstallPromptEvent;
     //Show customized install prompt for PWA
     // This will be a toast with a button to install the app
-    toast(RichContentToast);
+    toast(RichContentToast, { duration: 7500 });
   };
 
   function handleWindowClick(event: MouseEvent) {
