@@ -38,18 +38,18 @@
 	],
 	"screenshots": [
 		{
+			"src": "images/homescreen.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "homescreen",
+			"sizes":"864x1739"
+		},
+		{
 			"src": "images/exerciseSelector.png",
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "exercise selector",
 			"sizes":"864x1739"
-		},
-		{
-			"src": "images/homescreen.png",
-			"type": "image/png",
-			"form_factor": "narrow",
-			"label": "homescreen",
-			"sizes":"864x1735"
 		},
 		{
 			"src": "images/workoutDeck.png",
@@ -70,7 +70,14 @@
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "workout stopwatch",
-			"sizes":"864x1737"
+			"sizes":"864x1739"
+		},
+		{
+			"src": "images/activities.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "activities",
+			"sizes":"864x1739"
 		}
 	]
 }
