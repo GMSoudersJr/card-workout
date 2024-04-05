@@ -14,10 +14,9 @@
 	"categories": [
 		"entertainment",
 		"fitness",
-		"gamges",
+		"games",
 		"health",
-		"health & fitness",
-		"personalization"
+		"health & fitness"
 	],
 	"icons": [
 		{
@@ -41,26 +40,36 @@
 		{
 			"src": "images/homescreen.png",
 			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "homescreen",
 			"sizes":"864x1735"
 		},
 		{
 			"src": "images/exerciseSelector.png",
 			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "exercise selector",
 			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutDeck.png",
 			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "deck info",
 			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutReps.png",
 			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "rep info",
 			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutTimer.png",
 			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "workout stopwatch",
 			"sizes":"864x1737"
 		}
 	]
