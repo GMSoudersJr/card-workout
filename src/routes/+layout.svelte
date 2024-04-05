@@ -1,5 +1,7 @@
 <script lang="ts">
   import ViewTransition from './navigation.svelte';
+  import toast, { Toaster } from 'svelte-french-toast';
+  import RichContentToast from '$lib/components/RichContentToast.svelte';
   import '../app.css';
 	import {onMount} from 'svelte';
   // commented out this because login is causing errors when user offline
@@ -41,36 +43,26 @@
       deferredPrompt = null;
       if (outcome === 'accepted') {
         // Show toast that it was installed
+        toast.success("Thank you!")
       } else if (outcome === 'dismissed'){
         // Show toast that it wasn't installed
+        toast.error("SUIT YOURSELF NOT installed!")
       }
-      displayInstallButton = false;
     }
   };
 
   onMount(async() => {
     detectServiceWorkerUpdate();
 
-    // Show if before install prompt event is supported. It is, so let's move
-    // on.
-    if ( 'BeforeInstallPromptEvent' in window ) { beforeInstallPromptEventExists = true; }
-
-
-    window.addEventListener("beforeinstallprompt", async (event) => {
-      // Prevents the default mini-infobar or install dialog from appearing on
-      // mobile.
-      event.preventDefault();
-      //How to fix this?
-      deferredPrompt = event;
-      //Show customized install prompt for PWA
-      // This will be a toast with a button to install the app
-      displayInstallButton = true;
-    });
+    // Show if before install prompt event is supported.
+    if ( 'BeforeInstallPromptEvent' in window ) {
+      console.log("")
+    };
 
     window.addEventListener("appinstalled", (event) => {
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
-      console.log("App Installed")
+      toast.success("SUIT YOURSELF installed!")
     });
 
     /*
@@ -81,22 +73,33 @@
     */
 
   });
-  let installable = false;
-  let beforeInstallPromptEventExists = false;
-  let displayInstallButton = false;
+
+  async function handleBeforeInstallPrompt(event: Event) {
+    // Prevents the default mini-infobar or install dialog from appearing on
+    // mobile.
+    event.preventDefault();
+    // Save for later
+    deferredPrompt = event as BeforeInstallPromptEvent;
+    //Show customized install prompt for PWA
+    // This will be a toast with a button to install the app
+    toast(RichContentToast);
+  };
+
+  function handleWindowClick(event: MouseEvent) {
+    const target = event.target as HTMLButtonElement;
+    if (target.value !== 'installSuitYourself') return;
+    installApp();
+  };
+
 </script>
 
+<svelte:window
+  on:click={handleWindowClick}
+  on:beforeinstallprompt={handleBeforeInstallPrompt}
+/>
+<Toaster />
 <ViewTransition />
 <main>
-  {#if beforeInstallPromptEventExists}
-    <p>BeforeInstallPromptEvent exists</p>
-  {/if}
-  {#if displayInstallButton}
-    <button on:click={installApp}>Install Suit Yourself</button>
-  {/if}
-  {#if installable}
-    <p>{ installable }</p>
-  {/if}
   <slot />
 </main>
 
