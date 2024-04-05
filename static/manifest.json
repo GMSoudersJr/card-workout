@@ -38,13 +38,6 @@
 	],
 	"screenshots": [
 		{
-			"src": "images/homescreen.png",
-			"type": "image/png",
-			"form_factor": "narrow",
-			"label": "homescreen",
-			"sizes":"864x1739"
-		},
-		{
 			"src": "images/exerciseSelector.png",
 			"type": "image/png",
 			"form_factor": "narrow",
