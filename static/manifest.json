@@ -6,7 +6,7 @@
 	"theme_color": "#259259",
 	"background_color": "#000080",
 	"orientation": "portrait",
-	"description": "A web-based exercise app for based on a deck of playing cards",
+	"description": "A calisthenics based workout app done with a deck of Playing Cards.",
 	"display": "standalone",
 	"manifest_version": 2,
 	"categories": [
@@ -14,7 +14,7 @@
 		"fitness",
 		"gamges",
 		"health",
-		"healthe & fitness",
+		"health & fitness",
 		"personalization"
 	],
 	"icons": [
@@ -33,6 +33,33 @@
 			"src": "/icons/1024.png",
 			"type": "image/png",
 			"sizes": "1024x1024"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "images/homescreen.png",
+			"type": "image/png",
+			"sizes":"any"
+		},
+		{
+			"src": "images/exerciseSelector.png",
+			"type": "image/png",
+			"sizes":"any"
+		},
+		{
+			"src": "images/workoutDeck.png",
+			"type": "image/png",
+			"sizes":"any"
+		},
+		{
+			"src": "images/workoutReps.png",
+			"type": "image/png",
+			"sizes":"any"
+		},
+		{
+			"src": "images/workoutTimer.png",
+			"type": "image/png",
+			"sizes":"any"
 		}
 	]
 }
