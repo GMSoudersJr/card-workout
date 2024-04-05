@@ -41,27 +41,27 @@
 		{
 			"src": "images/homescreen.png",
 			"type": "image/png",
-			"sizes":"any"
+			"sizes":"864x1735"
 		},
 		{
 			"src": "images/exerciseSelector.png",
 			"type": "image/png",
-			"sizes":"any"
+			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutDeck.png",
 			"type": "image/png",
-			"sizes":"any"
+			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutReps.png",
 			"type": "image/png",
-			"sizes":"any"
+			"sizes":"864x1739"
 		},
 		{
 			"src": "images/workoutTimer.png",
 			"type": "image/png",
-			"sizes":"any"
+			"sizes":"864x1737"
 		}
 	]
 }
