@@ -1,5 +1,6 @@
 <script lang="ts">
   import ViewTransition from './navigation.svelte';
+  import { cardEmoji } from '$lib/emojis';
   import toast, { Toaster } from 'svelte-french-toast';
   import RichContentToast from '$lib/components/RichContentToast.svelte';
   import '../app.css';
@@ -60,6 +61,7 @@
     window.addEventListener("appinstalled", (event) => {
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
+      toast.remove();
       toast.success("SUIT YOURSELF installed!", { duration: 3500 })
     });
 
@@ -80,7 +82,7 @@
     deferredPrompt = event as BeforeInstallPromptEvent;
     //Show customized install prompt for PWA
     // This will be a toast with a button to install the app
-    toast(RichContentToast, { duration: 7500 });
+    toast(RichContentToast, { duration: 7500, icon: cardEmoji });
   };
 
   function handleWindowClick(event: MouseEvent) {
