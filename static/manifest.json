@@ -8,7 +8,7 @@
 	"theme_color": "#259259",
 	"background_color": "#000080",
 	"orientation": "portrait",
-	"description": "A calisthenics based workout app done with a deck of Playing Cards. This is a local first app. All data is yours, there is no backend",
+	"description": "Discover a unique calisthenics experience with our Progressive Web App, featuring a creative workout routine inspired by a deck of playing cards. Simply install the app for seamless, offline access to diverse and engaging workouts anytime, anywhere.",
 	"display": "standalone",
 	"manifest_version": 2,
 	"categories": [

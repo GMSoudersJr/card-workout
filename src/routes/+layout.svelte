@@ -42,10 +42,8 @@
       const { outcome } = await deferredPrompt.userChoice;
       deferredPrompt = null;
       if (outcome === 'accepted') {
-        // Show toast that it was installed
-        toast.success("Thank you!")
+        toast.success("Thank you!", { duration: 2500 });
       } else if (outcome === 'dismissed'){
-        // Show toast that it wasn't installed
         toast.error("NOT installed!", { duration: 3500 });
       }
     }
@@ -56,13 +54,13 @@
 
     // Show if before install prompt event is supported.
     if ( 'BeforeInstallPromptEvent' in window ) {
-      console.log("")
+      console.log("before istall prompt event supported.");
     };
 
     window.addEventListener("appinstalled", (event) => {
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
-      toast.success("SUIT YOURSELF installed!")
+      toast.success("SUIT YOURSELF installed!", { duration: 3500 })
     });
 
     /*
