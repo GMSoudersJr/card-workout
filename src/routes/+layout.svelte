@@ -62,7 +62,7 @@
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
       toast.remove();
-      toast.success("SUIT YOURSELF installed!", { duration: 3500 })
+      toast.success("SUIT YOURSELF installed!", { duration: 3500 });
     });
 
     /*
