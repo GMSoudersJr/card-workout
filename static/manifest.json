@@ -20,12 +20,12 @@
 	],
 	"icons": [
 		{
-			"src": "/icons/512x512Green.png",
+			"src": "/icons/512x512Plain.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		},
 		{
-			"src": "/icons/512x512Green.png",
+			"src": "/icons/512x512Maskable.png",
 			"type": "image/png",
 			"sizes": "512x512",
 			"purpose": "maskable"
