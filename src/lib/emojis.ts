@@ -14,3 +14,4 @@ export const crossMarkEmoji = '❌';
 export const rocketEmoji = '🚀';
 export const stopwatchEmoji = '⏱';
 export const newEmoji = '🆕';
+export const thinkingEmoji = '🤔';

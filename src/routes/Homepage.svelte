@@ -4,6 +4,7 @@
     cardEmoji,
     exerciseEmoji,
     recieptEmoji,
+	thinkingEmoji,
   } from '$lib/emojis';
 	import {getLocalStorageWorkouts} from '$lib/utils';
 	import {onMount} from 'svelte';
@@ -27,8 +28,8 @@
     },
     {
       href: '/about',
-      text: 'ABOUT',
-      emoji: memoEmoji
+      text: 'FAQ',
+      emoji: thinkingEmoji
     },
   ];
 
