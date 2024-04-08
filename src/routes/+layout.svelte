@@ -89,11 +89,11 @@
 
   function handleWindowClick(event: MouseEvent) {
     const target = event.target as HTMLButtonElement;
-    if (target.value !== 'installSuitYourself') {
+    if (target.value === 'installSuitYourself') {
+      installApp();
+    } else {
       toast.remove();
-      return
     }
-    installApp();
   };
 
 </script>
