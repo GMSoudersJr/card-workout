@@ -46,6 +46,7 @@
         toast.success("Thank you!", { duration: 2500 });
       } else if (outcome === 'dismissed'){
         toast.error("NOT installed!", { duration: 3500 });
+        toast.remove();
       }
     }
   };
@@ -62,7 +63,8 @@
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
       toast.remove();
-      toast.success("SUIT YOURSELF installed!", { duration: 3500 });
+      toast.success("Installed!", { duration: 3500 });
+      deferredPrompt = null;
     });
 
     /*
@@ -87,7 +89,7 @@
 
   function handleWindowClick(event: MouseEvent) {
     const target = event.target as HTMLButtonElement;
-    if (target.value !== 'installSuitYourself') return;
+    if (target.value !== 'installSuitYourself') toast.remove();
     installApp();
   };
 
