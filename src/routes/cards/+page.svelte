@@ -5,7 +5,6 @@
     discardedCards,
     theCurrentCard,
     suitExercises,
-	workoutStopwatch,
   } from '../../store';
   import PlayingCardWidget from '$lib/components/cards/PlayingCardWidget.svelte';
   import StartButton from '$lib/components/cards/StartButton.svelte';
