@@ -28,14 +28,17 @@ export const messageAboveTheStartButton = {
 	],
 };
 
+const discardDirections = `${cardEmoji} <span class="noto-emoji-font">${upEmoji}</span> / <span class="noto-emoji-font">${rightEmoji}</span>`;
+const putBackDirections = `${cardEmoji} <span class="noto-emoji-font">${downEmoji}</span> / <span class="noto-emoji-font">${leftEmoji}</span>`;
+
 export const messageBelowTheStartButton = {
 	forPlainCards: [
-		`discard: <span class="noto-emoji-font">${cardEmoji} ${upEmoji}</span> / <span class="noto-emoji-font">${rightEmoji}</span>`,
-		`put back: <span class="noto-emoji-font">${cardEmoji} ${downEmoji}</span> / <span class="noto-emoji-font">${leftEmoji}</span>`,
+		`DISCARD: ${discardDirections}`,
+		`PUT BACK: ${putBackDirections}`,
 	],
 	forExerciseCards: [
-		`complete: <span class="noto-emoji-font">${cardEmoji} ${upEmoji}</span> / <span class="noto-emoji-font">${rightEmoji} </span>`,
-		`later: <span class="noto-emoji-font">${cardEmoji} ${downEmoji}</span> / <span class="noto-emoji-font">${leftEmoji}</span>`,
+		`COMPLETE: ${discardDirections}`,
+		`LATER: ${putBackDirections}`,
 	],
 };
 

@@ -57,13 +57,13 @@
     {#if !$suitExercises[0].exercise?.name}
       {#each messageBelowTheStartButton.forPlainCards as message (message)}
     <p class="oswald-header below-start-button">
-      {@html message.toUpperCase()}
+      {@html message}
     </p>
       {/each}
     {:else}
       {#each messageBelowTheStartButton.forExerciseCards as message (message)}
     <p class="oswald-header below-start-button">
-      {@html message.toUpperCase()}
+      {@html message}
     </p>
       {/each}
     {/if}
