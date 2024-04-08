@@ -13,11 +13,13 @@
       text: 'ACTIVITIES',
       emoji: recieptEmoji
     },
+    /*
     {
       href: '/cards',
       text: 'CARDS',
       emoji: cardEmoji
     },
+    */
     {
       href: '/exercises',
       text: 'EXERCISES',
@@ -40,6 +42,7 @@
 <div class="page-container">
   <div class="header">
     <h1 class="oswald-header">SUIT YOURSELF</h1>
+    <h4 class="oswald-header">A CALISTHENICS CHALLENGE</h4>
   </div>
   <nav class="nav-container">
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
@@ -84,6 +87,7 @@
   }
   .header {
     color: #FFFFFF;
+    text-align: center;
   }
   .nav-container {
     width: 100%;

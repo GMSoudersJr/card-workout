@@ -1,9 +1,16 @@
 <script lang="ts">
   import ViewTransition from './navigation.svelte';
-  import { cardEmoji } from '$lib/emojis';
+  import { cardEmoji, newEmoji, rocketEmoji } from '$lib/emojis';
   import toast, { Toaster } from 'svelte-french-toast';
-  import RichContentToast from '$lib/components/RichContentToast.svelte';
+  import GetAppToast from '$lib/components/GetAppToast.svelte';
+  import GetUpdateToast from '$lib/components/GetUpdateToast.svelte';
   import '../app.css';
+  import {
+	installed,
+	launchFromHomeScreen,
+	notInstalled,
+    thanks,
+  } from '$lib/strings/forToasts';
 	import {onMount} from 'svelte';
   // commented out this because login is causing errors when user offline
   //import {goto} from '$app/navigation';
@@ -17,22 +24,32 @@
     prompt(): Promise<void>;
   }
 
+  let newServiceWorker: ServiceWorker | null;
+
   async function detectServiceWorkerUpdate() {
     const registration = await navigator.serviceWorker.ready;
 
     registration.addEventListener('updatefound', () => {
-      const newServiceWorker = registration.installing;
+      newServiceWorker = registration.installing;
 
       newServiceWorker?.addEventListener('statechange', () => {
-        if (newServiceWorker.state === 'installed') {
-          if (confirm('New update available! Reload to update?')) {
-            newServiceWorker.postMessage({ type: 'SKIP_WAITING' });
-            window.location.reload();
-          }
+        if (newServiceWorker?.state === 'installed') {
+          toast(GetUpdateToast,
+                {
+                  duration: 7500,
+                  icon: newEmoji
+                }
+               );
         }
       });
+
     });
   };
+
+  function updateServiceWorker(newServiceWorker: ServiceWorker) {
+    newServiceWorker?.postMessage({ type: 'SKIP_WAITING' });
+    window.location.reload();
+  }
 
   let deferredPrompt: BeforeInstallPromptEvent | null;
 
@@ -43,9 +60,9 @@
       const { outcome } = await deferredPrompt.userChoice;
       deferredPrompt = null;
       if (outcome === 'accepted') {
-        toast.success("Thank you!", { duration: 2500 });
+        toast.success( thanks, { duration: 2500 });
       } else if (outcome === 'dismissed'){
-        toast.error("NOT installed!", { duration: 3500 });
+        toast.error( notInstalled, { duration: 3500 });
         toast.remove();
       }
     }
@@ -63,7 +80,13 @@
       // Do something when the app is installed
       // Show a toast declaring that the app was installed.
       toast.remove();
-      toast.success("Installed!", { duration: 3500 });
+      toast.success( installed, { duration: 3500 });
+      toast( launchFromHomeScreen,
+            {
+              duration: 3500,
+              icon: rocketEmoji
+            }
+           );
       deferredPrompt = null;
     });
 
@@ -84,13 +107,21 @@
     deferredPrompt = event as BeforeInstallPromptEvent;
     //Show customized install prompt for PWA
     // This will be a toast with a button to install the app
-    toast(RichContentToast, { duration: 7500, icon: cardEmoji });
+  toast(GetAppToast,
+        {
+          duration: 7500,
+          icon: cardEmoji
+        }
+       );
   };
 
   function handleWindowClick(event: MouseEvent) {
     const target = event.target as HTMLButtonElement;
     if (target.value === 'installSuitYourself') {
       installApp();
+    } else if (target.value === 'updateServiceWorker') {
+      if (newServiceWorker === null || newServiceWorker === undefined) return;
+      updateServiceWorker(newServiceWorker);
     } else {
       toast.remove();
     }

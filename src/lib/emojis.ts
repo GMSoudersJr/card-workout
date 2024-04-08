@@ -11,3 +11,6 @@ export const cardIndexEmoji = '📇';
 export const repeatEmoji = '🔁';
 export const wasteBasketEmoji = '🗑';
 export const crossMarkEmoji = '❌';
+export const rocketEmoji = '🚀';
+export const stopwatchEmoji = '⏱';
+export const newEmoji = '🆕';

@@ -1,5 +1,10 @@
 <script lang="ts">
   import toast_, { type Toast } from 'svelte-french-toast';
+  import {
+    instantAccess,
+    useOffline,
+    getTheApp
+  } from '$lib/strings/forToasts';
 
   export let toast: Toast;
 
@@ -10,10 +15,10 @@
 
 <span>
   <h4 class="source-sans-3-text">
-    Instant access to your workouts!
+    {instantAccess}
   </h4>
   <p class="source-sans-3-text">
-    Use SUIT YOURSELF offline!
+    {useOffline}
   </p>
   <br>
   <button
@@ -21,7 +26,7 @@
     class="oswald-header"
     value="installSuitYourself"
   >
-    GET THE APP
+    {getTheApp}
   </button>
 </span>
 

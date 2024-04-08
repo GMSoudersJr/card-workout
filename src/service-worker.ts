@@ -18,7 +18,6 @@ const ASSETS = [
 
 // install service worker
 self.addEventListener('install', (event) => {
-	console.log("ASSETS:", ASSETS);
 	async function addFilesToCache() {
 		const cache = await caches.open(CACHE);
 		await cache.addAll(ASSETS);
@@ -53,7 +52,6 @@ self.addEventListener('fetch', (event) => {
 			const cachedResponse = await cache.match(url.pathname);
 
 			if (cachedResponse) {
-				console.log("This is from the cache:", cachedResponse);
 				return cachedResponse;
 			}
 		}
@@ -62,13 +60,8 @@ self.addEventListener('fetch', (event) => {
 		// fall back to the cache if we're offline
 		try {
 			const response = await fetch(event.request);
-			console.log("response:", response.url);
 			const isNotExtension = url.protocol === 'http:';
 			const isSuccess = response.status === 200;
-
-			if (event.request.mode === 'navigate') {
-				console.log("navigate mode");
-			}
 
 			if (!(response instanceof Response)) {
 				throw new Error('invalid response from fetch');
@@ -82,10 +75,7 @@ self.addEventListener('fetch', (event) => {
 
 		} catch (err) {
 			// fall back to cache
-			console.log("Falling back to the cache in try catch");
 			const cachedResponse = await cache.match(url.pathname);
-			console.log("Cached Response", cachedResponse);
-			console.log("no network response", err);
 			if (cachedResponse) {
 				return cachedResponse;
 			}
