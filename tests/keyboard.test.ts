@@ -1,11 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-	await page.goto('/');
-	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Play' }).click();
-	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Cards' }).click();
+	await page.goto('/cards');
 	await page.waitForLoadState('domcontentloaded');
 	await page.getByRole('button', { name: 'Start' }).click();
 	await page.waitForLoadState('domcontentloaded');

@@ -2,10 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
 	test.setTimeout(51 * 1000);
-	await page.goto('/');
+	await page.goto('/cards');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Play' }).click();
-	await page.getByRole('link', { name: 'Cards' }).click();
 	await page.getByRole('button', { name: 'Start' }).click();
 	const theFirstCard = page.getByTestId('playing-card');
 	await theFirstCard.click();

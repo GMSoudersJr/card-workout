@@ -1,20 +1,24 @@
 <script lang="ts">
+  import {
+    homeEmoji,
+    exerciseEmoji
+  } from '$lib/emojis';
 </script>
 
 <main>
   <div class="header">
     <a href="/" class="home-link emoji-nav-link noto-emoji-font">
-      🏠
+      {homeEmoji}
     </a>
     <h1 class="heading oswald-header">
-      ABOUT
+      FAQ
     </h1>
     <a
       href="/exercises"
       id="exercises-link"
       class="nav-link emoji-nav-link noto-emoji-font exercise-link"
     >
-      🤸
+      {exerciseEmoji}
     </a>
   </div>
   <slot />
