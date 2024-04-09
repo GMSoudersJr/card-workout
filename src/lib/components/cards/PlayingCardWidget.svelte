@@ -129,6 +129,7 @@
 
   function continueStopwatch(): void {
     if ( $workoutStopwatch.running ) return;
+    if ( $suitExercises.some(exercisesHaveNotBeenChosen) ) return;
     workoutStopwatch.continue();
   }
 

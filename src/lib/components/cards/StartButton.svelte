@@ -15,9 +15,11 @@
     theDeckOfCards.pluck($randomCardIndex);
     randomCard && theCurrentCard.data(randomCard);
 
-    if ($suitExercises.some(exercisesHaveNotBeenChosen)) return;
-
-    workoutStopwatch.start();
+    if ($suitExercises.some(exercisesHaveNotBeenChosen)) {
+      return;
+    } else {
+      workoutStopwatch.start();
+    }
   }
 
 </script>
