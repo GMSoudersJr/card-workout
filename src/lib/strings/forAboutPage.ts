@@ -56,8 +56,7 @@ export const howToUse = {
 		`Tap "Let's Go"!`,
 		`Tap "START" to draw your first card!`,
 		`Complete the reps, discard with a swipe <span class="noto-emoji-font">${upEmoji}</span> or <span class="noto-emoji-font">${rightEmoji}</span>`,
-		`To put the back in the deck, swipe <span class="noto-emoji-font">${downEmoji}</span> or <span class="noto-emoji-font">${leftEmoji}</span>`,
-		`<em>Play</em> with blank cards on the "CARDS" page.`,
+		`Put back in the deck, swipe <span class="noto-emoji-font">${downEmoji}</span> or <span class="noto-emoji-font">${leftEmoji}</span>`,
 		`Deck stats available at the bottom of the page.`,
 	],
 };
