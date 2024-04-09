@@ -19,7 +19,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ANKLES', 'FEET'],
     bodySections: ['FEET'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -29,7 +29,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ANKLES', 'FEET', 'LOWER_LEG'],
     bodySections: ['FEET', 'LEGS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -39,7 +39,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ANKLES', 'FEET', 'LOWER_LEG'],
     bodySections: ['FEET', 'LEGS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -49,7 +49,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ANKLES', 'FEET'],
     bodySections: ['FEET', 'LEGS'],
     variations: ['SINGLE_LEGGED'],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -59,7 +59,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['FEET', 'LOWER_LEG'],
     bodySections: ['FEET', 'LEGS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -69,7 +69,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ARMS'],
     bodySections: ['ARMS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['CALISTHENICS'],
   },
   {
@@ -319,7 +319,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['ARMS', 'UPPER_BACK', 'CORE'],
     bodySections: ['ARMS', 'BACK', 'CORE'],
     variations: ['WIDE_GRIP', 'CLOSE_GRIP'],
-    demos: [],
+    demos: ['Coming soon'],
     categories: ['CALISTHENICS'],
   },
   {
@@ -429,7 +429,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['FEET', 'TOES'],
     bodySections: ['FEET'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY'],
   },
   {
@@ -439,7 +439,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['FEET', 'TOES'],
     bodySections: ['FEET'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY'],
   },
   {
@@ -449,7 +449,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['FEET', 'TOES'],
     bodySections: ['FEET'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['MOBILITY'],
   },
   {
@@ -459,7 +459,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['UPPER_LEG'],
     bodySections: ['LEGS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: [],
   },
   {
@@ -499,7 +499,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['FOREARMS'],
     bodySections: ['ARMS'],
     variations: [],
-    demos: ['Coming Soon'],
+    demos: [''],
     categories: ['CALISTHENICS'],
   },
 
