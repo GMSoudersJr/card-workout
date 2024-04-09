@@ -22,8 +22,6 @@ test.describe('persist workouts to local storage', () => {
 	test.setTimeout(51 * 1000);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', { name: 'Play' }).click();
-		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', { name: 'Exercises' }).click();
 		await page.waitForLoadState('domcontentloaded');
 

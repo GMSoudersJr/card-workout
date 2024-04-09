@@ -19,12 +19,12 @@
   .mini-card-tick {
     height: 100%;
     border: 1px solid #000080;
-    background: #39FF14;
+    background: #000080;
     border-radius: 2px;
   }
   .plucked {
     border: 1px solid #000080;
-    background: #000080;
+    background: #39FF14;
     border-radius: 2px;
     transition: ease-out 400ms;
     transform: translateY(-38.2%);

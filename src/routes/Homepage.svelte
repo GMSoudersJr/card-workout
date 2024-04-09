@@ -4,29 +4,30 @@
     cardEmoji,
     exerciseEmoji,
     recieptEmoji,
+	thinkingEmoji,
   } from '$lib/emojis';
+  import {
+    links,
+    heading,
+    subHeading,
+  } from '$lib/strings/forHomepage';
 	import {getLocalStorageWorkouts} from '$lib/utils';
 	import {onMount} from 'svelte';
   const theHomepageLinks = [
     {
-      href: '/about',
-      text: 'ABOUT',
-      emoji: memoEmoji
-    },
-    {
-      href: '/activities',
-      text: 'ACTIVITIES',
+      href: `/${links.activities}`,
+      text: links.activities.toUpperCase(),
       emoji: recieptEmoji
     },
     {
-      href: '/cards',
-      text: 'CARDS',
-      emoji: cardEmoji
+      href: `/${links.exercises}`,
+      text: links.exercises.toUpperCase(),
+      emoji: exerciseEmoji
     },
     {
-      href: '/exercises',
-      text: 'EXERCISES',
-      emoji: exerciseEmoji
+      href: `/${links.faq}`,
+      text: links.faq.toUpperCase(),
+      emoji: thinkingEmoji
     },
   ];
 
@@ -39,11 +40,12 @@
 
 <div class="page-container">
   <div class="header">
-    <h1 class="oswald-header">SUIT YOURSELF</h1>
+    <h1 class="oswald-header">{heading}</h1>
+    <h4 class="oswald-header">{subHeading}</h4>
   </div>
   <nav class="nav-container">
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
-    {#if homepageLink.text !== 'ACTIVITIES'}
+    {#if homepageLink.text !== links.activities.toUpperCase()}
     <a
       class="nav-item oswald-header"
       href={homepageLink.href}
@@ -55,7 +57,7 @@
       {homepageLink.emoji}
       </p>
     </a>
-    {:else if hasPreviousWorkouts && homepageLink.text === 'ACTIVITIES'}
+    {:else if hasPreviousWorkouts && homepageLink.text === links.activities.toUpperCase()}
     <a
       class="nav-item oswald-header"
       href={homepageLink.href}
@@ -84,6 +86,7 @@
   }
   .header {
     color: #FFFFFF;
+    text-align: center;
   }
   .nav-container {
     width: 100%;

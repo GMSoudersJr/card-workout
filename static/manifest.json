@@ -1,0 +1,76 @@
+{
+	"name": "Suit Yourself",
+	"short_name": "Suit URSelf",
+	"version": "1",
+	"id": "suitYourself-1",
+	"start_url": "/",
+	"scope": "/",
+	"theme_color": "#259259",
+	"background_color": "#259259",
+	"orientation": "portrait",
+	"description": "Discover a unique calisthenics experience with our Progressive Web App, featuring a creative workout routine inspired by a deck of playing cards. Simply install the app for seamless, offline access to diverse and engaging workouts anytime, anywhere.",
+	"display": "standalone",
+	"manifest_version": 2,
+	"categories": [
+		"entertainment",
+		"fitness",
+		"games",
+		"health",
+		"health & fitness"
+	],
+	"icons": [
+		{
+			"src": "/icons/512x512Plain.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/icons/512x512Maskable.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/icons/1024x1024Green.png",
+			"type": "image/png",
+			"sizes": "1024x1024"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "images/exerciseSelector.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "exercise selector",
+			"sizes":"864x1739"
+		},
+		{
+			"src": "images/workoutDeck.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "deck info",
+			"sizes":"864x1739"
+		},
+		{
+			"src": "images/workoutReps.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "rep info",
+			"sizes":"864x1739"
+		},
+		{
+			"src": "images/workoutTimer.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "workout stopwatch",
+			"sizes":"864x1739"
+		},
+		{
+			"src": "images/activities.png",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "activities",
+			"sizes":"864x1739"
+		}
+	]
+}

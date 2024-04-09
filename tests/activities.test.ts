@@ -16,8 +16,6 @@ test.describe('new user', () => {
 	test('expect "activities" link not to be visible', async ({ page }) => {
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'Play'}).click();
-		await page.waitForLoadState('domcontentloaded');
 		await expect(page.getByRole('link', {name: 'ACTIVITIES'})).not.toBeVisible();
 	});
 });
@@ -26,8 +24,6 @@ test.describe('one saved workout', () => {
 	test.beforeEach(async ({ page, context }) => {
 		await setLocalStorageWorkouts(context, singleWorkoutForLocalStorage);
 		await page.goto('/');
-		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'Play'}).click();
 		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', {name: 'ACTIVITIES'}).click();
 		await page.waitForLoadState('domcontentloaded');
@@ -82,8 +78,6 @@ test.describe('returning after workouts have been saved', () => {
 		await setLocalStorageWorkouts(context, workoutsForLocalStorage);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'Play'}).click();
-		await page.waitForLoadState('domcontentloaded');
 	});
 
 	test('expect "ACTIVITIES" link to be visible and enabled', async ({ page }) => {
@@ -97,8 +91,6 @@ test.describe('on "ACTIVITIES" page', () => {
 	test.beforeEach(async ({ page, context }) => {
 		await setLocalStorageWorkouts(context, workoutsForLocalStorage);
 		await page.goto('/');
-		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'Play'}).click();
 		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', {name: 'ACTIVITIES'}).click();
 		await page.waitForLoadState('domcontentloaded');

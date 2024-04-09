@@ -24,8 +24,6 @@ test.describe('stopwatch', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'Play'}).click();
-		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', {name: 'EXERCISES'}).click();
 		await page.waitForLoadState('domcontentloaded');
 

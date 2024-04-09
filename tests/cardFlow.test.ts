@@ -1,10 +1,8 @@
 import { expect, test, type Page, type Locator } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/cards');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Play' }).click();
-	await page.getByRole('link', { name: 'Cards' }).click();
 	await page.getByRole('button', { name: 'Start' }).click();
 });
 test.describe('user has clicked Start button', () => {

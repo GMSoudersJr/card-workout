@@ -6,11 +6,11 @@ test.describe('login', () => {
 		await page.goto('/');
 	});
 
-	test('expect redirect to login page', async ({ page }) => {
+	test.fixme('expect redirect to login page', async ({ page }) => {
 		await expect(page.getByRole('heading', { name: 'LOGIN' })).toBeVisible();
 	});
 
-	test('expect visible login form', async ({ page }) => {
+	test.fixme('expect visible login form', async ({ page }) => {
 		const loginForm = page.locator('#login-form');
 		await expect(loginForm).toBeVisible();
 		await expect(loginForm.getByLabel('Username')).toBeVisible();
@@ -19,20 +19,20 @@ test.describe('login', () => {
 		await expect(loginForm.getByRole('button', {name: 'submit'})).toBeVisible();
 	});
 
-	test('expect visible no-login link', async ({ page }) => {
+	test.fixme('expect visible no-login link', async ({ page }) => {
 		const noLoginLink = page.getByRole('link', { name: 'Play' });
 		await expect(noLoginLink).toBeVisible();
 		await expect(noLoginLink).toBeEnabled();
 	});
 
-	test('expect no-login correct navigation', async ({ page }) => {
+	test.fixme('expect no-login correct navigation', async ({ page }) => {
 		const noLoginLink = page.getByRole('link', { name: 'Play' });
 		await noLoginLink.click();
 		await page.waitForLoadState('domcontentloaded');
 		await expect(page.getByRole('heading', { name: 'SUIT YOURSELF', level: 1 })).toBeVisible();
 	});
 
-	test('expect username saved', async ({ page, context}) => {
+	test.fixme('expect username saved', async ({ page, context}) => {
 		const loginForm = page.locator('#login-form');
 		const usernameTextbox = loginForm.getByLabel('Username');
 		await usernameTextbox.fill('jaySkee');
