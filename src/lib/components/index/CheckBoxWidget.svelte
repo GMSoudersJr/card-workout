@@ -1,0 +1,59 @@
+<script lang="ts">
+	import {createEventDispatcher} from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  function handleClick(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const checkboxClicked = target.value;
+    if ( checkboxesClicked.includes(checkboxClicked) ) {
+      checkboxesClicked.splice(checkboxesClicked.indexOf(checkboxClicked), 1);
+    } else {
+      checkboxesClicked.push(checkboxClicked);
+    }
+    checkboxesClicked = checkboxesClicked;
+    dispatch('checkboxChange', {
+      sectionUpdated: heading,
+      value: checkboxesClicked
+    });
+  }
+  export let enumEntries: Object;
+  export let heading: string;
+
+  let checkboxData = Object.entries(enumEntries);
+  let checkboxesClicked: string[] = [];
+</script>
+
+<section>
+  <h4 class="oswald-header">{heading.toUpperCase()}:</h4>
+  {#each checkboxData as data (data[0])}
+    <div class="checkbox-container">
+    <input
+      id={data[0]}
+      name={data[0]}
+      type="checkbox"
+      value={data[0]}
+      on:click={handleClick}
+    >
+      <label
+        for={data[0]}
+        class="source-sans-3-text"
+      >
+        {data[1]}
+      </label>
+  </div>
+  {/each}
+</section>
+
+<style>
+  .checkbox-container {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content;
+    column-gap: 0.25rem;
+  }
+  input[type=checkbox] {
+    accent-color: #259259;
+  }
+</style>
+

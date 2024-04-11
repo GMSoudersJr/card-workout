@@ -249,7 +249,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['UPPER_LEG', 'CORE'],
     bodySections: ['CORE', 'LEGS'],
     variations: ['ON_ALL_FOURS'],
-    demos: [],
+    demos: [''],
     categories: ['MOBILITY', 'STABILITY'],
   },
   {
@@ -299,7 +299,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['NECK'],
     bodySections: ['NECK'],
     variations: [],
-    demos: [],
+    demos: [''],
     categories: ['YOGA'],
   },
   {
@@ -369,7 +369,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodyParts: ['LOWER_LEG'],
     bodySections: ['LEGS'],
     variations: [],
-    demos: [],
+    demos: [''],
     categories: ['CALISTHENICS'],
   },
   {

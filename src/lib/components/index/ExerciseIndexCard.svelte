@@ -10,7 +10,7 @@
 </script>
 
 <div class="exercise-card">
-  <h1>{exerciseName}</h1>
+  <h1 class="oswald-header">{exerciseName.toUpperCase()}</h1>
   {#if exercise.demos}
     {#each exercise.demos as demo (demo)}
       {#if  demo === ''}
