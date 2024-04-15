@@ -29,14 +29,14 @@
   {#each checkboxData as data (data[0])}
     <div class="checkbox-container">
     <input
-      id={data[0]}
+      id={`${heading}-${data[0]}`}
       name={data[0]}
       type="checkbox"
       value={data[0]}
       on:click={handleClick}
     >
       <label
-        for={data[0]}
+        for={`${heading}-${data[0]}`}
         class="source-sans-3-text"
       >
         {data[1]}
@@ -48,8 +48,9 @@
 <style>
   .checkbox-container {
     display: grid;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: min-content auto;
     grid-template-rows: min-content;
+    justify-content: start;
     column-gap: 0.25rem;
   }
   input[type=checkbox] {

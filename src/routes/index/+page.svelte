@@ -3,61 +3,86 @@
   import type { TExercisePosition } from "../../types/exercisePosition";
   import SearchBar from "$lib/components/index/SearchBar.svelte";
   import ExerciseIndexCard from "$lib/components/index/ExerciseIndexCard.svelte";
-	import FilterSection from "$lib/components/index/FilterSection.svelte";
-	import type {TExerciseCategory} from "../../types/exerciseCategory";
-	import type {TExerciseVariation} from "../../types/exerciseVariation";
-	import type {TBodyPart} from "../../types/bodyPart";
+	import CheckboxOptionsSection from "$lib/components/index/CheckboxOptionsSection.svelte";
+	import type { TExerciseCategory } from "../../types/exerciseCategory";
+	import type { TExerciseVariation } from "../../types/exerciseVariation";
+	import type { TBodyPart } from "../../types/bodyPart";
 
-  let exerciseNameSearchString: "";
-  function handleSearchChange(event: CustomEvent) {
-    exerciseList = exercises.filter((exercise) => {
-      exerciseNameSearchString = event.detail.value.toUpperCase();
-      return exercise.name?.includes(exerciseNameSearchString);
-    });
+  let exerciseNameSearchString = "";
+
+  let checkedBoxes = {
+    categories: [] as TExerciseCategory[],
+    positions: [] as TExercisePosition[],
+    targets: [] as TBodyPart[],
+    variations: [] as TExerciseVariation[]
   };
 
-  function handleFilterUpdate(event: CustomEvent) {
-    const filters = event.detail.filter;
-    const checkedPositions = filters.position as TExercisePosition[];
-    const checkedCategories = filters.category as TExerciseCategory[];
-    const checkedVariations = filters.variation as TExerciseVariation[];
-    const checkedTargets = filters.target as TBodyPart[];
+  function handleSearchChange(event: CustomEvent) {
+    exerciseNameSearchString = event.detail.value.toUpperCase();
+
+    updateExerciseListByExerciseName();
+  };
+
+  function handleCheckboxUpdate(event: CustomEvent) {
+    const updatedCheckedboxes = event.detail.checkboxes;
 
     if (
-      checkedTargets.length === 0 &&
-      checkedCategories.length === 0 &&
-      checkedPositions.length === 0 &&
-      checkedVariations.length === 0
+      updatedCheckedboxes.category.length === 0 &&
+      updatedCheckedboxes.position.length === 0 &&
+      updatedCheckedboxes.target.length === 0 &&
+      updatedCheckedboxes.variation.length === 0
     ) {
       return exerciseList = exercises.filter((exercise) => {
         return exercise.name?.includes(exerciseNameSearchString);
       });
+    }
+
+    checkedBoxes.categories = updatedCheckedboxes.category as TExerciseCategory[];
+    checkedBoxes.positions = updatedCheckedboxes.position as TExercisePosition[];
+    checkedBoxes.targets = updatedCheckedboxes.target as TBodyPart[];
+    checkedBoxes.variations = updatedCheckedboxes.variation as TExerciseVariation[];
+
+    updateExerciseListByCheckedBoxes();
+
+  };
+
+  function updateExerciseListByExerciseName() {
+    if ( exerciseNameSearchString === '' ) {
+      return updateExerciseListByCheckedBoxes();
     };
 
+    exerciseList = exercises.filter((exercise) => {
+      return exercise.name?.includes(exerciseNameSearchString);
+    });
+
+  };
+
+  function updateExerciseListByCheckedBoxes() {
     exerciseList = exercises.filter(( exercise ) => {
       const exercisePositions = exercise.positions as TExercisePosition[];
       const exerciseCategories = exercise.categories as TExerciseCategory[];
       const exerciseVariations = exercise.variations as TExerciseVariation[];
       const exerciseTargets = exercise.bodyParts as TBodyPart[];
 
-      for (let position of checkedPositions) {
+      for (let position of checkedBoxes.positions) {
         if (exercisePositions.includes(position)) return true;
       };
 
-      for (let variation of checkedVariations) {
+      for (let variation of checkedBoxes.variations) {
         if (exerciseVariations.includes(variation)) return true;
       };
 
-      for (let category of checkedCategories) {
+      for (let category of checkedBoxes.categories) {
         if (exerciseCategories.includes(category)) return true;
       };
 
-      for (let target of checkedTargets) {
+      for (let target of checkedBoxes.targets) {
         if (exerciseTargets.includes(target)) return true;
       };
 
     });
-  }
+
+  };
 
   export let data: PageData;
   const { exercises } = data;
@@ -70,8 +95,10 @@
   />
   {exerciseList.length}
   <details>
-    <summary class="oswald-header">FILTERS:</summary>
-    <FilterSection on:filterUpdate={handleFilterUpdate} />
+    <summary class="oswald-header">OPTIONS:</summary>
+    <CheckboxOptionsSection
+      on:checkboxUpdate={handleCheckboxUpdate}
+    />
   </details>
   <section class="exercise-index-cards-container">
     {#each exerciseList as exercise (exercise.name)}

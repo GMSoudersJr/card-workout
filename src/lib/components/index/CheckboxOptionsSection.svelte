@@ -8,23 +8,23 @@
 
 	const dispatch = createEventDispatcher();
 
-	type Filter = {
+	type CheckedBoxes = {
 		[key: string]: string[]
 	}
 
-	let filter: Filter = {
+	let checkboxes: CheckedBoxes = {
 		category: [],
 		position: [],
 		variation: [],
 		target: [],
 	};
 
-	function updateFilter(event: CustomEvent) {
+	function updateCheckboxes(event: CustomEvent): void {
 		const newData = event.detail;
-		const filterToUpdate = newData.sectionUpdated;
-		filter[filterToUpdate] = newData.value;
-		dispatch('filterUpdate', {
-			filter
+		const checkboxOptionToUpdate = newData.sectionUpdated;
+		checkboxes[checkboxOptionToUpdate] = newData.value;
+		dispatch('checkboxUpdate', {
+			checkboxes
 		});
 	};
 </script>
@@ -34,7 +34,7 @@
 		<CheckBoxWidget
 			heading={'category'}
 			enumEntries={EExerciseCategories}
-			on:checkboxChange={updateFilter}
+			on:checkboxChange={updateCheckboxes}
 		/>
 	</div>
 
@@ -42,7 +42,7 @@
 		<CheckBoxWidget
 			heading={'position'}
 			enumEntries={EExercisePositions}
-			on:checkboxChange={updateFilter}
+			on:checkboxChange={updateCheckboxes}
 		/>
 	</div>
 
@@ -50,7 +50,7 @@
 		<CheckBoxWidget
 			heading={'variation'}
 			enumEntries={EExerciseVariations}
-			on:checkboxChange={updateFilter}
+			on:checkboxChange={updateCheckboxes}
 		/>
 	</div>
 
@@ -58,7 +58,7 @@
 		<CheckBoxWidget
 			heading={'target'}
 			enumEntries={EBodyParts}
-			on:checkboxChange={updateFilter}
+			on:checkboxChange={updateCheckboxes}
 		/>
 	</div>
 
