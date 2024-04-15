@@ -29,7 +29,11 @@
     grid-template-rows: repeat(2, min-content);
   }
   input[type=search] {
-    padding: 6px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+  label {
+    font-size: 1.2rem;
   }
 </style>
 

@@ -29,42 +29,54 @@
 	};
 </script>
 
-<section class="section-container">
-	<div class="category">
-		<CheckBoxWidget
-			heading={'category'}
-			enumEntries={EExerciseCategories}
-			on:checkboxChange={updateCheckboxes}
-		/>
-	</div>
+<details>
+	<summary class="oswald-header">OPTIONS:</summary>
 
-	<div class="position">
-		<CheckBoxWidget
-			heading={'position'}
-			enumEntries={EExercisePositions}
-			on:checkboxChange={updateCheckboxes}
-		/>
-	</div>
+	<section class="section-container">
+		<div class="category">
+			<CheckBoxWidget
+				heading={'category'}
+				enumEntries={EExerciseCategories}
+				on:checkboxChange={updateCheckboxes}
+			/>
+		</div>
 
-	<div class="variation">
-		<CheckBoxWidget
-			heading={'variation'}
-			enumEntries={EExerciseVariations}
-			on:checkboxChange={updateCheckboxes}
-		/>
-	</div>
+		<div class="position">
+			<CheckBoxWidget
+				heading={'position'}
+				enumEntries={EExercisePositions}
+				on:checkboxChange={updateCheckboxes}
+			/>
+		</div>
 
-	<div class="target">
-		<CheckBoxWidget
-			heading={'target'}
-			enumEntries={EBodyParts}
-			on:checkboxChange={updateCheckboxes}
-		/>
-	</div>
+		<div class="variation">
+			<CheckBoxWidget
+				heading={'variation'}
+				enumEntries={EExerciseVariations}
+				on:checkboxChange={updateCheckboxes}
+			/>
+		</div>
 
-</section>
+		<div class="target">
+			<CheckBoxWidget
+				heading={'target'}
+				enumEntries={EBodyParts}
+				on:checkboxChange={updateCheckboxes}
+			/>
+		</div>
+
+	</section>
+
+</details>
 
 <style>
+	summary {
+		font-size: 1.2rem;
+	}
+	summary::marker {
+		font-size: 1.5rem;
+		color: #259259;
+	}
 	.section-container {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

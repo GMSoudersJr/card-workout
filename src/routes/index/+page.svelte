@@ -93,18 +93,16 @@
   <SearchBar
     on:searchingForExercise={handleSearchChange}
   />
-  {exerciseList.length}
-  <details>
-    <summary class="oswald-header">OPTIONS:</summary>
-    <CheckboxOptionsSection
-      on:checkboxUpdate={handleCheckboxUpdate}
-    />
-  </details>
-  <section class="exercise-index-cards-container">
+  <CheckboxOptionsSection
+    on:checkboxUpdate={handleCheckboxUpdate}
+  />
+  <ul class="exercise-index-cards-container">
     {#each exerciseList as exercise (exercise.name)}
-    <ExerciseIndexCard {exercise}/>
+    <li>
+      <ExerciseIndexCard {exercise}/>
+    </li>
     {/each}
-  </section>
+  </ul>
 </div>
 
 <style>
