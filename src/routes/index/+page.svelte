@@ -48,7 +48,16 @@
 
   function updateExerciseListByExerciseName() {
     if ( exerciseNameSearchString === '' ) {
-      return updateExerciseListByCheckedBoxes();
+      if (
+        checkedBoxes.categories.length === 0 &&
+        checkedBoxes.positions.length === 0 &&
+        checkedBoxes.targets.length === 0 &&
+        checkedBoxes.variations.length === 0
+      ) {
+        return exerciseList = exercises;
+      }
+
+     return updateExerciseListByCheckedBoxes();
     };
 
     exerciseList = exercises.filter((exercise) => {
