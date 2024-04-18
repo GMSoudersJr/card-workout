@@ -1,11 +1,8 @@
 <script lang="ts">
 	import {linkEmoji, thinkingEmoji} from "$lib/emojis";
-
 	import {EExerciseNames} from "../../../enums/exerciseNames";
-
 	import type {TExercise} from "../../../types/exercise";
 	import type {TExerciseName} from "../../../types/exerciseName";
-
 
   export let exercise: TExercise<TExerciseName>;
   const exerciseName = EExerciseNames[exercise.name as keyof typeof EExerciseNames];
@@ -27,11 +24,11 @@
     {/if}
   </div>
   {#if exercise.emojis}
-    <section class="emoji-section">
-    {#each exercise.emojis as emoji (emoji)}
-      <p class="noto-emoji-font emoji">{emoji}</p>
-    {/each}
-    </section>
+  <section class="emoji-section">
+  {#each exercise.emojis as emoji (emoji)}
+    <p class="noto-emoji-font emoji">{emoji}</p>
+  {/each}
+  </section>
   {/if}
 </div>
 

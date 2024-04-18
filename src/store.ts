@@ -8,6 +8,47 @@ import type { TExerciseName } from './types/exerciseName';
 import type { TSuitExercise } from './types/suitExercise';
 import { createSuitExercises } from './functions/createSuitExercises';
 import { createWorkout } from './functions/createWorkout';
+import type { TExerciseCategory } from './types/exerciseCategory';
+import type { TExercisePosition } from './types/exercisePosition';
+import type { TExerciseVariation } from "./types/exerciseVariation";
+import type { TBodyPart } from "./types/bodyPart";
+
+function createCheckboxStore() {
+  const checkedBoxes = {
+    category: [] as TExerciseCategory[],
+    position: [] as TExercisePosition[],
+    target: [] as TBodyPart[],
+    variation: [] as TExerciseVariation[]
+  };
+
+	const { subscribe, set, update } = writable(checkedBoxes);
+
+	return {
+		subscribe,
+		updateCategory: (value: TExerciseCategory[]) => update((checkedBoxes) => {
+			checkedBoxes.category = value;
+			return checkedBoxes;
+		}),
+		updatePosition: (value: TExercisePosition[]) => update((checkedBoxes) => {
+			checkedBoxes.position = value;
+			return checkedBoxes;
+		}),
+		updateTarget: (value: TBodyPart[]) => update((checkedBoxes) => {
+			checkedBoxes.target = value;
+			return checkedBoxes;
+		}),
+		updateVariation: (value: TExerciseVariation[]) => update((checkedBoxes) => {
+			checkedBoxes.variation = value;
+			return checkedBoxes;
+		}),
+		reset: () => set({
+			category: [] as TExerciseCategory[],
+			position: [] as TExercisePosition[],
+			target: [] as TBodyPart[],
+			variation: [] as TExerciseVariation[]
+		})
+	}
+}
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
@@ -197,6 +238,7 @@ export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
 export const workoutStopwatch = createStopwatch();
+export const theExerciseIndexCheckboxStore = createCheckboxStore();
 
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {

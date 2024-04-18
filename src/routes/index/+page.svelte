@@ -7,23 +7,25 @@
 	import type { TExerciseCategory } from "../../types/exerciseCategory";
 	import type { TExerciseVariation } from "../../types/exerciseVariation";
 	import type { TBodyPart } from "../../types/bodyPart";
+	import {onMount} from "svelte";
+	import {theExerciseIndexCheckboxStore} from "../../store";
 
   let exerciseNameSearchString = "";
 
   let checkedBoxes = {
-    categories: [] as TExerciseCategory[],
-    positions: [] as TExercisePosition[],
-    targets: [] as TBodyPart[],
-    variations: [] as TExerciseVariation[]
+    category: [] as TExerciseCategory[],
+    position: [] as TExercisePosition[],
+    target: [] as TBodyPart[],
+    variation: [] as TExerciseVariation[]
   };
 
-  function handleSearchChange(event: CustomEvent) {
+  function handleSearchChange(event: CustomEvent): void {
     exerciseNameSearchString = event.detail.value.toUpperCase();
 
     updateExerciseListByExerciseName();
   };
 
-  function handleCheckboxUpdate(event: CustomEvent) {
+  function handleCheckboxUpdate(event: CustomEvent): void {
     const updatedCheckedboxes = event.detail.checkboxes;
 
     if (
@@ -32,66 +34,76 @@
       updatedCheckedboxes.target.length === 0 &&
       updatedCheckedboxes.variation.length === 0
     ) {
-      return exerciseList = exercises.filter((exercise) => {
+      console.log("reached me");
+      console.log(updatedCheckedboxes);
+      checkedBoxes = updatedCheckedboxes;
+      exerciseList = exercises.filter((exercise) => {
         return exercise.name?.includes(exerciseNameSearchString);
       });
+      return;
     }
 
-    checkedBoxes.categories = updatedCheckedboxes.category as TExerciseCategory[];
-    checkedBoxes.positions = updatedCheckedboxes.position as TExercisePosition[];
-    checkedBoxes.targets = updatedCheckedboxes.target as TBodyPart[];
-    checkedBoxes.variations = updatedCheckedboxes.variation as TExerciseVariation[];
+    checkedBoxes.category = updatedCheckedboxes.category as TExerciseCategory[];
+    checkedBoxes.position = updatedCheckedboxes.position as TExercisePosition[];
+    checkedBoxes.target = updatedCheckedboxes.target as TBodyPart[];
+    checkedBoxes.variation = updatedCheckedboxes.variation as TExerciseVariation[];
 
     updateExerciseListByCheckedBoxes();
 
   };
 
-  function updateExerciseListByExerciseName() {
+  function updateExerciseListByExerciseName(): void {
     if ( exerciseNameSearchString === '' ) {
       if (
-        checkedBoxes.categories.length === 0 &&
-        checkedBoxes.positions.length === 0 &&
-        checkedBoxes.targets.length === 0 &&
-        checkedBoxes.variations.length === 0
+        checkedBoxes.category.length === 0 &&
+        checkedBoxes.position.length === 0 &&
+        checkedBoxes.target.length === 0 &&
+        checkedBoxes.variation.length === 0
       ) {
-        return exerciseList = exercises;
+        exerciseList = exercises;
+        return;
       }
 
-     return updateExerciseListByCheckedBoxes();
+     updateExerciseListByCheckedBoxes();
+     return;
     };
 
     exerciseList = exercises.filter((exercise) => {
-      return exercise.name?.includes(exerciseNameSearchString);
+      exercise.name?.includes(exerciseNameSearchString);
+      return;
     });
 
   };
 
-  function updateExerciseListByCheckedBoxes() {
+  function updateExerciseListByCheckedBoxes(): void {
     exerciseList = exercises.filter(( exercise ) => {
       const exercisePositions = exercise.positions as TExercisePosition[];
       const exerciseCategories = exercise.categories as TExerciseCategory[];
       const exerciseVariations = exercise.variations as TExerciseVariation[];
       const exerciseTargets = exercise.bodyParts as TBodyPart[];
 
-      for (let position of checkedBoxes.positions) {
+      for (let position of checkedBoxes.position) {
         if (exercisePositions.includes(position)) return true;
       };
 
-      for (let variation of checkedBoxes.variations) {
+      for (let variation of checkedBoxes.variation) {
         if (exerciseVariations.includes(variation)) return true;
       };
 
-      for (let category of checkedBoxes.categories) {
+      for (let category of checkedBoxes.category) {
         if (exerciseCategories.includes(category)) return true;
       };
 
-      for (let target of checkedBoxes.targets) {
+      for (let target of checkedBoxes.target) {
         if (exerciseTargets.includes(target)) return true;
       };
 
     });
 
   };
+
+  onMount(async () => {
+  });
 
   export let data: PageData;
   const { exercises } = data;
@@ -102,6 +114,7 @@
   <SearchBar
     on:searchingForExercise={handleSearchChange}
   />
+  {$theExerciseIndexCheckboxStore.category}
   <CheckboxOptionsSection
     on:checkboxUpdate={handleCheckboxUpdate}
   />
