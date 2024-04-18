@@ -159,7 +159,7 @@ export const exercises: TExercise<TExerciseName>[] = [
   },
   {
     name: "BURPEES",
-    positions: ['STANDING', 'SUPINE'],
+    positions: ['STANDING', 'PRONE'],
     muscles: ['WHOLE_BODY'],
     bodyParts: ['WHOLE_BODY'],
     bodySections: ['WHOLE_BODY'],
