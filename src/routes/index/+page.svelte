@@ -12,59 +12,25 @@
 
   let exerciseNameSearchString = "";
 
-  let checkedBoxes = {
-    category: [] as TExerciseCategory[],
-    position: [] as TExercisePosition[],
-    target: [] as TBodyPart[],
-    variation: [] as TExerciseVariation[]
-  };
-
   function handleSearchChange(event: CustomEvent): void {
     exerciseNameSearchString = event.detail.value.toUpperCase();
 
     updateExerciseListByExerciseName();
   };
 
-  function handleCheckboxUpdate(event: CustomEvent): void {
-    const updatedCheckedboxes = event.detail.checkboxes;
-
-    if (
-      updatedCheckedboxes.category.length === 0 &&
-      updatedCheckedboxes.position.length === 0 &&
-      updatedCheckedboxes.target.length === 0 &&
-      updatedCheckedboxes.variation.length === 0
-    ) {
-      console.log("reached me");
-      console.log(updatedCheckedboxes);
-      checkedBoxes = updatedCheckedboxes;
-      exerciseList = exercises.filter((exercise) => {
-        return exercise.name?.includes(exerciseNameSearchString);
-      });
-      return;
-    }
-
-    checkedBoxes.category = updatedCheckedboxes.category as TExerciseCategory[];
-    checkedBoxes.position = updatedCheckedboxes.position as TExercisePosition[];
-    checkedBoxes.target = updatedCheckedboxes.target as TBodyPart[];
-    checkedBoxes.variation = updatedCheckedboxes.variation as TExerciseVariation[];
-
-    updateExerciseListByCheckedBoxes();
-
-  };
-
   function updateExerciseListByExerciseName(): void {
     if ( exerciseNameSearchString === '' ) {
       if (
-        checkedBoxes.category.length === 0 &&
-        checkedBoxes.position.length === 0 &&
-        checkedBoxes.target.length === 0 &&
-        checkedBoxes.variation.length === 0
+        $theExerciseIndexCheckboxStore.category.length === 0 &&
+        $theExerciseIndexCheckboxStore.position.length === 0 &&
+        $theExerciseIndexCheckboxStore.target.length === 0 &&
+        $theExerciseIndexCheckboxStore.variation.length === 0
       ) {
         exerciseList = exercises;
         return;
       }
 
-     updateExerciseListByCheckedBoxes();
+      updateListFromCheckboxStore();
      return;
     };
 
@@ -75,35 +41,42 @@
 
   };
 
-  function updateExerciseListByCheckedBoxes(): void {
+  function updateListFromCheckboxStore() {
+    if (
+      $theExerciseIndexCheckboxStore.category.length === 0 &&
+      $theExerciseIndexCheckboxStore.position.length === 0 &&
+      $theExerciseIndexCheckboxStore.target.length === 0 &&
+      $theExerciseIndexCheckboxStore.variation.length === 0
+    ) {
+      exerciseList = exercises;
+      return;
+    }
+
     exerciseList = exercises.filter(( exercise ) => {
       const exercisePositions = exercise.positions as TExercisePosition[];
       const exerciseCategories = exercise.categories as TExerciseCategory[];
       const exerciseVariations = exercise.variations as TExerciseVariation[];
       const exerciseTargets = exercise.bodyParts as TBodyPart[];
 
-      for (let position of checkedBoxes.position) {
+      for (let position of $theExerciseIndexCheckboxStore.position) {
         if (exercisePositions.includes(position)) return true;
       };
 
-      for (let variation of checkedBoxes.variation) {
+      for (let variation of $theExerciseIndexCheckboxStore.variation) {
         if (exerciseVariations.includes(variation)) return true;
       };
 
-      for (let category of checkedBoxes.category) {
+      for (let category of $theExerciseIndexCheckboxStore.category) {
         if (exerciseCategories.includes(category)) return true;
       };
 
-      for (let target of checkedBoxes.target) {
+      for (let target of $theExerciseIndexCheckboxStore.target) {
         if (exerciseTargets.includes(target)) return true;
       };
 
     });
 
-  };
-
-  onMount(async () => {
-  });
+  }
 
   export let data: PageData;
   const { exercises } = data;
@@ -114,9 +87,8 @@
   <SearchBar
     on:searchingForExercise={handleSearchChange}
   />
-  {$theExerciseIndexCheckboxStore.category}
   <CheckboxOptionsSection
-    on:checkboxUpdate={handleCheckboxUpdate}
+    on:checkboxStoreUpdated={updateListFromCheckboxStore}
   />
   <ul class="exercise-index-cards-container">
     {#each exerciseList as exercise (exercise.name)}

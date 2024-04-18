@@ -14,7 +14,7 @@ import type { TExerciseVariation } from "./types/exerciseVariation";
 import type { TBodyPart } from "./types/bodyPart";
 
 function createCheckboxStore() {
-  const checkedBoxes = {
+  let checkedBoxes = {
     category: [] as TExerciseCategory[],
     position: [] as TExercisePosition[],
     target: [] as TBodyPart[],
@@ -25,20 +25,40 @@ function createCheckboxStore() {
 
 	return {
 		subscribe,
-		updateCategory: (value: TExerciseCategory[]) => update((checkedBoxes) => {
-			checkedBoxes.category = value;
+		updateCategory: (value: TExerciseCategory) => update((checkedBoxes) => {
+			if (checkedBoxes.category.includes(value)) {
+				checkedBoxes.category.splice(checkedBoxes.category.indexOf(value), 1);
+			} else {
+				checkedBoxes.category.push(value);
+			}
+
 			return checkedBoxes;
 		}),
-		updatePosition: (value: TExercisePosition[]) => update((checkedBoxes) => {
-			checkedBoxes.position = value;
+		updatePosition: (value: TExercisePosition) => update((checkedBoxes) => {
+			if (checkedBoxes.position.includes(value)) {
+				checkedBoxes.position.splice(checkedBoxes.position.indexOf(value), 1);
+			} else {
+				checkedBoxes.position.push(value);
+			}
+
 			return checkedBoxes;
 		}),
-		updateTarget: (value: TBodyPart[]) => update((checkedBoxes) => {
-			checkedBoxes.target = value;
+		updateTarget: (value: TBodyPart) => update((checkedBoxes) => {
+			if (checkedBoxes.target.includes(value)) {
+				checkedBoxes.target.splice(checkedBoxes.target.indexOf(value), 1);
+			} else {
+				checkedBoxes.target.push(value);
+			}
+
 			return checkedBoxes;
 		}),
-		updateVariation: (value: TExerciseVariation[]) => update((checkedBoxes) => {
-			checkedBoxes.variation = value;
+		updateVariation: (value: TExerciseVariation) => update((checkedBoxes) => {
+			if (checkedBoxes.variation.includes(value)) {
+				checkedBoxes.variation.splice(checkedBoxes.variation.indexOf(value), 1);
+			} else {
+				checkedBoxes.variation.push(value);
+			}
+
 			return checkedBoxes;
 		}),
 		reset: () => set({

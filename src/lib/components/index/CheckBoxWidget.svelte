@@ -10,50 +10,30 @@
 
   function handleClick(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const { checked } = target;
-    const checkboxClicked = target.value;
-
-    if ( !checked && !checkboxesClicked.includes(checkboxClicked) ) {
-      dispatch('uncheckedBox', {
-        sectionUpdated: heading,
-        value: checkboxClicked
-      });
-      return;
-    }
-
-    if ( checkboxesClicked.includes(checkboxClicked) ) {
-      checkboxesClicked.splice(checkboxesClicked.indexOf(checkboxClicked), 1);
-    } else {
-      checkboxesClicked.push(checkboxClicked);
-    }
-
-    checkboxesClicked = checkboxesClicked;
+    const checkboxValue = target.value;
 
     switch (heading) {
       case 'category':
-        theExerciseIndexCheckboxStore.updateCategory(checkboxesClicked as TExerciseCategory[]);
+        theExerciseIndexCheckboxStore.updateCategory(checkboxValue as TExerciseCategory);
       break;
       case 'position':
-        theExerciseIndexCheckboxStore.updatePosition(checkboxesClicked as TExercisePosition[]);
+        theExerciseIndexCheckboxStore.updatePosition(checkboxValue as TExercisePosition);
       break;
       case 'variation':
-        theExerciseIndexCheckboxStore.updateVariation(checkboxesClicked as TExerciseVariation[]);
+        theExerciseIndexCheckboxStore.updateVariation(checkboxValue as TExerciseVariation);
       break;
       case 'target':
-        theExerciseIndexCheckboxStore.updateTarget(checkboxesClicked as TBodyPart[]);
+        theExerciseIndexCheckboxStore.updateTarget(checkboxValue as TBodyPart);
       break;
     }
 
-    dispatch('checkboxChange', {
-      sectionUpdated: heading,
-      value: checkboxesClicked
-    });
+    dispatch('checkboxStoreUpdated');
+
   }
   export let enumEntries: Object;
   export let heading: string;
 
   let checkboxData = Object.entries(enumEntries);
-  let checkboxesClicked: string[] = [];
 </script>
 
 <section>
