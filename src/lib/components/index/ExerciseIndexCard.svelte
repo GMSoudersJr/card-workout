@@ -35,6 +35,7 @@
 <style>
   .header {
     color: #000080;
+    font-size: x-large;
   }
   a.emoji {
     text-decoration: none;
@@ -45,8 +46,8 @@
     grid-template-rows: repeat(3, min-content);
     background: linear-gradient(90deg, #F1F1F1, #FFFFFF) ;
     row-gap: 0.5rem;
-    border-radius: 8px;
-    border-left: 8px solid #000080;
+    border-radius: 5px;
+    border-left: 5px solid #000080;
     padding-left: 12px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -56,10 +57,11 @@
     flex-direction: row;
   }
   .emoji {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #000080;
   }
   .link-emoji {
+    font-size: 1.3rem;
     color: #259259;
   }
   .header-and-link {
