@@ -43,10 +43,13 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
-    background-color: #f1f1f1;
+    background: linear-gradient(90deg, #F1F1F1, #FFFFFF) ;
     row-gap: 0.5rem;
     border-radius: 8px;
-    padding: 10px 
+    border-left: 8px solid #000080;
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   .emoji-section {
     display: flex;
@@ -65,7 +68,7 @@
     grid-template-rows: min-content;
     justify-content: start;
     align-items: center;
-    column-gap: 0.25rem;
+    column-gap: 0.5rem;
   }
 </style>
 

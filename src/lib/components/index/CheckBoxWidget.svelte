@@ -37,7 +37,7 @@
 </script>
 
 <section>
-  <h4 class="oswald-header">{heading.toUpperCase()}:</h4>
+  <h4 class="oswald-header checkbox-heading">{heading.toUpperCase()}:</h4>
   {#each checkboxData as data (data[0])}
   <div class="checkbox-container">
   <input
@@ -49,7 +49,7 @@
   >
     <label
       for={`${heading}-${data[0]}`}
-      class="source-sans-3-text"
+      class="source-sans-3-text checkbox-label"
     >
       {data[1]}
     </label>
@@ -67,6 +67,10 @@
   }
   input[type=checkbox] {
     accent-color: #259259;
+  }
+  .checkbox-label,
+  .checkbox-heading {
+    color: #000080;
   }
 </style>
 

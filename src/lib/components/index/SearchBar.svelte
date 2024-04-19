@@ -9,6 +9,7 @@
       value: searchedExerciseName
     });
   }
+
 </script>
 
 <section class="search-bar-container">
@@ -31,9 +32,12 @@
   input[type=search] {
     padding: 12px;
     font-size: 1rem;
+    border: 1px solid #000080;
+    color: #000080;
   }
   label {
     font-size: 1.2rem;
+    color: #000080;
   }
 </style>
 

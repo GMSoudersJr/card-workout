@@ -48,7 +48,7 @@
 </script>
 
 <details>
-	<summary class="oswald-header">OPTIONS:</summary>
+	<summary class="oswald-header summary-label">OPTIONS:</summary>
 
 	<section class="section-container">
 		<div class="category">
@@ -67,18 +67,18 @@
 			/>
 		</div>
 
-		<div class="variation">
-			<CheckBoxWidget
-				heading={'variation'}
-				enumEntries={EExerciseVariations}
-				on:checkboxStoreUpdated
-			/>
-		</div>
-
 		<div class="target">
 			<CheckBoxWidget
 				heading={'target'}
 				enumEntries={EBodyParts}
+				on:checkboxStoreUpdated
+			/>
+		</div>
+
+		<div class="variation">
+			<CheckBoxWidget
+				heading={'variation'}
+				enumEntries={EExerciseVariations}
 				on:checkboxStoreUpdated
 			/>
 		</div>
@@ -98,6 +98,10 @@
 	.section-container {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+		row-gap: 0.5rem;
+	}
+	.summary-label {
+		color: #000080;
 	}
 </style>
 
