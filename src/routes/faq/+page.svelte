@@ -14,6 +14,18 @@ import ListWidget from "$lib/components/about/ListWidget.svelte";
 </script>
 
 <div class="about-page">
+  <ListWidget
+    heading={howToUse.heading}
+    unorderedList={howToUse.list}
+  />
+  <ListWidget
+    heading={repCount.heading}
+    unorderedList={repCount.list}
+  />
+  <ListWidget
+    heading={exercises.heading}
+    unorderedList={exercises.list}
+  />
   <ParagraphWidget
     heading={motivation.heading}
     listOfParagraphs={motivation.list}
@@ -21,18 +33,6 @@ import ListWidget from "$lib/components/about/ListWidget.svelte";
   <ListWidget
     heading={problems.heading}
     unorderedList={problems.list}
-  />
-  <ListWidget
-    heading={exercises.heading}
-    unorderedList={exercises.list}
-  />
-  <ListWidget
-    heading={repCount.heading}
-    unorderedList={repCount.list}
-  />
-  <ListWidget
-    heading={howToUse.heading}
-    unorderedList={howToUse.list}
   />
   <ListWidget
     heading={suggestions.heading}

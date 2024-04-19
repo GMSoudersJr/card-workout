@@ -1,10 +1,9 @@
 <script lang="ts">
   import {
-    memoEmoji,
-    cardEmoji,
     exerciseEmoji,
     recieptEmoji,
 	thinkingEmoji,
+	cardIndexEmoji,
   } from '$lib/emojis';
   import {
     links,
@@ -18,6 +17,11 @@
       href: `/${links.activities}`,
       text: links.activities.toUpperCase(),
       emoji: recieptEmoji
+    },
+{
+      href: `/${links.index}`,
+      text: links.index.toUpperCase(),
+      emoji: cardIndexEmoji
     },
     {
       href: `/${links.exercises}`,
