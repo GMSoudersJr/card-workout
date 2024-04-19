@@ -1,5 +1,5 @@
 import type { TDeckOfCards } from '../types/deckOfCards'
-import {PlayingCard} from './PlayingCard';
+import {PlayingCard} from './playingCard';
 import { ESuit } from '../enums/suit';
 import { ECardRank } from '../enums/cardRank';
 import type { TSuit } from '../types/suit';

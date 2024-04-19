@@ -28,3 +28,4 @@ export const headNoddingEmoji = '🙂‍↕️';
 export const superheroEmoji = '🦸';
 export const abdominEmoji = '🤰';
 export const linkEmoji = '🔗';
+export const deckEmoji = '🎴';

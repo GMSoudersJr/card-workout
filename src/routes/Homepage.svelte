@@ -4,6 +4,7 @@
     recieptEmoji,
 	thinkingEmoji,
 	cardIndexEmoji,
+	deckEmoji,
   } from '$lib/emojis';
   import {
     links,
@@ -18,7 +19,12 @@
       text: links.activities.toUpperCase(),
       emoji: recieptEmoji
     },
-{
+    {
+      href: `/${links.decks}`,
+      text: links.decks.toUpperCase(),
+      emoji: deckEmoji
+    },
+    {
       href: `/${links.index}`,
       text: links.index.toUpperCase(),
       emoji: cardIndexEmoji
