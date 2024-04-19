@@ -13,6 +13,21 @@ import type { TExercisePosition } from './types/exercisePosition';
 import type { TExerciseVariation } from "./types/exerciseVariation";
 import type { TBodyPart } from "./types/bodyPart";
 
+function createWorkoutNameStore() {
+	let workoutName = '';
+
+	const { subscribe, set, update } = writable(workoutName);
+
+	return {
+		subscribe,
+		rename: (newName: string) => update(( workoutName ) => {
+			workoutName = newName;
+			return workoutName;
+		}),
+		reset: () => set('')
+	}
+}
+
 function createCheckboxStore() {
   let checkedBoxes = {
     category: [] as TExerciseCategory[],
@@ -177,7 +192,7 @@ function createSuitExercisesStore() {
 
 	return {
 		subscribe,
-		updateExercise: (suit: TSuit, exercise: TExerciseName) => update((result) => {
+		updateExercise: (suit: TSuit, exercise: TExerciseName | undefined) => update((result) => {
 			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
 			const indexOfThisSuit = result.findIndex(isThisSuit);
 			result = result.with(indexOfThisSuit, {
@@ -259,7 +274,7 @@ export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
 export const workoutStopwatch = createStopwatch();
 export const theExerciseIndexCheckboxStore = createCheckboxStore();
-
+export const workoutName = createWorkoutNameStore();
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {
