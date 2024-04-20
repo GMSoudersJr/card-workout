@@ -119,7 +119,7 @@
     align-items: center;
   }
   .nav-item {
-    height: 60px;
+    height: 100%;
     width: calc(60px * 1.618 * 3);
     background: #000080;
     display: grid;
@@ -129,6 +129,7 @@
     justify-content: center;
     text-decoration: none;
     color: #FFFFFF;
+    padding: 5px 12px;
   }
   .nav-item:first-child {
     border-top-left-radius: 40px;
