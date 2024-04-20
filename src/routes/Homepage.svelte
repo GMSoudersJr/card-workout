@@ -96,6 +96,7 @@
     align-content: center;
     background: radial-gradient(circle at bottom, #FFFFFF, #259259);
     padding: 0.5rem;
+    padding-bottom: 1rem;
   }
   .header {
     color: #FFFFFF;
