@@ -90,9 +90,10 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1.618fr;
+    grid-template-rows: 1.618fr 1fr;
     justify-content: center;
     align-items: center;
+    align-content: center;
   }
   .header {
     color: #259259;
@@ -103,12 +104,13 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
-    row-gap: 0.5rem;
+    grid-template-rows: repeat(auto-fill, min-content);
+    row-gap: 0.25rem;
+    justify-items: center;
   }
   .nav-item {
-    width: 100%;
-    padding: 12px 15px;
+    height: 60px;
+    width: calc(60px * 1.618 * 3);
     background: #000080;
     display: grid;
     grid-template-columns: repeat(2, min-content);
@@ -117,7 +119,6 @@
     justify-content: center;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: x-large;
   }
   .nav-item:first-child {
     border-top-left-radius: 40px;
