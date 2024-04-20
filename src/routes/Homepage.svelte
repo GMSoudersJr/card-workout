@@ -90,7 +90,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1.618fr min-content;
+    grid-template-rows: 1.618fr 1fr;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -115,6 +115,7 @@
     grid-template-rows: repeat(auto-fill, min-content);
     row-gap: 0.25rem;
     justify-items: center;
+    align-items: center;
   }
   .nav-item {
     height: 60px;
