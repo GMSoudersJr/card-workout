@@ -94,9 +94,11 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    background: radial-gradient(circle at bottom, #FFFFFF, #259259);
+    padding: 0.5rem;
   }
   .header {
-    color: #259259;
+    color: #FFFFFF;
     font-weight: 900;
     text-align: center;
   }
