@@ -88,36 +88,45 @@
   .page-container {
     height: 100%;
     width: 100%;
-    background: radial-gradient(circle at bottom center, #39FF14, #000080);
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.618fr;
     justify-content: center;
-    justify-items: center;
     align-items: center;
   }
   .header {
-    color: #FFFFFF;
+    color: #259259;
+    font-weight: 900;
     text-align: center;
   }
   .nav-container {
-    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
-    row-gap: 1rem;
+    row-gap: 0.5rem;
   }
   .nav-item {
     width: 100%;
     padding: 12px 15px;
-    border: 4px solid #000080;
-    border-radius: 8px;
+    background: #000080;
     display: grid;
     grid-template-columns: repeat(2, min-content);
     column-gap: 0.5rem;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #000080;
+    color: #FFFFFF;
     font-size: x-large;
+  }
+  .nav-item:first-child {
+    border-top-left-radius: 40px;
+  }
+  .nav-item:last-child {
+    border-bottom-right-radius: 40px;
+  }
+  .nav-item:nth-child(n - 4) {
+    font-size: 1.75rem;
   }
 </style>
 
