@@ -90,7 +90,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1.618fr 1fr;
+    grid-template-rows: 1.618fr min-content;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -101,6 +101,12 @@
     color: #FFFFFF;
     font-weight: 900;
     text-align: center;
+  }
+  .header > h1 {
+    font-size: 3rem;
+  }
+  .header > h4 {
+    font-size: 1.5rem;
   }
   .nav-container {
     height: 100%;
