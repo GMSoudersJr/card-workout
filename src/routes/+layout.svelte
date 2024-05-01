@@ -143,6 +143,5 @@
   main {
     width: 100vw;
     height: 100svh;
-    /* border: 5px solid #259259; */
   }
 </style>

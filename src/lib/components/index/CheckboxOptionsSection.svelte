@@ -47,7 +47,7 @@
 
 </script>
 
-<details>
+<details id="details-options">
 	<summary class="oswald-header summary-label">OPTIONS:</summary>
 
 	<section class="section-container">

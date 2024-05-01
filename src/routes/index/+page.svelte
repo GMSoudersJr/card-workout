@@ -16,7 +16,7 @@
   function handleSearchChange(event: CustomEvent): void {
     exerciseNameSearchString = event.detail.value.toUpperCase();
     if ( exerciseNameSearchString.includes(" ") ) {
-      exerciseNameSearchString= exerciseNameSearchString.replaceAll(" ", "_");
+      exerciseNameSearchString = exerciseNameSearchString.replaceAll(" ", "_");
       console.log(exerciseNameSearchString, "Space given")
     }
 
@@ -129,9 +129,8 @@
   .exercise-index-cards-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: repeat(auto-fill, min-content);
     row-gap: 1rem;
-
   }
 </style>
 

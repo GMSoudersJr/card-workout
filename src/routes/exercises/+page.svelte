@@ -27,5 +27,10 @@
     grid-template-rows: repeat(2, min-content);
     row-gap: 1rem;
     justify-self: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>
