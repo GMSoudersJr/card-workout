@@ -63,5 +63,8 @@
     font-size: 1rem;
     color: #000080;
   }
+  a {
+    text-decoration: none;
+  }
 </style>
 

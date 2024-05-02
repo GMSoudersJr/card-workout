@@ -24,7 +24,7 @@
   };
 
 
-  function optionsNotChecked(): boolean {
+  function storedCheckedBoxesNotChecked(): boolean {
     return (
       $theExerciseIndexCheckboxStore.category.length === 0 &&
       $theExerciseIndexCheckboxStore.position.length === 0 &&
@@ -38,7 +38,7 @@
   };
 
   function updateExerciseListByExerciseName(): void {
-    if ( optionsNotChecked() ) {
+    if ( storedCheckedBoxesNotChecked() ) {
       exerciseList = searchExercises(exercises);
     } else {
       exerciseList = searchExercises(checkedExercises(exercises));
@@ -53,7 +53,7 @@
 
 
   function checkedExercises(exercises: TExercise<TExerciseName>[]): TExercise<TExerciseName>[] {
-    if ( optionsNotChecked() ) {
+    if ( storedCheckedBoxesNotChecked() ) {
       return exercises;
     } else {
       return exercises.filter(( exercise ) => {

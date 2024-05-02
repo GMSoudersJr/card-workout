@@ -27,8 +27,8 @@ test.describe('checkboxes', () => {
 		expect(checkedExerciseListLength).toBeLessThan(Object.values(EExerciseNames).length);
 	});
 
-	test.describe('back navigate behavior', () => {
-		test('same checkbox, same output', async ({ page }) => {
+	test.describe('return navigation behavior', () => {
+		test('from demo link, same output', async ({ page }) => {
 			const primalMovementsCheckboxBeforeNavigation = page.getByLabel(EExerciseCategories.PRIMAL_MOVEMENTS);
 			await expect(primalMovementsCheckboxBeforeNavigation).not.toBeChecked();
 
@@ -65,6 +65,27 @@ test.describe('checkboxes', () => {
 			await expect(primalMovementsCheckboxAfterNavigation).toBeChecked();
 
 			expect((await page.getByRole('list').allInnerTexts()).length).toEqual(1);
+		});
+
+		test('from in-app, expect same output', async ({ page }) => {
+			const yogaCheckboxBeforeNavigation = page.getByLabel(EExerciseCategories.YOGA);
+			await expect(yogaCheckboxBeforeNavigation).not.toBeChecked();
+
+			await yogaCheckboxBeforeNavigation.check();
+			await expect(yogaCheckboxBeforeNavigation).toBeChecked();
+
+			await page.waitForLoadState('domcontentloaded');
+			const yogaIndexExerciseCardsBeforeNavigation = await page.getByRole('list').allInnerTexts();
+			await page.goBack({ waitUntil: 'domcontentloaded' });
+
+			await page.getByRole('link', { name: 'INDEX' }).click();
+			await page.waitForLoadState('domcontentloaded');
+
+			const yogaCheckboxAfterNavigation = page.getByLabel(EExerciseCategories.YOGA);
+			await expect(yogaCheckboxAfterNavigation).toBeChecked();
+			const yogaIndexExerciseCardsAfterNavigation = await page.getByRole('list').allInnerTexts();
+
+			expect(yogaIndexExerciseCardsAfterNavigation).toEqual(yogaIndexExerciseCardsBeforeNavigation);
 		});
 
 	});

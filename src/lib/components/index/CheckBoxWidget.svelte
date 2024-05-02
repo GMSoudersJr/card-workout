@@ -40,13 +40,13 @@
   <h4 class="oswald-header checkbox-heading">{heading.toUpperCase()}:</h4>
   {#each checkboxData as data (data[0])}
   <div class="checkbox-container">
-  <input
-    id={`${heading}-${data[0]}`}
-    name={data[0]}
-    type="checkbox"
-    value={data[0]}
-    on:click={handleClick}
-  >
+    <input
+      id={`${heading}-${data[0]}`}
+      name={data[0]}
+      type="checkbox"
+      value={data[0]}
+      on:click={handleClick}
+    >
     <label
       for={`${heading}-${data[0]}`}
       class="source-sans-3-text checkbox-label"
