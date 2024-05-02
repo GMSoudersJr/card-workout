@@ -7,26 +7,37 @@
 </script>
 
 <div class="page-container">
-{#each workouts as workout (workout.name)}
-	<DeckWidget
-		deckName={workout.name}
-		description={workout.description}
-		workoutSuitExercises={workout.suitExercises}
-	/>
-{/each}
+	<h3 class="subheading oswald-header">
+		QUICK START WORKOUTS
+	</h3>
+	<ul id="decks-list">
+	{#each workouts as workout (workout.name)}
+		<li class="decks-listitem">
+			<DeckWidget
+				deckName={workout.name}
+				description={workout.description}
+				workoutSuitExercises={workout.suitExercises}
+			/>
+		</li>
+	{/each}
+	</ul>
 </div>
 
 <style>
 	.page-container {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto;
+		grid-template-rows: min-content auto;
 		row-gap: 1rem;
 
     overflow-x: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
+	}
+	.subheading {
+		text-align: center;
+		color: #259259;
 	}
 </style>
 
