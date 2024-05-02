@@ -8,9 +8,13 @@
   export let deckName: string = "Full Body I";
   export let description: string;
   export let workoutSuitExercises: TSuitExercise<TSuit>[];
-  const exerciseNames = workoutSuitExercises.map((exercise) => {
-    return EExerciseNames[exercise.exercise?.name as keyof typeof
-      EExerciseNames];
+  const exerciseData = workoutSuitExercises.map((exercise) => {
+    if ( exercise.exercise?.demos !== undefined && exercise.exercise.name !== undefined) {
+      return {
+        name: EExerciseNames[exercise.exercise.name as keyof typeof EExerciseNames],
+        demoLink: exercise.exercise.demos[0]
+      }
+    }
   });
 
   async function handleClick() {
@@ -43,11 +47,16 @@
     <h3 class="oswald-header deck-header">
       {deckName}
     </h3>
-    {#if exerciseNames}
+    {#if exerciseData}
     <ul>
-    {#each exerciseNames as exerciseName, i (i)}
+    {#each exerciseData as exercise, i (i)}
       <li class="exercise-name list-item oswald-header">
-        {exerciseName.toUpperCase()}
+        <a
+          href={exercise?.demoLink}
+          class="exercise-name-demo-link"
+        >
+          {exercise?.name.toUpperCase()}
+        </a>
       </li>
     {/each}
     </ul>
@@ -90,6 +99,10 @@
   }
   .deck-header {
     color: #259259;
+  }
+  .exercise-name-demo-link {
+    text-decoration: none;
+    color: #000080;
   }
 </style>
 
