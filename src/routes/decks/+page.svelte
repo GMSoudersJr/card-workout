@@ -10,7 +10,7 @@
 	<h3 class="subheading oswald-header">
 		QUICK START WORKOUTS
 	</h3>
-	<ul id="decks-list">
+	<ul class="decks-list" id="decks-list">
 	{#each workouts as workout (workout.name)}
 		<li class="decks-listitem">
 			<DeckWidget
@@ -25,6 +25,7 @@
 
 <style>
 	.page-container {
+		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: min-content auto;
@@ -38,6 +39,15 @@
 	.subheading {
 		text-align: center;
 		color: #259259;
+	}
+	.decks-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(auto-fill, min-content);
+		row-gap: 0.5rem;
+	}
+	.decks-list > li {
+		list-style: none;
 	}
 </style>
 
