@@ -57,7 +57,7 @@
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
     {#if homepageLink.text !== links.activities.toUpperCase()}
     <a
-      class="nav-item oswald-header"
+      class="nav-link oswald-header"
       href={homepageLink.href}
     >
       <p>
@@ -69,7 +69,7 @@
     </a>
     {:else if hasPreviousWorkouts && homepageLink.text === links.activities.toUpperCase()}
     <a
-      class="nav-item oswald-header"
+      class="nav-link oswald-header"
       href={homepageLink.href}
     >
       <p>
@@ -96,7 +96,7 @@
     align-content: center;
     background: radial-gradient(circle at bottom, #FFFFFF, #259259);
     padding: 0.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
   }
   .header {
     color: #FFFFFF;
@@ -118,7 +118,7 @@
     justify-items: center;
     align-items: center;
   }
-  .nav-item {
+  .nav-link {
     height: 100%;
     width: calc(60px * 1.618 * 3);
     background: #000080;
@@ -131,13 +131,13 @@
     color: #FFFFFF;
     padding: 5px 12px;
   }
-  .nav-item:first-child {
+  .nav-link:first-child {
     border-top-left-radius: 40px;
   }
-  .nav-item:last-child {
+  .nav-link:last-child {
     border-bottom-right-radius: 40px;
   }
-  .nav-item:nth-child(n - 4) {
+  .nav-link:nth-child(n - 4) {
     font-size: 1.75rem;
   }
 </style>

@@ -36,8 +36,8 @@ test.describe('Index page elements', () => {
 	});
 
 	test('expect exercise list greater than 1', async ({ page }) => {
-		const indexCards = await page.getByRole('list').allInnerTexts();
-		expect(indexCards.length).toBeGreaterThanOrEqual(1);
+		const indexCards = page.locator('.exercise-index-cards-list');
+		await expect(indexCards).toHaveCount(1);
 	});
 
 	test.describe('http nav links', () => {

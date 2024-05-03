@@ -104,7 +104,7 @@
   <CheckboxOptionsSection
     on:checkboxStoreUpdated={updateListFromCheckboxStore}
   />
-  <ul class="exercise-index-cards-container">
+  <ul class="exercise-index-cards-list">
     {#each exerciseList as exercise (exercise.name)}
     <li>
       <ExerciseIndexCard {exercise}/>
@@ -126,7 +126,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .exercise-index-cards-container {
+  .exercise-index-cards-list {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, min-content);
