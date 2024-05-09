@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { getLocalStorageUsername } from './helperFunctions/localStorage';
+import { getLocalStorageUsername } from './helperFunctions/login';
 
 test.describe('login', () => {
 	test.beforeEach(async ({ page }) => {

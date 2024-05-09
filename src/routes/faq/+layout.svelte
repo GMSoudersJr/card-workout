@@ -31,7 +31,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
-    padding: 0.5rem;
   }
   .header {
     display: grid;

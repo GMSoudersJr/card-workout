@@ -1,4 +1,4 @@
-export const fakeWorkoutData = [
+[
 	{
 		"name": "Workout # 1",
 		"exercises": [
@@ -78,4 +78,3 @@ export const fakeWorkoutData = [
 		}
 	}
 ]
-
