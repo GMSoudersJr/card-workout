@@ -114,7 +114,7 @@ test.describe('user has clicked Start button', () => {
 	test.describe('continues to click the current card', () => {
 
 		test('expect exercise information to be hidden on each card', async ({ page }) => {
-			test.setTimeout(60 * 1_000);
+			test.setTimeout(51 * 1_000);
 			const firstCard = page.getByTestId('playing-card');
 			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
 			await expect(firstCardExerciseInfo).toBeHidden().then(async () => {

@@ -1,18 +1,16 @@
 import {
+	cardEmoji,
 	exerciseEmoji,
 	homeEmoji,
 	repeatEmoji,
 	wasteBasketEmoji
 } from '../src/lib/emojis';
+import fakeLocalStorageData from './fakeLocalStorageData.json' assert { type: 'json' };
 import { expect, test } from '@playwright/test';
-import {
-	setLocalStorageWorkouts,
-	getLocalStorageWorkouts
-} from './helperFunctions/localStorage';
-import { fakeWorkoutData } from './fakeWorkoutData';
+import { setLocalStorageWorkouts, getLocalStorageWorkouts } from './helperFunctions/login';
 
-const workoutsForLocalStorage = JSON.stringify(fakeWorkoutData);
-const singleWorkoutForLocalStorage = JSON.stringify([fakeWorkoutData[0]]);
+const workoutsForLocalStorage = JSON.stringify(fakeLocalStorageData);
+const singleWorkoutForLocalStorage = JSON.stringify([fakeLocalStorageData[0]]);
 
 test.describe('new user', () => {
 	test('expect "activities" link not to be visible', async ({ page }) => {
@@ -57,7 +55,6 @@ test.describe('one saved workout', () => {
 			await confirmButton.click();
 			await page.waitForLoadState('domcontentloaded');
 		});
-
 		test('expect navigation home', async ({ page }) => {
 			await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
 			const linkTexts = await page.getByRole('link').allInnerTexts();
@@ -90,7 +87,7 @@ test.describe('returning after workouts have been saved', () => {
 
 });
 
-test.describe('ACTIVITIES page', () => {
+test.describe('on "ACTIVITIES" page', () => {
 	test.beforeEach(async ({ page, context }) => {
 		await setLocalStorageWorkouts(context, workoutsForLocalStorage);
 		await page.goto('/');

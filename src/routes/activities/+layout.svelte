@@ -27,7 +27,6 @@
     grid-template-rows: min-content 1fr;
     justify-content: center;
     row-gap: 1rem;
-    padding: 0.5rem;
   }
   .nav-and-heading {
     width: 100%;

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TExerciseName } from "../../../types/exerciseName";
   import { repeatEmoji } from '$lib/emojis';
-  import { discardedCards, suitExercises, theCurrentCard, theDeckOfCards, workoutName } from "../../../store";
+  import { discardedCards, suitExercises, theCurrentCard, theDeckOfCards } from "../../../store";
   import { ESuit } from "../../../enums/suit";
 	import type {TSuit} from "../../../types/suit";
 	import {goto} from "$app/navigation";
@@ -14,12 +14,6 @@
       suitExercises.updateExercise(suits[index] as TSuit, exercise);
     });
 
-    if ( thisWorkoutName === undefined || thisWorkoutName === null ) {
-      workoutName.reset();
-    } else {
-      workoutName.rename(thisWorkoutName);
-    }
-
     theDeckOfCards.setExercises($suitExercises);
     discardedCards.reset();
     theCurrentCard.reset();
@@ -29,7 +23,7 @@
   };
 
   // Possibly needed after create workout names
-  export let thisWorkoutName: string | undefined;
+  // export let workoutName: string;
   export let exercisesToRepeat: (TExerciseName | undefined)[];
 </script>
 
