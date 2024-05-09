@@ -1,10 +1,10 @@
 <script lang="ts">
   import {
-    memoEmoji,
-    cardEmoji,
     exerciseEmoji,
     recieptEmoji,
 	thinkingEmoji,
+	cardIndexEmoji,
+	deckEmoji,
   } from '$lib/emojis';
   import {
     links,
@@ -18,6 +18,16 @@
       href: `/${links.activities}`,
       text: links.activities.toUpperCase(),
       emoji: recieptEmoji
+    },
+    {
+      href: `/${links.decks}`,
+      text: links.decks.toUpperCase(),
+      emoji: deckEmoji
+    },
+    {
+      href: `/${links.index}`,
+      text: links.index.toUpperCase(),
+      emoji: cardIndexEmoji
     },
     {
       href: `/${links.exercises}`,
@@ -47,7 +57,7 @@
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
     {#if homepageLink.text !== links.activities.toUpperCase()}
     <a
-      class="nav-item oswald-header"
+      class="nav-link oswald-header"
       href={homepageLink.href}
     >
       <p>
@@ -59,7 +69,7 @@
     </a>
     {:else if hasPreviousWorkouts && homepageLink.text === links.activities.toUpperCase()}
     <a
-      class="nav-item oswald-header"
+      class="nav-link oswald-header"
       href={homepageLink.href}
     >
       <p>
@@ -78,36 +88,57 @@
   .page-container {
     height: 100%;
     width: 100%;
-    background: radial-gradient(circle at bottom center, #39FF14, #000080);
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.618fr 1fr;
     justify-content: center;
-    justify-items: center;
     align-items: center;
+    align-content: center;
+    background: radial-gradient(circle at bottom, #FFFFFF, #259259);
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
   }
   .header {
     color: #FFFFFF;
+    font-weight: 900;
     text-align: center;
   }
+  .header > h1 {
+    font-size: 3rem;
+  }
+  .header > h4 {
+    font-size: 1.5rem;
+  }
   .nav-container {
-    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
-    row-gap: 1rem;
+    grid-template-rows: repeat(auto-fill, min-content);
+    row-gap: 0.25rem;
+    justify-items: center;
+    align-items: center;
   }
-  .nav-item {
-    width: 100%;
-    padding: 12px 15px;
-    border: 4px solid #000080;
-    border-radius: 8px;
+  .nav-link {
+    height: 100%;
+    width: calc(60px * 1.618 * 3);
+    background: #000080;
     display: grid;
     grid-template-columns: repeat(2, min-content);
     column-gap: 0.5rem;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #000080;
-    font-size: x-large;
+    color: #FFFFFF;
+    padding: 5px 12px;
+  }
+  .nav-link:first-child {
+    border-top-left-radius: 40px;
+  }
+  .nav-link:last-child {
+    border-bottom-right-radius: 40px;
+  }
+  .nav-link:nth-child(n - 4) {
+    font-size: 1.75rem;
   }
 </style>
 

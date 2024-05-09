@@ -7,6 +7,7 @@
     theCurrentCard,
     suitExercises,
     workoutStopwatch,
+	workoutName,
   } from '../../../store';
   import { ESuitSymbolUnicode } from "../../../enums/suitSymbolUnicode";
   import { ECardRankSymbol } from "../../../enums/cardRankSymbol";
@@ -63,8 +64,14 @@
       }
       workoutStopwatch.stop();
       workoutStopwatch.clearIntervals();
+      let thisWorkoutName: string;
+      if ( $workoutName.length > 0 ) {
+        thisWorkoutName = $workoutName;
+      } else {
+        thisWorkoutName = `Workout # ${previousWorkouts.length + 1}`;
+      }
       let workout: TSavedWorkout = {
-        name: `Workout # ${previousWorkouts.length + 1}`,
+        name: thisWorkoutName,
         exercises: $suitExercises.map((suitExercise) => {
           if (suitExercise.exercise?.name === undefined ||
               suitExercise.exercise?.name == null) return;
@@ -78,6 +85,7 @@
       previousWorkouts.push(workout);
 
       localStorage.setItem('workouts', JSON.stringify(previousWorkouts));
+      workoutName.reset();
     }
 
   }

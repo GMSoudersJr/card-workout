@@ -8,6 +8,82 @@ import type { TExerciseName } from './types/exerciseName';
 import type { TSuitExercise } from './types/suitExercise';
 import { createSuitExercises } from './functions/createSuitExercises';
 import { createWorkout } from './functions/createWorkout';
+import type { TExerciseCategory } from './types/exerciseCategory';
+import type { TExercisePosition } from './types/exercisePosition';
+import type { TExerciseVariation } from "./types/exerciseVariation";
+import type { TBodyPart } from "./types/bodyPart";
+
+function createWorkoutNameStore() {
+	let workoutName = '';
+
+	const { subscribe, set, update } = writable(workoutName);
+
+	return {
+		subscribe,
+		rename: (newName: string) => update(( workoutName ) => {
+			workoutName = newName;
+			return workoutName;
+		}),
+		reset: () => set('')
+	}
+}
+
+function createCheckboxStore() {
+  let checkedBoxes = {
+    category: [] as TExerciseCategory[],
+    position: [] as TExercisePosition[],
+    target: [] as TBodyPart[],
+    variation: [] as TExerciseVariation[]
+  };
+
+	const { subscribe, set, update } = writable(checkedBoxes);
+
+	return {
+		subscribe,
+		updateCategory: (value: TExerciseCategory) => update((checkedBoxes) => {
+			if (checkedBoxes.category.includes(value)) {
+				checkedBoxes.category.splice(checkedBoxes.category.indexOf(value), 1);
+			} else {
+				checkedBoxes.category.push(value);
+			}
+
+			return checkedBoxes;
+		}),
+		updatePosition: (value: TExercisePosition) => update((checkedBoxes) => {
+			if (checkedBoxes.position.includes(value)) {
+				checkedBoxes.position.splice(checkedBoxes.position.indexOf(value), 1);
+			} else {
+				checkedBoxes.position.push(value);
+			}
+
+			return checkedBoxes;
+		}),
+		updateTarget: (value: TBodyPart) => update((checkedBoxes) => {
+			if (checkedBoxes.target.includes(value)) {
+				checkedBoxes.target.splice(checkedBoxes.target.indexOf(value), 1);
+			} else {
+				checkedBoxes.target.push(value);
+			}
+
+			return checkedBoxes;
+		}),
+		updateVariation: (value: TExerciseVariation) => update((checkedBoxes) => {
+			if (checkedBoxes.variation.includes(value)) {
+				checkedBoxes.variation.splice(checkedBoxes.variation.indexOf(value), 1);
+			} else {
+				checkedBoxes.variation.push(value);
+			}
+
+			return checkedBoxes;
+		}),
+		reset: () => set({
+			category: [] as TExerciseCategory[],
+			position: [] as TExercisePosition[],
+			target: [] as TBodyPart[],
+			variation: [] as TExerciseVariation[]
+		})
+	}
+}
 
 function createTheDeckOfCards() {
 	const { subscribe, set, update } = writable(createDeckOfCards());
@@ -116,7 +192,7 @@ function createSuitExercisesStore() {
 
 	return {
 		subscribe,
-		updateExercise: (suit: TSuit, exercise: TExerciseName) => update((result) => {
+		updateExercise: (suit: TSuit, exercise: TExerciseName | undefined) => update((result) => {
 			const isThisSuit = (entry: TSuitExercise<TSuit>) => entry.suit === suit;
 			const indexOfThisSuit = result.findIndex(isThisSuit);
 			result = result.with(indexOfThisSuit, {
@@ -197,7 +273,8 @@ export const theDeckOfCards = createTheDeckOfCards();
 export const discardedCards = usedCards();
 export const suitExercises = createSuitExercisesStore();
 export const workoutStopwatch = createStopwatch();
-
+export const theExerciseIndexCheckboxStore = createCheckboxStore();
+export const workoutName = createWorkoutNameStore();
 
 export const theRemainingDeck = derived(theDeckOfCards, ($theDeckOfCards) => {
 	return $theDeckOfCards.filter((card) => {

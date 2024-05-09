@@ -1,5 +1,4 @@
 import { type BrowserContext } from '@playwright/test';
-import type {TExerciseName} from '../../src/types/exerciseName';
 import type { TSavedWorkout } from '../../src/types/savedWorkout';
 
 export async function getLocalStorageData(browswerContext: BrowserContext) {
