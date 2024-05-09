@@ -40,14 +40,54 @@
 
   }
 
-  onMount(async() => {
+  onMount(async () => {
     const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
     if ( checkedBoxes.length > 0 ) handleCheckedAlready(checkedBoxes);
+
+		const storedCheckedBoxValues = Object.values($theExerciseIndexCheckboxStore);
+
+		if ( storedCheckedBoxValues.some((storedCheckboxArray) => {
+			return storedCheckboxArray.length > 0;
+		})) {
+
+			if ( $theExerciseIndexCheckboxStore.category.length > 0 ) {
+				$theExerciseIndexCheckboxStore.category.forEach(( option ) => {
+					let element = document.querySelector(`#category-${option}`);
+					element?.setAttribute("checked", "");
+				});
+			}
+
+			if ( $theExerciseIndexCheckboxStore.position.length > 0 ) {
+				$theExerciseIndexCheckboxStore.position.forEach(( option ) => {
+					let element = document.querySelector(`#position-${option}`);
+					element?.setAttribute("checked", "");
+				});
+			}
+
+			if ( $theExerciseIndexCheckboxStore.variation.length > 0 ) {
+				$theExerciseIndexCheckboxStore.variation.forEach(( option ) => {
+					let element = document.querySelector(`#variation-${option}`);
+					element?.setAttribute("checked", "");
+				});
+			}
+
+			if ( $theExerciseIndexCheckboxStore.target.length > 0 ) {
+				$theExerciseIndexCheckboxStore.target.forEach(( option ) => {
+					let element = document.querySelector(`#target-${option}`);
+					element?.setAttribute("checked", "");
+				});
+			}
+
+			dispatch('checkboxStoreUpdated');
+		} else {
+			return;
+		}
+
   });
 
 </script>
 
-<details>
+<details id="details-options">
 	<summary class="oswald-header summary-label">OPTIONS:</summary>
 
 	<section class="section-container">

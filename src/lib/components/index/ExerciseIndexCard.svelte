@@ -8,17 +8,23 @@
   const exerciseName = EExerciseNames[exercise.name as keyof typeof EExerciseNames];
 </script>
 
-<div class="exercise-card">
-  <div class="header-and-link">
-    <h1 class="oswald-header header">
-      {exerciseName.toUpperCase()}
-    </h1>
+<div class="index-card">
+  <div class="exercise-name-demo-link">
     {#if exercise.demos}
       {#each exercise.demos as demo (demo)}
         {#if  demo === ''}
-          <p class="noto-emoji-font emoji">{thinkingEmoji}</p>
+          <h1 class="oswald-header header">
+            {exerciseName.toUpperCase()}
+          </h1>
         {:else}
-          <a href={demo} class="noto-emoji-font emoji link-emoji">{linkEmoji}</a>
+          <a
+            href={demo}
+            referrerpolicy="no-referrer"
+          >
+            <h1 class="oswald-header header">
+              {exerciseName.toUpperCase()}
+            </h1>
+          </a>
         {/if}
       {/each}
     {/if}
@@ -37,10 +43,7 @@
     color: #000080;
     font-size: x-large;
   }
-  a.emoji {
-    text-decoration: none;
-  }
-  .exercise-card {
+  .index-card {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
@@ -60,17 +63,8 @@
     font-size: 1rem;
     color: #000080;
   }
-  .link-emoji {
-    font-size: 1.3rem;
-    color: #259259;
-  }
-  .header-and-link {
-    display: grid;
-    grid-template-columns: auto min-content;
-    grid-template-rows: min-content;
-    justify-content: start;
-    align-items: center;
-    column-gap: 0.5rem;
+  a {
+    text-decoration: none;
   }
 </style>
 

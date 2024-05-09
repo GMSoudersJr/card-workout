@@ -16,7 +16,7 @@
   function handleSearchChange(event: CustomEvent): void {
     exerciseNameSearchString = event.detail.value.toUpperCase();
     if ( exerciseNameSearchString.includes(" ") ) {
-      exerciseNameSearchString= exerciseNameSearchString.replaceAll(" ", "_");
+      exerciseNameSearchString = exerciseNameSearchString.replaceAll(" ", "_");
       console.log(exerciseNameSearchString, "Space given")
     }
 
@@ -24,7 +24,7 @@
   };
 
 
-  function optionsNotChecked(): boolean {
+  function storedCheckedBoxesNotChecked(): boolean {
     return (
       $theExerciseIndexCheckboxStore.category.length === 0 &&
       $theExerciseIndexCheckboxStore.position.length === 0 &&
@@ -38,7 +38,7 @@
   };
 
   function updateExerciseListByExerciseName(): void {
-    if ( optionsNotChecked() ) {
+    if ( storedCheckedBoxesNotChecked() ) {
       exerciseList = searchExercises(exercises);
     } else {
       exerciseList = searchExercises(checkedExercises(exercises));
@@ -53,7 +53,7 @@
 
 
   function checkedExercises(exercises: TExercise<TExerciseName>[]): TExercise<TExerciseName>[] {
-    if ( optionsNotChecked() ) {
+    if ( storedCheckedBoxesNotChecked() ) {
       return exercises;
     } else {
       return exercises.filter(( exercise ) => {
@@ -104,7 +104,7 @@
   <CheckboxOptionsSection
     on:checkboxStoreUpdated={updateListFromCheckboxStore}
   />
-  <ul class="exercise-index-cards-container">
+  <ul class="exercise-index-cards-list">
     {#each exerciseList as exercise (exercise.name)}
     <li>
       <ExerciseIndexCard {exercise}/>
@@ -126,12 +126,11 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .exercise-index-cards-container {
+  .exercise-index-cards-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: repeat(auto-fill, min-content);
     row-gap: 1rem;
-
   }
 </style>
 

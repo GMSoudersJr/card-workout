@@ -26,6 +26,17 @@ export const exercises: TExercise<TExerciseName>[] = [
     emojis: [footEmoji, legEmoji]
   },
   {
+    name: "ANKLE_CIRCLES",
+    positions: ['SEATED', 'SUPINE', 'STANDING'],
+    muscles: ['LOWER_LEG'],
+    bodyParts: ['ANKLES', 'FEET'],
+    bodySections: ['FEET', 'LEGS'],
+    variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
+    demos: ['https://youtu.be/lsWnuKq9CDU?si=D8eLwQpKgoWb8wJg'],
+    categories: ['MOBILITY', 'STABILITY'],
+    emojis: [footEmoji, legEmoji]
+  },
+  {
     name: "ANKLE_DORSIFLEXIONS",
     positions: ['SEATED', 'STANDING', 'SUPINE'],
     muscles: ['SHINS'],
@@ -55,17 +66,6 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/Xi5Ka85TCbI?si=phYMHdl_n-8BDvKg'],
-    categories: ['MOBILITY', 'STABILITY'],
-    emojis: [footEmoji, legEmoji]
-  },
-  {
-    name: "ANKLE_ROLLS",
-    positions: ['SEATED', 'SUPINE', 'STANDING'],
-    muscles: ['LOWER_LEG'],
-    bodyParts: ['ANKLES', 'FEET'],
-    bodySections: ['FEET', 'LEGS'],
-    variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
-    demos: ['https://youtu.be/lsWnuKq9CDU?si=D8eLwQpKgoWb8wJg'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -334,7 +334,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     emojis: [bodyEmoji]
   },
   {
-    name: "NECK_ROLLS",
+    name: "NECK_CIRCLES",
     positions: ['STANDING', 'SEATED', 'KNEELING'],
     muscles: ['NECK'],
     bodyParts: ['NECK'],
@@ -554,7 +554,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     emojis: [bodyEmoji]
   },
   {
-    name: "WRIST_ROLLS",
+    name: "WRIST_CIRCLES",
     positions: ['STANDING', 'SEATED', 'KNEELING'],
     muscles: ['FOREARM', 'EXTENSORS', 'FLEXORS'],
     bodyParts: ['FOREARMS'],
