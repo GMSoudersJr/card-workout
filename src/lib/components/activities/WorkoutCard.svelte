@@ -63,9 +63,14 @@
   </div>
   <div class="workout-time oswald-header">{workoutTime()}</div>
   <div class="exercises-container">
-    {#each exercises as exercise, index (index)}
-    <div class="exercise-name source-sans-3-text">{exercise.toString().toUpperCase()}</div>
-    {/each}
+    {#await exercises}
+      {:then exercises}
+        {#each exercises as exercise, index (index)}
+        <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
+        {/each}
+      {:catch error}
+      <p>{error}</p>
+    {/await}
   </div>
 </div>
 
