@@ -88,7 +88,6 @@ export function reformatLocalStorageWorkouts(): TSavedWorkout[] {
 			workout.time.startedAt = workout.time.start;
 			workout.time.elapsed = workout.time.end - workout.time.start;
 		}
-		console.log(workout);
 		workout.name = workout.name;
 		workout.exercises = workout.exercises
 		return workout;
