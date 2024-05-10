@@ -24,7 +24,7 @@
       await goto('/');
     }
     workouts = workouts.reverse();
-    console.log(workouts);
+    console.log("activities page", workouts);
   }
 
   function handleDialogClose(event: CustomEvent) {
