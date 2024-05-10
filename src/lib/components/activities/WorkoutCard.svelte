@@ -40,6 +40,7 @@
   $: exercises = workout.exercises.map((exercise) => {
     return EExerciseNames[exercise as keyof typeof EExerciseNames]
   });
+  console.log("workout card", exercises);
 </script>
 
 <div
@@ -63,7 +64,7 @@
   <div class="workout-time oswald-header">{workoutTime()}</div>
   <div class="exercises-container">
     {#each exercises as exercise, index (index)}
-    <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
+    <div class="exercise-name source-sans-3-text">{exercise.toString().toUpperCase()}</div>
     {/each}
   </div>
 </div>
