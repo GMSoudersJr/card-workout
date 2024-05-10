@@ -13,6 +13,17 @@ export const exercises: TExercise<TExerciseName>[] = [
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
   },
   {
+    name: "ANKLE_ROLLS",
+    positions: ['SEATED', 'SUPINE', 'STANDING'],
+    muscles: ['LOWER_LEG'],
+    bodyParts: ['ANKLES', 'FEET'],
+    bodySections: ['FEET', 'LEGS'],
+    variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
+    demos: ['https://youtu.be/lsWnuKq9CDU?si=D8eLwQpKgoWb8wJg'],
+    categories: ['MOBILITY', 'STABILITY'],
+    emojis: [footEmoji, legEmoji]
+  },
+  {
     name: "ANKLE_DORSIFLEXIONS",
     positions: ['SEATED', 'STANDING', 'SUPINE'],
     muscles: ['SHINS'],
@@ -303,6 +314,17 @@ export const exercises: TExercise<TExerciseName>[] = [
     categories: ['YOGA'],
   },
   {
+    name: "NECK_ROLLS",
+    positions: ['STANDING', 'SEATED', 'KNEELING'],
+    muscles: ['NECK'],
+    bodyParts: ['NECK'],
+    bodySections: ['NECK'],
+    variations: ['SLOW', 'LOW_IMPACT', 'ALTERNATING', 'STANDING', 'SEATED', 'ON_ALL_FOURS'],
+    demos: ['https://youtu.be/gBwGyIp5vdM?si=kvG2iRsg15w6bQT5'],
+    categories: ['YOGA', 'MOBILITY'],
+    emojis: [headNoddingEmoji, headShakingEmoji]
+  },
+  {
     name: "PLANKS",
     positions: ['PRONE', 'FLOOR'],
     muscles: ['CORE'],
@@ -501,6 +523,17 @@ export const exercises: TExercise<TExerciseName>[] = [
     variations: [],
     demos: ['Coming Soon'],
     categories: ['CALISTHENICS'],
+  },
+  {
+    name: "WRIST_ROLLS",
+    positions: ['STANDING', 'SEATED', 'KNEELING'],
+    muscles: ['FOREARM', 'EXTENSORS', 'FLEXORS'],
+    bodyParts: ['FOREARMS'],
+    bodySections: ['ARMS'],
+    variations: ['SLOW', 'LOW_IMPACT', 'SEATED', 'ON_KNEES', 'ALTERNATING'],
+    demos: ['https://youtu.be/2nIqcxAyBh4?si=rj8JW3XPhHRfXyS-'],
+    categories: ['CALISTHENICS', 'MOBILITY'],
+    emojis: [handEmoji]
   },
 
 ];
