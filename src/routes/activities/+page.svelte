@@ -18,7 +18,7 @@
 
   async function setWorkouts() {
     //workouts = getLocalStorageWorkouts();
-    workouts = await reformatLocalStorageWorkouts();
+    workouts = reformatLocalStorageWorkouts();
     if ( workouts.length === 0 ) {
       suitExercises.reset();
       await goto('/');

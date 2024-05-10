@@ -40,7 +40,8 @@
   let exercises = workout.exercises.map((exercise) => {
     return EExerciseNames[exercise as keyof typeof EExerciseNames]
   });
-  console.log("workout card", workout);
+
+  console.log("workout card - exercises", exercises);
 </script>
 
 <div
