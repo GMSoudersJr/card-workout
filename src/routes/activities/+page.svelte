@@ -13,7 +13,7 @@
   import { suitExercises } from '../../store';
 
   onMount(async () => {
-    await setWorkouts();
+    setWorkouts();
   });
 
   async function setWorkouts() {

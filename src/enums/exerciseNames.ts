@@ -4,6 +4,7 @@ export enum EExerciseNames {
 	ANKLE_EVERSIONS='Ankle Eversions',
 	ANKLE_INVERSIONS='Ankle Inversions',
 	ANKLE_CIRCLES='Ankle Circles',
+	ANKLE_ROLLS='Ankle Rolls',
 	ARCH_LIFTS='Arch Lifts',
 	ARM_EXTENSIONS='Arm Extensions',
 	ATG_SPLIT_SQUATS='ATG Split Squats',
@@ -29,6 +30,7 @@ export enum EExerciseNames {
 	LUNGES='Lunges',
 	MOUNTAIN_CLIMBERS='Mountain Climbers',
 	NECK_CIRCLES='Neck Circles',
+	NECK_ROLLS='Neck Rolls',
 	PLANKS='Planks',
 	PULL_UPS='Pull-ups',
 	PUSH_UPS='Push-ups',
@@ -49,4 +51,5 @@ export enum EExerciseNames {
 	TRUNK_TWISTS='Trunk Twists',
 	WALKOUT_PLANKS='Walkout Planks',
 	WRIST_CIRCLES='Wrist Circles',
+	WRIST_ROLLS='Wrist Rolls'
 };
