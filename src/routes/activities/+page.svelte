@@ -13,12 +13,12 @@
   import { suitExercises } from '../../store';
 
   onMount(async () => {
-    setWorkouts();
+    await setWorkouts();
   });
 
   async function setWorkouts() {
     //workouts = getLocalStorageWorkouts();
-    workouts = reformatLocalStorageWorkouts();
+    workouts = await reformatLocalStorageWorkouts();
     if ( workouts.length === 0 ) {
       suitExercises.reset();
       await goto('/');

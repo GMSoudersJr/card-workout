@@ -80,7 +80,7 @@ export function deleteWorkoutFromLocalStorageWith(workoutStartTime: number | und
 	localStorage.setItem('workouts', JSON.stringify(workouts));
 };
 
-export function reformatLocalStorageWorkouts(): TSavedWorkout[] {
+export async function reformatLocalStorageWorkouts(): Promise<TSavedWorkout[]> {
 	const localStorageWorkouts = getLocalStorageWorkouts();
 	if ( localStorageWorkouts.length === 0 ) return localStorageWorkouts;
 	const reformatedLocalStorage = localStorageWorkouts.map((workout) => {
