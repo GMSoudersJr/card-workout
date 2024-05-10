@@ -64,7 +64,10 @@
   <div class="workout-time oswald-header">{workoutTime()}</div>
   <div class="exercises-container">
     {#each exercises as exercise, index (index)}
-    <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
+      {@debug exercises}
+      <div class="exercise-name source-sans-3-text">
+        {exercise.toUpperCase()}
+      </div>
     {/each}
   </div>
 </div>
