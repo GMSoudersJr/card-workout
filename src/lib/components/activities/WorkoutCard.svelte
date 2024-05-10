@@ -40,7 +40,7 @@
   $: exercises = workout.exercises.map((exercise) => {
     return EExerciseNames[exercise as keyof typeof EExerciseNames]
   });
-  console.log("workout card", exercises);
+  console.log("workout card", workout);
 </script>
 
 <div
@@ -63,14 +63,9 @@
   </div>
   <div class="workout-time oswald-header">{workoutTime()}</div>
   <div class="exercises-container">
-    {#await exercises}
-      {:then exercises}
-        {#each exercises as exercise, index (index)}
-        <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
-        {/each}
-      {:catch error}
-      <p>{error}</p>
-    {/await}
+    {#each exercises as exercise, index (index)}
+    <div class="exercise-name source-sans-3-text">{exercise.toUpperCase()}</div>
+    {/each}
   </div>
 </div>
 
