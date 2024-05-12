@@ -35,6 +35,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 181.8px 1fr min-content;
+    padding: 0.5rem;
   }
   .nav-and-heading {
     display: grid;
