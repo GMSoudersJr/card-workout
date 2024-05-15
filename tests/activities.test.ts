@@ -284,12 +284,12 @@ test.describe('ACTIVITIES page', () => {
 				});
 
 				test.describe('press confirm', () => {
-					test.fixme('expect workout deletion', async ({ page, context }) => {
+					test('expect workout deletion', async ({ page }) => {
 						const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
 						await expect(heading).toBeVisible();
-						const workoutCards = await page.locator('.workout-card').all();
-						const originalWorkoutCardsLength = workoutCards.length;
-						const firstWorkoutCard = workoutCards[0];
+						const workoutCards = page.locator('.workout-card');
+						const originalWorkoutCardsCount = await workoutCards.count();
+						const firstWorkoutCard = workoutCards.first();
 						const deleteButton = firstWorkoutCard.getByRole('button', { name: wasteBasketEmoji });
 						await deleteButton.click();
 						await page.waitForLoadState('domcontentloaded');
@@ -298,12 +298,8 @@ test.describe('ACTIVITIES page', () => {
 						const confirmButton = deleteDialog.getByRole('button', { name: 'Confirm' });
 						await expect(confirmButton).toBeVisible();
 						await confirmButton.click();
-						await page.waitForLoadState('domcontentloaded');
-						await page.waitForSelector('.workout-card');
-						const newWorkoutCards = await page.locator('.workout-card').all();
-						const localStorageWorkout = await getLocalStorageWorkouts(context);
-						console.log(newWorkoutCards);
-						expect(localStorageWorkout?.length).toEqual(originalWorkoutCardsLength - 1);
+						const newWorkoutCardsCount = page.locator('.workout-card');
+						await expect(newWorkoutCardsCount).toHaveCount(originalWorkoutCardsCount - 1);
 					});
 
 				});
