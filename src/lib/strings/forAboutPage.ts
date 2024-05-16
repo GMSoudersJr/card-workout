@@ -37,7 +37,7 @@ export const repCount = {
 		`<strong>A</strong> = <strong>16</strong> reps`,
 		`Each <strong>suit</strong> = <strong>100</strong> reps!`,
 		`The whole <strong>deck</strong> = <strong>400</strong> reps!!!!`,
-		`Reps are counted after a card is tapped.`
+		`Reps are counted after a card is discarded.`
 	],
 };
 

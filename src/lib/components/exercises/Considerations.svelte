@@ -7,9 +7,9 @@
   data-testid="considerations-container"
   id="considerations-container"
 >
-  <h4 class="oswald-header">
+  <h3 class="oswald-header">
     {considerations.header}
-  </h4>
+  </h3>
   <ul
     class="exercise-hint-list source-sans-3-text"
     data-testid="exercise-consideration-list"
@@ -18,8 +18,6 @@
      {#each considerations.list as aConsideration (aConsideration)}
        <li
          class="exercise-consideration-listitem"
-         data-testid="exercise-consideration-listitem"
-         id="exercise-consideration-listitem"
        >
          <p>
            {@html aConsideration}

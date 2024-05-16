@@ -26,7 +26,7 @@
 
 <style>
   main {
-    height: calc(100svh - 25px);
+    height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
