@@ -7,9 +7,9 @@
   data-testid="example-workout-section"
   id="example-workout-section"
 >
-  <h4 class="oswald-header">
+  <h3 class="oswald-header">
 {exampleWorkout.header}
-  </h4>
+  </h3>
   <ul
     class="example-workout-list"
     data-testid="example-workout-list"
