@@ -18,8 +18,6 @@
      {#each considerations.list as aConsideration (aConsideration)}
        <li
          class="exercise-consideration-listitem"
-         data-testid="exercise-consideration-listitem"
-         id="exercise-consideration-listitem"
        >
          <p>
            {@html aConsideration}

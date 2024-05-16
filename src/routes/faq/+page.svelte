@@ -43,15 +43,13 @@ import ListWidget from "$lib/components/about/ListWidget.svelte";
 
 <style>
   .about-page {
-    padding-top: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     max-width: 600px;
     justify-self: center;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: repeat(7, min-content);
     row-gap: 1rem;
     overflow-y: auto;
     -ms-overflow-style: none;

@@ -4,33 +4,28 @@
 </script>
 
 <div class="page-container">
-  <div
-    id="considerations-container"
-    class="considerations-container"
-  >
-    <Considerations />
-
-  </div>
-  <div
-    id="workout-by-suit-container"
-    class="workout-by-suit-container"
-  >
-    <SuitExerciseWidget />
-  </div>
+  <Considerations />
+  <SuitExerciseWidget />
 </div>
 
 <style>
   .page-container {
     max-width: 800px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-self: center;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content);
     row-gap: 1rem;
-    justify-self: center;
 
     overflow-x: hidden;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .page-container::-webkit-scrollbar {
+    display: none;
   }
 </style>
