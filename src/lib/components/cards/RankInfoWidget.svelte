@@ -18,7 +18,6 @@
 
 <ul
   class="rank-list"
-  data-testid="card rank list"
 >
 {#each ranks as rank}
   <li class={`rank-${rank.symbol} rank-listitem`} >

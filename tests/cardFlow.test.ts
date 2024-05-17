@@ -7,16 +7,16 @@ test.beforeEach(async ({ page }) => {
 });
 test.describe('user has clicked Start button', () => {
 	test(`the first card is expected to be visible`, async ({ page }) => {
-		const theFirstCard = page.getByTestId('playing-card');
+		const theFirstCard = page.locator('.playing-card');
 		await expect(theFirstCard).toBeVisible();
 	});
 
 	test('expect click to discard card', async ({ page }) => {
-		await page.getByTestId('playing-card').click();
-		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
-		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
-		await expect(page.getByTestId('discarded-card-listitem')
-			     .getByTestId('playing-card')).toBeDisabled();
+		await page.locator('.playing-card').click();
+		await expect(page.locator('.discarded-cards-list')).toBeVisible();
+		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
+		await expect(page.locator('.discarded-cards-listitem')
+			     .locator('.playing-card')).toBeDisabled();
 	});
 
 	async function getCenterPositionOf(locator: Locator):
@@ -60,53 +60,53 @@ test.describe('user has clicked Start button', () => {
 	};
 
 	test.fixme('expect swipe up to discard card', async ({ page }) => {
-		const thePlayingCard = page.getByTestId('playing-card');
+		const thePlayingCard = page.locator('.playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
 		await mimicSwipe('up', page, position, thePlayingCard);
 
-		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
-		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
-		await expect(page.getByTestId('discarded-card-listitem')
-			     .getByTestId('playing-card')).toBeDisabled();
+		await expect(page.locator('.discarded-cards-list')).toBeVisible();
+		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
+		await expect(page.locator('.discarded-cards-listitem')
+			     .locator('.playing-card')).toBeDisabled();
 	});
 
 	test.fixme('expect swipe down to re-pluck', async ({ page }) => {
-		const thePlayingCard = page.getByTestId('playing-card');
+		const thePlayingCard = page.locator('.playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
 		await mimicSwipe('down', page, position, thePlayingCard);
 
-		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
-		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
+		await expect(page.locator('.discarded-cards-list')).toBeVisible();
+		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(0);
 	});
 
 	test.fixme('expect swipe left to re-pluck', async ({ page }) => {
-		const thePlayingCard = page.getByTestId('playing-card');
+		const thePlayingCard = page.locator('.playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
 		await mimicSwipe('left', page, position, thePlayingCard);
 
-		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
-		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(0);
+		await expect(page.locator('.discarded-cards-list')).toBeVisible();
+		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(0);
 	});
 
 	test.fixme('expect swipe right to discard card', async ({ page }) => {
-		const thePlayingCard = page.getByTestId('playing-card');
+		const thePlayingCard = page.locator('.playing-card');
 		const position = await getCenterPositionOf(thePlayingCard);
 		if (position === undefined) return;
 		await mimicSwipe('right', page, position, thePlayingCard);
 
-		await expect(page.getByTestId('discarded-cards-list')).toBeVisible();
-		await expect(page.getByTestId('discarded-card-listitem')).toHaveCount(1);
-		await expect(page.getByTestId('discarded-card-listitem')
-			     .getByTestId('playing-card')).toBeDisabled();
+		await expect(page.locator('.discarded-cards-list')).toBeVisible();
+		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
+		await expect(page.locator('.discarded-cards-listitem')
+			     .locator('.playing-card')).toBeDisabled();
 	});
 
 	test('after clicking the first card, only one card is expected to be enabled', async ({ page }) => {
-		await page.getByTestId('playing-card').click();
+		await page.locator('.playing-card').click();
 		const currentCard =
-			page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+			page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 		await expect(currentCard).toBeEnabled();
 		await expect(currentCard).toHaveCount(1);
 	});
@@ -115,16 +115,16 @@ test.describe('user has clicked Start button', () => {
 
 		test('expect exercise information to be hidden on each card', async ({ page }) => {
 			test.setTimeout(60 * 1_000);
-			const firstCard = page.getByTestId('playing-card');
+			const firstCard = page.locator('.playing-card');
 			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
 			await expect(firstCardExerciseInfo).toBeHidden().then(async () => {
 				await firstCard.click();
 			}).catch(( error ) => {
 				console.log(error);
 			});
-			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard =
-				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while (await discardedCardsListItem.count() < 52) {
 				await expect(currentCard).toHaveCount(1).then(async () => {
 					const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
@@ -141,10 +141,10 @@ test.describe('user has clicked Start button', () => {
 
 		test('all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
 			test.setTimeout(60 * 1_000);
-			await page.getByTestId('playing-card').click();
-			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			await page.locator('.playing-card').click();
+			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard =
-				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while (await discardedCardsListItem.count() < 52) {
 				await expect(currentCard).toHaveCount(1).then(async () => {
 					await currentCard.click();

@@ -8,7 +8,6 @@
 </script>
 
 <div
-  data-testid="suit-info-box"
   class="suit-info-box"
 >
   <div style:color={color} class="suit" >

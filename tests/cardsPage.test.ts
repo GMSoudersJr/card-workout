@@ -14,13 +14,13 @@ test('the page has expected start button', async ({ page }) => {
 });
 
 test('before a card is clicked, the discarded cards area is expected to be empty', async ({ page }) => {
-	await expect(page.getByTestId('discarded-cards-list')).toBeEmpty();
+	await expect(page.locator('.discarded-cards-list')).toBeEmpty();
 });
 
 test('clicking the start button is expected to show a card', async ({ page }) => {
 	page.getByRole('button', { name: 'Start' }).click();
-	await expect(page.getByTestId('playing-card')).toHaveCount(1);
-	await expect(page.getByTestId('playing-card')).toBeVisible();
+	await expect(page.locator('.playing-card')).toHaveCount(1);
+	await expect(page.locator('.playing-card')).toBeVisible();
 });
 
 test('the page has expected deck radio button', async ({ page }) => {
@@ -78,7 +78,7 @@ test.describe('uncheck radio button', () => {
 test('expect deck info to show 52 cards remaining', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-	const element = page.getByTestId('cards remaining');
+	const element = page.locator('#cards-remaining');
 	await element.waitFor({ state: 'attached' });
 	await expect(page.getByRole('heading',{ name: '52', level: 3 })).toBeVisible();
 });
@@ -86,14 +86,14 @@ test('expect deck info to show 52 cards remaining', async ({ page }) => {
 test('expect rank info to show 13 items', async ({ page }) => {
 	await page.getByLabel('Rank', { exact: true }).click();
 	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-	await expect(page.getByTestId('card rank list')).toBeVisible();
+	await expect(page.locator('.rank-list')).toBeVisible();
 	await expect(page.getByRole('listitem')).toHaveCount(13);
 });
 
 test('expect suit info to show 4 items', async ({ page }) => {
 	await page.getByLabel('Suit', { exact: true }).check();
 	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-	await expect(page.getByTestId('suit-info-widget')).toBeVisible();
-	await expect(page.getByTestId('suit-info-box')).toHaveCount(4);
+	await expect(page.locator('.suit-info-widget')).toBeVisible();
+	await expect(page.locator('.suit-info-box')).toHaveCount(4);
 });
 

@@ -196,7 +196,6 @@
 
 <button
   id={id}
-  data-testid="playing-card"
   class="playing-card"
   on:click={handleClick}
   aria-disabled={disabled}

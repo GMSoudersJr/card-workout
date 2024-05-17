@@ -4,9 +4,8 @@
 
 </script>
 
-<div 
+<div
   class="reps-info-widget"
-  data-testid="reps-info-widget"
 >
   {#each $suitExercises as data (data.suit)}
     <RepsProgressBox reps={data.completedReps} exercise={data.exercise?.name}/>

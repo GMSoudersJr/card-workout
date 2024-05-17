@@ -37,7 +37,7 @@ test.describe('exercise page has correct links', () => {
 });
 
 test('exercise page has expected considerations list', async ({ page }) => {
-	await expect(page.getByTestId('exercise-consideration-list')).toBeVisible();
+	await expect(page.locator('#exercise-consideration-list')).toBeVisible();
 });
 
 test('exercise page has expected 4 select elements', async ({ page }) => {
@@ -46,10 +46,10 @@ test('exercise page has expected 4 select elements', async ({ page }) => {
 
 test.describe('exercise page example workout tests', () => {
 	test('expect example workout to be visible', async ({ page }) => {
-		await expect(page.getByTestId('example-workout-list')).toBeVisible();
+		await expect(page.locator('#example-workout-list')).toBeVisible();
 	});
 	test('expect example workout to have 4 listitems', async ({ page }) => {
-		await expect(page.getByTestId('example-workout-listitem')).toHaveCount(4);
+		await expect(page.locator('.example-workout-listitem')).toHaveCount(4);
 	});
 });
 
@@ -68,7 +68,7 @@ test.describe('example workout list visibility', () => {
 		const location = page.locator(`#${clubs}-exercise-select`)
 		const [ firstSelection ] = await location.selectOption(exercise1);
 		expect(firstSelection).toBe(exercise1);
-		await expect(page.getByTestId('example-workout-list')).toBeVisible();
+		await expect(page.locator('#example-workout-list')).toBeVisible();
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
@@ -77,7 +77,7 @@ test.describe('example workout list visibility', () => {
 		const location = page.locator(`#${diamonds}-exercise-select`)
 		const [ secondSelection ] = await location.selectOption(exercise2);
 		expect(secondSelection).toBe(exercise2);
-		await expect(page.getByTestId('example-workout-list')).toBeVisible();
+		await expect(page.locator('#example-workout-list')).toBeVisible();
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
@@ -86,7 +86,7 @@ test.describe('example workout list visibility', () => {
 		const location = page.locator(`#${hearts}-exercise-select`)
 		const [ thirdSelection ] = await location.selectOption(exercise3);
 		expect(thirdSelection).toBe(exercise3);
-		await expect(page.getByTestId('example-workout-list')).toBeVisible();
+		await expect(page.locator('#example-workout-list')).toBeVisible();
 		await expect(letsGoButton).not.toBeVisible();
 	});
 
@@ -95,7 +95,7 @@ test.describe('example workout list visibility', () => {
 		const location = page.locator(`#${spades}-exercise-select`)
 		const [ fourthSelection ] = await location.selectOption(exercise4);
 		expect(fourthSelection).toBe(exercise4);
-		await expect(page.getByTestId('example-workout-list')).toBeVisible();
+		await expect(page.locator('#example-workout-list')).toBeVisible();
 		await expect(letsGoButton).not.toBeVisible();
 	});
 });

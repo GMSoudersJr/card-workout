@@ -4,21 +4,17 @@
 
 <section
   class="example-workout-section"
-  data-testid="example-workout-section"
   id="example-workout-section"
 >
   <h3 class="oswald-header">
 {exampleWorkout.header}
   </h3>
   <ul
-    class="example-workout-list"
-    data-testid="example-workout-list"
     id="example-workout-list"
   >
      {#each exampleWorkout.list as anExampleExercise (anExampleExercise)}
        <li
          class="example-workout-listitem source-sans-3-text"
-         data-testid="example-workout-listitem"
          id="example-workout-listitem"
        >
          <p>

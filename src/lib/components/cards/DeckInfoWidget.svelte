@@ -14,7 +14,7 @@
 >
   <div
     class="info-wrapper"
-    data-testid="cards remaining"
+    id="cards-remaining"
   >
     <p class="cards-left-text source-sans-3-text">
       {remainingCardsString}

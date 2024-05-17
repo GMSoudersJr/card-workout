@@ -4,7 +4,6 @@
 
 <section
   class="considerations-container"
-  data-testid="considerations-container"
   id="considerations-container"
 >
   <h3 class="oswald-header">
@@ -12,7 +11,6 @@
   </h3>
   <ul
     class="exercise-hint-list source-sans-3-text"
-    data-testid="exercise-consideration-list"
     id="exercise-consideration-list"
   >
      {#each considerations.list as aConsideration (aConsideration)}

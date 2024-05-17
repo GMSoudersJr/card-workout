@@ -8,32 +8,31 @@
 
 <ul
   id="discarded-cards-only"
-  class="discarded-cards"
-  data-testid="discarded-cards-list"
+  class="discarded-cards-list"
 >
-{#if $discardedCards}
-{#each $discardedCards as card (card.name)}
-  <li
-    in:receive={{ key: card.name }}
-    animate:flip={{ duration: 200 }}
-    data-testid="discarded-card-listitem"
-  >
-    <PlayingCardWidget
-      id={`${card.name}-discarded`}
-      rankSymbol={card.rank}
-      exerciseName={card.exerciseName}
-      suitSymbol={card.suit}
-      textColor={card.textColor}
-      reps={card.value}
-      disabled
-    />
-  </li>
-{/each}
-{/if}
+  {#if $discardedCards}
+    {#each $discardedCards as card (card.name)}
+    <li
+      in:receive={{ key: card.name }}
+      animate:flip={{ duration: 200 }}
+      class="discarded-cards-listitem"
+    >
+      <PlayingCardWidget
+        id={`${card.name}-discarded`}
+        rankSymbol={card.rank}
+        exerciseName={card.exerciseName}
+        suitSymbol={card.suit}
+        textColor={card.textColor}
+        reps={card.value}
+        disabled
+      />
+    </li>
+    {/each}
+  {/if}
 </ul>
 
 <style>
-  .discarded-cards {
+  .discarded-cards-list {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -43,7 +42,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .discarded-cards::-webkit-scrollbar {
+  .discarded-cards-list::-webkit-scrollbar {
     display: none;
   }
   li:not(:first-child) {

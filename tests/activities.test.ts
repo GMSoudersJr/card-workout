@@ -242,7 +242,7 @@ test.describe('ACTIVITIES page', () => {
 					await page.getByRole('radio', { name: 'Reps' }).check();
 					await page.getByRole('button', { name: 'START' }).click();
 					await page.waitForLoadState('domcontentloaded');
-					const firstCard = page.getByTestId('playing-card');
+					const firstCard = page.locator('.playing-card');
 					const firstCardReps = firstCard.locator('.card-exercise-reps');
 					const firstCardExerciseName = firstCard.locator('.card-exercise-name');
 					await expect(firstCardReps).toBeVisible();

@@ -9,11 +9,11 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('Space', () => {
 	test('expect discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('Space');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
 
@@ -21,11 +21,11 @@ test.describe('Space', () => {
 
 test.describe('Enter', () => {
 	test('expect discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('Enter');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
 
@@ -33,38 +33,38 @@ test.describe('Enter', () => {
 
 test.describe('Arrow Keys', () => {
 	test('UP expect discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('ArrowUp');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
 
 	test('DOWN expect no discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('ArrowDown');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(0);
 	});
 
 	test('LEFT expect no discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('ArrowLeft');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(0);
 	});
 
 	test('RIGHT expect discard', async ({ page }) => {
-		const discardedCardsListItemBefore = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemBefore = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemBefore.length).toBe(0);
 		await page.keyboard.press('ArrowRight');
 		await page.waitForLoadState('domcontentloaded');
-		const discardedCardsListItemAfter = await page.getByTestId('discarded-card-listitem').all();
+		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
 

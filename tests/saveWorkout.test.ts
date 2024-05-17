@@ -41,10 +41,10 @@ test.describe('persist workouts to local storage', () => {
 		// click through cards
 		await page.getByRole('button', { name: 'START' }).click();
 		await page.waitForLoadState('domcontentloaded');
-			await page.getByTestId('playing-card').click();
-			let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+			await page.locator('.playing-card').click();
+			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard =
-				page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while (await discardedCardsListItem.count() < 52) {
 				await expect(currentCard).toHaveCount(1).then(async () => {
 					await currentCard.click();

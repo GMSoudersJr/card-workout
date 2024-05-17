@@ -9,7 +9,6 @@
 
 {#if exercise}
 <div
-  data-testid="reps-info-box"
   class="reps-info-box"
 >
   <label for={`${exerciseName.toUpperCase()}`} class="exercise oswald-header" >

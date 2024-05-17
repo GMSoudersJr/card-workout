@@ -30,7 +30,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('a user has selected an exercise for each suit', () => {
 
 	test('Example Workout List expected to NOT be visible', async ({ page }) => {
-		const exampleWorkoutListItem = page.getByTestId('example-workout-listitem');
+		const exampleWorkoutListItem = page.locator('.example-workout-listitem');
 		await expect(exampleWorkoutListItem).not.toBeVisible();
 	});
 

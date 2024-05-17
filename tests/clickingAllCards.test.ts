@@ -5,11 +5,11 @@ test.beforeEach(async ({ page }) => {
 	await page.goto('/cards');
 	await page.waitForLoadState('domcontentloaded');
 	await page.getByRole('button', { name: 'Start' }).click();
-	const theFirstCard = page.getByTestId('playing-card');
+	const theFirstCard = page.locator('.playing-card');
 	await theFirstCard.click();
-	let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+	let discardedCardsListItem = page.locator('.discarded-cards-listitem');
 	const currentCard =
-		page.getByTestId('playing-card').locator(':scope:not(:disabled)').nth(1);
+		page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 	while (await discardedCardsListItem.count() < 52) {
 		await expect(currentCard).toHaveCount(1).then(async () => {
 			await currentCard.click();
@@ -25,7 +25,7 @@ test.describe('a user has gone through the deck', () => {
 		await expect(page.getByRole('button', { name: 'Shuffle' })).toBeEnabled();
 	});
 	test('the discarded pile is expected have 52 cards', async ({ page }) => {
-		let discardedCardsListItem = page.getByTestId('discarded-card-listitem');
+		let discardedCardsListItem = page.locator('.discarded-cards-listitem');
 		await expect(discardedCardsListItem).toHaveCount(52);
 	});
 });
@@ -33,7 +33,7 @@ test.describe('info widgets', () => {
 	test('the deck widget is expected to show 0 remaining cards', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
 		await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-		await expect(page.getByTestId('cards remaining')).toBeVisible();
+		await expect(page.locator('#cards-remaining')).toBeVisible();
 		await expect(page.getByRole('heading',{ name: '0', level: 3 })).toBeVisible();
 	});
 
@@ -60,7 +60,7 @@ test.describe('info widgets', () => {
 	test('the suit widget is expected to have 0 for each suit', async ({ page }) => {
 		await page.getByLabel('Suit', { exact: true }).click();
 		await expect(page.getByRole('radio', {checked: true})).toBeChecked();
-		const suitListItemsCountStrings = await page.getByTestId('suit-info-box').locator('p.count').allInnerTexts();
+		const suitListItemsCountStrings = await page.locator('.suit-info-box').locator('p.count').allInnerTexts();
 		suitListItemsCountStrings.forEach((count) => {
 			expect(count).toBe('0');
 		});

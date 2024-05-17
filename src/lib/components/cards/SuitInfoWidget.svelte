@@ -21,7 +21,6 @@
 
 <div
   id="suit-info-widget"
-  data-testid="suit-info-widget"
   class="suit-info-widget"
 >
   {#each suits as suit (suit.name)}
