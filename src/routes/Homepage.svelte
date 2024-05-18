@@ -51,7 +51,7 @@
 <div class="page-container">
   <div class="header">
     <h1 class="oswald-header">{heading}</h1>
-    <h4 class="oswald-header">{subHeading}</h4>
+    <h4 class="oswald-header sub-heading">{subHeading}</h4>
   </div>
   <nav class="nav-container">
   {#each theHomepageLinks as homepageLink (homepageLink.text)}
@@ -94,7 +94,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    background: radial-gradient(circle at bottom, #FFFFFF, #259259);
+    background: radial-gradient(circle at bottom, #FFFFFF, #000080, #259259 50%);
     padding: 0.5rem;
     padding-bottom: 1.5rem;
   }
@@ -130,6 +130,9 @@
     text-decoration: none;
     color: #FFFFFF;
     padding: 5px 12px;
+    backdrop-filter: blur(6rem) saturate(180%);
+    -webkit-backdrop-filter: blur(6rem) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
   }
   .nav-link:first-child {
     border-top-left-radius: 40px;
