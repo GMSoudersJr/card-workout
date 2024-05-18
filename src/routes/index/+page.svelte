@@ -120,6 +120,8 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
     row-gap: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
     overflow-x: hidden;
     overflow-y: auto;
