@@ -28,8 +28,10 @@
 		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: min-content auto;
+		grid-template-rows: repeat(2, min-content);
 		row-gap: 1rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
 
     overflow-x: hidden;
     overflow-y: auto;
@@ -42,9 +44,9 @@
 	}
 	.decks-list {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-template-rows: repeat(auto-fill, min-content);
-		row-gap: 0.5rem;
+		gap: 1rem;
 	}
 	.decks-list > li {
 		list-style: none;
