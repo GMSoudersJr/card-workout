@@ -94,7 +94,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    background: radial-gradient(circle at bottom, #FFFFFF, #000080, #259259 50%);
+    background: radial-gradient(circle at bottom, #FFFFFF, #000080 30%, #259259 50%);
     padding: 0.5rem;
     padding-bottom: 1.5rem;
   }
@@ -133,6 +133,7 @@
     backdrop-filter: blur(6rem) saturate(180%);
     -webkit-backdrop-filter: blur(6rem) saturate(180%);
     background-color: rgba(17, 25, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
   }
   .nav-link:first-child {
     border-top-left-radius: 40px;
