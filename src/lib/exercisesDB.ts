@@ -22,6 +22,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS', 'HIPS', 'CORE'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED'],
     demos: ['https://darebee.com/exercises/toe-tap-hops.html'],
+    embeds: ["wTfWbsQql1o?si=wK_49LJu2LfH4GE9"],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -33,6 +34,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/lsWnuKq9CDU?si=D8eLwQpKgoWb8wJg'],
+    embeds: ["lsWnuKq9CDU?si=OL-xUBgsbw7IUUGq"],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -44,6 +46,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/lsWnuKq9CDU?si=D8eLwQpKgoWb8wJg'],
+    embeds: ['lsWnuKq9CDU?si=OL-xUBgsbw7IUUGq'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -55,6 +58,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/4wVzDjOCPzw?si=1ii_-E3zFZUw3czr'],
+    embeds: ['4wVzDjOCPzw?si=VRzsYfLrnjIguu-9'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -66,6 +70,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/Xi5Ka85TCbI?si=phYMHdl_n-8BDvKg'],
+    embeds: ['Xi5Ka85TCbI?si=hQPQDEil1bH1sNDm'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -77,6 +82,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/Xi5Ka85TCbI?si=phYMHdl_n-8BDvKg'],
+    embeds: ['Xi5Ka85TCbI?si=hQPQDEil1bH1sNDm'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -88,6 +94,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET', 'LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://youtu.be/B4Ti5rLEwE4?si=HZc5nk7TwEF_JAkp'],
+    embeds: ['B4Ti5rLEwE4?si=l-wTwMwIsqXzLIi-'],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -99,6 +106,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS'],
     variations: ['LOW_IMPACT', 'STANDING', 'SEATED', 'ALTERNATING', 'SLOW'],
     demos: ['https://darebee.com/exercises/bicep-extensions.html'],
+    embeds: ['l5dfkW6w5qI?si=VHW8w5nX_h3n0tZ6'],
     categories: ['CALISTHENICS'],
     emojis: [armEmoji]
   },
@@ -110,6 +118,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS'],
     variations: ['SLOW', 'LOW_IMPACT', 'ON_STAIRS'],
     demos: ['https://barbend.com/atg-split-squat/'],
+    embeds: ['Vb4Pn-zsFGc?si=HA6D-jx7NtRN-WAa'],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -121,6 +130,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS'],
     variations: ['SLOW'],
     demos: ['https://fitnessvolt.com/atg-squat/'],
+    embeds: ['E10hHrHV4MQ?si=1NJrtBSsnmcRmpKZ'],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -132,6 +142,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['BACK'],
     variations: ['SLOW'],
     demos: ['https://www.youtube.com/watch?v=Bw9YuQTTc58'],
+    embeds: ['Bw9YuQTTc58?si=4QW9AgyrAKwdENZ-'],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY', 'YOGA'],
     emojis: [yogaEmoji]
   },
@@ -143,6 +154,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['INCLINED', 'DECLINED', 'ON_STAIRS', 'SLOW', 'LOW_IMPACT'],
     demos: ['https://darebee.com/exercises/bear-crawl.html'],
+    embeds: ['bfT5TaRFKQw?si=CHkmGRL4Yw-IYcUn'],
     categories: ['CALISTHENICS', 'PRIMAL_MOVEMENTS', 'MOBILITY'],
     emojis: [bodyEmoji]
   },
@@ -154,6 +166,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['ON_KNEES', 'BENT_KNEES'],
     demos: ['https://darebee.com/exercises/arm-leg-raises.html'],
+    embeds: [''],
     categories: ['STABILITY', 'YOGA'],
     emojis: [yogaEmoji]
   },
@@ -165,6 +178,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['BACK', 'CORE', 'LEGS'],
     variations: ['SLOW', 'LOW_IMPACT', 'ON_THE_WALL'],
     demos: ['https://darebee.com/exercises/bridges-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis:[bodyEmoji]
   },
@@ -176,6 +190,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['SLOW'],
     demos: ['https://darebee.com/exercises/burpees-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis: [bodyEmoji]
   },
@@ -187,6 +202,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS'],
     variations: ['LOW_IMPACT', 'SINGLE_LEGGED'],
     demos: ['https://darebee.com/exercises/butt-kicks.html'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -198,6 +214,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS'],
     variations: ['SEATED', 'ON_STAIRS', 'ELEVATED'],
     demos: ['https://darebee.com/exercises/calf-raises.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -209,6 +226,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['BACK', 'CORE'],
     variations: ['STANDING', 'SEATED', 'ON_ALL_FOURS', 'ON_THE_WALL'],
     demos: ['https://www.youtube.com/watch?v=ESJ6Ghvgr6k'],
+    embeds: [''],
     categories: ['YOGA', 'MOBILITY'],
     emojis: [yogaEmoji]
   },
@@ -220,6 +238,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['INCLINED', 'REVERSE'],
     demos: ['https://darebee.com/exercises/crunches-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [abdominEmoji]
   },
@@ -231,6 +250,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS', 'SHOULDERS'],
     variations: ['SLOW', 'BENT_KNEES', 'INVERTED'],
     demos: ['https://www.wikihow.com/Do-Dips'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [armEmoji]
   },
@@ -242,6 +262,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['ON_KNEES', 'ON_ALL_FOURS'],
     demos: ['https://www.youtube.com/watch?v=ayQoxw8sRTk'],
+    embeds: [''],
     categories: ['YOGA'],
     emojis: [yogaEmoji]
   },
@@ -253,6 +274,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['SLOW'],
     demos: ['https://darebee.com/exercises/flutter-kicks.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [legEmoji]
   },
@@ -264,6 +286,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['SHOULDERS'],
     variations: ['REVERSE', 'SLOW', 'CROSSED_ARMS', 'SEATED', 'ON_KNEES'],
     demos: ['https://darebee.com/exercises/raised-arms-circles.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis: [armEmoji]
   },
@@ -275,6 +298,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['LOW_IMPACT', 'SLOW', 'SINGLE_LEGGED'],
     demos: ['https://darebee.com/exercises/high-knees.html'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [bodyEmoji]
   },
@@ -286,6 +310,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['LOW_IMPACT', 'SLOW'],
     demos: ['https://darebee.com/exercises/jumping-jacks.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis: [bodyEmoji]
   },
@@ -297,6 +322,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE', 'LEGS'],
     variations: ['ON_ALL_FOURS', 'SLOW', 'SINGLE_LEGGED', 'PIKE'],
     demos: ['https://youtu.be/aK8Rm_tv3WM?si=upFmKOPpjfafmlHE'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [legEmoji]
   },
@@ -308,6 +334,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE', 'LEGS'],
     variations: ['SLOW', 'ALTERNATING', 'BENT_KNEES', 'SINGLE_LEGGED'],
     demos: ['https://darebee.com/exercises/side-leg-raises.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [legEmoji]
   },
@@ -319,6 +346,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['BENT_KNEES', 'SLOW'],
     demos: ['https://darebee.com/exercises/leg-raises.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [legEmoji]
   },
@@ -330,6 +358,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS', 'HIPS', 'FEET'],
     variations: ['REVERSE', 'SLOW'],
     demos: ['https://darebee.com/exercises/forward-lunges.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis:[ footEmoji, legEmoji ]
   },
@@ -341,6 +370,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['WHOLE_BODY'],
     variations: ['LOW_IMPACT', 'SLOW', 'ON_STAIRS', 'ON_THE_WALL', 'ALTERNATING'],
     demos: ['https://darebee.com/exercises/climbers-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [bodyEmoji]
   },
@@ -352,6 +382,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['NECK'],
     variations: ['SLOW', 'LOW_IMPACT', 'ALTERNATING', 'STANDING', 'SEATED', 'ON_ALL_FOURS'],
     demos: ['https://youtu.be/gBwGyIp5vdM?si=kvG2iRsg15w6bQT5'],
+    embeds: [''],
     categories: ['YOGA', 'MOBILITY'],
     emojis: [headNoddingEmoji, headShakingEmoji]
   },
@@ -363,6 +394,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['NECK'],
     variations: ['SLOW', 'LOW_IMPACT', 'ALTERNATING', 'STANDING', 'SEATED', 'ON_ALL_FOURS'],
     demos: ['https://youtu.be/gBwGyIp5vdM?si=kvG2iRsg15w6bQT5'],
+    embeds: [''],
     categories: ['YOGA', 'MOBILITY'],
     emojis: [headNoddingEmoji, headShakingEmoji]
   },
@@ -374,6 +406,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['ON_KNEES', 'LOW_IMPACT'],
     demos: ['https://youtu.be/DoYPuzccR-M?si=EkZyty5HBKdcuHzw'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [abdominEmoji]
   },
@@ -385,6 +418,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS', 'BACK', 'CORE'],
     variations: ['WIDE_GRIP', 'CLOSE_GRIP', 'LOW_IMPACT', 'SLOW', 'ALTERNATING'],
     demos: ['https://youtu.be/rw58y0KoidM?si=G9GbWQ7oITUO_SDP'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [handEmoji, armEmoji]
   },
@@ -396,6 +430,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE', 'SHOULDERS', 'ARMS'],
     variations: ['ON_KNEES', 'ON_THE_WALL', 'INCLINED', 'DECLINED', 'SLOW', 'LOW_IMPACT'],
     demos: ['https://darebee.com/exercises/push-ups.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [handEmoji, armEmoji]
   },
@@ -407,6 +442,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['SHOULDERS'],
     variations: ['SLOW', 'LOW_IMPACT', 'CROSSED_ARMS', 'ON_KNEES'],
     demos: ['https://darebee.com/exercises/raised-arms-circles.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [armEmoji]
   },
@@ -418,6 +454,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['BACK', 'SHOULDERS'],
     variations: ['ON_KNEES', 'SEATED', 'LOW_IMPACT'],
     demos: ['https://darebee.com/exercises/chest-expansions.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [armEmoji]
   },
@@ -429,6 +466,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['CROSSED_LEGS', 'BENT_KNEES'],
     demos: ['https://darebee.com/exercises/scissors-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [legEmoji]
   },
@@ -440,6 +478,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS'],
     variations: ['STANDING', 'ALTERNATING', 'SINGLE_LEGGED', 'SLOW', 'LOW_IMPACT'],
     demos: ['https://youtu.be/sp0R2tfjEOo?si=qc3uWFXDsMhehTUS'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -451,6 +490,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['SHOULDERS', 'ARMS'],
     variations: ['ON_KNEES', 'SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://darebee.com/exercises/standing-shoulder-taps.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [bodyEmoji]
   },
@@ -462,6 +502,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['ALTERNATING', 'SLOW', 'LOW_IMPACT', 'CROSSED_LEGS'],
     demos: ['https://darebee.com/exercises/side-planks.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'STABILITY'],
     emojis: [abdominEmoji]
   },
@@ -473,6 +514,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE', 'LEGS', 'FEET'],
     variations: ['SLOW', 'ALTERNATING', 'SINGLE_LEGGED', 'STANDING'],
     demos: ['https://darebee.com/exercises/side-to-side-jumps.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [bodyEmoji]
   },
@@ -484,6 +526,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['LEGS', 'FEET'],
     variations: ['SINGLE_LEGGED', 'STANDING', 'SLOW', 'LOW_IMPACT'],
     demos: ['https://darebee.com/exercises/squats-exercise.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [footEmoji, legEmoji]
   },
@@ -495,6 +538,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['BACK'],
     variations: ['SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://darebee.com/exercises/superman-stretch.html'],
+    embeds: [''],
     categories: ['CALISTHENICS'],
     emojis: [bodyEmoji, superheroEmoji]
   },
@@ -506,6 +550,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET'],
     variations: ['SEATED', 'STANDING', 'SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://youtu.be/DE3bRURe22I?si=DgjT4DsdVorRMLXf'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji]
   },
@@ -517,6 +562,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET'],
     variations: ['SEATED', 'STANDING', 'SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://youtu.be/5oi3PoEu4W0?si=TihfSnKEV9ZyaFVJ'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji]
   },
@@ -528,6 +574,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['FEET'],
     variations: ['SEATED', 'STANDING', 'SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://youtu.be/GqPf7zppOR4?si=6Z0BZf-lUFPEKdCU'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY'],
     emojis: [footEmoji]
   },
@@ -539,6 +586,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['LOW_IMPACT', 'SLOW', 'CROSSED_LEGS'],
     demos: ['https://youtu.be/9iEI95-eZWk?si=CCrVK6oH8tiAWI8r'],
+    embeds: [''],
     categories: ['MOBILITY', 'STABILITY', 'YOGA'],
     emojis: [legEmoji]
   },
@@ -550,6 +598,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS', 'BACK', 'HIPS'],
     variations: ['SLOW', 'LOW_IMPACT'],
     demos: ['https://www.youtube.com/watch?v=cIX73v498u4'],
+    embeds: [''],
     categories: ['YOGA'],
     emojis: [yogaEmoji]
   },
@@ -561,6 +610,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['CORE'],
     variations: ['STANDING', 'LOW_IMPACT', 'SLOW', 'ALTERNATING'],
     demos: ['https://darebee.com/exercises/sitting-twists.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [bodyEmoji]
   },
@@ -572,6 +622,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS', 'CORE'],
     variations: ['SLOW', 'LOW_IMPACT', 'ALTERNATING'],
     demos: ['https://darebee.com/exercises/plank-walkouts.html'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY', 'STABILITY'],
     emojis: [bodyEmoji]
   },
@@ -583,6 +634,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS'],
     variations: ['SLOW', 'LOW_IMPACT', 'SEATED', 'ON_KNEES', 'ALTERNATING'],
     demos: ['https://youtu.be/2nIqcxAyBh4?si=rj8JW3XPhHRfXyS-'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis: [handEmoji]
   },
@@ -594,6 +646,7 @@ export const exercises: TExercise<TExerciseName>[] = [
     bodySections: ['ARMS'],
     variations: ['SLOW', 'LOW_IMPACT', 'SEATED', 'ON_KNEES', 'ALTERNATING'],
     demos: ['https://youtu.be/2nIqcxAyBh4?si=rj8JW3XPhHRfXyS-'],
+    embeds: [''],
     categories: ['CALISTHENICS', 'MOBILITY'],
     emojis: [handEmoji]
   },

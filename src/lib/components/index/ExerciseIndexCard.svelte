@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {linkEmoji, thinkingEmoji} from "$lib/emojis";
 	import {EExerciseNames} from "../../../enums/exerciseNames";
 	import type {TExercise} from "../../../types/exercise";
 	import type {TExerciseName} from "../../../types/exerciseName";
@@ -18,7 +17,7 @@
           </h1>
         {:else}
           <a
-            href={demo}
+            href={`/index/${exercise.name}`}
             referrerpolicy="no-referrer"
           >
             <h1 class="oswald-header header">
