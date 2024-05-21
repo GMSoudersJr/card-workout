@@ -29,7 +29,7 @@
 
 		dispatch('checkboxStoreUpdated');
 	}
-	export let enumEntries: Object;
+	export let enumEntries: object;
 	export let heading: string;
 
 	let checkboxData = Object.entries(enumEntries);

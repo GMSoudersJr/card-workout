@@ -68,7 +68,7 @@
 			console.log('before istall prompt event supported.');
 		}
 
-		window.addEventListener('appinstalled', (event) => {
+		window.addEventListener('appinstalled', () => {
 			// Do something when the app is installed
 			// Show a toast declaring that the app was installed.
 			toast.remove();

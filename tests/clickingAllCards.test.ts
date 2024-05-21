@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 	await page.getByRole('button', { name: 'Start' }).click();
 	const theFirstCard = page.locator('.playing-card');
 	await theFirstCard.click();
-	let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+	const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 	const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 	while ((await discardedCardsListItem.count()) < 52) {
 		await expect(currentCard)
@@ -27,7 +27,7 @@ test.describe('a user has gone through the deck', () => {
 		await expect(page.getByRole('button', { name: 'Shuffle' })).toBeEnabled();
 	});
 	test('the discarded pile is expected have 52 cards', async ({ page }) => {
-		let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+		const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 		await expect(discardedCardsListItem).toHaveCount(52);
 	});
 });

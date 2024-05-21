@@ -116,7 +116,7 @@ test.describe('click start', () => {
 				.catch((error) => {
 					console.log(error);
 				});
-			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while ((await discardedCardsListItem.count()) < 52) {
 				await expect(currentCard)

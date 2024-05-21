@@ -14,7 +14,7 @@ import type { TExerciseVariation } from './types/exerciseVariation';
 import type { TBodyPart } from './types/bodyPart';
 
 function createWorkoutNameStore() {
-	let workoutName = '';
+	const workoutName = '';
 
 	const { subscribe, set, update } = writable(workoutName);
 
@@ -30,7 +30,7 @@ function createWorkoutNameStore() {
 }
 
 function createCheckboxStore() {
-	let checkedBoxes = {
+	const checkedBoxes = {
 		category: [] as TExerciseCategory[],
 		position: [] as TExercisePosition[],
 		target: [] as TBodyPart[],
@@ -244,7 +244,7 @@ function createSuitExercisesStore() {
 }
 
 function usedCards() {
-	let emptyArray: TPlayingCard<TCardRank, TSuit>[] = [];
+	const emptyArray: TPlayingCard<TCardRank, TSuit>[] = [];
 	const { subscribe, update } = writable(emptyArray);
 
 	return {
@@ -252,21 +252,19 @@ function usedCards() {
 		reset: () =>
 			update((array) => {
 				array.splice(0, array.length);
-				array = array;
 				return array;
 			}),
 		add: (playingCard: TPlayingCard<TCardRank, TSuit>) =>
 			update((discarded: PlayingCard[]) => {
 				playingCard.hasBeenDiscarded = true;
 				discarded.push(playingCard);
-				discarded = discarded;
 				return discarded;
 			})
 	};
 }
 
 function createTheCurrentCard() {
-	let emptyArray: PlayingCard[] = [];
+	const emptyArray: PlayingCard[] = [];
 	const { subscribe, update } = writable(emptyArray);
 
 	return {
@@ -275,13 +273,11 @@ function createTheCurrentCard() {
 			update((singleCardArray: PlayingCard[]) => {
 				singleCardArray.splice(0, singleCardArray.length);
 				singleCardArray.push(playingCard);
-				singleCardArray = singleCardArray;
 				return singleCardArray;
 			}),
 		reset: () =>
 			update((singleCardArray) => {
 				singleCardArray.splice(0, singleCardArray.length);
-				singleCardArray = singleCardArray;
 				return singleCardArray;
 			})
 	};
@@ -308,7 +304,7 @@ export const theWorkout = derived(suitExercises, ($suitExercises) => {
 
 export const randomCardIndex = derived(theDeckOfCards, ($theDeckOfCards) => {
 	let result = -1;
-	let randomIndexNumber = Math.floor(Math.random() * $theDeckOfCards.length);
+	const randomIndexNumber = Math.floor(Math.random() * $theDeckOfCards.length);
 
 	const recursiveIndexFinder = (index: number): number => {
 		if ($theDeckOfCards[index].hasBeenPlucked) {

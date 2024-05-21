@@ -1,6 +1,6 @@
 import { exerciseEmoji, homeEmoji, repeatEmoji, wasteBasketEmoji } from '../src/lib/emojis';
 import { expect, test } from '@playwright/test';
-import { setLocalStorageWorkouts, getLocalStorageWorkouts } from './helperFunctions/localStorage';
+import { setLocalStorageWorkouts } from './helperFunctions/localStorage';
 import { fakeWorkoutData } from './fakeWorkoutData';
 
 const workoutsForLocalStorage = JSON.stringify(fakeWorkoutData);

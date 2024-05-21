@@ -7,13 +7,13 @@ import type { TSuitExercise } from '../types/suitExercise';
 import type { TSavedWorkout } from '../types/savedWorkout';
 
 export const createDeckOfCards = () => {
-	let result: PlayingCard[] = [];
+	const result: PlayingCard[] = [];
 	const suits = Object.keys(ESuit);
 	const ranks = Object.keys(ECardRank);
 	for (let i = 0; i < suits.length; i++) {
-		let suit = suits[i];
+		const suit = suits[i];
 		for (let j = 0; j < ranks.length; j++) {
-			let rank = ranks[j];
+			const rank = ranks[j];
 			const playingCard = new PlayingCard(suit as TSuit, rank as TCardRank);
 			result.push(playingCard);
 		}
@@ -25,14 +25,14 @@ export function formatStopWatchTime(milliseconds: number): string {
 	let result = `00:00.000`;
 	if (milliseconds === undefined || milliseconds === null) return result;
 	const elapsedSeconds = milliseconds / 1000;
-	let minutes = Math.floor(elapsedSeconds / 60);
+	const minutes = Math.floor(elapsedSeconds / 60);
 	let minutesString: string;
 	if (minutes < 10) {
 		minutesString = `0${minutes.toString()}`;
 	} else {
 		minutesString = minutes.toString();
 	}
-	let seconds = elapsedSeconds % 60;
+	const seconds = elapsedSeconds % 60;
 	let secondsString: string;
 	if (seconds < 10) {
 		secondsString = `0${seconds.toFixed(2)}`;
@@ -87,8 +87,6 @@ export function reformatLocalStorageWorkouts(): TSavedWorkout[] {
 			workout.time.startedAt = workout.time.start;
 			workout.time.elapsed = workout.time.end - workout.time.start;
 		}
-		workout.name = workout.name;
-		workout.exercises = workout.exercises;
 		return workout;
 	});
 	return reformatedLocalStorage;

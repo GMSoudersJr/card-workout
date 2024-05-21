@@ -8,12 +8,12 @@ import type { TSuitExercise } from '../types/suitExercise';
 import type { TExerciseName } from '../types/exerciseName';
 
 export const createDeckOfCards = (aSelectionOfSuitExercises?: TSuitExercise<TSuit>[]) => {
-	let result: PlayingCard[] = [];
+	const result: PlayingCard[] = [];
 	let deckIndex: number = 0;
 	const suits = Object.keys(ESuit);
 	const ranks = Object.keys(ECardRank);
 	for (let i = 0; i < suits.length; i++) {
-		let suit = suits[i];
+		const suit = suits[i];
 		let exerciseName: TExerciseName | undefined;
 		if (aSelectionOfSuitExercises) {
 			const thisSuitExercise = aSelectionOfSuitExercises.find((entry) => {
@@ -22,7 +22,7 @@ export const createDeckOfCards = (aSelectionOfSuitExercises?: TSuitExercise<TSui
 			exerciseName = thisSuitExercise?.exercise?.name;
 		}
 		for (let j = 0; j < ranks.length; j++) {
-			let rank = ranks[j];
+			const rank = ranks[j];
 			const playingCard = createPlayingCard(PlayingCard, rank as TCardRank, suit as TSuit);
 			playingCard.exerciseName = exerciseName;
 			playingCard.deckIndex = deckIndex;

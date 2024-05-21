@@ -19,10 +19,15 @@
 	type Group = 'deck' | 'suit' | 'rank' | 'reps' | 'time' | string;
 
 	const infoWidgets: InfoWidgets = {
+		// @ts-expect-error: svelte component error
 		deck: DeckInfoWidget,
+		// @ts-expect-error: svelte component error
 		rank: RankInfoWidget,
+		// @ts-expect-error: svelte component error
 		suit: SuitInfoWidget,
+		// @ts-expect-error: svelte component error
 		reps: RepsInfoWidget,
+		// @ts-expect-error: svelte component error
 		time: WorkoutStopwatch
 	};
 
@@ -38,30 +43,35 @@
 			id: 'radio-deck',
 			value: 'deck',
 			labelName: radioButtonLabelNames.deck,
+			// @ts-expect-error: svelte component error
 			widget: DeckInfoWidget
 		},
 		{
 			id: 'radio-rank',
 			value: 'rank',
 			labelName: radioButtonLabelNames.rank,
+			// @ts-expect-error: svelte component error
 			widget: RankInfoWidget
 		},
 		{
 			id: 'radio-suit',
 			value: 'suit',
 			labelName: radioButtonLabelNames.suit,
+			// @ts-expect-error: svelte component error
 			widget: SuitInfoWidget
 		},
 		{
 			id: 'radio-reps',
 			value: 'reps',
 			labelName: radioButtonLabelNames.reps,
+			// @ts-expect-error: svelte component error
 			widget: RepsInfoWidget
 		},
 		{
 			id: 'radio-time',
 			value: 'time',
 			labelName: radioButtonLabelNames.time,
+			// @ts-expect-error: svelte component error
 			widget: WorkoutStopwatch
 		}
 	];
@@ -75,18 +85,18 @@
 	};
 
 	function transition(action: () => void) {
-		// @ts-ignore
+		// @ts-expect-error: no transition type yet
 		if (!document.startViewTransition) {
 			return action;
 		} else {
-			// @ts-ignore
+			// @ts-expect-error: no transition type yet
 			document.startViewTransition(action);
 		}
 	}
 
 	function handleChange(event: Event) {
 		const target = event.target as HTMLInputElement;
-		// @ts-ignore
+		// @ts-expect-error: no transition type yet
 		if (!document.startViewTransition) {
 			group = target.value;
 			showThisWidget = group;

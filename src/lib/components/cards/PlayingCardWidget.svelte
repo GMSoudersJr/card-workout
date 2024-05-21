@@ -13,7 +13,7 @@
 	import { ECardRankSymbol } from '../../../enums/cardRankSymbol';
 	import type { TCardRank } from '../../../types/cardRank';
 	import type { TSuit } from '../../../types/suit';
-	import { onMount, tick, createEventDispatcher } from 'svelte';
+	import { onMount, createEventDispatcher } from 'svelte';
 	import type { TExerciseName } from '../../../types/exerciseName';
 	import { EExerciseNames } from '../../../enums/exerciseNames';
 	import { setFocus } from '$lib/utils';
@@ -38,7 +38,6 @@
 			suitExercises.addReps($theCurrentCard[0]);
 			let numberOfDiscardedCards = $discardedCards.length;
 			let widthOfCards = 100 + (numberOfDiscardedCards - 1) * widthOfUnderCard;
-			//await tick();
 			let lengthToScroll = Math.ceil(widthOfCards - clientWidth);
 			document.getElementById('discarded-cards-only')?.scrollTo({
 				top: 0,

@@ -123,7 +123,7 @@ test.describe('user has clicked Start button', () => {
 				.catch((error) => {
 					console.log(error);
 				});
-			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while ((await discardedCardsListItem.count()) < 52) {
 				await expect(currentCard)
@@ -148,7 +148,7 @@ test.describe('user has clicked Start button', () => {
 		test('all cards have been clicked, the page has expected shuffle button', async ({ page }) => {
 			test.setTimeout(60 * 1_000);
 			await page.locator('.playing-card').click();
-			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 			while ((await discardedCardsListItem.count()) < 52) {
 				await expect(currentCard)

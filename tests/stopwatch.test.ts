@@ -7,8 +7,6 @@ const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
 
 const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
 
-const stopwatchRegex = /^([0-5]?[0-9]:)?[0-5]?[0-9]:[0-5]?[0-9]$/;
-
 test.describe('stopwatch', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');

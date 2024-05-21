@@ -32,7 +32,7 @@ test.describe('persist workouts to local storage', () => {
 		await page.getByRole('button', { name: 'START' }).click();
 		await page.waitForLoadState('domcontentloaded');
 		await page.locator('.playing-card').click();
-		let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+		const discardedCardsListItem = page.locator('.discarded-cards-listitem');
 		const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 		while ((await discardedCardsListItem.count()) < 52) {
 			await expect(currentCard)

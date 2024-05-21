@@ -2,11 +2,11 @@
 	import { onNavigate } from '$app/navigation';
 
 	onNavigate((navigation) => {
-		// @ts-ignore
+		// @ts-expect-error: there are no types for this yet
 		if (document.startViewTransition === undefined || document.startViewTransition === null) return;
 
 		return new Promise((resolve) => {
-			// @ts-ignore
+			// @ts-expect-error: there are no types for this yet
 			document.startViewTransition(async () => {
 				resolve();
 				await navigation.complete;

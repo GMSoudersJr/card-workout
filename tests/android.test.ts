@@ -2,10 +2,8 @@ import {
 	expect,
 	test,
 	_android as android,
-	type Page,
 	type AndroidDevice,
-	type BrowserContext,
-	type Locator
+	type BrowserContext
 } from '@playwright/test';
 
 let device: AndroidDevice;

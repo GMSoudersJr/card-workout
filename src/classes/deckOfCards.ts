@@ -8,13 +8,13 @@ import type { TCardRank } from '../types/cardRank';
 import { createPlayingCard } from '../functions/createPlayingCard';
 
 const initialDeckOfCards = () => {
-	let result: PlayingCard[] = [];
+	const result: PlayingCard[] = [];
 	const suits = Object.keys(ESuit);
 	const ranks = Object.keys(ECardRank);
 	for (let i = 0; i < suits.length; i++) {
-		let suit = suits[i];
+		const suit = suits[i];
 		for (let j = 0; j < ranks.length; j++) {
-			let rank = ranks[j];
+			const rank = ranks[j];
 			const playingCard = createPlayingCard(PlayingCard, rank as TCardRank, suit as TSuit);
 			result.push(playingCard);
 		}

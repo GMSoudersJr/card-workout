@@ -1,4 +1,4 @@
-import { cardEmoji, downEmoji, leftEmoji, recieptEmoji, rightEmoji, upEmoji } from '$lib/emojis';
+import { cardEmoji, downEmoji, leftEmoji, rightEmoji, upEmoji } from '$lib/emojis';
 import { ERadioButtonLabelNames } from '../../enums/radioButtonLabelNames';
 
 export const radioButtonLabelNames = {
