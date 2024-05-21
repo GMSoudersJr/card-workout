@@ -15,12 +15,12 @@ test.describe('user has clicked Start button', () => {
 		await page.locator('.playing-card').click();
 		await expect(page.locator('.discarded-cards-list')).toBeVisible();
 		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
-		await expect(page.locator('.discarded-cards-listitem')
-			     .locator('.playing-card')).toBeDisabled();
+		await expect(page.locator('.discarded-cards-listitem').locator('.playing-card')).toBeDisabled();
 	});
 
-	async function getCenterPositionOf(locator: Locator):
-		Promise<{x: number, y: number} | undefined> {
+	async function getCenterPositionOf(
+		locator: Locator
+	): Promise<{ x: number; y: number } | undefined> {
 		const boundingBox = await locator.boundingBox();
 		if (boundingBox === null) return;
 		const result = {
@@ -29,13 +29,13 @@ test.describe('user has clicked Start button', () => {
 		};
 
 		return result;
-	};
+	}
 
 	async function mimicSwipe(
 		swipeDirection: 'up' | 'down' | 'left' | 'right',
 		page: Page,
-		position: {x: number, y: number},
-		card: Locator,
+		position: { x: number; y: number },
+		card: Locator
 	) {
 		if (position === undefined) return;
 		await page.mouse.move(position.x, position.y);
@@ -54,10 +54,10 @@ test.describe('user has clicked Start button', () => {
 			case 'right':
 				await page.mouse.move(position.x + 50, position.y);
 				break;
-		};
+		}
 		await card.dispatchEvent('touchend');
 		// await page.mouse.up();
-	};
+	}
 
 	test.fixme('expect swipe up to discard card', async ({ page }) => {
 		const thePlayingCard = page.locator('.playing-card');
@@ -67,8 +67,7 @@ test.describe('user has clicked Start button', () => {
 
 		await expect(page.locator('.discarded-cards-list')).toBeVisible();
 		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
-		await expect(page.locator('.discarded-cards-listitem')
-			     .locator('.playing-card')).toBeDisabled();
+		await expect(page.locator('.discarded-cards-listitem').locator('.playing-card')).toBeDisabled();
 	});
 
 	test.fixme('expect swipe down to re-pluck', async ({ page }) => {
@@ -99,43 +98,50 @@ test.describe('user has clicked Start button', () => {
 
 		await expect(page.locator('.discarded-cards-list')).toBeVisible();
 		await expect(page.locator('.discarded-cards-listitem')).toHaveCount(1);
-		await expect(page.locator('.discarded-cards-listitem')
-			     .locator('.playing-card')).toBeDisabled();
+		await expect(page.locator('.discarded-cards-listitem').locator('.playing-card')).toBeDisabled();
 	});
 
-	test('after clicking the first card, only one card is expected to be enabled', async ({ page }) => {
+	test('after clicking the first card, only one card is expected to be enabled', async ({
+		page
+	}) => {
 		await page.locator('.playing-card').click();
-		const currentCard =
-			page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+		const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
 		await expect(currentCard).toBeEnabled();
 		await expect(currentCard).toHaveCount(1);
 	});
 
 	test.describe('continues to click the current card', () => {
-
 		test('expect exercise information to be hidden on each card', async ({ page }) => {
 			test.setTimeout(60 * 1_000);
 			const firstCard = page.locator('.playing-card');
 			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
-			await expect(firstCardExerciseInfo).toBeHidden().then(async () => {
-				await firstCard.click();
-			}).catch(( error ) => {
-				console.log(error);
-			});
-			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard =
-				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
-			while (await discardedCardsListItem.count() < 52) {
-				await expect(currentCard).toHaveCount(1).then(async () => {
-					const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
-					await expect(currentCardExerciseInfo).toBeHidden().then(async () => {
-						await currentCard.click();
-					}).catch(( error ) => {
-						console.log(error);
-					});
-				}).catch(( error ) => {
+			await expect(firstCardExerciseInfo)
+				.toBeHidden()
+				.then(async () => {
+					await firstCard.click();
+				})
+				.catch((error) => {
 					console.log(error);
 				});
+			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
+			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+			while ((await discardedCardsListItem.count()) < 52) {
+				await expect(currentCard)
+					.toHaveCount(1)
+					.then(async () => {
+						const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
+						await expect(currentCardExerciseInfo)
+							.toBeHidden()
+							.then(async () => {
+								await currentCard.click();
+							})
+							.catch((error) => {
+								console.log(error);
+							});
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 			}
 		});
 
@@ -143,15 +149,17 @@ test.describe('user has clicked Start button', () => {
 			test.setTimeout(60 * 1_000);
 			await page.locator('.playing-card').click();
 			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard =
-				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
-			while (await discardedCardsListItem.count() < 52) {
-				await expect(currentCard).toHaveCount(1).then(async () => {
-					await currentCard.click();
-					await page.waitForLoadState('domcontentloaded');
-				}).catch(( error ) => {
-					console.log(error);
-				});
+			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+			while ((await discardedCardsListItem.count()) < 52) {
+				await expect(currentCard)
+					.toHaveCount(1)
+					.then(async () => {
+						await currentCard.click();
+						await page.waitForLoadState('domcontentloaded');
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 			}
 			await expect(discardedCardsListItem).toHaveCount(52);
 			await expect(page.getByRole('button', { name: 'Shuffle' })).toBeVisible();

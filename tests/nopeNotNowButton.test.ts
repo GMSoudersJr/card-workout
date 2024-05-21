@@ -19,21 +19,24 @@ test.describe('user clicked start button', () => {
 		await expect(numberOfCardsLeftTextElement).toHaveText('51');
 	});
 
-	test.fixme('click NNN button; expect visible mini card tick count to stay the same', async ({ page }) => {
-		await page.getByLabel('Deck', { exact: true }).check();
-		const inDeckCardTicks = await page.locator('.in-deck').all();
-		const pluckedCardTicks = await page.locator('.plucked').all();
-		const nopeNotNowButton = page.locator('#nope-not-now-button');
-		let iterator = 0;
-		const numberOfClicks = 100;
-		while ( iterator < numberOfClicks ) {
-			await nopeNotNowButton.click().then(() => {
-				expect(inDeckCardTicks).toHaveLength(51);
-				expect(pluckedCardTicks).toHaveLength(1);
-			});
-			iterator++;
-		};
-	});
+	test.fixme(
+		'click NNN button; expect visible mini card tick count to stay the same',
+		async ({ page }) => {
+			await page.getByLabel('Deck', { exact: true }).check();
+			const inDeckCardTicks = await page.locator('.in-deck').all();
+			const pluckedCardTicks = await page.locator('.plucked').all();
+			const nopeNotNowButton = page.locator('#nope-not-now-button');
+			let iterator = 0;
+			const numberOfClicks = 100;
+			while (iterator < numberOfClicks) {
+				await nopeNotNowButton.click().then(() => {
+					expect(inDeckCardTicks).toHaveLength(51);
+					expect(pluckedCardTicks).toHaveLength(1);
+				});
+				iterator++;
+			}
+		}
+	);
 
 	test.fixme('has expected message when the same card is plucked', async ({ page }) => {
 		await page.getByLabel('Deck', { exact: true }).check();
@@ -51,28 +54,30 @@ test.describe('user clicked start button', () => {
 					return result;
 				}
 			}
+		}
 
-		};
-
-	       // click the "Nope Not Now" button 100 times.
+		// click the "Nope Not Now" button 100 times.
 		let iterator = 0;
-		while ( iterator < 100 ) {
+		while (iterator < 100) {
 			const currentPluckedCardIndex = await findIndexOfPluckedCard(allMiniTicks);
-			await nopeNotNowButton.click().then(async () => {
-				const newlyPluckedCardIndex = await findIndexOfPluckedCard(allMiniTicks);
-				if ( currentPluckedCardIndex === newlyPluckedCardIndex ) {
-					await expect(sameCardMessage).toBeVisible();
-					await expect(sameCardMessage).toHaveCount(1);
-				} else {
-					await expect(sameCardMessage).toBeHidden();
-					await expect(sameCardMessage).toHaveCount(0);
-				}
-			}).catch((error) => {
-				console.log(error);
-			}).finally(() => {
-				iterator++;
-			});
-		};
+			await nopeNotNowButton
+				.click()
+				.then(async () => {
+					const newlyPluckedCardIndex = await findIndexOfPluckedCard(allMiniTicks);
+					if (currentPluckedCardIndex === newlyPluckedCardIndex) {
+						await expect(sameCardMessage).toBeVisible();
+						await expect(sameCardMessage).toHaveCount(1);
+					} else {
+						await expect(sameCardMessage).toBeHidden();
+						await expect(sameCardMessage).toHaveCount(0);
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+				})
+				.finally(() => {
+					iterator++;
+				});
+		}
 	});
-
 });

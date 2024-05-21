@@ -1,10 +1,5 @@
-import { thisYear } from "$lib/utils";
-import {
-	upEmoji,
-	downEmoji,
-	leftEmoji,
-	rightEmoji
-} from '$lib/emojis';
+import { thisYear } from '$lib/utils';
+import { upEmoji, downEmoji, leftEmoji, rightEmoji } from '$lib/emojis';
 
 export const motivation = {
 	heading: 'motivation',
@@ -15,15 +10,12 @@ export const motivation = {
 		exercise was <em>overkill</em>, so I decided to mix it up. Each suit would represent
 		a different exercise. That simple change led to full body workouts.`,
 		`A few enthusiastic friends actually tried it after I told them. However,...`
-	],
+	]
 };
 
 export const problems = {
 	heading: `problems`,
-	list: [
-		`Carrying around a deck of cards`,
-		`Hmm... I was doing which exercise for clubs?`
-	],
+	list: [`Carrying around a deck of cards`, `Hmm... I was doing which exercise for clubs?`]
 };
 
 export const repCount = {
@@ -38,15 +30,15 @@ export const repCount = {
 		`Each <strong>suit</strong> = <strong>100</strong> reps!`,
 		`The whole <strong>deck</strong> = <strong>400</strong> reps!!!!`,
 		`Reps are counted after a card is discarded.`
-	],
+	]
 };
 
 export const exercises = {
 	heading: 'exercises',
 	list: [
 		`<em>Calisthenic Movements</em>, and <em>Yoga Poses</em>`,
-		`No need for weights, simply move <em>yourself!</em>`,
-	],
+		`No need for weights, simply move <em>yourself!</em>`
+	]
 };
 
 export const howToUse = {
@@ -57,8 +49,8 @@ export const howToUse = {
 		`Tap "START" to draw your first card!`,
 		`Complete the reps, discard with a swipe <span class="noto-emoji-font">${upEmoji}</span> or <span class="noto-emoji-font">${rightEmoji}</span>`,
 		`Put back in the deck, swipe <span class="noto-emoji-font">${downEmoji}</span> or <span class="noto-emoji-font">${leftEmoji}</span>`,
-		`Deck stats available at the bottom of the page.`,
-	],
+		`Deck stats available at the bottom of the page.`
+	]
 };
 
 export const suggestions = {
@@ -67,8 +59,8 @@ export const suggestions = {
 		`Choose exercises to get a full body workout!`,
 		`Warm up and stretch before hand!`,
 		`Use your imagination!`,
-		`Have fun!`,
-	],
+		`Have fun!`
+	]
 };
 
-export const copyright = `© ${thisYear()} by Gerald M. Souders Jr.`
+export const copyright = `© ${thisYear()} by Gerald M. Souders Jr.`;

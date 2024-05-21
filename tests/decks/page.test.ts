@@ -11,11 +11,13 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('decks page elements', () => {
 	test('expect correct heading', async ({ page }) => {
-		await expect(page.getByRole('heading', {name: 'DECKS', level: 1})).toBeVisible();
+		await expect(page.getByRole('heading', { name: 'DECKS', level: 1 })).toBeVisible();
 	});
 
 	test('expect page subheading', async ({ page }) => {
-		await expect(page.getByRole('heading', {name: 'quick start workouts', level: 3})).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: 'quick start workouts', level: 3 })
+		).toBeVisible();
 	});
 
 	test('expect decks list ', async ({ page }) => {
@@ -25,8 +27,8 @@ test.describe('decks page elements', () => {
 	});
 
 	test(`expect ${workouts.length} workout decks`, async ({ page }) => {
-		 const decksListitems = page.locator('.decks-listitem');
-		 await expect(decksListitems).toHaveCount(workouts.length);
+		const decksListitems = page.locator('.decks-listitem');
+		await expect(decksListitems).toHaveCount(workouts.length);
 	});
 
 	test.describe('http nav links', () => {
@@ -39,7 +41,5 @@ test.describe('decks page elements', () => {
 			await expect(page.getByRole('link', { name: cardIndexEmoji })).toBeVisible();
 			await expect(page.getByRole('link', { name: cardIndexEmoji })).toBeEnabled();
 		});
-
 	});
-
 });

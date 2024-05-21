@@ -5,7 +5,7 @@
 
 declare let self: ServiceWorkerGlobalScope;
 
-import { build, files, version } from "$service-worker";
+import { build, files, version } from '$service-worker';
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
@@ -13,7 +13,7 @@ const CACHE = `cache-${version}`;
 const ASSETS = [
 	...build, // the app itself
 	...files, // everything in 'static'
-	'/',
+	'/'
 ];
 
 // install service worker
@@ -67,12 +67,11 @@ self.addEventListener('fetch', (event) => {
 				throw new Error('invalid response from fetch');
 			}
 
-			if ( isNotExtension && isSuccess ) {
-				cache.put(event.request, response.clone())
+			if (isNotExtension && isSuccess) {
+				cache.put(event.request, response.clone());
 			}
 
 			return response;
-
 		} catch (err) {
 			// fall back to cache
 			const cachedResponse = await cache.match(url.pathname);
@@ -139,23 +138,19 @@ self.addEventListener('fetch', (event) => {
 				`,
 				{
 					status: 404,
-					statusText: "You appear to be offline",
-					headers: new Headers(
-						{
-							"Content-Type": 'text/html',
-						}
-					),
+					statusText: 'You appear to be offline',
+					headers: new Headers({
+						'Content-Type': 'text/html'
+					})
 				}
 			);
 		}
-
 	}
 
 	event.respondWith(respond());
-
 });
 
-self.addEventListener('message', event => {
+self.addEventListener('message', (event) => {
 	if (event.data && event.data.type === 'SKIP_WAITING') {
 		self.skipWaiting();
 	}

@@ -4,14 +4,12 @@ import type { TBodySection } from '../types/bodySection';
 import type { TBodyPart } from '../types/bodyPart';
 import type { TMuscle } from '../types/muscle';
 import type { TExerciseCategory } from '../types/exerciseCategory';
-import type {TExercisePosition} from '../types/exercisePosition';
-import type {TExerciseVariation} from '../types/exerciseVariation';
+import type { TExercisePosition } from '../types/exercisePosition';
+import type { TExerciseVariation } from '../types/exerciseVariation';
 
 export class Exercise implements TExercise<TExerciseName> {
 	name: TExerciseName;
-	constructor(
-		name: TExerciseName
-	) {
+	constructor(name: TExerciseName) {
 		this.name = name;
 		this.positions = undefined;
 		this.bodySections = undefined;

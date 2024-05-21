@@ -18,8 +18,8 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'Mobile Chrome',
 			use: { ...devices['Pixel 7'], hasTouch: true },
-			testIgnore: /android/,
-		},
+			testIgnore: /android/
+		}
 		/*
 		{
 			name: 'Mobile Firefox',

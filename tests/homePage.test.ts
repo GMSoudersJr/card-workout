@@ -1,9 +1,5 @@
 import { expect, test } from '@playwright/test';
-import {
-	heading,
-	subHeading,
-	links
-} from '../src/lib/strings/forHomepage';
+import { heading, subHeading, links } from '../src/lib/strings/forHomepage';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -16,7 +12,6 @@ test('home page has expected headings', async ({ page }) => {
 });
 
 test.describe('hompage links are active and enabled', () => {
-
 	test('About', async ({ page }) => {
 		const aboutLink = page.getByRole('link', { name: links.faq.toUpperCase() });
 		await expect(aboutLink).toBeVisible();
@@ -28,5 +23,4 @@ test.describe('hompage links are active and enabled', () => {
 		await expect(exercisesLink).toBeVisible();
 		await expect(exercisesLink).toBeEnabled();
 	});
-
 });

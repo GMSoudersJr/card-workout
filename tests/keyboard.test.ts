@@ -16,7 +16,6 @@ test.describe('Space', () => {
 		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
-
 });
 
 test.describe('Enter', () => {
@@ -28,7 +27,6 @@ test.describe('Enter', () => {
 		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
-
 });
 
 test.describe('Arrow Keys', () => {
@@ -67,5 +65,4 @@ test.describe('Arrow Keys', () => {
 		const discardedCardsListItemAfter = await page.locator('.discarded-cards-listitem').all();
 		expect(discardedCardsListItemAfter.length).toBe(1);
 	});
-
 });

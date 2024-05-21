@@ -1,3 +1,3 @@
-import { ECardRank } from "../enums/cardRank";
+import { ECardRank } from '../enums/cardRank';
 
 export type TCardRank = keyof typeof ECardRank;

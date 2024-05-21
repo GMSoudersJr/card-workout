@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('Index page elements', () => {
 	test('expect correct heading', async ({ page }) => {
-		await expect(page.getByRole('heading', {name: 'INDEX', level: 1})).toBeVisible();
+		await expect(page.getByRole('heading', { name: 'INDEX', level: 1 })).toBeVisible();
 	});
 
 	test('expect search input', async ({ page }) => {
@@ -50,7 +50,5 @@ test.describe('Index page elements', () => {
 			await expect(page.getByRole('link', { name: exerciseEmoji })).toBeVisible();
 			await expect(page.getByRole('link', { name: exerciseEmoji })).toBeEnabled();
 		});
-
 	});
-
 });

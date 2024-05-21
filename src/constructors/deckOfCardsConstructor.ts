@@ -1,5 +1,5 @@
-import type {TDeckOfCards} from "../types/deckOfCards"
+import type { TDeckOfCards } from '../types/deckOfCards';
 
 export type DeckOfCardsConstructor = {
-	new(): TDeckOfCards;
-}
+	new (): TDeckOfCards;
+};

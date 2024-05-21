@@ -23,4 +23,3 @@ test.describe('search functionality', () => {
 		expect(searchedExerciseListLength).toEqual(1);
 	});
 });
-

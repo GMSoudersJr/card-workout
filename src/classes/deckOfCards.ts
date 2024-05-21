@@ -1,11 +1,11 @@
-import type { TDeckOfCards } from '../types/deckOfCards'
-import {PlayingCard} from './playingCard';
+import type { TDeckOfCards } from '../types/deckOfCards';
+import { PlayingCard } from './playingCard';
 import { ESuit } from '../enums/suit';
 import { ECardRank } from '../enums/cardRank';
 import type { TSuit } from '../types/suit';
 import type { TCardRank } from '../types/cardRank';
 
-import {createPlayingCard} from '../functions/createPlayingCard';
+import { createPlayingCard } from '../functions/createPlayingCard';
 
 const initialDeckOfCards = () => {
 	let result: PlayingCard[] = [];
@@ -20,7 +20,7 @@ const initialDeckOfCards = () => {
 		}
 	}
 	return result;
-}
+};
 
 export class DeckOfCards implements TDeckOfCards {
 	cards: PlayingCard[];
@@ -32,7 +32,7 @@ export class DeckOfCards implements TDeckOfCards {
 	constructor() {
 		this.cards = initialDeckOfCards();
 		this.cardsLeft = this.cards.length;
-		this.hasNext = this.cards.length > 1
+		this.hasNext = this.cards.length > 1;
 		this.topCard = this.cards.at(0);
 		this.usedCards = [];
 		this.hasPrevious = this.usedCards.length > 0;

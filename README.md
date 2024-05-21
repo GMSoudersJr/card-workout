@@ -25,9 +25,9 @@
   </table>
 </div>
 
-
 ## Overview
-A *mobile-first*, *web-based* card workout app: [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
+
+A _mobile-first_, _web-based_ card workout app: [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
 
 During the pandemic, I was intrigued by a video of a boxer using a deck of cards to determine the number of push-ups he would do.
 After trying it a few times...
@@ -35,20 +35,21 @@ After trying it a few times...
 > [!Warning]
 > Doing only one exercise for a full deck is **OVERKILL!**
 
-My *spin* on it was to have each suit represent a different exercise instead of a <ins>full deck</ins> of push-ups.
+My _spin_ on it was to have each suit represent a different exercise instead of a <ins>full deck</ins> of push-ups.
 
 > [!Tip]
 > ♣️ = Crunches (core exercise)
-> 
+>
 > ♦️ = Jumping Jacks (4 corners, 4 body parts move)
-> 
+>
 > ♥️ = Push-ups (an exercise I love)
-> 
+>
 > ♠️ = Squats (leg exercise)
 
 Also, friends were interested as well, but they did not want to carry around a deck of cards.
 
 ## The Problem
+
 Carrying around a deck of cards and remembering which exercise is for which suit in the middle of the workout.
 
 ## Current Status
@@ -59,6 +60,7 @@ Carrying around a deck of cards and remembering which exercise is for which suit
 
 > [!Note]
 > Connect a backend so users can:
+>
 > - login and track their exercises / workouts
 > - save a workout and continue later
 > - time workouts
@@ -66,17 +68,20 @@ Carrying around a deck of cards and remembering which exercise is for which suit
 > - repeat workouts to see improvements in conditioning
 
 ## Running the Project
+
 This project is being built with Svelte using TypeScript and testing is done with Playwright.
 
 To run a version locally on your own machine
 
 Optional:
+
 ```bash
 #make a directory and change into it:
 mkdir newDirectory && cd newDirectory
 ```
 
 Required:
+
 ```bash
 #clone the repository into the current directory over SSH:
 git clone git@github.com:GMSoudersJr/card-workout
@@ -87,6 +92,7 @@ npm install
 ```
 
 for a local development server, run:
+
 ```bash
 npm run dev
 ```
@@ -98,6 +104,7 @@ npm run build
 ```
 
 ## Dev Dependencies
+
 - [Svelte](https://svelte.dev/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)

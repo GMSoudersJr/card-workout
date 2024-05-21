@@ -11,13 +11,7 @@
 	"description": "Discover a unique calisthenics experience with our Progressive Web App, featuring a creative workout routine inspired by a deck of playing cards. Simply install the app for seamless, offline access to diverse and engaging workouts anytime, anywhere.",
 	"display": "standalone",
 	"manifest_version": 2,
-	"categories": [
-		"entertainment",
-		"fitness",
-		"games",
-		"health",
-		"health & fitness"
-	],
+	"categories": ["entertainment", "fitness", "games", "health", "health & fitness"],
 	"icons": [
 		{
 			"src": "/icons/512x512Plain.png",
@@ -42,35 +36,35 @@
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "exercise selector",
-			"sizes":"864x1739"
+			"sizes": "864x1739"
 		},
 		{
 			"src": "images/workoutDeck.png",
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "deck info",
-			"sizes":"864x1739"
+			"sizes": "864x1739"
 		},
 		{
 			"src": "images/workoutReps.png",
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "rep info",
-			"sizes":"864x1739"
+			"sizes": "864x1739"
 		},
 		{
 			"src": "images/workoutTimer.png",
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "workout stopwatch",
-			"sizes":"864x1739"
+			"sizes": "864x1739"
 		},
 		{
 			"src": "images/activities.png",
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "activities",
-			"sizes":"864x1739"
+			"sizes": "864x1739"
 		}
 	]
 }

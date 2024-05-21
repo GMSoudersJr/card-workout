@@ -1,1 +1,1 @@
-export const cards = '🃏'
+export const cards = '🃏';

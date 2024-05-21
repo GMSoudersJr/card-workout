@@ -9,5 +9,4 @@ export const createPlayingCard = (
 	suit: TSuit
 ): TPlayingCard<TCardRank, TSuit> => {
 	return new playingCard(suit, rank);
-}
-
+};

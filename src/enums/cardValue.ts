@@ -11,5 +11,5 @@ export enum ECardValue {
 	JACK = 10,
 	QUEEN = 10,
 	KING = 10,
-	ACE = 16,
-};
+	ACE = 16
+}
