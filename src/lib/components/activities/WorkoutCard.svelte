@@ -5,6 +5,7 @@
 	import DeleteWorkoutButton from './DeleteWorkoutButton.svelte';
 	import { quintOut } from 'svelte/easing';
 	import type { TSavedWorkout } from '../../../types/savedWorkout';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
 	export let workout: TSavedWorkout;
 	export let index: number;
@@ -38,7 +39,7 @@
 	};
 
 	$: exercises = workout.exercises.map((exercise) => {
-		return EExerciseNames[exercise as keyof typeof EExerciseNames];
+		return convertTypeValueToEnumValue(exercise!, EExerciseNames);
 	});
 </script>
 

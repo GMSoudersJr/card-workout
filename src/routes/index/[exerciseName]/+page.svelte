@@ -1,15 +1,30 @@
 <script lang="ts">
 	import { EExerciseNames } from '../../../enums/exerciseNames';
-
+	import {EExercisePositions} from '../../../enums/exercisePositions';
+	import {EExerciseVariations} from '../../../enums/exerciseVariations';
+	import {
+		convertTypeValueToEnumValue,
+		convertTypeValuesToEnumValues
+	} from '../../../functions/convertTypeToEnumValue';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 	const { exercise } = data;
 
 	console.log(exercise);
-	const { name, embeds } = exercise;
+	const {
+		name,
+		embeds,
+		positions,
+		variations,
+		...others
+	} = exercise;
 
-	const exerciseName = EExerciseNames[name as keyof typeof EExerciseNames];
+	const exerciseName = convertTypeValueToEnumValue(name!, EExerciseNames);
+
+	const exercisePositions = convertTypeValuesToEnumValues(positions!, EExercisePositions);
+
+	const exerciseVariations = convertTypeValuesToEnumValues(variations!, EExerciseVariations);
 </script>
 
 <div class="index-exercise-page-container">
@@ -37,7 +52,29 @@
 	{/if}
 
 	<div class="information">
-		<section></section>
+		<section>
+			<h3>Positions</h3>
+			<ul>
+				{#if  exercisePositions}
+					{#each exercisePositions as position}
+						<li>{position}</li>
+					{/each}
+				{/if}
+			</ul>
+		</section>
+		<section>
+			<h3>Variations</h3>
+			<ul>
+				{#if exerciseVariations}
+					{#each exerciseVariations as variation}
+						<li>{variation}</li>
+					{/each}
+				{/if}
+			</ul>
+		</section>
+		<section>
+			<h3>Description</h3>
+		</section>
 	</div>
 </div>
 

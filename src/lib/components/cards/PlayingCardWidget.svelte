@@ -20,6 +20,7 @@
 	import type { TSavedWorkout } from '../../../types/savedWorkout';
 	import { exercisesHaveNotBeenChosen } from '$lib/utils';
 	import { getTouches } from '../../../functions/forSwiping';
+	import {convertTypeValueToEnumValue} from '../../../functions/convertTypeToEnumValue';
 
 	const dispatch = createEventDispatcher();
 
@@ -188,9 +189,9 @@
 	export let exerciseName: TExerciseName | undefined;
 	export let reps: number | undefined;
 	export let disabled: boolean;
-	$: exerciseNameText = EExerciseNames[exerciseName as keyof typeof EExerciseNames];
-	$: rank = ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol];
-	$: suit = ESuitSymbolUnicode[suitSymbol as keyof typeof ESuitSymbolUnicode];
+	$: exerciseNameText = convertTypeValueToEnumValue(exerciseName!, EExerciseNames);
+	$: rank = convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol);
+	$: suit = convertTypeValueToEnumValue(suitSymbol, ESuitSymbolUnicode);
 </script>
 
 <button

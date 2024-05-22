@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { EExerciseNames } from '../../../enums/exerciseNames';
 	import type { TExerciseName } from '../../../types/exerciseName';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
 	export let reps: number;
 	export let exercise: TExerciseName | undefined;
-	$: exerciseName = EExerciseNames[exercise as keyof typeof EExerciseNames];
+	$: exerciseName = convertTypeValueToEnumValue(exercise!, EExerciseNames);
 </script>
 
 {#if exercise}

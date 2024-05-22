@@ -5,6 +5,7 @@
 	import type { TSuitExercise } from '../../../types/suitExercise';
 	import type { TSuit } from '../../../types/suit';
 	import { createEventDispatcher } from 'svelte';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
 	const dispatch = createEventDispatcher();
 
@@ -17,9 +18,9 @@
 
 	export let suitExercise: TSuitExercise<TSuit>;
 	let suitName = suitExercise.suit;
-	let icon = ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode];
+	let icon = convertTypeValueToEnumValue(suitName, ESuitSymbolUnicode);
 	let selected: string | undefined = suitExercise.exercise?.name;
-	let labelColor = ESuitColors[suitName as keyof typeof ESuitColors];
+	let labelColor = convertTypeValueToEnumValue(suitName, ESuitColors);
 </script>
 
 <div class="exercise-selection-container">

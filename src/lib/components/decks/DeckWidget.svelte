@@ -2,6 +2,7 @@
 	import type { TSuit } from '../../../types/suit';
 	import type { TSuitExercise } from '../../../types/suitExercise';
 	import { EExerciseNames } from '../../../enums/exerciseNames';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 	import {
 		discardedCards,
 		suitExercises,
@@ -15,10 +16,10 @@
 	export let description: string;
 	export let workoutSuitExercises: TSuitExercise<TSuit>[];
 	const exerciseData = workoutSuitExercises.map((exercise) => {
-		if (exercise.exercise?.demos !== undefined && exercise.exercise.name !== undefined) {
+		if (exercise.exercise?.embeds !== undefined && exercise.exercise.name !== undefined) {
 			return {
-				name: EExerciseNames[exercise.exercise.name as keyof typeof EExerciseNames],
-				demoLink: exercise.exercise.demos[0]
+				name: convertTypeValueToEnumValue(exercise.exercise.name, EExerciseNames),
+				pageLink: `index/${exercise.exercise.name}`
 			};
 		}
 	});
@@ -53,7 +54,7 @@
 			<ul>
 				{#each exerciseData as exercise, i (i)}
 					<li class="exercise-name list-item oswald-header">
-						<a href={exercise?.demoLink} class="exercise-name-demo-link">
+						<a href={exercise?.pageLink} class="exercise-name-demo-link">
 							{exercise?.name.toUpperCase()}
 						</a>
 					</li>

@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { ESuitSymbolUnicode } from '../../../enums/suitSymbolUnicode';
 
 	$: grayscale = 100 - (count * 100) / 13;
-	export let icon: ESuitSymbolUnicode;
+	export let icon: string;
 	export let count: number;
 	export let color: string;
 </script>

@@ -4,16 +4,18 @@
 	import { ESuitSymbolUnicode } from '../../../enums/suitSymbolUnicode';
 	import { ESuitColors } from '../../../enums/suitColors';
 	import SuitInfoBox from './SuitInfoBox.svelte';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
+	import type { TSuit } from '../../../types/suit';
 
-	let suitNames: string[] = Object.keys(ESuit);
+	let suitNames: TSuit[] = Object.keys(ESuit) as TSuit[];
 	$: suits = suitNames.map((suitName) => {
 		const arrayOfCards = $theRemainingDeck.filter((card) => {
 			return card.suit == suitName;
 		});
 		return {
 			name: suitName.toLowerCase(),
-			color: ESuitColors[suitName as keyof typeof ESuitColors],
-			icon: ESuitSymbolUnicode[suitName as keyof typeof ESuitSymbolUnicode],
+			color: convertTypeValueToEnumValue(suitName, ESuitColors),
+			icon: convertTypeValueToEnumValue(suitName, ESuitSymbolUnicode),
 			count: arrayOfCards.length
 		};
 	});

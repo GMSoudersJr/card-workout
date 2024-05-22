@@ -2,14 +2,16 @@
 	import { theRemainingDeck } from '../../../store';
 	import { ECardRankSymbol } from '../../../enums/cardRankSymbol';
 	import RankInfoBox from './RankInfoBox.svelte';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
+	import type { TCardRankSymbol } from '../../../types/cardRankSymbol';
 
-	let rankSymbols: string[] = Object.keys(ECardRankSymbol);
+	let rankSymbols: TCardRankSymbol[] = Object.keys(ECardRankSymbol) as TCardRankSymbol[];
 	$: ranks = rankSymbols.map((rankSymbol) => {
 		const arrayOfCards = $theRemainingDeck.filter((card) => {
 			return card.rank == rankSymbol;
 		});
 		return {
-			symbol: ECardRankSymbol[rankSymbol as keyof typeof ECardRankSymbol],
+			symbol: convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol),
 			count: arrayOfCards.length
 		};
 	});
