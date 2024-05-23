@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { EExerciseNames } from '../../../enums/exerciseNames';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 	import type { TExercise } from '../../../types/exercise';
 	import type { TExerciseName } from '../../../types/exerciseName';
 
 	export let exercise: TExercise<TExerciseName>;
-	const exerciseName = EExerciseNames[exercise.name as keyof typeof EExerciseNames];
+	const exerciseName = convertTypeValueToEnumValue(exercise.name!, EExerciseNames);
 </script>
 
 <div class="index-card">

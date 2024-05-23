@@ -17,7 +17,7 @@ import { EBodyParts } from '../enums/bodyParts';
 import { EBodySections } from '../enums/bodySections';
 import { ECardRank } from '../enums/cardRank';
 import { ECardRankSymbol } from '../enums/cardRankSymbol';
-import { ECardValue} from '../enums/cardValue';
+import { ECardValue } from '../enums/cardValue';
 import { EExerciseCategories } from '../enums/exerciseCategories';
 import { EExerciseNames } from '../enums/exerciseNames';
 import { EExercisePositions } from '../enums/exercisePositions';
@@ -30,84 +30,76 @@ import { ESuitColors } from '../enums/suitColors';
 import { ESuitSymbolUnicode } from '../enums/suitSymbolUnicode';
 
 export function convertTypeValueToEnumValue(
-	detailType: (
-		TBodyPart |
-		TBodySection |
-		TCardRank |
-		TCardRankSymbol |
-		TCardValue |
-		TExerciseCategory |
-		TExerciseName |
-		TExercisePosition |
-		TExerciseVariation |
-		TMuscle |
-		TRadioButtonLabelName |
-		TReps |
-		TSuit |
-		TSuitColors
-	),
-	detailEnum: (
-		typeof EBodyParts |
-		typeof EBodySections |
-		typeof ECardRank |
-		typeof ECardRankSymbol |
-		typeof ECardValue |
-		typeof EExerciseCategories |
-		typeof EExerciseNames |
-		typeof EExercisePositions |
-		typeof EExerciseVariations |
-		typeof EMuscles |
-		typeof ERadioButtonLabelNames |
-		typeof EReps |
-		typeof ESuit |
-		typeof ESuitColors |
-		typeof ESuitSymbolUnicode
-	)
+	detailType:
+		| TBodyPart
+		| TBodySection
+		| TCardRank
+		| TCardRankSymbol
+		| TCardValue
+		| TExerciseCategory
+		| TExerciseName
+		| TExercisePosition
+		| TExerciseVariation
+		| TMuscle
+		| TRadioButtonLabelName
+		| TReps
+		| TSuit
+		| TSuitColors,
+	detailEnum:
+		| typeof EBodyParts
+		| typeof EBodySections
+		| typeof ECardRank
+		| typeof ECardRankSymbol
+		| typeof ECardValue
+		| typeof EExerciseCategories
+		| typeof EExerciseNames
+		| typeof EExercisePositions
+		| typeof EExerciseVariations
+		| typeof EMuscles
+		| typeof ERadioButtonLabelNames
+		| typeof EReps
+		| typeof ESuit
+		| typeof ESuitColors
+		| typeof ESuitSymbolUnicode
 ): string {
-
-		return detailEnum[detailType as keyof typeof detailEnum] as string;
+	return detailEnum[detailType as keyof typeof detailEnum] as string;
 }
 
-
 export function convertTypeValuesToEnumValues(
-	detailsType: (
-		TBodyPart[] |
-		TBodySection[] |
-		TCardRank[] |
-		TCardRankSymbol[] |
-		TCardValue[] |
-		TExerciseCategory[] |
-		TExerciseName[] |
-		TExercisePosition[] |
-		TExerciseVariation[] |
-		TMuscle[] |
-		TRadioButtonLabelName[] |
-		TReps[] |
-		TSuit[] |
-		TSuitColors[]
-	),
-	detailsEnum: (
-		typeof EBodyParts |
-		typeof EBodySections |
-		typeof ECardRank |
-		typeof ECardRankSymbol |
-		typeof ECardValue |
-		typeof EExerciseCategories |
-		typeof EExerciseNames |
-		typeof EExercisePositions |
-		typeof EExerciseVariations |
-		typeof EMuscles |
-		typeof ERadioButtonLabelNames |
-		typeof EReps |
-		typeof ESuit |
-		typeof ESuitColors
-	)
+	detailsType:
+		| TBodyPart[]
+		| TBodySection[]
+		| TCardRank[]
+		| TCardRankSymbol[]
+		| TCardValue[]
+		| TExerciseCategory[]
+		| TExerciseName[]
+		| TExercisePosition[]
+		| TExerciseVariation[]
+		| TMuscle[]
+		| TRadioButtonLabelName[]
+		| TReps[]
+		| TSuit[]
+		| TSuitColors[],
+	detailsEnum:
+		| typeof EBodyParts
+		| typeof EBodySections
+		| typeof ECardRank
+		| typeof ECardRankSymbol
+		| typeof ECardValue
+		| typeof EExerciseCategories
+		| typeof EExerciseNames
+		| typeof EExercisePositions
+		| typeof EExerciseVariations
+		| typeof EMuscles
+		| typeof ERadioButtonLabelNames
+		| typeof EReps
+		| typeof ESuit
+		| typeof ESuitColors
 ): string[] {
-
 	const result = detailsType.map((detail) => {
 		return detailsEnum[detail as keyof typeof detailsEnum] as string;
 	});
 
 	return result;
-
 }

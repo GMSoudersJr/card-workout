@@ -20,7 +20,7 @@
 	import type { TSavedWorkout } from '../../../types/savedWorkout';
 	import { exercisesHaveNotBeenChosen } from '$lib/utils';
 	import { getTouches } from '../../../functions/forSwiping';
-	import {convertTypeValueToEnumValue} from '../../../functions/convertTypeToEnumValue';
+	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
 	const dispatch = createEventDispatcher();
 

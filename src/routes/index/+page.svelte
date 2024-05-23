@@ -97,7 +97,7 @@
 	<CheckboxOptionsSection on:checkboxStoreUpdated={updateListFromCheckboxStore} />
 	<ul class="exercise-index-cards-list">
 		{#each exerciseList as exercise (exercise.name)}
-			<li>
+			<li class="exercise-index-cards-listitem">
 				<ExerciseIndexCard {exercise} />
 			</li>
 		{/each}

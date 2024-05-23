@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	$: grayscale = 100 - (count * 100) / 13;
 	export let icon: string;
 	export let count: number;

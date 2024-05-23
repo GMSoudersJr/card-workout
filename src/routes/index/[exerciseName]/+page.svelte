@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { EExerciseNames } from '../../../enums/exerciseNames';
-	import {EExercisePositions} from '../../../enums/exercisePositions';
-	import {EExerciseVariations} from '../../../enums/exerciseVariations';
+	import { EExercisePositions } from '../../../enums/exercisePositions';
+	import { EExerciseVariations } from '../../../enums/exerciseVariations';
 	import {
 		convertTypeValueToEnumValue,
 		convertTypeValuesToEnumValues
@@ -12,13 +12,7 @@
 	const { exercise } = data;
 
 	console.log(exercise);
-	const {
-		name,
-		embeds,
-		positions,
-		variations,
-		...others
-	} = exercise;
+	const { name, embeds, positions, variations, ...others } = exercise;
 
 	const exerciseName = convertTypeValueToEnumValue(name!, EExerciseNames);
 
@@ -28,9 +22,9 @@
 </script>
 
 <div class="index-exercise-page-container">
-	<h1 class="exercise-name">
-		{exerciseName}
-	</h1>
+	<h2 class="exercise-name oswald-header">
+		{exerciseName.toUpperCase()}
+	</h2>
 
 	{#if embeds}
 		<section class="demo-container">
@@ -55,7 +49,7 @@
 		<section>
 			<h3>Positions</h3>
 			<ul>
-				{#if  exercisePositions}
+				{#if exercisePositions}
 					{#each exercisePositions as position}
 						<li>{position}</li>
 					{/each}
