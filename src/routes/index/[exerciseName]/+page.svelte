@@ -11,14 +11,14 @@
 	export let data: PageData;
 	const { exercise } = data;
 
-	console.log(exercise);
-	const { name, embeds, positions, variations, ...others } = exercise;
+	const { name, embeds, positions, variations } = exercise;
 
 	const exerciseName = convertTypeValueToEnumValue(name!, EExerciseNames);
 
 	const exercisePositions = convertTypeValuesToEnumValues(positions!, EExercisePositions);
 
 	const exerciseVariations = convertTypeValuesToEnumValues(variations!, EExerciseVariations);
+	const baseYouTubeEmbedUrl = 'https://www.youtube.com/embed/';
 </script>
 
 <div class="index-exercise-page-container">
@@ -30,10 +30,11 @@
 		<section class="demo-container">
 			{#each embeds as embed, i (i)}
 				<iframe
+					id={`${exercise.name?.toLowerCase()}-embedded-video`}
 					width="560"
 					height="315"
-					class="demo"
-					src={`https://www.youtube.com/embed/${embed}`}
+					class="embedded-video"
+					src={`${baseYouTubeEmbedUrl}${embed}`}
 					title="YouTube  video player"
 					frameborder="0"
 					allowfullscreen
@@ -88,7 +89,6 @@
 		overflow-y: auto;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
-		border: 1px solid green;
 	}
 	.demo-container {
 		display: grid;
@@ -96,7 +96,7 @@
 		grid-template-rows: repeat(auto-fill, min-content);
 		row-gap: 1rem;
 	}
-	.demo {
+	.embedded-video {
 		width: 100%;
 		aspect-ratio: 16 / 9;
 		place-self: center;

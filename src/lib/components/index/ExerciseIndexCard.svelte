@@ -5,7 +5,8 @@
 	import type { TExerciseName } from '../../../types/exerciseName';
 
 	export let exercise: TExercise<TExerciseName>;
-	const exerciseName = convertTypeValueToEnumValue(exercise.name!, EExerciseNames);
+	const exerciseName = convertTypeValueToEnumValue(exercise.name!, EExerciseNames).toUpperCase();
+	const hrefExerciseName = exercise.name?.toLowerCase();
 </script>
 
 <div class="index-card">
@@ -14,12 +15,12 @@
 			{#each exercise.demos as demo (demo)}
 				{#if demo === ''}
 					<h1 class="oswald-header header">
-						{exerciseName.toUpperCase()}
+						{exerciseName}
 					</h1>
 				{:else}
-					<a href={`/index/${exercise.name}`} referrerpolicy="no-referrer">
+					<a href={`/index/${hrefExerciseName}`}>
 						<h1 class="oswald-header header">
-							{exerciseName.toUpperCase()}
+							{exerciseName}
 						</h1>
 					</a>
 				{/if}
