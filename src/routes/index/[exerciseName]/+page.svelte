@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ParagraphWidget from '$lib/components/index/ParagraphWidget.svelte';
+	import ListWidget from '$lib/components/index/ListWidget.svelte';
 	import { EExerciseNames } from '../../../enums/exerciseNames';
 	import { EExercisePositions } from '../../../enums/exercisePositions';
 	import { EExerciseVariations } from '../../../enums/exerciseVariations';
@@ -46,40 +48,25 @@
 		</section>
 	{/if}
 
-	<div class="information">
-		<section>
-			<h3>Positions</h3>
-			<ul>
-				{#if exercisePositions}
-					{#each exercisePositions as position}
-						<li>{position}</li>
-					{/each}
-				{/if}
-			</ul>
-		</section>
-		<section>
-			<h3>Variations</h3>
-			<ul>
-				{#if exerciseVariations}
-					{#each exerciseVariations as variation}
-						<li>{variation}</li>
-					{/each}
-				{/if}
-			</ul>
-		</section>
-		<section>
-			<h3>Description</h3>
-		</section>
+	<div class="information-container">
+		<ParagraphWidget heading="Description" />
+		<div class="split-row">
+			<ListWidget heading="Positions" unorderedList={exercisePositions}/>
+			<ListWidget heading="Variations" unorderedList={exerciseVariations}/>
+		</div>
 	</div>
 </div>
 
 <style>
+	.exercise-name {
+		color: #000080;
+	}
 	.index-exercise-page-container {
 		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, min-content);
-		row-gap: 2rem;
+		row-gap: 1rem;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		justify-items: center;
@@ -100,5 +87,17 @@
 		width: 100%;
 		aspect-ratio: 16 / 9;
 		place-self: center;
+	}
+	.information-container {
+		max-width: 560px;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(auto-fill, min-content);
+		row-gap: 1rem;
+	}
+	.split-row {
+		display: flex;
+		gap: 3rem;
+		align-items: flex-start;
 	}
 </style>

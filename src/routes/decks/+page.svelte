@@ -7,7 +7,7 @@
 </script>
 
 <div class="page-container">
-	<h3 class="subheading oswald-header">QUICK START WORKOUTS</h3>
+	<h2 class="subheading oswald-header">QUICK START WORKOUTS</h2>
 	<ul class="decks-list" id="decks-list">
 		{#each workouts as workout (workout.name)}
 			<li class="decks-listitem">
