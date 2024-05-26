@@ -216,5 +216,31 @@ export const workouts: Workout[] = [
 				completedReps: 0
 			}
 		]
-	}
+	},
+	{
+		name: 'TBD',
+		description: 'Trap, Back, Delts',
+		suitExercises: [
+			{
+				suit: 'CLUBS',
+				exercise: exercises.filter((e) => e.name === 'REVERSE_FLY')[0],
+				completedReps: 0
+			},
+			{
+				suit: 'DIAMONDS',
+				exercise: exercises.filter((e) => e.name === 'JUMPING_JACKS')[0],
+				completedReps: 0
+			},
+			{
+				suit: 'HEARTS',
+				exercise: exercises.filter((e) => e.name === 'FORWARD_ARM_CIRCLES')[0],
+				completedReps: 0
+			},
+			{
+				suit: 'SPADES',
+				exercise: exercises.filter((e) => e.name === 'REVERSE_ARM_CIRCLES')[0],
+				completedReps: 0
+			}
+		]
+	},
 ];
