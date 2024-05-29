@@ -49,7 +49,6 @@
 	{/if}
 
 	<div class="information-container">
-		<ParagraphWidget heading="Description" />
 		<div class="split-row">
 			<ListWidget heading="Positions" unorderedList={exercisePositions}/>
 			<ListWidget heading="Variations" unorderedList={exerciseVariations}/>
