@@ -8,5 +8,5 @@ export enum EReps {
 	EIGHT,
 	NINE,
 	TEN,
-	SIXTEEN = 16,
-};
+	SIXTEEN = 16
+}

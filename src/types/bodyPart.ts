@@ -1,3 +1,3 @@
 import { EBodyParts } from '../enums/bodyParts';
 
-export type TBodyPart= keyof typeof EBodyParts;
+export type TBodyPart = keyof typeof EBodyParts;

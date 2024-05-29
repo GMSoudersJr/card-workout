@@ -9,31 +9,30 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('parts', () => {
 	test('expect quick start button', async ({ page }) => {
-		 const firstWorkoutListitem = page.locator('.decks-listitem').first();
-		 const quickStartButton = firstWorkoutListitem.getByRole('button');
-		 await expect(quickStartButton).toBeVisible();
-		 await expect(quickStartButton).toBeEnabled();
+		const firstWorkoutListitem = page.locator('.decks-listitem').first();
+		const quickStartButton = firstWorkoutListitem.getByRole('button');
+		await expect(quickStartButton).toBeVisible();
+		await expect(quickStartButton).toBeEnabled();
 	});
 
 	test('expect workout name', async ({ page }) => {
-		 const firstWorkoutListitem = page.locator('.decks-listitem').first();
-		 const deckName = await firstWorkoutListitem.locator('.deck-name').innerText();
-		 const workoutName = await firstWorkoutListitem.locator('.deck-header').innerText();
-		 expect(workoutName).toEqual(deckName);
+		const firstWorkoutListitem = page.locator('.decks-listitem').first();
+		const deckName = await firstWorkoutListitem.locator('.deck-name').innerText();
+		const workoutName = await firstWorkoutListitem.locator('.deck-header').innerText();
+		expect(workoutName).toEqual(deckName);
 	});
 
 	test('expect 4 exercises', async ({ page }) => {
-		 const firstWorkoutListitem = page.locator('.decks-listitem').first();
-		 const exercisesLinks = firstWorkoutListitem.locator('.exercise-name-demo-link');
-		 await expect(exercisesLinks).toHaveCount(4);
+		const firstWorkoutListitem = page.locator('.decks-listitem').first();
+		const exercisesLinks = firstWorkoutListitem.locator('.exercise-name-demo-link');
+		await expect(exercisesLinks).toHaveCount(4);
 	});
 
 	test('expect description', async ({ page }) => {
-		 const firstWorkoutListitem = page.locator('.decks-listitem').first();
-		 const deckDescription = firstWorkoutListitem.locator('.description');
-		 await expect(deckDescription).toBeVisible();
+		const firstWorkoutListitem = page.locator('.decks-listitem').first();
+		const deckDescription = firstWorkoutListitem.locator('.description');
+		await expect(deckDescription).toBeVisible();
 	});
-
 });
 
 test.describe('quick start navigation', () => {
@@ -45,7 +44,7 @@ test.describe('quick start navigation', () => {
 	});
 
 	test('expect SUIT YOURSELF', async ({ page }) => {
-		 await expect(page.getByRole('heading', { name: 'SUIT YOURSELF', level: 1 })).toBeVisible();
+		await expect(page.getByRole('heading', { name: 'SUIT YOURSELF', level: 1 })).toBeVisible();
 	});
 
 	test('expect reps info', async ({ page }) => {
@@ -59,11 +58,11 @@ test.describe('quick start navigation', () => {
 	});
 
 	test('expect exercise name on card', async ({ page }) => {
-		 const startButton = page.getByRole('button', { name: 'Start' });
-		 await startButton.click();
-		 await page.waitForLoadState('domcontentloaded');
-		 const firstCard = page.getByRole('button');
-		 const cardExerciseName = firstCard.locator('.card-exercise-name');
-		 await expect(cardExerciseName).toBeVisible();
+		const startButton = page.getByRole('button', { name: 'Start' });
+		await startButton.click();
+		await page.waitForLoadState('domcontentloaded');
+		const firstCard = page.getByRole('button');
+		const cardExerciseName = firstCard.locator('.card-exercise-name');
+		await expect(cardExerciseName).toBeVisible();
 	});
-})
+});

@@ -11,5 +11,5 @@ export enum ECardRank {
 	JACK = 'Jack',
 	QUEEN = 'Queen',
 	KING = 'King',
-	ACE = 'Ace',
-};
+	ACE = 'Ace'
+}

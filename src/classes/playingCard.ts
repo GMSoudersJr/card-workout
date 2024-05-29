@@ -11,10 +11,7 @@ import type { TExerciseName } from '../types/exerciseName';
 export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	suit: TSuit;
 	rank: TCardRank;
-	constructor(
-		suit: TSuit,
-		rank: TCardRank
-	) {
+	constructor(suit: TSuit, rank: TCardRank) {
 		this.suit = suit;
 		this.rank = rank;
 		this.exerciseName = undefined;
@@ -25,7 +22,7 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	hasBeenPlucked: boolean;
 	hasBeenDiscarded: boolean;
 	deckIndex: number;
-	exerciseName?: TExerciseName
+	exerciseName?: TExerciseName;
 	get name(): string {
 		return `${ECardRank[this.rank]} of ${ESuit[this.suit]}`;
 	}
@@ -38,4 +35,4 @@ export class PlayingCard implements TPlayingCard<TCardRank, TSuit> {
 	get textColor(): string {
 		return ESuitColors[this.suit as keyof typeof ESuitColors];
 	}
-};
+}

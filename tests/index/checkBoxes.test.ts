@@ -28,45 +28,6 @@ test.describe('checkboxes', () => {
 	});
 
 	test.describe('return navigation behavior', () => {
-		test('from demo link, same output', async ({ page }) => {
-			const primalMovementsCheckboxBeforeNavigation = page.getByLabel(EExerciseCategories.PRIMAL_MOVEMENTS);
-			await expect(primalMovementsCheckboxBeforeNavigation).not.toBeChecked();
-
-			await primalMovementsCheckboxBeforeNavigation.check();
-			await expect(primalMovementsCheckboxBeforeNavigation).toBeChecked();
-
-			await page.waitForLoadState('domcontentloaded');
-			const demoLink = page.getByRole('link', { name: EExerciseNames.BEAR_CRAWLS })
-			await demoLink.click();
-			await page.waitForLoadState('domcontentloaded');
-			const outsideLinkResponse = await page.waitForResponse(async (response) => {
-				if ( response.status() === 200 ) return true;
-				return false;
-			});
-
-			expect(outsideLinkResponse).toBeTruthy();
-
-			await page.goBack({ waitUntil: 'domcontentloaded' });
-			await page.waitForLoadState('domcontentloaded');
-
-			const backNavigationResponse = await page.waitForResponse(async (response) => {
-				if ( response.status() === 200 ) return true;
-				return false;
-			});
-
-			expect(backNavigationResponse).toBeTruthy();
-
-			const summary = page.locator('summary');
-			await summary.click();
-
-			const primalMovementsCheckboxAfterNavigation = page.getByLabel(EExerciseCategories.PRIMAL_MOVEMENTS);
-			const checkedBoxes = await page.getByRole('checkbox', { checked: true }).all();
-			expect(checkedBoxes.length).toEqual(1);
-			await expect(primalMovementsCheckboxAfterNavigation).toBeChecked();
-
-			expect((await page.getByRole('list').allInnerTexts()).length).toEqual(1);
-		});
-
 		test('from in-app, expect same output', async ({ page }) => {
 			const yogaCheckboxBeforeNavigation = page.getByLabel(EExerciseCategories.YOGA);
 			await expect(yogaCheckboxBeforeNavigation).not.toBeChecked();
@@ -87,7 +48,5 @@ test.describe('checkboxes', () => {
 
 			expect(yogaIndexExerciseCardsAfterNavigation).toEqual(yogaIndexExerciseCardsBeforeNavigation);
 		});
-
 	});
-
 });

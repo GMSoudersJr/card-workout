@@ -1,14 +1,6 @@
-import {
-	exerciseEmoji,
-	homeEmoji,
-	repeatEmoji,
-	wasteBasketEmoji
-} from '../src/lib/emojis';
+import { exerciseEmoji, homeEmoji, repeatEmoji, wasteBasketEmoji } from '../src/lib/emojis';
 import { expect, test } from '@playwright/test';
-import {
-	setLocalStorageWorkouts,
-	getLocalStorageWorkouts
-} from './helperFunctions/localStorage';
+import { setLocalStorageWorkouts } from './helperFunctions/localStorage';
 import { fakeWorkoutData } from './fakeWorkoutData';
 
 const workoutsForLocalStorage = JSON.stringify(fakeWorkoutData);
@@ -18,7 +10,7 @@ test.describe('new user', () => {
 	test('expect "activities" link not to be visible', async ({ page }) => {
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await expect(page.getByRole('link', {name: 'ACTIVITIES'})).not.toBeVisible();
+		await expect(page.getByRole('link', { name: 'ACTIVITIES' })).not.toBeVisible();
 	});
 });
 
@@ -27,7 +19,7 @@ test.describe('one saved workout', () => {
 		await setLocalStorageWorkouts(context, singleWorkoutForLocalStorage);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'ACTIVITIES'}).click();
+		await page.getByRole('link', { name: 'ACTIVITIES' }).click();
 		await page.waitForLoadState('domcontentloaded');
 	});
 
@@ -71,9 +63,7 @@ test.describe('one saved workout', () => {
 			await page.waitForLoadState('domcontentloaded');
 			await expect(page.locator('.example-workout-section')).toBeVisible();
 		});
-
 	});
-
 });
 
 test.describe('returning after workouts have been saved', () => {
@@ -84,10 +74,9 @@ test.describe('returning after workouts have been saved', () => {
 	});
 
 	test('expect "ACTIVITIES" link to be visible and enabled', async ({ page }) => {
-		await expect(page.getByRole('link', {name: 'ACTIVITIES'})).toBeVisible();
-		await expect(page.getByRole('link', {name: 'ACTIVITIES'})).toBeEnabled();
+		await expect(page.getByRole('link', { name: 'ACTIVITIES' })).toBeVisible();
+		await expect(page.getByRole('link', { name: 'ACTIVITIES' })).toBeEnabled();
 	});
-
 });
 
 test.describe('ACTIVITIES page', () => {
@@ -95,7 +84,7 @@ test.describe('ACTIVITIES page', () => {
 		await setLocalStorageWorkouts(context, workoutsForLocalStorage);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', {name: 'ACTIVITIES'}).click();
+		await page.getByRole('link', { name: 'ACTIVITIES' }).click();
 		await page.waitForLoadState('domcontentloaded');
 	});
 
@@ -131,7 +120,7 @@ test.describe('ACTIVITIES page', () => {
 				const homeLink = page.getByRole('link', { name: homeEmoji });
 				await homeLink.click();
 				await page.waitForLoadState('domcontentloaded');
-				await expect(page.getByRole('heading', {name: 'SUIT YOURSELF'})).toBeVisible();
+				await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
 			});
 
 			test('expect exercises page', async ({ page }) => {
@@ -140,9 +129,7 @@ test.describe('ACTIVITIES page', () => {
 				await page.waitForLoadState('domcontentloaded');
 				await expect(page.getByRole('heading', { name: 'EXERCISES', level: 1 })).toBeVisible();
 			});
-
 		});
-
 	});
 
 	test.describe('workout card elements', () => {
@@ -220,13 +207,17 @@ test.describe('ACTIVITIES page', () => {
 					const workoutCards = await page.locator('.workout-card').all();
 					expect(workoutCards.length).toBeGreaterThan(0);
 					const firstWorkoutCard = workoutCards[0];
-					const workoutCardExerciseNames = await firstWorkoutCard.locator('.exercise-name').allInnerTexts();
+					const workoutCardExerciseNames = await firstWorkoutCard
+						.locator('.exercise-name')
+						.allInnerTexts();
 					const repeatButton = firstWorkoutCard.getByRole('button', { name: repeatEmoji });
 					await repeatButton.click();
 					await page.waitForLoadState('domcontentloaded');
 					await page.getByRole('radio', { name: 'Reps' }).check();
 					await page.waitForSelector('.reps-info-exercise-name');
-					const currentExerciseNames = await page.locator('.reps-info-exercise-name').allInnerTexts();
+					const currentExerciseNames = await page
+						.locator('.reps-info-exercise-name')
+						.allInnerTexts();
 					expect(currentExerciseNames).toEqual(workoutCardExerciseNames);
 				});
 
@@ -248,7 +239,6 @@ test.describe('ACTIVITIES page', () => {
 					await expect(firstCardReps).toBeVisible();
 					await expect(firstCardExerciseName).toBeVisible();
 				});
-
 			});
 
 			test.describe('press delete', () => {
@@ -301,14 +291,8 @@ test.describe('ACTIVITIES page', () => {
 						const newWorkoutCardsCount = page.locator('.workout-card');
 						await expect(newWorkoutCardsCount).toHaveCount(originalWorkoutCardsCount - 1);
 					});
-
 				});
-
 			});
-
 		});
-
 	});
-
 });
-

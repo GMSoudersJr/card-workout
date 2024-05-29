@@ -1,3 +1,3 @@
-import { ECardRankSymbol } from "../enums/cardRankSymbol";
+import { ECardRankSymbol } from '../enums/cardRankSymbol';
 
 export type TCardRankSymbol = keyof typeof ECardRankSymbol;

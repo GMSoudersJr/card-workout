@@ -1,80 +1,77 @@
 <script lang="ts">
-	import CheckBoxWidget from "$lib/components/index/CheckBoxWidget.svelte";
-	import { createEventDispatcher, onMount } from "svelte";
-	import { EBodyParts } from "../../../enums/bodyParts";
-	import { EExerciseCategories } from "../../../enums/exerciseCategories";
-	import { EExercisePositions } from "../../../enums/exercisePositions";
-	import { EExerciseVariations } from "../../../enums/exerciseVariations";
-	import { theExerciseIndexCheckboxStore } from "../../../store";
-	import type { TBodyPart } from "../../../types/bodyPart";
-	import type { TExerciseCategory } from "../../../types/exerciseCategory";
-	import type { TExercisePosition } from "../../../types/exercisePosition";
-	import type { TExerciseVariation } from "../../../types/exerciseVariation";
+	import CheckBoxWidget from '$lib/components/index/CheckBoxWidget.svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { EBodyParts } from '../../../enums/bodyParts';
+	import { EExerciseCategories } from '../../../enums/exerciseCategories';
+	import { EExercisePositions } from '../../../enums/exercisePositions';
+	import { EExerciseVariations } from '../../../enums/exerciseVariations';
+	import { theExerciseIndexCheckboxStore } from '../../../store';
+	import type { TBodyPart } from '../../../types/bodyPart';
+	import type { TExerciseCategory } from '../../../types/exerciseCategory';
+	import type { TExercisePosition } from '../../../types/exercisePosition';
+	import type { TExerciseVariation } from '../../../types/exerciseVariation';
 
 	const dispatch = createEventDispatcher();
 
-  function handleCheckedAlready(checkedBoxes: NodeListOf<Element>): void {
-
-    checkedBoxes.forEach((element) => {
-
-      const [ heading, checkedValue ] = element.id.split("-");
+	function handleCheckedAlready(checkedBoxes: NodeListOf<Element>): void {
+		checkedBoxes.forEach((element) => {
+			const [heading, checkedValue] = element.id.split('-');
 
 			switch (heading) {
 				case 'category':
 					theExerciseIndexCheckboxStore.updateCategory(checkedValue as TExerciseCategory);
-				break;
+					break;
 				case 'position':
 					theExerciseIndexCheckboxStore.updatePosition(checkedValue as TExercisePosition);
-				break;
+					break;
 				case 'variation':
 					theExerciseIndexCheckboxStore.updateVariation(checkedValue as TExerciseVariation);
-				break;
+					break;
 				case 'target':
 					theExerciseIndexCheckboxStore.updateTarget(checkedValue as TBodyPart);
-				break;
+					break;
 			}
-
-    });
+		});
 
 		dispatch('checkboxStoreUpdated');
+	}
 
-  }
-
-  onMount(async () => {
-    const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-    if ( checkedBoxes.length > 0 ) handleCheckedAlready(checkedBoxes);
+	onMount(async () => {
+		const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+		if (checkedBoxes.length > 0) handleCheckedAlready(checkedBoxes);
 
 		const storedCheckedBoxValues = Object.values($theExerciseIndexCheckboxStore);
 
-		if ( storedCheckedBoxValues.some((storedCheckboxArray) => {
-			return storedCheckboxArray.length > 0;
-		})) {
-
-			if ( $theExerciseIndexCheckboxStore.category.length > 0 ) {
-				$theExerciseIndexCheckboxStore.category.forEach(( option ) => {
+		if (
+			storedCheckedBoxValues.some((storedCheckboxArray) => {
+				return storedCheckboxArray.length > 0;
+			})
+		) {
+			if ($theExerciseIndexCheckboxStore.category.length > 0) {
+				$theExerciseIndexCheckboxStore.category.forEach((option) => {
 					let element = document.querySelector(`#category-${option}`);
-					element?.setAttribute("checked", "");
+					element?.setAttribute('checked', '');
 				});
 			}
 
-			if ( $theExerciseIndexCheckboxStore.position.length > 0 ) {
-				$theExerciseIndexCheckboxStore.position.forEach(( option ) => {
+			if ($theExerciseIndexCheckboxStore.position.length > 0) {
+				$theExerciseIndexCheckboxStore.position.forEach((option) => {
 					let element = document.querySelector(`#position-${option}`);
-					element?.setAttribute("checked", "");
+					element?.setAttribute('checked', '');
 				});
 			}
 
-			if ( $theExerciseIndexCheckboxStore.variation.length > 0 ) {
-				$theExerciseIndexCheckboxStore.variation.forEach(( option ) => {
+			if ($theExerciseIndexCheckboxStore.variation.length > 0) {
+				$theExerciseIndexCheckboxStore.variation.forEach((option) => {
 					let element = document.querySelector(`#variation-${option}`);
-					element?.setAttribute("checked", "");
+					element?.setAttribute('checked', '');
 				});
 			}
 
-			if ( $theExerciseIndexCheckboxStore.target.length > 0 ) {
-				$theExerciseIndexCheckboxStore.target.forEach(( option ) => {
+			if ($theExerciseIndexCheckboxStore.target.length > 0) {
+				$theExerciseIndexCheckboxStore.target.forEach((option) => {
 					let element = document.querySelector(`#target-${option}`);
-					element?.setAttribute("checked", "");
+					element?.setAttribute('checked', '');
 				});
 			}
 
@@ -82,9 +79,7 @@
 		} else {
 			return;
 		}
-
-  });
-
+	});
 </script>
 
 <details id="details-options">
@@ -108,11 +103,7 @@
 		</div>
 
 		<div class="target">
-			<CheckBoxWidget
-				heading={'target'}
-				enumEntries={EBodyParts}
-				on:checkboxStoreUpdated
-			/>
+			<CheckBoxWidget heading={'target'} enumEntries={EBodyParts} on:checkboxStoreUpdated />
 		</div>
 
 		<div class="variation">
@@ -122,9 +113,7 @@
 				on:checkboxStoreUpdated
 			/>
 		</div>
-
 	</section>
-
 </details>
 
 <style>
@@ -144,4 +133,3 @@
 		color: #000080;
 	}
 </style>
-

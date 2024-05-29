@@ -1,3 +1,2 @@
 import { expect, test } from '@playwright/test';
-import { getLocalStorageWorkouts } from './helperFunctions/login';
-
+import { getLocalStorageWorkouts } from './helperFunctions/localStorage';

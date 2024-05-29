@@ -13,7 +13,9 @@ test('the page has expected start button', async ({ page }) => {
 	await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
 });
 
-test('before a card is clicked, the discarded cards area is expected to be empty', async ({ page }) => {
+test('before a card is clicked, the discarded cards area is expected to be empty', async ({
+	page
+}) => {
 	await expect(page.locator('.discarded-cards-list')).toBeEmpty();
 });
 
@@ -37,24 +39,23 @@ test('the page has expected suit radio button', async ({ page }) => {
 
 test('expect deck radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
-	await expect(page.getByRole('radio', {checked: true, name: 'Deck'})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true, name: 'Deck' })).toBeChecked();
 });
 
 test('expect rank radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Rank', { exact: true }).check();
-	await expect(page.getByRole('radio', {checked: true, name: 'Rank'})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true, name: 'Rank' })).toBeChecked();
 });
 
 test('expect suit radio button checked when clicked', async ({ page }) => {
 	await page.getByLabel('Suit', { exact: true }).check();
-	await expect(page.getByRole('radio', {checked: true, name: 'Suit'})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true, name: 'Suit' })).toBeChecked();
 });
 
 test.describe('uncheck radio button', () => {
-
 	test('expect deck radio button unchecked after repeat check', async ({ page }) => {
-		const deckRadioLabel = page.getByLabel('Deck', {exact: true});
-		const deckRadioButton = page.getByRole('radio', {name: 'Deck'});
+		const deckRadioLabel = page.getByLabel('Deck', { exact: true });
+		const deckRadioButton = page.getByRole('radio', { name: 'Deck' });
 		await deckRadioLabel.check();
 		await expect(deckRadioButton).toBeChecked();
 		await deckRadioLabel.uncheck();
@@ -62,8 +63,8 @@ test.describe('uncheck radio button', () => {
 	});
 
 	test('expect stat info widget to be empty a', async ({ page }) => {
-		const deckRadioLabel = page.getByLabel('Deck', {exact: true});
-		const deckRadioButton = page.getByRole('radio', {name: 'Deck'});
+		const deckRadioLabel = page.getByLabel('Deck', { exact: true });
+		const deckRadioButton = page.getByRole('radio', { name: 'Deck' });
 		const deckStatWidget = page.locator('.widget-container');
 		await deckRadioLabel.check();
 		await expect(deckRadioButton).toBeChecked();
@@ -71,29 +72,26 @@ test.describe('uncheck radio button', () => {
 		await expect(deckRadioButton).not.toBeChecked();
 		await expect(deckStatWidget).toBeEmpty();
 	});
-
 });
-
 
 test('expect deck info to show 52 cards remaining', async ({ page }) => {
 	await page.getByLabel('Deck', { exact: true }).check();
-	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true })).toBeChecked();
 	const element = page.locator('#cards-remaining');
 	await element.waitFor({ state: 'attached' });
-	await expect(page.getByRole('heading',{ name: '52', level: 3 })).toBeVisible();
+	await expect(page.getByRole('heading', { name: '52', level: 3 })).toBeVisible();
 });
 
 test('expect rank info to show 13 items', async ({ page }) => {
 	await page.getByLabel('Rank', { exact: true }).click();
-	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true })).toBeChecked();
 	await expect(page.locator('.rank-list')).toBeVisible();
 	await expect(page.getByRole('listitem')).toHaveCount(13);
 });
 
 test('expect suit info to show 4 items', async ({ page }) => {
 	await page.getByLabel('Suit', { exact: true }).check();
-	await expect(page.getByRole('radio', {checked: true})).toBeChecked();
+	await expect(page.getByRole('radio', { checked: true })).toBeChecked();
 	await expect(page.locator('.suit-info-widget')).toBeVisible();
 	await expect(page.locator('.suit-info-box')).toHaveCount(4);
 });
-

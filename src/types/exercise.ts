@@ -14,5 +14,6 @@ export type TExercise<TExerciseName> = {
 	variations?: TExerciseVariation[] | undefined;
 	categories?: TExerciseCategory[] | undefined;
 	demos?: string[] | undefined;
+	embeds?: string[] | undefined;
 	emojis?: string[] | undefined;
 };

@@ -1,25 +1,23 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
-	import DeckWidget from "$lib/components/decks/DeckWidget.svelte";
+	import type { PageData } from './$types';
+	import DeckWidget from '$lib/components/decks/DeckWidget.svelte';
 
 	export let data: PageData;
 	const { workouts } = data;
 </script>
 
 <div class="page-container">
-	<h3 class="subheading oswald-header">
-		QUICK START WORKOUTS
-	</h3>
+	<h2 class="subheading oswald-header">QUICK START WORKOUTS</h2>
 	<ul class="decks-list" id="decks-list">
-	{#each workouts as workout (workout.name)}
-		<li class="decks-listitem">
-			<DeckWidget
-				deckName={workout.name}
-				description={workout.description}
-				workoutSuitExercises={workout.suitExercises}
-			/>
-		</li>
-	{/each}
+		{#each workouts as workout (workout.name)}
+			<li class="decks-listitem">
+				<DeckWidget
+					deckName={workout.name}
+					description={workout.description}
+					workoutSuitExercises={workout.suitExercises}
+				/>
+			</li>
+		{/each}
 	</ul>
 </div>
 
@@ -33,10 +31,10 @@
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 
-    overflow-x: hidden;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
 	.subheading {
 		text-align: center;
@@ -52,4 +50,3 @@
 		list-style: none;
 	}
 </style>
-

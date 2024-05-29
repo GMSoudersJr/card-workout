@@ -1,17 +1,17 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: 100vw;
-  grid-template-rows: 100vh;
-  overflow: hidden;
+	display: grid;
+	justify-content: center;
+	justify-items: center;
+	grid-template-columns: 100vw;
+	grid-template-rows: 100vh;
+	overflow: hidden;
 }
 /*
  * <uniquifier>: Use a uniquifier for the class name
@@ -19,22 +19,22 @@ body {
  */
 
 .noto-emoji-font {
-  font-family: "Noto Emoji", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Noto Emoji', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .oswald-header {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Oswald', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .source-sans-3-text {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Source Sans 3', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }

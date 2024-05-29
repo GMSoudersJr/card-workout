@@ -3,23 +3,13 @@ import { EExerciseNames } from '../src/enums/exerciseNames';
 import { ESuit } from '../src/enums/suit';
 import { getLocalStorageWorkouts } from './helperFunctions/localStorage';
 
-const [
-	exercise1,
-	exercise2,
-	exercise3,
-	exercise4,
-] = Object.keys(EExerciseNames);
+const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
 
-const [
-	clubs,
-	diamonds,
-	hearts,
-	spades,
-] = Object.keys(ESuit);
+const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
 
 test.describe('persist workouts to local storage', () => {
 	test.beforeEach(async ({ page }) => {
-	test.setTimeout(51 * 1000);
+		test.setTimeout(51 * 1000);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('link', { name: 'Exercises' }).click();
@@ -41,19 +31,20 @@ test.describe('persist workouts to local storage', () => {
 		// click through cards
 		await page.getByRole('button', { name: 'START' }).click();
 		await page.waitForLoadState('domcontentloaded');
-			await page.locator('.playing-card').click();
-			let discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard =
-				page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
-			while (await discardedCardsListItem.count() < 52) {
-				await expect(currentCard).toHaveCount(1).then(async () => {
+		await page.locator('.playing-card').click();
+		const discardedCardsListItem = page.locator('.discarded-cards-listitem');
+		const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+		while ((await discardedCardsListItem.count()) < 52) {
+			await expect(currentCard)
+				.toHaveCount(1)
+				.then(async () => {
 					await currentCard.click();
-				}).catch(( error ) => {
+				})
+				.catch((error) => {
 					console.log('there was an error', error);
 				});
-			}
+		}
 		await page.waitForLoadState('domcontentloaded');
-
 	});
 
 	test('expect activities button visible', async ({ page }) => {
@@ -66,6 +57,4 @@ test.describe('persist workouts to local storage', () => {
 		expect(localStorageWorkouts.length).toBeGreaterThan(0);
 		expect(localStorageWorkouts[0].exercises).toHaveLength(4);
 	});
-
 });
-

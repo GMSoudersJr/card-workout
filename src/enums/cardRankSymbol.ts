@@ -11,5 +11,5 @@ export enum ECardRankSymbol {
 	JACK = 'J',
 	QUEEN = 'Q',
 	KING = 'K',
-	ACE = 'A',
-};
+	ACE = 'A'
+}
