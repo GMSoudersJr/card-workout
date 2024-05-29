@@ -16,7 +16,7 @@ test.describe('decks page elements', () => {
 
 	test('expect page subheading', async ({ page }) => {
 		await expect(
-			page.getByRole('heading', { name: 'quick start workouts', level: 3 })
+			page.getByRole('heading', { name: 'quick start workouts', level: 2 })
 		).toBeVisible();
 	});
 

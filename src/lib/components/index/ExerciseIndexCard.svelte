@@ -11,9 +11,9 @@
 
 <div class="index-card">
 	<div class="exercise-name-demo-link">
-		{#if exercise.demos}
-			{#each exercise.demos as demo (demo)}
-				{#if demo === ''}
+		{#if exercise.embeds}
+			{#each exercise.embeds as embed (embed)}
+				{#if embed === ''}
 					<h1 class="oswald-header header">
 						{exerciseName}
 					</h1>
@@ -60,8 +60,5 @@
 	.emoji {
 		font-size: 1rem;
 		color: #000080;
-	}
-	a {
-		text-decoration: none;
 	}
 </style>
