@@ -19,7 +19,8 @@
 		if (exercise.exercise?.embeds !== undefined && exercise.exercise.name !== undefined) {
 			return {
 				name: convertTypeValueToEnumValue(exercise.exercise.name, EExerciseNames),
-				pageLink: `index/${exercise.exercise.name}`
+				href: `index/${exercise.exercise.name.toLowerCase()}`,
+				hasEmbed: exercise.exercise.embeds[0] !== ''
 			};
 		}
 	});
@@ -54,9 +55,16 @@
 			<ul>
 				{#each exerciseData as exercise, i (i)}
 					<li class="exercise-name list-item oswald-header">
-						<a href={exercise?.pageLink} class="exercise-name-demo-link">
+						{#if exercise?.hasEmbed}
+						<a href={exercise?.href} class="exercise-name-demo-link">
 							{exercise?.name.toUpperCase()}
 						</a>
+						{:else}
+						<a href={exercise?.href} class="exercise-name-no-demo-link">
+							{exercise?.name.toUpperCase()}
+						</a>
+
+						{/if}
 					</li>
 				{/each}
 			</ul>
@@ -101,7 +109,11 @@
 		color: #259259;
 	}
 	.exercise-name-demo-link {
-		text-decoration: none;
 		color: #000080;
+	}
+	.exercise-name-no-demo-link {
+		color: #000080;
+		text-decoration: none;
+		pointer-events: none;
 	}
 </style>
