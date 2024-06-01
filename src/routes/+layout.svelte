@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ViewTransition from './navigation.svelte';
+	import { page } from '$app/stores';
 	import { cardEmoji, newEmoji, rocketEmoji } from '$lib/emojis';
 	import toast, { Toaster } from 'svelte-french-toast';
 	import GetAppToast from '$lib/components/GetAppToast.svelte';
@@ -113,8 +114,16 @@
 			toast.remove();
 		}
 	}
+
+
 </script>
 
+<svelte:head>
+	<title>
+		{$page.data.title}
+	</title>
+	<meta name="description" content={`${$page.data.description}`}>
+</svelte:head>
 <svelte:window on:click={handleWindowClick} on:beforeinstallprompt={handleBeforeInstallPrompt} />
 <Toaster />
 <ViewTransition />
