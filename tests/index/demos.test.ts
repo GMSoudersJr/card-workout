@@ -15,10 +15,16 @@ test.describe('exercise name navigation', () => {
 			const exerciseName = EExerciseNames[exercise.name].toUpperCase();
 			const hasEmbeddedVideoLink = exercise.embeds![0] !== '';
 
-			if ( hasEmbeddedVideoLink ) {
+			if (hasEmbeddedVideoLink) {
 				test(`expect ${exerciseName} embedded video`, async ({ page }) => {
-					const exerciseIndexCardHeading = page.getByRole('heading', {name: exerciseName, exact: true, level: 1});
+					const exerciseIndexCardHeading = page.getByRole('heading', {
+						name: exerciseName,
+						exact: true,
+						level: 1
+					});
 					const exInnerHtml = await exerciseIndexCardHeading.innerHTML();
+
+					// Because a tag will be the innerHTML.
 					expect(exInnerHtml).not.toEqual(exerciseName);
 					const demoLink = exerciseIndexCardHeading.getByRole('link');
 
@@ -44,17 +50,17 @@ test.describe('exercise name navigation', () => {
 					await expect(playButton).toBeVisible();
 					await expect(playButton).toBeEnabled();
 				});
-
 			} else {
 				test(`expect ${exerciseName} unclickable`, async ({ page }) => {
-					const exerciseIndexCardHeading = page.getByRole('heading', {name: exerciseName, exact: true, level: 1});
+					const exerciseIndexCardHeading = page.getByRole('heading', {
+						name: exerciseName,
+						exact: true,
+						level: 1
+					});
 					const exInnerHtml = await exerciseIndexCardHeading.innerHTML();
 					expect(exInnerHtml).toEqual(exerciseName);
 				});
-
-
 			}
-
 		}
 	});
 });

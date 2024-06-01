@@ -56,14 +56,13 @@
 				{#each exerciseData as exercise, i (i)}
 					<li class="exercise-name list-item oswald-header">
 						{#if exercise?.hasEmbed}
-						<a href={exercise?.href} class="exercise-name-demo-link">
-							{exercise?.name.toUpperCase()}
-						</a>
+							<a href={exercise?.href} class="exercise-name-demo-link">
+								{exercise?.name.toUpperCase()}
+							</a>
 						{:else}
-						<a href={exercise?.href} class="exercise-name-no-demo-link">
-							{exercise?.name.toUpperCase()}
-						</a>
-
+							<a href={exercise?.href} class="exercise-name-no-demo-link">
+								{exercise?.name.toUpperCase()}
+							</a>
 						{/if}
 					</li>
 				{/each}

@@ -50,8 +50,8 @@
 
 	<div class="information-container">
 		<div class="split-row">
-			<ListWidget heading="Positions" unorderedList={exercisePositions}/>
-			<ListWidget heading="Variations" unorderedList={exerciseVariations}/>
+			<ListWidget heading="Positions" unorderedList={exercisePositions} />
+			<ListWidget heading="Variations" unorderedList={exerciseVariations} />
 		</div>
 	</div>
 </div>

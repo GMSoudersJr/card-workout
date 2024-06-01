@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import type {getAllContexts} from 'svelte';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -26,7 +25,7 @@ test.describe('parts', () => {
 	test('expect 4 exercises', async ({ page }) => {
 		const firstWorkoutDeck = page.locator('.decks-listitem').first();
 		const exercisesLinks = firstWorkoutDeck.locator('.list-item');
-		await expect(exercisesLinks).toHaveCount(4)
+		await expect(exercisesLinks).toHaveCount(4);
 	});
 
 	test('expect description', async ({ page }) => {
