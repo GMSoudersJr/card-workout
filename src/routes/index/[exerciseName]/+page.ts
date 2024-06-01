@@ -11,7 +11,6 @@ export const load: PageLoad = ({ params }) => {
 	return {
 		exercise,
 		title: `${exerciseName} | Index | SUIT YOURSELF`,
-		description: `Wondering how to do "${exerciseName.toLowerCase()}"? This page
-			provides body position, variations, and a YouTube video as well.`
+		description: `Wondering how to do "${exerciseName.toLowerCase()}"? This page provides body position, variations, and a YouTube video as well.`
 	};
 };
