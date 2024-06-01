@@ -14,15 +14,13 @@
 		{#if exercise.embeds}
 			{#each exercise.embeds as embed (embed)}
 				{#if embed === ''}
-					<h1 class="oswald-header header">
-						{exerciseName}
-					</h1>
+					<h1 class="oswald-header header">{exerciseName}</h1>
 				{:else}
-					<a href={`/index/${hrefExerciseName}`}>
-						<h1 class="oswald-header header">
+					<h1 class="oswald-header header">
+						<a href={`/index/${hrefExerciseName}`}>
 							{exerciseName}
-						</h1>
-					</a>
+						</a>
+					</h1>
 				{/if}
 			{/each}
 		{/if}

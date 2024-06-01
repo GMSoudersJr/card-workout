@@ -9,34 +9,58 @@ test.beforeEach(async ({ page }) => {
 	await page.waitForLoadState('domcontentloaded');
 });
 
-test.describe('demo page navigation', () => {
+test.describe('exercise name navigation', () => {
 	exercises.forEach((exercise) => {
 		if (exercise.name !== undefined) {
 			const exerciseName = EExerciseNames[exercise.name].toUpperCase();
+			const hasEmbeddedVideoLink = exercise.embeds![0] !== '';
 
-			test(`expect ${exerciseName} embedded video`, async ({ page }) => {
-				const demoLink = page.getByRole('link', { name: exerciseName, exact: true });
+			if (hasEmbeddedVideoLink) {
+				test(`expect ${exerciseName} embedded video`, async ({ page }) => {
+					const exerciseIndexCardHeading = page.getByRole('heading', {
+						name: exerciseName,
+						exact: true,
+						level: 1
+					});
+					const exInnerHtml = await exerciseIndexCardHeading.innerHTML();
 
-				await demoLink.click();
-				await page.waitForLoadState('domcontentloaded');
+					// Because a tag will be the innerHTML.
+					expect(exInnerHtml).not.toEqual(exerciseName);
+					const demoLink = exerciseIndexCardHeading.getByRole('link');
 
-				await expect(
-					page.getByRole('heading', { name: `${exerciseName}`, level: 2 })
-				).toBeVisible();
+					await expect(demoLink).toBeVisible();
+					await expect(demoLink).toBeEnabled();
+					await demoLink.click();
+					await page.waitForLoadState('domcontentloaded');
 
-				const embeddedVideoFrame = page.frameLocator(
-					`#${exercise.name!.toLowerCase()}-embedded-video`
-				);
-				expect(embeddedVideoFrame).toBeTruthy();
+					await expect(
+						page.getByRole('heading', { name: `${exerciseName}`, exact: true, level: 2 })
+					).toBeVisible();
 
-				const youTubePlayer = embeddedVideoFrame.locator('#player');
-				const channelTitle = youTubePlayer.locator('.ytp-title-channel');
-				await expect(channelTitle).toBeVisible();
+					const embeddedVideoFrame = page.frameLocator(
+						`#${exercise.name!.toLowerCase()}-embedded-video`
+					);
+					expect(embeddedVideoFrame).toBeTruthy();
 
-				const playButton = youTubePlayer.getByLabel('Play', { exact: true });
-				await expect(playButton).toBeVisible();
-				await expect(playButton).toBeEnabled();
-			});
+					const youTubePlayer = embeddedVideoFrame.locator('#player');
+					const channelTitle = youTubePlayer.locator('.ytp-title-channel');
+					await expect(channelTitle).toBeVisible();
+
+					const playButton = youTubePlayer.getByLabel('Play', { exact: true });
+					await expect(playButton).toBeVisible();
+					await expect(playButton).toBeEnabled();
+				});
+			} else {
+				test(`expect ${exerciseName} unclickable`, async ({ page }) => {
+					const exerciseIndexCardHeading = page.getByRole('heading', {
+						name: exerciseName,
+						exact: true,
+						level: 1
+					});
+					const exInnerHtml = await exerciseIndexCardHeading.innerHTML();
+					expect(exInnerHtml).toEqual(exerciseName);
+				});
+			}
 		}
 	});
 });

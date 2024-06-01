@@ -242,5 +242,5 @@ export const workouts: Workout[] = [
 				completedReps: 0
 			}
 		]
-	},
+	}
 ];

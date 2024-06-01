@@ -23,8 +23,8 @@ test.describe('parts', () => {
 	});
 
 	test('expect 4 exercises', async ({ page }) => {
-		const firstWorkoutListitem = page.locator('.decks-listitem').first();
-		const exercisesLinks = firstWorkoutListitem.locator('.exercise-name-demo-link');
+		const firstWorkoutDeck = page.locator('.decks-listitem').first();
+		const exercisesLinks = firstWorkoutDeck.locator('.list-item');
 		await expect(exercisesLinks).toHaveCount(4);
 	});
 
