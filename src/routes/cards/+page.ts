@@ -4,6 +4,7 @@ import { cards } from '$lib/strings/forSeo';
 export const load: PageLoad = () => {
 	return {
 		title: cards.title,
-		description: cards.description
+		description: cards.description,
+		metaImageUrl: cards.metaImageUrl
 	};
 };

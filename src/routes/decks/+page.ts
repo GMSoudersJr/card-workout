@@ -6,6 +6,7 @@ export const load: PageLoad = () => {
 	return {
 		workouts,
 		title: decks.title,
-		description: decks.description
+		description: decks.description,
+		metaImageUrl: decks.metaImageUrl
 	};
 };
