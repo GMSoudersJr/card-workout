@@ -6,6 +6,7 @@ export const load: PageLoad = () => {
 	return {
 		exercises,
 		title: index.title,
-		description: index.description
+		description: index.description,
+		metaImageUrl: index.metaImageUrl
 	};
 };

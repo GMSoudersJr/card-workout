@@ -4,6 +4,7 @@ import { homepage } from '$lib/strings/forSeo';
 export const load: PageLoad = () => {
 	return {
 		title: homepage.title,
-		description: homepage.description
+		description: homepage.description,
+		metaImageUrl: homepage.metaImageUrl
 	};
 };
