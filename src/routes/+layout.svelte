@@ -131,6 +131,9 @@
 	<meta property="og:description" content={`${$page.data.description}`} />
 	<meta property="og:site_name" content="SUIT YOURSELF" />
 	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:title" content={`${$page.data.title}`}>
+	<meta property="twitter:description" content={`${$page.data.description}`}>
 	<meta
 		property="twitter:image"
 		content="https://lh3.googleusercontent.com/pw/AP1GczPHyrnVVzMFUQXV0y0EkGHwHm0olxLMYVTrL46nzB0U4DLAn4GCgwtW7BQ4l1Bhl5PqJbAQsG1t9pO3AvJSjKbIw0J9uaBPMAnGS5nVNCTVjXJ2wjy6_f718YCQOhzSBRB2NOjFlwG7v1ekgfrBp1zhiA=w1200-h675-s-no-gm?authuser=0"
