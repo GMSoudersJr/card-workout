@@ -1,10 +1,11 @@
 import type { PageLoad } from './$types';
 import { exercises } from '$lib/exercisesDB';
+import { index } from '$lib/strings/forSeo';
 
 export const load: PageLoad = () => {
 	return {
 		exercises,
-		title: 'Index | SUIT YOURSELF',
-		description: `Want to know more about the exercises in SUIT YOURSELF? This is the list with a possible link to a demo.`
+		title: index.title,
+		description: index.description
 	};
 };
