@@ -4,7 +4,7 @@ import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnu
 import { EExerciseNames } from '../../../enums/exerciseNames';
 import { metaHomepageImageUrl } from '$lib/strings/forSeo';
 
-export const load: PageLoad = ({ params }) => {
+export const load: PageLoad = async ({ params }) => {
 	const exercise = exercises.filter(
 		(exercise) => exercise.name === params.exerciseName.toUpperCase()
 	)[0];
