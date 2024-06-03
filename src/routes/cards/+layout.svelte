@@ -1,16 +1,12 @@
 <script lang="ts">
 	import CardsInfoWidget from '$lib/components/cards/CardsInfoWidget.svelte';
 	import DiscardedCardsWidget from '$lib/components/cards/DiscardedCardsWidget.svelte';
+	import NavAndHeading from '$lib/components/NavAndHeading.svelte';
+	import { exerciseEmoji } from '$lib/emojis';
 </script>
 
 <main>
-	<div class="nav-and-heading">
-		<a href="/" class="home-link noto-emoji-font emoji-nav-link"> 🏠 </a>
-		<h1 class="heading oswald-header">SUIT YOURSELF</h1>
-		<a href="/exercises" id="exercises-link" class="emoji-nav-link noto-emoji-font exercise-link">
-			🤸
-		</a>
-	</div>
+	<NavAndHeading heading="suit yourself" navEmoji={exerciseEmoji} altHref="/exercises" />
 	<aside class="discarded-cards-aside">
 		<DiscardedCardsWidget />
 	</aside>
@@ -28,31 +24,6 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: min-content 181.8px 1fr min-content;
 		padding: 0.5rem;
-	}
-	.nav-and-heading {
-		display: grid;
-		grid-template-columns: 1fr 4fr 1fr;
-		align-items: center;
-		justify-items: center;
-		grid-template-areas: 'homeLink heading exerciseLink';
-	}
-	.home-link {
-		grid-area: homeLink;
-		text-decoration: none;
-		color: #000080;
-	}
-	.emoji-nav-link {
-		font-size: 1.5rem;
-	}
-	.exercise-link {
-		grid-area: exerciseLink;
-		text-decoration: none;
-		color: #000080;
-	}
-	.heading {
-		grid-area: heading;
-		place-self: center;
-		text-align: center;
 	}
 	.discarded-cards-aside {
 		width: 100%;
