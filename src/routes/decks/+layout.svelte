@@ -11,7 +11,8 @@
 <style>
 	main {
 		height: 100%;
-		width: 100%;
+		max-width: 50rem;
+		margin: auto;
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: min-content 1fr;
