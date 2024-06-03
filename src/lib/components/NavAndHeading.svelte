@@ -19,7 +19,7 @@
 <style>
 	.nav-and-heading {
 		width: 100%;
-		max-width: 800px;
+		max-width: 50rem;
 		justify-self: center;
 		display: grid;
 		grid-template-columns: 1fr 4fr 1fr;

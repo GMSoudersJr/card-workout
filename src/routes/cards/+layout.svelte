@@ -19,7 +19,7 @@
 <style>
 	main {
 		height: 100%;
-		max-width: 88.25rem;
+		max-width: 50rem;
 		margin: auto;
 		display: grid;
 		grid-template-columns: 1fr;
