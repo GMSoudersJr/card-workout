@@ -2,7 +2,7 @@ export const metaHomepageImageUrl =
 	'https://lh3.googleusercontent.com/pw/AP1GczPHyrnVVzMFUQXV0y0EkGHwHm0olxLMYVTrL46nzB0U4DLAn4GCgwtW7BQ4l1Bhl5PqJbAQsG1t9pO3AvJSjKbIw0J9uaBPMAnGS5nVNCTVjXJ2wjy6_f718YCQOhzSBRB2NOjFlwG7v1ekgfrBp1zhiA=w1200-h675-s-no-gm?authuser=0';
 
 export const metaCardsImageUrl =
-	'https://lh3.googleusercontent.com/pw/AP1GczPD1_A5zQQDEwxN8Dvnb8tPLdYrfKteg3U80m3p0gLL3M6cnneloJnm8A_V9D9UcCIW0K3deyW59V1vV98VgmjtrypXB_VdeNI2O08SE-yekUOxuf9dr5wa4Eepav73C9dXbORcJ8_O8aKBt2gReykKvw=w453-h973-s-no-gm?authuser=0'
+	'https://lh3.googleusercontent.com/pw/AP1GczM2ERBDyEQcUJ2BJhFZkuqjZ-gjW6U0waG3fbrmfc0gX4bz8wev2FbVTUONJPF1zTrEPi80TtSWxoGG-kD_GECWIrHuHknY7fnvAtBwr5DQp4dzBaIPotEBZk69zI2mUX8WXw7YHe7vF_SN33rh-73G8w=w960-h486-s-no-gm?authuser=0';
 
 export const homepage = {
 	title: 'SUIT YOURSELF',
