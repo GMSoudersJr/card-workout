@@ -24,7 +24,7 @@ test.describe('one saved workout', () => {
 	});
 
 	test('expect one visible workout card', async ({ page }) => {
-		const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+		const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 		await expect(heading).toBeVisible();
 		const workoutCards = await page.locator('.workout-card').all();
 		await page.waitForLoadState('domcontentloaded');
@@ -33,7 +33,7 @@ test.describe('one saved workout', () => {
 
 	test.describe('delete last workout', () => {
 		test.beforeEach(async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			await page.waitForLoadState('domcontentloaded');
@@ -89,12 +89,12 @@ test.describe('ACTIVITIES page', () => {
 	});
 
 	test('expect correct heading', async ({ page }) => {
-		const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+		const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 		await expect(heading).toBeVisible();
 	});
 
 	test('expect visible workout cards', async ({ page }) => {
-		const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+		const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 		await expect(heading).toBeVisible();
 		await page.waitForSelector('.workout-card');
 		const workoutCards = await page.locator('.workout-card').all();
@@ -134,7 +134,7 @@ test.describe('ACTIVITIES page', () => {
 
 	test.describe('workout card elements', () => {
 		test('expect date element', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			expect(workoutCards.length).toBeGreaterThan(0);
@@ -143,7 +143,7 @@ test.describe('ACTIVITIES page', () => {
 		});
 
 		test('expect heading element', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			expect(workoutCards.length).toBeGreaterThan(0);
@@ -152,7 +152,7 @@ test.describe('ACTIVITIES page', () => {
 		});
 
 		test('expect repeat button', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			expect(workoutCards.length).toBeGreaterThan(0);
@@ -163,7 +163,7 @@ test.describe('ACTIVITIES page', () => {
 		});
 
 		test('expect delete button', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			expect(workoutCards.length).toBeGreaterThan(0);
@@ -174,7 +174,7 @@ test.describe('ACTIVITIES page', () => {
 		});
 
 		test('expect 4 exercises', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+			const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 			await expect(heading).toBeVisible();
 			const workoutCards = await page.locator('.workout-card').all();
 			expect(workoutCards.length).toBeGreaterThan(0);
@@ -188,7 +188,7 @@ test.describe('ACTIVITIES page', () => {
 		test.describe('buttons', () => {
 			test.describe('press repeat', () => {
 				test('expect correct navigation', async ({ page }) => {
-					const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+					const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 					await expect(heading).toBeVisible();
 					const workoutCards = await page.locator('.workout-card').all();
 					expect(workoutCards.length).toBeGreaterThan(0);
@@ -202,7 +202,7 @@ test.describe('ACTIVITIES page', () => {
 				});
 
 				test('expect correct exercises', async ({ page }) => {
-					const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+					const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 					await expect(heading).toBeVisible();
 					const workoutCards = await page.locator('.workout-card').all();
 					expect(workoutCards.length).toBeGreaterThan(0);
@@ -222,7 +222,7 @@ test.describe('ACTIVITIES page', () => {
 				});
 
 				test('expect exercise name and reps on playing card', async ({ page }) => {
-					const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+					const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 					await expect(heading).toBeVisible();
 					const workoutCards = await page.locator('.workout-card').all();
 					expect(workoutCards.length).toBeGreaterThan(0);
@@ -243,7 +243,7 @@ test.describe('ACTIVITIES page', () => {
 
 			test.describe('press delete', () => {
 				test('expect dialog', async ({ page }) => {
-					const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+					const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 					await expect(heading).toBeVisible();
 					const workoutCards = await page.locator('.workout-card').all();
 					expect(workoutCards.length).toBeGreaterThan(0);
@@ -257,7 +257,7 @@ test.describe('ACTIVITIES page', () => {
 
 				test.describe('press cancel', () => {
 					test('expect return to page', async ({ page }) => {
-						const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+						const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 						await expect(heading).toBeVisible();
 						const workoutCards = await page.locator('.workout-card').all();
 						expect(workoutCards.length).toBeGreaterThan(0);
@@ -269,13 +269,13 @@ test.describe('ACTIVITIES page', () => {
 						expect(deleteDialog).toBeVisible();
 						await deleteDialog.getByRole('button', { name: 'Cancel' }).click();
 						await page.waitForLoadState('domcontentloaded');
-						await expect(page.getByRole('heading', { name: 'Recent Activities' })).toBeVisible();
+						await expect(page.getByRole('heading', { name: 'ACTIVITIES' })).toBeVisible();
 					});
 				});
 
 				test.describe('press confirm', () => {
 					test('expect workout deletion', async ({ page }) => {
-						const heading = page.getByRole('heading', { name: 'Recent Activities', level: 1 });
+						const heading = page.getByRole('heading', { name: 'ACTIVITIES', level: 1 });
 						await expect(heading).toBeVisible();
 						const workoutCards = page.locator('.workout-card');
 						const originalWorkoutCardsCount = await workoutCards.count();
