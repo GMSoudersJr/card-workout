@@ -1,1 +1,0 @@
-const s="🃏",a="🏠",o="🤸",t="⬆",n="⬇",i="⬅",c="➡",m="🧾",j="📇",E="🔁",e="🗑",d="🚀",r="🆕",h="🤔",g="🦶",k="🦵",p="💪",w="🫳",x=o,b="🧘",f="🙂‍↔️",l="🙂‍↕️",u="🦸",y="🤰",q="🎴";export{p as a,x as b,y as c,f as d,w as e,g as f,o as g,l as h,j as i,s as j,a as k,k as l,q as m,c as n,n as o,i as p,E as q,m as r,u as s,h as t,t as u,r as v,e as w,d as x,b as y};
