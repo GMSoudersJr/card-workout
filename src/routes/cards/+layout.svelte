@@ -6,7 +6,7 @@
 </script>
 
 <main>
-	<NavAndHeading heading="suit yourself" navEmoji={exerciseEmoji} altHref="/exercises" />
+	<NavAndHeading heading="suit yourself" navEmoji={exerciseEmoji} altHref="/setup" />
 	<aside class="discarded-cards-aside">
 		<DiscardedCardsWidget />
 	</aside>

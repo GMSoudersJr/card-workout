@@ -4,7 +4,7 @@
 </script>
 
 <main>
-	<NavAndHeading heading="decks" navEmoji={cardIndexEmoji} altHref="/index" />
+	<NavAndHeading heading="decks" navEmoji={cardIndexEmoji} altHref="/library" />
 	<slot />
 </main>
 

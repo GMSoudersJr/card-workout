@@ -1,0 +1,7 @@
+{
+	"redirects": [
+		{ "source": "/exercises", "destination": "/setup", "permanent": true },
+		{ "source": "/index", "destination": "/library", "permanent": true },
+		{ "source": "/index/:exerciseName*", "destination": "/library/:exerciseName*", "permanent": true }
+	]
+}
