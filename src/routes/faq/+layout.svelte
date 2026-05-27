@@ -4,7 +4,7 @@
 </script>
 
 <main>
-	<NavAndHeading heading="faq" navEmoji={exerciseEmoji} altHref="/exercises" />
+	<NavAndHeading heading="faq" navEmoji={exerciseEmoji} altHref="/setup" />
 	<slot />
 </main>
 
