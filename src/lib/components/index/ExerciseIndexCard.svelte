@@ -17,7 +17,7 @@
 					<h1 class="oswald-header header">{exerciseName}</h1>
 				{:else}
 					<h1 class="oswald-header header">
-						<a href={`/index/${hrefExerciseName}`}>
+						<a href={`/library/${hrefExerciseName}`}>
 							{exerciseName}
 						</a>
 					</h1>

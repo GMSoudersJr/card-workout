@@ -1,11 +1,14 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseCategories } from '../../src/enums/exerciseCategories';
 import { EExerciseNames } from '../../src/enums/exerciseNames';
+import { links } from '../../src/lib/strings/forHomepage';
+
+const libraryLinkName = links.index.toUpperCase();
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'INDEX' }).click();
+	await page.getByRole('link', { name: libraryLinkName }).click();
 	await page.waitForLoadState('domcontentloaded');
 	const summary = page.locator('summary');
 	await summary.click();
@@ -39,7 +42,7 @@ test.describe('checkboxes', () => {
 			const yogaIndexExerciseCardsBeforeNavigation = await page.getByRole('list').allInnerTexts();
 			await page.goBack({ waitUntil: 'domcontentloaded' });
 
-			await page.getByRole('link', { name: 'INDEX' }).click();
+			await page.getByRole('link', { name: libraryLinkName }).click();
 			await page.waitForLoadState('domcontentloaded');
 
 			const yogaCheckboxAfterNavigation = page.getByLabel(EExerciseCategories.YOGA);

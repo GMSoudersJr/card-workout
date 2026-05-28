@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { ESuit } from '../src/enums/suit';
+import { links } from '../src/lib/strings/forHomepage';
 
 const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
 const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
@@ -8,7 +9,7 @@ const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Exercises' }).click();
+	await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
 	await page.waitForLoadState('domcontentloaded');
 
 	await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);

@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ESuit } from '../src/enums/suit';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { EStopwatchButtonString } from '../src/enums/stopwatchButtonString';
+import { links } from '../src/lib/strings/forHomepage';
 
 const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
 
@@ -11,7 +12,7 @@ test.describe('stopwatch', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', { name: 'EXERCISES' }).click();
+		await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
 		await page.waitForLoadState('domcontentloaded');
 
 		await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);
