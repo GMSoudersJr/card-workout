@@ -1,8 +1,12 @@
 <script lang="ts">
-	$: grayscale = 100 - (count * 100) / 13;
-	export let icon: string;
-	export let count: number;
-	export let color: string;
+	interface Props {
+		icon: string;
+		count: number;
+		color: string;
+	}
+
+	let { icon, count, color }: Props = $props();
+	let grayscale = $derived(100 - (count * 100) / 13);
 </script>
 
 <div class="suit-info-box">

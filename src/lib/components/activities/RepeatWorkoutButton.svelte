@@ -33,12 +33,15 @@
 		await goto('/cards');
 	}
 
-	// Possibly needed after create workout names
-	export let thisWorkoutName: string | undefined;
-	export let exercisesToRepeat: (TExerciseName | undefined)[];
+	interface Props {
+		thisWorkoutName: string | undefined;
+		exercisesToRepeat: (TExerciseName | undefined)[];
+	}
+
+	let { thisWorkoutName, exercisesToRepeat }: Props = $props();
 </script>
 
-<button class="workout-repeat-button noto-emoji-font" on:click={handleClick}>
+<button class="workout-repeat-button noto-emoji-font" onclick={handleClick}>
 	{repeatEmoji}
 </button>
 

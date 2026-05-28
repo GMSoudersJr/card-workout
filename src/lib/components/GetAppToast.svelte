@@ -2,7 +2,11 @@
 	import toast_, { type Toast } from 'svelte-french-toast';
 	import { instantAccess, useOffline, getTheApp } from '$lib/strings/forToasts';
 
-	export let toast: Toast;
+	interface Props {
+		toast: Toast;
+	}
+
+	let { toast }: Props = $props();
 
 	function handleClick() {
 		toast_.dismiss(toast.id);
@@ -17,7 +21,7 @@
 		{useOffline}
 	</p>
 	<br />
-	<button on:click={handleClick} class="oswald-header" value="installSuitYourself">
+	<button onclick={handleClick} class="oswald-header" value="installSuitYourself">
 		{getTheApp}
 	</button>
 </span>

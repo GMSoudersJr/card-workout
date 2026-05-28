@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { homeEmoji } from '$lib/emojis';
 
-	export let heading: string;
-	export let navEmoji: string;
-	export let altHref: string;
+	interface Props {
+		heading: string;
+		navEmoji: string;
+		altHref: string;
+	}
+
+	let { heading, navEmoji, altHref }: Props = $props();
 </script>
 
 <div class="nav-and-heading">

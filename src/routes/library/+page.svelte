@@ -87,9 +87,13 @@
 		}
 	}
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const { exercises } = data;
-	let exerciseList = exercises;
+	let exerciseList = $state(exercises);
 </script>
 
 <div class="index-page-container">

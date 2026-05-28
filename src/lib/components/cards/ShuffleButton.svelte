@@ -10,7 +10,7 @@
 	}
 </script>
 
-<button class="oswald-header" on:click={handleShuffle} use:setFocus> SHUFFLE </button>
+<button class="oswald-header" onclick={handleShuffle} use:setFocus> SHUFFLE </button>
 
 <style>
 	button {

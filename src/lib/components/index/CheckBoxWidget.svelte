@@ -29,8 +29,13 @@
 
 		dispatch('checkboxStoreUpdated');
 	}
-	export let enumEntries: object;
-	export let heading: string;
+
+	interface Props {
+		enumEntries: object;
+		heading: string;
+	}
+
+	let { enumEntries, heading }: Props = $props();
 
 	let checkboxData = Object.entries(enumEntries);
 </script>
@@ -44,7 +49,7 @@
 				name={data[0]}
 				type="checkbox"
 				value={data[0]}
-				on:click={handleClick}
+				onclick={handleClick}
 			/>
 			<label for={`${heading}-${data[0]}`} class="source-sans-3-text checkbox-label">
 				{data[1]}

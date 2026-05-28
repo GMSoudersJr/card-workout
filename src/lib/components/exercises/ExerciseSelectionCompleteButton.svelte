@@ -24,7 +24,7 @@
 	let disabled = $suitExercises.some(repsHaveBeenCompleted);
 </script>
 
-<button on:click={handleClick} class="oswald-header" use:setFocus {disabled}>
+<button onclick={handleClick} class="oswald-header" use:setFocus {disabled}>
 	{#if disabled}
 		YOU GOT THIS!
 	{:else}

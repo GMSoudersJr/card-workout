@@ -2,7 +2,11 @@
 	import type { PageData } from './$types';
 	import DeckWidget from '$lib/components/decks/DeckWidget.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const { workouts } = data;
 </script>
 

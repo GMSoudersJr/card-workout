@@ -6,15 +6,17 @@
 	import type { TCardRankSymbol } from '../../../types/cardRankSymbol';
 
 	let rankSymbols: TCardRankSymbol[] = Object.keys(ECardRankSymbol) as TCardRankSymbol[];
-	$: ranks = rankSymbols.map((rankSymbol) => {
-		const arrayOfCards = $theRemainingDeck.filter((card) => {
-			return card.rank == rankSymbol;
-		});
-		return {
-			symbol: convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol),
-			count: arrayOfCards.length
-		};
-	});
+	let ranks = $derived(
+		rankSymbols.map((rankSymbol) => {
+			const arrayOfCards = $theRemainingDeck.filter((card) => {
+				return card.rank == rankSymbol;
+			});
+			return {
+				symbol: convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol),
+				count: arrayOfCards.length
+			};
+		})
+	);
 </script>
 
 <ul class="rank-list">

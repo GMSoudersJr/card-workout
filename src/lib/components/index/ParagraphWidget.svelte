@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { lorem } from '$lib/strings/lorem';
 
-	export let heading: string;
-	export let listOfParagraphs: string[] = [lorem];
+	interface Props {
+		heading: string;
+		listOfParagraphs?: string[];
+	}
+
+	let { heading, listOfParagraphs = [lorem] }: Props = $props();
 </script>
 
 <section class="about-section">

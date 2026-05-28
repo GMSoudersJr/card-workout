@@ -18,7 +18,7 @@
 	}
 </script>
 
-<button on:click={handleClick} class="oswald-header" use:setFocus> RESET SELECTIONS </button>
+<button onclick={handleClick} class="oswald-header" use:setFocus> RESET SELECTIONS </button>
 
 <style>
 	button {

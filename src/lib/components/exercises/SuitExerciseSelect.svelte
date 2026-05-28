@@ -16,10 +16,14 @@
 		dispatch('exerciseSelected', { suit: suitName, exerciseName: selected });
 	}
 
-	export let suitExercise: TSuitExercise<TSuit>;
+	interface Props {
+		suitExercise: TSuitExercise<TSuit>;
+	}
+
+	let { suitExercise }: Props = $props();
 	let suitName = suitExercise.suit;
 	let icon = convertTypeValueToEnumValue(suitName, ESuitSymbolUnicode);
-	let selected: string | undefined = suitExercise.exercise?.name;
+	let selected: string | undefined = $state(suitExercise.exercise?.name);
 	let labelColor = convertTypeValueToEnumValue(suitName, ESuitColors);
 </script>
 
@@ -36,7 +40,7 @@
 		name="suit-exercise-selection"
 		id={`${suitName}-exercise-select`}
 		bind:value={selected}
-		on:change={handleChange}
+		onchange={handleChange}
 		class="source-sans-3-text"
 	>
 		<option value={undefined}>

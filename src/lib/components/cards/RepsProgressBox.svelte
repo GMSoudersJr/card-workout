@@ -3,9 +3,13 @@
 	import type { TExerciseName } from '../../../types/exerciseName';
 	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
-	export let reps: number;
-	export let exercise: TExerciseName | undefined;
-	$: exerciseName = convertTypeValueToEnumValue(exercise!, EExerciseNames);
+	interface Props {
+		reps: number;
+		exercise: TExerciseName | undefined;
+	}
+
+	let { reps, exercise }: Props = $props();
+	let exerciseName = $derived(convertTypeValueToEnumValue(exercise!, EExerciseNames));
 </script>
 
 {#if exercise}

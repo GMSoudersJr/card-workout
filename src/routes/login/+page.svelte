@@ -3,8 +3,12 @@
 	import type { PageData, ActionData } from './$types';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
-	// export let data: PageData;
-	export let form: ActionData;
+
+	interface Props {
+		form: ActionData;
+	}
+
+	let { form }: Props = $props();
 	let username: string;
 	function handleSubmit(event: Event) {
 		console.log(event);
@@ -48,7 +52,7 @@
 				id="login-input-submit"
 				class="input-submit oswald-header"
 				type="submit"
-				on:submit={handleSubmit}
+				onsubmit={handleSubmit}
 				value="SUBMIT"
 			/>
 		</form>

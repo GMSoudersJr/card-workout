@@ -15,10 +15,14 @@
 		deleteDialog.showModal();
 	}
 
-	export let workout: TSavedWorkout;
+	interface Props {
+		workout: TSavedWorkout;
+	}
+
+	let { workout }: Props = $props();
 </script>
 
-<button class="workout-delete-button noto-emoji-font" on:click={handleClick}>
+<button class="workout-delete-button noto-emoji-font" onclick={handleClick}>
 	{wasteBasketEmoji}
 </button>
 

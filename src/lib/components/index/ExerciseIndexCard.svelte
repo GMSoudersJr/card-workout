@@ -4,7 +4,11 @@
 	import type { TExercise } from '../../../types/exercise';
 	import type { TExerciseName } from '../../../types/exerciseName';
 
-	export let exercise: TExercise<TExerciseName>;
+	interface Props {
+		exercise: TExercise<TExerciseName>;
+	}
+
+	let { exercise }: Props = $props();
 	const exerciseName = convertTypeValueToEnumValue(exercise.name!, EExerciseNames).toUpperCase();
 	const hrefExerciseName = exercise.name?.toLowerCase();
 </script>

@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let heading: string;
-	export let listOfParagraphs: string[];
+	interface Props {
+		heading: string;
+		listOfParagraphs: string[];
+	}
+
+	let { heading, listOfParagraphs }: Props = $props();
 </script>
 
 <section class="about-section">

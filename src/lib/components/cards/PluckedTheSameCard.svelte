@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let nopeNotNowMessage: string;
+	interface Props {
+		nopeNotNowMessage: string;
+	}
+
+	let { nopeNotNowMessage }: Props = $props();
 </script>
 
 <p id="plucked-same-card-message" class="oswald-header">
