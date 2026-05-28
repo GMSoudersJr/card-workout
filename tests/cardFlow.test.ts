@@ -105,7 +105,7 @@ test.describe('user has clicked Start button', () => {
 		page
 	}) => {
 		await page.locator('.playing-card').click();
-		const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+		const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').first();
 		await expect(currentCard).toBeEnabled();
 		await expect(currentCard).toHaveCount(1);
 	});
@@ -115,33 +115,15 @@ test.describe('user has clicked Start button', () => {
 			test.setTimeout(60 * 1_000);
 			const firstCard = page.locator('.playing-card');
 			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
-			await expect(firstCardExerciseInfo)
-				.toBeHidden()
-				.then(async () => {
-					await firstCard.click();
-				})
-				.catch((error) => {
-					console.log(error);
-				});
+			await expect(firstCardExerciseInfo).toBeHidden();
+			await firstCard.click();
 			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').first();
 			while ((await discardedCardsListItem.count()) < 52) {
-				await expect(currentCard)
-					.toHaveCount(1)
-					.then(async () => {
-						const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
-						await expect(currentCardExerciseInfo)
-							.toBeHidden()
-							.then(async () => {
-								await currentCard.click();
-							})
-							.catch((error) => {
-								console.log(error);
-							});
-					})
-					.catch((error) => {
-						console.log(error);
-					});
+				await expect(currentCard).toHaveCount(1);
+				const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
+				await expect(currentCardExerciseInfo).toBeHidden();
+				await currentCard.click();
 			}
 		});
 
@@ -149,17 +131,11 @@ test.describe('user has clicked Start button', () => {
 			test.setTimeout(60 * 1_000);
 			await page.locator('.playing-card').click();
 			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').first();
 			while ((await discardedCardsListItem.count()) < 52) {
-				await expect(currentCard)
-					.toHaveCount(1)
-					.then(async () => {
-						await currentCard.click();
-						await page.waitForLoadState('domcontentloaded');
-					})
-					.catch((error) => {
-						console.log(error);
-					});
+				await expect(currentCard).toHaveCount(1);
+				await currentCard.click();
+				await page.waitForLoadState('domcontentloaded');
 			}
 			await expect(discardedCardsListItem).toHaveCount(52);
 			await expect(page.getByRole('button', { name: 'Shuffle' })).toBeVisible();

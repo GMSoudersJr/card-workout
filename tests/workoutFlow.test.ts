@@ -1,25 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
-import { ESuit } from '../src/enums/suit';
-import { links } from '../src/lib/strings/forHomepage';
-
-const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
-
-const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
+import { exercise1, exercise2, exercise3, exercise4, selectExercisesAndStart } from './helperFunctions/exercises';
 
 test.beforeEach(async ({ page }) => {
-	await page.goto('/');
-	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
-	await page.waitForLoadState('domcontentloaded');
-
-	await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);
-	await page.locator(`#${diamonds}-exercise-select`).selectOption(exercise2);
-	await page.locator(`#${hearts}-exercise-select`).selectOption(exercise3);
-	await page.locator(`#${spades}-exercise-select`).selectOption(exercise4);
-
-	const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-	await letsGoButton.click();
+	await selectExercisesAndStart(page);
 });
 
 test.describe('initial visibilities', () => {
@@ -109,33 +93,15 @@ test.describe('click start', () => {
 			await startButton.click();
 			const firstCard = page.locator('.playing-card');
 			const firstCardExerciseInfo = firstCard.locator('.card-exercise-info');
-			await expect(firstCardExerciseInfo)
-				.toBeVisible()
-				.then(async () => {
-					await firstCard.click();
-				})
-				.catch((error) => {
-					console.log(error);
-				});
+			await expect(firstCardExerciseInfo).toBeVisible();
+			await firstCard.click();
 			const discardedCardsListItem = page.locator('.discarded-cards-listitem');
-			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+			const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').first();
 			while ((await discardedCardsListItem.count()) < 52) {
-				await expect(currentCard)
-					.toHaveCount(1)
-					.then(async () => {
-						const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
-						await expect(currentCardExerciseInfo)
-							.toBeVisible()
-							.then(async () => {
-								await currentCard.click();
-							})
-							.catch((error) => {
-								console.log(error);
-							});
-					})
-					.catch((error) => {
-						console.log(error);
-					});
+				await expect(currentCard).toHaveCount(1);
+				const currentCardExerciseInfo = currentCard.locator('.card-exercise-info');
+				await expect(currentCardExerciseInfo).toBeVisible();
+				await currentCard.click();
 			}
 		});
 	});
