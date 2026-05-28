@@ -18,7 +18,7 @@ test.describe('hompage links are active and enabled', () => {
 		await expect(aboutLink).toBeEnabled();
 	});
 
-	test('Exercises', async ({ page }) => {
+	test('Setup', async ({ page }) => {
 		const exercisesLink = page.getByRole('link', { name: links.exercises.toUpperCase() });
 		await expect(exercisesLink).toBeVisible();
 		await expect(exercisesLink).toBeEnabled();

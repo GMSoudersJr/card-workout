@@ -2,6 +2,7 @@ import { exerciseEmoji, homeEmoji, repeatEmoji, wasteBasketEmoji } from '../src/
 import { expect, test } from '@playwright/test';
 import { setLocalStorageWorkouts } from './helperFunctions/localStorage';
 import { fakeWorkoutData } from './fakeWorkoutData';
+import { links } from '../src/lib/strings/forHomepage';
 
 const workoutsForLocalStorage = JSON.stringify(fakeWorkoutData);
 const singleWorkoutForLocalStorage = JSON.stringify([fakeWorkoutData[0]]);
@@ -59,7 +60,7 @@ test.describe('one saved workout', () => {
 
 		test('expect exercises to be reset', async ({ page }) => {
 			await expect(page.getByRole('heading', { name: 'SUIT YOURSELF' })).toBeVisible();
-			await page.getByRole('link', { name: 'EXERCISES' }).click();
+			await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
 			await page.waitForLoadState('domcontentloaded');
 			await expect(page.locator('.example-workout-section')).toBeVisible();
 		});
@@ -127,7 +128,7 @@ test.describe('ACTIVITIES page', () => {
 				const cardsLink = page.getByRole('link', { name: exerciseEmoji });
 				await cardsLink.click();
 				await page.waitForLoadState('domcontentloaded');
-				await expect(page.getByRole('heading', { name: 'EXERCISES', level: 1 })).toBeVisible();
+				await expect(page.getByRole('heading', { name: links.exercises.toUpperCase(), level: 1 })).toBeVisible();
 			});
 		});
 	});

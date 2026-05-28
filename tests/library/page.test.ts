@@ -1,16 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { exerciseEmoji, homeEmoji } from '../../src/lib/emojis';
+import { links } from '../../src/lib/strings/forHomepage';
+
+const libraryLinkName = links.index.toUpperCase();
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'INDEX' }).click();
+	await page.getByRole('link', { name: libraryLinkName }).click();
 	await page.waitForLoadState('domcontentloaded');
 });
 
-test.describe('Index page elements', () => {
+test.describe('Library page elements', () => {
 	test('expect correct heading', async ({ page }) => {
-		await expect(page.getByRole('heading', { name: 'INDEX', level: 1 })).toBeVisible();
+		await expect(page.getByRole('heading', { name: libraryLinkName, level: 1 })).toBeVisible();
 	});
 
 	test('expect search input', async ({ page }) => {

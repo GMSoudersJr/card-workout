@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { ESuit } from '../src/enums/suit';
 import { getLocalStorageWorkouts } from './helperFunctions/localStorage';
+import { links } from '../src/lib/strings/forHomepage';
 
 const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
 
@@ -12,7 +13,7 @@ test.describe('persist workouts to local storage', () => {
 		test.setTimeout(51 * 1000);
 		await page.goto('/');
 		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', { name: 'Exercises' }).click();
+		await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
 		await page.waitForLoadState('domcontentloaded');
 
 		const clubsSelect = page.locator(`#${clubs}-exercise-select`);

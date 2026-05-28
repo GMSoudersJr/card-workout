@@ -1,10 +1,11 @@
 import { expect, test } from '@playwright/test';
 import { EExerciseNames } from '../../src/enums/exerciseNames';
+import { links } from '../../src/lib/strings/forHomepage';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'INDEX' }).click();
+	await page.getByRole('link', { name: links.index.toUpperCase() }).click();
 	await page.waitForLoadState('domcontentloaded');
 });
 

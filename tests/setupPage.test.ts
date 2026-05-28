@@ -2,18 +2,20 @@ import { expect, test } from '@playwright/test';
 import { ESuit } from '../src/enums/suit';
 import { EExerciseNames } from '../src/enums/exerciseNames';
 import { homeEmoji, cardEmoji } from '../src/lib/emojis';
+import { links } from '../src/lib/strings/forHomepage';
 
 const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
 const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
+const setupLinkName = links.exercises.toUpperCase();
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('domcontentloaded');
-	await page.getByRole('link', { name: 'Exercises' }).click();
+	await page.getByRole('link', { name: setupLinkName }).click();
 });
 
 test('exercise page has expected h1', async ({ page }) => {
-	await expect(page.getByRole('heading', { name: 'Exercises', level: 1 })).toBeVisible();
+	await expect(page.getByRole('heading', { name: setupLinkName, level: 1 })).toBeVisible();
 });
 
 test.describe('exercise page has correct links', () => {
