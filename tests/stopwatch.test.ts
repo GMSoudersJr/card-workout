@@ -1,29 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { ESuit } from '../src/enums/suit';
-import { EExerciseNames } from '../src/enums/exerciseNames';
 import { EStopwatchButtonString } from '../src/enums/stopwatchButtonString';
-import { links } from '../src/lib/strings/forHomepage';
-
-const [clubs, diamonds, hearts, spades] = Object.keys(ESuit);
-
-const [exercise1, exercise2, exercise3, exercise4] = Object.keys(EExerciseNames);
+import { selectExercisesAndStart } from './helperFunctions/exercises';
 
 test.describe('stopwatch', () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto('/');
-		await page.waitForLoadState('domcontentloaded');
-		await page.getByRole('link', { name: links.exercises.toUpperCase() }).click();
-		await page.waitForLoadState('domcontentloaded');
-
-		await page.locator(`#${clubs}-exercise-select`).selectOption(exercise1);
-		await page.locator(`#${diamonds}-exercise-select`).selectOption(exercise2);
-		await page.locator(`#${hearts}-exercise-select`).selectOption(exercise3);
-		await page.locator(`#${spades}-exercise-select`).selectOption(exercise4);
-
-		const letsGoButton = page.getByRole('button', { name: "Let's Go" });
-		await letsGoButton.click();
+		await selectExercisesAndStart(page);
 		await expect(page.getByRole('heading', { name: 'SUIT YOURSELF', level: 1 })).toBeVisible();
-		await page.waitForLoadState('domcontentloaded');
 		await page.getByRole('radio', { name: 'Time' }).check();
 		await page.waitForLoadState('domcontentloaded');
 	});

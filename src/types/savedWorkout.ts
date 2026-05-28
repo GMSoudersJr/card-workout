@@ -6,5 +6,7 @@ export type TSavedWorkout = {
 	time?: {
 		startedAt?: number;
 		elapsed?: number;
+		start?: number;
+		end?: number;
 	};
 };

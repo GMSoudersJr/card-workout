@@ -20,7 +20,7 @@
 	}
 </script>
 
-<button class="oswald-header" on:click={handleClick} use:setFocus>
+<button class="oswald-header" onclick={handleClick} use:setFocus>
 	{activitiesButtonText.toUpperCase()}
 </button>
 

@@ -7,14 +7,18 @@
 	import type { TSavedWorkout } from '../../../types/savedWorkout';
 	import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 
-	export let workout: TSavedWorkout;
-	export let index: number;
+	interface Props {
+		workout: TSavedWorkout;
+		index: number;
+	}
 
-	$: workoutName = workout.name ? workout.name : `Workout # ${index + 1}`;
+	let { workout, index }: Props = $props();
 
-	$: workoutDate = new Date(workout.time?.startedAt as number).toLocaleDateString();
+	let workoutName = $derived(workout.name ? workout.name : `Workout # ${index + 1}`);
 
-	$: workoutTime = () => {
+	let workoutDate = $derived(new Date(workout.time?.startedAt as number).toLocaleDateString());
+
+	let workoutTime = $derived(() => {
 		if (workout.time === undefined || workout.time === null) return;
 		if (workout.time.startedAt === undefined || workout.time.startedAt === null) return;
 		if (workout.time.elapsed === undefined || workout.time.elapsed === null) return;
@@ -36,11 +40,13 @@
 		}
 		let time = `${minutesString}:${secondsString}`;
 		return time;
-	};
-
-	$: exercises = workout.exercises.map((exercise) => {
-		return convertTypeValueToEnumValue(exercise!, EExerciseNames);
 	});
+
+	let exercises = $derived(
+		workout.exercises.map((exercise) => {
+			return convertTypeValueToEnumValue(exercise!, EExerciseNames);
+		})
+	);
 </script>
 
 <div class="workout-card" out:slide={{ duration: 400, axis: 'y', easing: quintOut }}>

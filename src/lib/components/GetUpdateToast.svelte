@@ -2,7 +2,11 @@
 	import toast_, { type Toast } from 'svelte-french-toast';
 	import { newUpdate, reloadToUpdate, getTheUpdate } from '$lib/strings/forToasts';
 
-	export let toast: Toast;
+	interface Props {
+		toast: Toast;
+	}
+
+	let { toast }: Props = $props();
 
 	function handleClick() {
 		toast_.dismiss(toast.id);
@@ -17,7 +21,7 @@
 		{reloadToUpdate}
 	</p>
 	<br />
-	<button on:click={handleClick} class="oswald-header" value="updateServiceWorker">
+	<button onclick={handleClick} class="oswald-header" value="updateServiceWorker">
 		{getTheUpdate}
 	</button>
 </span>

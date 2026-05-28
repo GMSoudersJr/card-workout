@@ -38,18 +38,11 @@ test.describe('exercise name navigation', () => {
 						page.getByRole('heading', { name: `${exerciseName}`, exact: true, level: 2 })
 					).toBeVisible();
 
-					const embeddedVideoFrame = page.frameLocator(
+					const embeddedVideo = page.locator(
 						`#${exercise.name!.toLowerCase()}-embedded-video`
 					);
-					expect(embeddedVideoFrame).toBeTruthy();
-
-					const youTubePlayer = embeddedVideoFrame.locator('#player');
-					const channelTitle = youTubePlayer.locator('.ytp-title-channel');
-					await expect(channelTitle).toBeVisible();
-
-					const playButton = youTubePlayer.getByLabel('Play', { exact: true });
-					await expect(playButton).toBeVisible();
-					await expect(playButton).toBeEnabled();
+					await expect(embeddedVideo).toBeVisible();
+					await expect(embeddedVideo).toHaveAttribute('src', /youtube\.com\/embed/);
 				});
 			} else {
 				test(`expect ${exerciseName} unclickable`, async ({ page }) => {

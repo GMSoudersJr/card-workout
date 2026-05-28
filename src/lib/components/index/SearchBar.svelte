@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	let searchedExerciseName = '';
+	let searchedExerciseName = $state('');
 	const dispatch = createEventDispatcher();
 
 	function handleInput() {
@@ -18,7 +18,7 @@
 		type="search"
 		class="oswald-header"
 		bind:value={searchedExerciseName}
-		on:input={handleInput}
+		oninput={handleInput}
 	/>
 </section>
 

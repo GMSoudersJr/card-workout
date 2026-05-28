@@ -13,16 +13,20 @@
 		});
 	}
 
-	export let dialogMessage: string | undefined;
+	interface Props {
+		dialogMessage: string | undefined;
+	}
+
+	let { dialogMessage }: Props = $props();
 </script>
 
 <dialog id="delete-dialog" class="delete-dialog" use:clickOutside>
 	<h1 class="title">Deletion</h1>
 	<p class="message">{dialogMessage}</p>
-	<button class="action-button cancel" id="delete-cancel" value="cancel" on:click={handleClick}>
+	<button class="action-button cancel" id="delete-cancel" value="cancel" onclick={handleClick}>
 		Cancel
 	</button>
-	<button class="action-button confirm" id="delete-confirm" value="deleteIt" on:click={handleClick}>
+	<button class="action-button confirm" id="delete-confirm" value="deleteIt" onclick={handleClick}>
 		Confirm
 	</button>
 </dialog>

@@ -3,6 +3,12 @@
 	import DiscardedCardsWidget from '$lib/components/cards/DiscardedCardsWidget.svelte';
 	import NavAndHeading from '$lib/components/NavAndHeading.svelte';
 	import { exerciseEmoji } from '$lib/emojis';
+
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <main>
@@ -10,7 +16,7 @@
 	<aside class="discarded-cards-aside">
 		<DiscardedCardsWidget />
 	</aside>
-	<slot />
+	{@render children?.()}
 	<aside class="deck-of-cards-info-aside">
 		<CardsInfoWidget />
 	</aside>

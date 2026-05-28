@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ViewTransition from './navigation.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { cardEmoji, newEmoji, rocketEmoji } from '$lib/emojis';
 	import toast, { Toaster } from 'svelte-french-toast';
 	import GetAppToast from '$lib/components/GetAppToast.svelte';
@@ -8,6 +8,12 @@
 	import '../app.css';
 	import { installed, launchFromHomeScreen, notInstalled, thanks } from '$lib/strings/forToasts';
 	import { onMount } from 'svelte';
+
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 	// commented out this because login is causing errors when user offline
 	//import {goto} from '$app/navigation';
 
@@ -30,7 +36,7 @@
 
 			newServiceWorker?.addEventListener('statechange', () => {
 				if (newServiceWorker?.state === 'installed') {
-					toast(GetUpdateToast, {
+					toast(GetUpdateToast as any, {
 						duration: 7500,
 						icon: newEmoji
 					});
@@ -97,7 +103,7 @@
 		deferredPrompt = event as BeforeInstallPromptEvent;
 		//Show customized install prompt for PWA
 		// This will be a toast with a button to install the app
-		toast(GetAppToast, {
+		toast(GetAppToast as any, {
 			duration: 7500,
 			icon: cardEmoji
 		});
@@ -118,27 +124,27 @@
 
 <svelte:head>
 	<title>
-		{$page.data.title}
+		{page.data.title}
 	</title>
-	<meta name="description" content={`${$page.data.description}`} />
+	<meta name="description" content={`${page.data.description}`} />
 	<meta property="og:site_name" content="SUIT YOURSELF" />
-	<meta property="og:title" content={`${$page.data.title}`} />
+	<meta property="og:title" content={`${page.data.title}`} />
 	<meta property="og:type" content="website" />
-	<meta property="og:description" content={`${$page.data.description}`} />
-	<meta property="og:url" content={`${$page.url.href}`} />
-	<meta property="og:image" content={`${$page.data.metaImageUrl}`} />
+	<meta property="og:description" content={`${page.data.description}`} />
+	<meta property="og:url" content={`${page.url.href}`} />
+	<meta property="og:image" content={`${page.data.metaImageUrl}`} />
 	<meta property="og:img:alt" content="Screen capture of the home page" />
 	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:title" content={`${$page.data.title}`} />
-	<meta property="twitter:description" content={`${$page.data.description}`} />
-	<meta property="twitter:image" content={`${$page.data.title}`} />
+	<meta property="twitter:title" content={`${page.data.title}`} />
+	<meta property="twitter:description" content={`${page.data.description}`} />
+	<meta property="twitter:image" content={`${page.data.title}`} />
 </svelte:head>
 
-<svelte:window on:click={handleWindowClick} on:beforeinstallprompt={handleBeforeInstallPrompt} />
+<svelte:window onclick={handleWindowClick} onbeforeinstallprompt={handleBeforeInstallPrompt} />
 <Toaster />
 <ViewTransition />
 <main>
-	<slot />
+	{@render children?.()}
 </main>
 
 <style>

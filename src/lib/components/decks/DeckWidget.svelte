@@ -12,9 +12,14 @@
 	} from '../../../store';
 	import { goto } from '$app/navigation';
 
-	export let deckName: string = 'Full Body I';
-	export let description: string;
-	export let workoutSuitExercises: TSuitExercise<TSuit>[];
+	interface Props {
+		deckName?: string;
+		description: string;
+		workoutSuitExercises: TSuitExercise<TSuit>[];
+	}
+
+	let { deckName = 'Full Body I', description, workoutSuitExercises }: Props = $props();
+
 	const exerciseData = workoutSuitExercises.map((exercise) => {
 		if (exercise.exercise?.embeds !== undefined && exercise.exercise.name !== undefined) {
 			return {
@@ -41,7 +46,7 @@
 </script>
 
 <section class="full-deck">
-	<button class="deck" on:click={handleClick}>
+	<button class="deck" onclick={handleClick}>
 		<h4 class="deck-name oswald-header">
 			{deckName}
 		</h4>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
+	import type { Component } from 'svelte';
 	import { radioButtonLabelNames } from '$lib/strings/forCardsPage';
 
 	import { suitExercises } from '../../../store';
@@ -13,21 +13,16 @@
 	import { exercisesHaveNotBeenChosen } from '$lib/utils';
 
 	interface InfoWidgets {
-		[key: string]: ComponentType;
+		[key: string]: Component;
 	}
 
 	type Group = 'deck' | 'suit' | 'rank' | 'reps' | 'time' | string;
 
 	const infoWidgets: InfoWidgets = {
-		// @ts-expect-error: svelte component error
 		deck: DeckInfoWidget,
-		// @ts-expect-error: svelte component error
 		rank: RankInfoWidget,
-		// @ts-expect-error: svelte component error
 		suit: SuitInfoWidget,
-		// @ts-expect-error: svelte component error
 		reps: RepsInfoWidget,
-		// @ts-expect-error: svelte component error
 		time: WorkoutStopwatch
 	};
 
@@ -35,7 +30,7 @@
 		id: string;
 		value: string;
 		labelName: string;
-		widget: ComponentType;
+		widget: Component;
 	}
 
 	let infoChoices: InfoChoice[] = [
@@ -43,46 +38,41 @@
 			id: 'radio-deck',
 			value: 'deck',
 			labelName: radioButtonLabelNames.deck,
-			// @ts-expect-error: svelte component error
 			widget: DeckInfoWidget
 		},
 		{
 			id: 'radio-rank',
 			value: 'rank',
 			labelName: radioButtonLabelNames.rank,
-			// @ts-expect-error: svelte component error
 			widget: RankInfoWidget
 		},
 		{
 			id: 'radio-suit',
 			value: 'suit',
 			labelName: radioButtonLabelNames.suit,
-			// @ts-expect-error: svelte component error
 			widget: SuitInfoWidget
 		},
 		{
 			id: 'radio-reps',
 			value: 'reps',
 			labelName: radioButtonLabelNames.reps,
-			// @ts-expect-error: svelte component error
 			widget: RepsInfoWidget
 		},
 		{
 			id: 'radio-time',
 			value: 'time',
 			labelName: radioButtonLabelNames.time,
-			// @ts-expect-error: svelte component error
 			widget: WorkoutStopwatch
 		}
 	];
 
-	$: radioButtons = () => {
+	let radioButtons = $derived(() => {
 		if ($suitExercises.some(exercisesHaveNotBeenChosen)) {
 			return infoChoices.slice(0, -2);
 		} else {
 			return infoChoices;
 		}
-	};
+	});
 
 	function transition(action: () => void) {
 		// @ts-expect-error: no transition type yet
@@ -112,8 +102,8 @@
 		}
 	}
 
-	let group: Group = 'deck';
-	let showThisWidget: string | undefined = group;
+	let group: Group = $state('deck');
+	let showThisWidget: string = $state('deck');
 </script>
 
 <div class="cards-info-widget-container">
@@ -127,15 +117,16 @@
 					id={choice.id}
 					name="deck-of-cards-info"
 					value={choice.value}
-					on:change={handleChange}
-					on:click={handleClick}
+					onchange={handleChange}
+					onclick={handleClick}
 				/>
 			</label>
 		{/each}
 	</div>
 	<div class="widget-container">
 		{#if group !== ''}
-			<svelte:component this={infoWidgets[showThisWidget]} />
+			{@const SvelteComponent = infoWidgets[showThisWidget]}
+			<SvelteComponent />
 		{/if}
 	</div>
 </div>

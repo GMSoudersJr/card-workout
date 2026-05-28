@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let heading: string;
-	export let unorderedList: string[];
+	interface Props {
+		heading: string;
+		unorderedList: string[];
+	}
+
+	let { heading, unorderedList }: Props = $props();
 </script>
 
 <section class="section-container">

@@ -49,7 +49,6 @@
 		if ($theRemainingDeck.length == 0) {
 			theCurrentCard.reset();
 		} else {
-			//const randomCardIndex = Math.floor(Math.random() * $deckOfCards.length);
 			const randomCard = $theDeckOfCards.at($randomCardIndex);
 			theDeckOfCards.pluck($randomCardIndex);
 			randomCard && theCurrentCard.data(randomCard);
@@ -113,10 +112,8 @@
 		let xDiff = xDown - xUp;
 		let yDiff = yDown - yUp;
 
-		// return early if swipe is less than or equal to 20 pixels.
 		if (Math.abs(xDiff) <= 20 && Math.abs(yDiff) <= 20) return cardAction;
 
-		// Decides what to do with the card based on value of the slope
 		if (Math.abs(xDiff) > Math.abs(yDiff)) {
 			if (xDiff > 0) {
 				cardAction = 'putBack';
@@ -157,7 +154,6 @@
 		}
 	}
 
-	// Using keyDown because arrow keys only fire on keydown
 	function handleKeyDown(event: KeyboardEvent) {
 		switch (event.key) {
 			case 'ArrowUp':
@@ -182,26 +178,30 @@
 		card?.addEventListener('touchend', handleEnd);
 	});
 
-	export let rankSymbol: TCardRank;
-	export let suitSymbol: TSuit;
-	export let id: string;
-	export let textColor: string;
-	export let exerciseName: TExerciseName | undefined;
-	export let reps: number | undefined;
-	export let disabled: boolean;
-	$: exerciseNameText = convertTypeValueToEnumValue(exerciseName!, EExerciseNames);
-	$: rank = convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol);
-	$: suit = convertTypeValueToEnumValue(suitSymbol, ESuitSymbolUnicode);
+	interface Props {
+		rankSymbol: TCardRank;
+		suitSymbol: TSuit;
+		id: string;
+		textColor: string;
+		exerciseName: TExerciseName | undefined;
+		reps: number | undefined;
+		disabled: boolean;
+	}
+
+	let { rankSymbol, suitSymbol, id, textColor, exerciseName, reps, disabled }: Props = $props();
+	let exerciseNameText = $derived(convertTypeValueToEnumValue(exerciseName!, EExerciseNames));
+	let rank = $derived(convertTypeValueToEnumValue(rankSymbol, ECardRankSymbol));
+	let suit = $derived(convertTypeValueToEnumValue(suitSymbol, ESuitSymbolUnicode));
 </script>
 
 <button
 	{id}
 	class="playing-card"
-	on:click={handleClick}
+	onclick={handleClick}
 	aria-disabled={disabled}
 	{disabled}
 	use:setFocus
-	on:keydown={handleKeyDown}
+	onkeydown={handleKeyDown}
 >
 	<section class="rank-and-suit">
 		<div class="rank source-sans-3-text" style:color={textColor}>

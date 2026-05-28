@@ -1,12 +1,16 @@
 <script lang="ts">
-	export let name: string;
-	export let hasBeenPlucked: boolean;
-	export let hasBeenDiscarded: boolean;
-	$: cardActivity = () => {
+	interface Props {
+		name: string;
+		hasBeenPlucked: boolean;
+		hasBeenDiscarded: boolean;
+	}
+
+	let { name, hasBeenPlucked, hasBeenDiscarded }: Props = $props();
+	let cardActivity = $derived(() => {
 		if (hasBeenPlucked === false && hasBeenDiscarded === false) return 'in-deck';
 		if (hasBeenPlucked === true && hasBeenDiscarded === false) return 'plucked';
 		if (hasBeenPlucked === true && hasBeenDiscarded === true) return 'discarded';
-	};
+	});
 </script>
 
 <div id={`mini-card-tick-${name}`} class={`mini-card-tick ${cardActivity()}`}></div>

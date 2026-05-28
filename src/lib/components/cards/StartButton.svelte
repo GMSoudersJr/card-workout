@@ -23,7 +23,7 @@
 	}
 </script>
 
-<button on:click={handleStart} class="oswald-header" use:setFocus>
+<button onclick={handleStart} class="oswald-header" use:setFocus>
 	{startButtonText.toUpperCase()}
 </button>
 

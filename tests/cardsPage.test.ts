@@ -58,7 +58,7 @@ test.describe('uncheck radio button', () => {
 		const deckRadioButton = page.getByRole('radio', { name: 'Deck' });
 		await deckRadioLabel.check();
 		await expect(deckRadioButton).toBeChecked();
-		await deckRadioLabel.uncheck();
+		await deckRadioLabel.click();
 		await expect(deckRadioButton).not.toBeChecked();
 	});
 
@@ -68,7 +68,7 @@ test.describe('uncheck radio button', () => {
 		const deckStatWidget = page.locator('.widget-container');
 		await deckRadioLabel.check();
 		await expect(deckRadioButton).toBeChecked();
-		await deckRadioLabel.uncheck();
+		await deckRadioLabel.click();
 		await expect(deckRadioButton).not.toBeChecked();
 		await expect(deckStatWidget).toBeEmpty();
 	});

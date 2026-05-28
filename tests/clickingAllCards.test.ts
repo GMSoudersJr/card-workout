@@ -8,16 +8,10 @@ test.beforeEach(async ({ page }) => {
 	const theFirstCard = page.locator('.playing-card');
 	await theFirstCard.click();
 	const discardedCardsListItem = page.locator('.discarded-cards-listitem');
-	const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').nth(1);
+	const currentCard = page.locator('.playing-card').locator(':scope:not(:disabled)').first();
 	while ((await discardedCardsListItem.count()) < 52) {
-		await expect(currentCard)
-			.toHaveCount(1)
-			.then(async () => {
-				await currentCard.click();
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		await expect(currentCard).toHaveCount(1);
+		await currentCard.click();
 	}
 });
 

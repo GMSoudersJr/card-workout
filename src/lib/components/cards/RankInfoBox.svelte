@@ -1,7 +1,11 @@
 <script lang="ts">
-	$: grayscale = 100 - (count * 100) / 4;
-	export let rank: string;
-	export let count: number;
+	interface Props {
+		rank: string;
+		count: number;
+	}
+
+	let { rank, count }: Props = $props();
+	let grayscale = $derived(100 - (count * 100) / 4);
 </script>
 
 <div class="rank-info-box">

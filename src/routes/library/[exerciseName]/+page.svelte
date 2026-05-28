@@ -10,7 +10,11 @@
 	} from '../../../functions/convertTypeToEnumValue';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const { exercise } = data;
 
 	const { name, embeds, positions, variations } = exercise;

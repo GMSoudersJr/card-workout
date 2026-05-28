@@ -1,11 +1,17 @@
 <script lang="ts">
 	import NavAndHeading from '$lib/components/NavAndHeading.svelte';
 	import { cardEmoji } from '$lib/emojis';
+
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <main>
 	<NavAndHeading heading="setup" navEmoji={cardEmoji} altHref="/cards" />
-	<slot />
+	{@render children?.()}
 </main>
 
 <style>

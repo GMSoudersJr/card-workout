@@ -4,7 +4,7 @@
 	import { EStopwatchButtonString } from '../../../enums/stopwatchButtonString';
 	import { workoutStopwatch, discardedCards } from '../../../store';
 
-	let displayTime = $workoutStopwatch.elapsedTime;
+	let displayTime = $state($workoutStopwatch.elapsedTime);
 
 	onMount(async () => {
 		workoutStopwatch.updateDisplayIntervalId(
@@ -22,25 +22,25 @@
 		workoutStopwatch.continue();
 	}
 
-	$: stopwatchTime = formatStopWatchTime(displayTime);
+	let stopwatchTime = $derived(formatStopWatchTime(displayTime));
 </script>
 
 <div class="workout-stopwatch-container">
 	<h1 class="display-time source-sans-3-text">
 		{stopwatchTime}
 	</h1>
-	{#if $workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0}
+	{#if $workoutStopwatch.running && displayTime > 0}
 		<button
 			class="pause-button oswald-header"
-			on:click={handlePause}
+			onclick={handlePause}
 			disabled={!$workoutStopwatch.running}
 		>
 			{EStopwatchButtonString.PAUSE}
 		</button>
-	{:else if !$workoutStopwatch.running && $workoutStopwatch.elapsedTime > 0 && $discardedCards.length < 52}
+	{:else if !$workoutStopwatch.running && displayTime > 0 && $discardedCards.length < 52}
 		<button
 			class="continue-button oswald-header"
-			on:click={handleContinue}
+			onclick={handleContinue}
 			disabled={$workoutStopwatch.running}
 		>
 			{EStopwatchButtonString.RESUME}
