@@ -135,11 +135,20 @@
 		align-items: center;
 	}
 	.current-card-section {
+		position: relative;
 		height: 100%;
+		justify-self: stretch;
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: auto-fill;
 		justify-items: center;
+		align-items: center;
+	}
+	.card-outer-container {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		justify-content: center;
 		align-items: center;
 	}
 	.no-cards-showing {
