@@ -13,7 +13,7 @@
 	import { ECardRankSymbol } from '../../../enums/cardRankSymbol';
 	import type { TCardRank } from '../../../types/cardRank';
 	import type { TSuit } from '../../../types/suit';
-	import { onMount, createEventDispatcher } from 'svelte';
+	import { onMount, createEventDispatcher, tick } from 'svelte';
 	import type { TExerciseName } from '../../../types/exerciseName';
 	import { EExerciseNames } from '../../../enums/exerciseNames';
 	import { setFocus } from '$lib/utils';
@@ -138,11 +138,10 @@
 		workoutStopwatch.continue();
 	}
 
-	function handlePutBack() {
+	async function handlePutBack() {
 		continueStopwatch();
-		let theDeckIndexOfTheCardToPutBack: number;
 		if ($theCurrentCard[0]) {
-			theDeckIndexOfTheCardToPutBack = $theCurrentCard[0].deckIndex;
+			const theDeckIndexOfTheCardToPutBack = $theCurrentCard[0].deckIndex;
 			theDeckOfCards.putBack(theDeckIndexOfTheCardToPutBack);
 			if ($randomCardIndex === theDeckIndexOfTheCardToPutBack) {
 				dispatch('pluckedTheSameCard', {
@@ -151,6 +150,8 @@
 			}
 			theCurrentCard.data($theDeckOfCards[$randomCardIndex]);
 			theDeckOfCards.pluck($randomCardIndex);
+			await tick();
+			document.getElementById($theCurrentCard[0].name)?.focus();
 		}
 	}
 
