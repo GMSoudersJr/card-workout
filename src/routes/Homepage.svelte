@@ -45,9 +45,18 @@
 </script>
 
 <div class="page-container">
-	<div class="header">
-		<h1 class="oswald-header">{heading}</h1>
-		<h4 class="oswald-header sub-heading">{subHeading}</h4>
+	<div class="top-content">
+		<div class="header">
+			<h1 class="oswald-header">{heading}</h1>
+			<h4 class="oswald-header sub-heading">{subHeading}</h4>
+		</div>
+		<p class="source-sans-3-text seo-description">
+			Suit Yourself is a bodyweight workout app built around a standard deck of playing cards. Each
+			suit maps to one of your chosen calisthenics exercises — the card value tells you how many reps
+			to complete. Shuffle, draw, and work through all 52 cards for a full 400-rep playing card
+			workout challenge. No equipment needed. No two sessions are the same. Choose a quick-start deck
+			or build your own from scratch.
+		</p>
 	</div>
 	<nav class="nav-container">
 		{#each theHomepageLinks as homepageLink (homepageLink.text)}
@@ -80,13 +89,18 @@
 		width: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: 1.618fr 1fr;
+		grid-template-rows: 1fr min-content;
 		justify-content: center;
-		align-items: center;
-		align-content: center;
 		background: radial-gradient(circle at bottom, #ffffff, #000080 30%, #259259 50%);
 		padding: 0.5rem;
 		padding-bottom: 1.5rem;
+	}
+	.top-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
 	}
 	.header {
 		color: #ffffff;
@@ -100,13 +114,11 @@
 		font-size: 1.5rem;
 	}
 	.nav-container {
-		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: repeat(auto-fill, min-content);
 		row-gap: 0.25rem;
 		justify-items: center;
-		align-items: center;
 	}
 	.nav-link {
 		height: 100%;
@@ -133,5 +145,12 @@
 	}
 	.nav-link:nth-child(n - 4) {
 		font-size: 1.75rem;
+	}
+	.seo-description {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.7rem;
+		text-align: center;
+		padding: 0 2rem;
+		max-width: calc(60px * 1.618 * 3);
 	}
 </style>

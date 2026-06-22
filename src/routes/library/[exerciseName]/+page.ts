@@ -13,7 +13,7 @@ export const load: PageLoad = async ({ params }) => {
 
 	return {
 		exercise,
-		title: `${exerciseName} | Index | SUIT YOURSELF`,
+		title: `How to Do ${exerciseName} | Calisthenics Guide | Suit Yourself`,
 		description: `Wondering how to do "${exerciseName.toLowerCase()}"? This page provides body position, variations, and a YouTube video as well.`,
 		metaImageUrl: metaHomepageImageUrl
 	};
