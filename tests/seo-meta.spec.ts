@@ -25,4 +25,13 @@ test.describe('SEO meta tags', () => {
 			.getAttribute('content');
 		expect(twitterImage).toBe(ogImage);
 	});
+
+	test('homepage SEO description paragraph is present and contains target keywords', async ({
+		page
+	}) => {
+		const description = page.locator('p.seo-description');
+		await expect(description).toBeVisible();
+		const text = (await description.textContent()) ?? '';
+		expect(text).toMatch(/calisthenics|bodyweight|playing card workout/i);
+	});
 });
