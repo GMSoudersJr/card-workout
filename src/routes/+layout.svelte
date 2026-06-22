@@ -137,7 +137,7 @@
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:title" content={`${page.data.title}`} />
 	<meta property="twitter:description" content={`${page.data.description}`} />
-	<meta property="twitter:image" content={`${page.data.title}`} />
+	<meta property="twitter:image" content={`${page.data.metaImageUrl}`} />
 </svelte:head>
 
 <svelte:window onclick={handleWindowClick} onbeforeinstallprompt={handleBeforeInstallPrompt} />
