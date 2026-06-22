@@ -5,7 +5,7 @@ export const metaCardsImageUrl =
 	'https://lh3.googleusercontent.com/pw/AP1GczM2ERBDyEQcUJ2BJhFZkuqjZ-gjW6U0waG3fbrmfc0gX4bz8wev2FbVTUONJPF1zTrEPi80TtSWxoGG-kD_GECWIrHuHknY7fnvAtBwr5DQp4dzBaIPotEBZk69zI2mUX8WXw7YHe7vF_SN33rh-73G8w=w960-h486-s-no-gm?authuser=0';
 
 export const homepage = {
-	title: 'SUIT YOURSELF',
+	title: 'Suit Yourself | Card-Based Calisthenics Workout App',
 	description:
 		'Join the 400-Rep Calisthenics Challenge, a workout based on playing cards. Experience the luck of the draw adding randomness to your workout. Opt for a quick-start deck or customize your own with 4 exercises. Add fun to fitness!',
 	metaImageUrl: metaHomepageImageUrl
@@ -24,25 +24,25 @@ export const cards = {
 };
 
 export const decks = {
-	title: 'Decks | SUIT YOURSELF',
+	title: 'Workout Decks | Suit Yourself',
 	description: `Dive into our curated collection of workout decks. Embark on your 400-rep challenge journey today!`,
 	metaImageUrl: metaHomepageImageUrl
 };
 
 export const exercises = {
-	title: `Exercises | SUIT YOURSELF`,
+	title: `How to Set Up Your Workout | Suit Yourself`,
 	description: `Tailor your fitness journey! Pick an exercise for each suit. Choose any exercise, target specific or full body. Hence, 'SUIT YOURSELF'!`,
 	metaImageUrl: metaHomepageImageUrl
 };
 
 export const faq = {
-	title: 'FAQ | SUIT YOURSELF',
+	title: 'FAQ | Suit Yourself',
 	description: `Discover answers to common questions about 'SUIT YOURSELF'. Usage, creation, and inspiration - all explained here!`,
 	metaImageUrl: metaCardsImageUrl
 };
 
 export const index = {
-	title: 'Index | SUIT YOURSELF',
+	title: 'Calisthenics Exercise Library | Suit Yourself',
 	description: `Curious about the exercises in 'SUIT YOURSELF'? Here’s the list, potentially with a demo link!`,
 	metaImageUrl: metaHomepageImageUrl
 };
