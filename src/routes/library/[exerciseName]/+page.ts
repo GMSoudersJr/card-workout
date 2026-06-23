@@ -1,5 +1,6 @@
 import type { PageLoad } from './$types';
 import { exercises } from '$lib/exercisesDB';
+import { exerciseDescriptions } from '$lib/exerciseDescriptions';
 import { convertTypeValueToEnumValue } from '../../../functions/convertTypeToEnumValue';
 import { EExerciseNames } from '../../../enums/exerciseNames';
 import { metaHomepageImageUrl } from '$lib/strings/forSeo';
@@ -12,7 +13,7 @@ export const load: PageLoad = async ({ params }) => {
 	const exerciseName = convertTypeValueToEnumValue(exercise.name!, EExerciseNames);
 
 	return {
-		exercise,
+		exercise: { ...exercise, description: exerciseDescriptions[exercise.name!] },
 		title: `How to Do ${exerciseName} | Calisthenics Guide | Suit Yourself`,
 		description: `Wondering how to do "${exerciseName.toLowerCase()}"? This page provides body position, variations, and a YouTube video as well.`,
 		metaImageUrl: metaHomepageImageUrl

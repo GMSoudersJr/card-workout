@@ -15,19 +15,11 @@
 
 <div class="index-card">
 	<div class="exercise-name-demo-link">
-		{#if exercise.embeds}
-			{#each exercise.embeds as embed (embed)}
-				{#if embed === ''}
-					<h1 class="oswald-header header">{exerciseName}</h1>
-				{:else}
-					<h1 class="oswald-header header">
-						<a href={`/library/${hrefExerciseName}`}>
-							{exerciseName}
-						</a>
-					</h1>
-				{/if}
-			{/each}
-		{/if}
+		<h1 class="oswald-header header">
+			<a href={`/library/${hrefExerciseName}`}>
+				{exerciseName}
+			</a>
+		</h1>
 	</div>
 	{#if exercise.emojis}
 		<section class="emoji-section">

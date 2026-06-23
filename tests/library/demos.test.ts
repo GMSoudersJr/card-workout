@@ -45,14 +45,15 @@ test.describe('exercise name navigation', () => {
 					await expect(embeddedVideo).toHaveAttribute('src', /youtube\.com\/embed/);
 				});
 			} else {
-				test(`expect ${exerciseName} unclickable`, async ({ page }) => {
-					const exerciseIndexCardHeading = page.getByRole('heading', {
+				test(`expect ${exerciseName} links to exercise page`, async ({ page }) => {
+					const heading = page.getByRole('heading', {
 						name: exerciseName,
 						exact: true,
 						level: 1
 					});
-					const exInnerHtml = await exerciseIndexCardHeading.innerHTML();
-					expect(exInnerHtml).toEqual(exerciseName);
+					const link = heading.getByRole('link');
+					await expect(link).toBeVisible();
+					await expect(link).toBeEnabled();
 				});
 			}
 		}
