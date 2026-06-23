@@ -7,6 +7,7 @@ import type { TExerciseVariation } from './exerciseVariation';
 
 export type TExercise<TExerciseName> = {
 	name: TExerciseName | undefined;
+	description?: string | undefined;
 	positions?: TExercisePosition[] | undefined;
 	bodySections?: TBodySection[] | undefined;
 	bodyParts?: TBodyPart[] | undefined;

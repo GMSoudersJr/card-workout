@@ -17,7 +17,7 @@
 	let { data }: Props = $props();
 	const { exercise } = data;
 
-	const { name, embeds, positions, variations } = exercise;
+	const { name, description, embeds, positions, variations } = exercise;
 
 	const exerciseName = convertTypeValueToEnumValue(name!, EExerciseNames);
 
@@ -52,10 +52,16 @@
 		</section>
 	{/if}
 
-	<div class="information-container">
-		<div class="split-row">
-			<ListWidget heading="Positions" unorderedList={exercisePositions} />
-			<ListWidget heading="Variations" unorderedList={exerciseVariations} />
+	<div class="scrollable-details">
+		{#if description}
+			<p class="exercise-description source-sans-3-text">{description}</p>
+		{/if}
+
+		<div class="information-container">
+			<div class="split-row">
+				<ListWidget heading="Positions" unorderedList={exercisePositions} />
+				<ListWidget heading="Variations" unorderedList={exerciseVariations} />
+			</div>
 		</div>
 	</div>
 </div>
@@ -64,21 +70,40 @@
 	.exercise-name {
 		color: #000080;
 	}
+	.exercise-description {
+		max-width: 560px;
+		font-size: 0.8125rem;
+		color: #555;
+		text-align: center;
+		padding: 0 0.5rem;
+		line-height: 1.6;
+	}
 	.index-exercise-page-container {
 		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(3, min-content);
+		grid-template-rows: min-content min-content 1fr;
 		row-gap: 1rem;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		justify-items: center;
-		align-items: center;
+		align-items: start;
 
-		overflow-x: hidden;
+		overflow: hidden;
+	}
+	.scrollable-details {
+		width: 100%;
+		max-width: 560px;
+		min-height: 0;
+		align-self: stretch;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
 		overflow-y: auto;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+		padding-bottom: 0.5rem;
 	}
 	.demo-container {
 		display: grid;
