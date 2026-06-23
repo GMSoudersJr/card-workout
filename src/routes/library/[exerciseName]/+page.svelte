@@ -64,6 +64,11 @@
 					<ListWidget heading="Variations" unorderedList={exerciseVariations} />
 				</div>
 			</div>
+
+			<p class="ai-disclaimer source-sans-3-text">
+				Exercise descriptions were generated with AI. Always consult a qualified professional
+				before starting a new training program.
+			</p>
 		</div>
 	</div>
 </div>
@@ -79,6 +84,13 @@
 		text-align: center;
 		padding: 0 0.5rem;
 		line-height: 1.6;
+	}
+	.ai-disclaimer {
+		font-size: 0.6875rem;
+		color: #aaa;
+		text-align: center;
+		padding: 0 0.5rem;
+		line-height: 1.5;
 	}
 	.index-exercise-page-container {
 		height: 100%;
