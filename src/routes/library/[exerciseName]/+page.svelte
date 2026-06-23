@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ParagraphWidget from '$lib/components/index/ParagraphWidget.svelte';
 	import ListWidget from '$lib/components/index/ListWidget.svelte';
 	import { EExerciseNames } from '../../../enums/exerciseNames';
 	import { EExercisePositions } from '../../../enums/exercisePositions';
@@ -25,6 +24,7 @@
 
 	const exerciseVariations = convertTypeValuesToEnumValues(variations!, EExerciseVariations);
 	const baseYouTubeEmbedUrl = 'https://www.youtube.com/embed/';
+	const hasVideo = Array.isArray(embeds) && embeds[0] !== '';
 
 	const howToSchema = {
 		'@context': 'https://schema.org',
@@ -39,12 +39,12 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(howToSchema)}</script>`}
 </svelte:head>
 
-<div class="index-exercise-page-container">
+<div class="index-exercise-page-container" class:has-video={hasVideo}>
 	<h2 class="exercise-name oswald-header">
 		{exerciseName.toUpperCase()}
 	</h2>
 
-	{#if embeds}
+	{#if hasVideo}
 		<section class="demo-container">
 			{#each embeds as embed, i (i)}
 				<iframe
@@ -108,14 +108,16 @@
 		height: 100%;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: min-content min-content 1fr;
+		grid-template-rows: min-content 1fr;
 		row-gap: 1rem;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		justify-items: center;
 		align-items: start;
-
 		overflow: hidden;
+	}
+	.index-exercise-page-container.has-video {
+		grid-template-rows: min-content min-content 1fr;
 	}
 	.scroll-wrapper {
 		position: relative;
