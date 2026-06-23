@@ -25,7 +25,19 @@
 
 	const exerciseVariations = convertTypeValuesToEnumValues(variations!, EExerciseVariations);
 	const baseYouTubeEmbedUrl = 'https://www.youtube.com/embed/';
+
+	const howToSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'HowTo',
+		name: `How to Do ${exerciseName}`,
+		...(description ? { description } : {}),
+		tool: exercisePositions.map((pos) => ({ '@type': 'HowToTool', name: pos }))
+	};
 </script>
+
+<svelte:head>
+	{@html `<script type="application/ld+json">${JSON.stringify(howToSchema)}</script>`}
+</svelte:head>
 
 <div class="index-exercise-page-container">
 	<h2 class="exercise-name oswald-header">
