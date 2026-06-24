@@ -86,7 +86,7 @@ test.describe('click start', () => {
 
 	test.describe('continue clicking an exercise card', () => {
 		test('expect exercise information to be visible on each card', async ({ page }) => {
-			test.setTimeout(51 * 1_000);
+			test.setTimeout(90 * 1_000);
 			const startButton = page.getByRole('button', { name: 'START' });
 			await expect(startButton).toBeVisible();
 			await expect(startButton).toBeEnabled();

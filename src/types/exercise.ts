@@ -5,8 +5,15 @@ import type { TBodySection } from './bodySection';
 import type { TExercisePosition } from './exercisePosition';
 import type { TExerciseVariation } from './exerciseVariation';
 
+export type TExerciseStep = {
+	name: string;
+	text: string;
+};
+
 export type TExercise<TExerciseName> = {
 	name: TExerciseName | undefined;
+	description?: string | undefined;
+	steps?: TExerciseStep[] | undefined;
 	positions?: TExercisePosition[] | undefined;
 	bodySections?: TBodySection[] | undefined;
 	bodyParts?: TBodyPart[] | undefined;

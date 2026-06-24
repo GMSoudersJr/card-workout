@@ -53,6 +53,46 @@ export const howToUse = {
 	]
 };
 
+export const cardDeckWorkout = {
+	heading: 'what is a card deck workout?',
+	list: [
+		`A card deck workout uses a standard 52-card deck to determine your reps. Each suit maps to a different exercise and each card's value tells you how many reps to do. You flip cards one at a time and work through the whole deck. The randomness keeps things interesting and means every workout plays out differently.`
+	]
+};
+
+export const fullDeckReps = {
+	heading: 'how many reps is a full deck?',
+	list: [
+		`A full deck adds up to 400 reps across four exercises, 100 reps per suit. Face cards count as 10 and aces count as 16. You can work through the whole deck in one session or set a time limit and see how far you get.`
+	]
+};
+
+export const equipment = {
+	heading: 'do i need any equipment?',
+	list: [`No. Every exercise in the library is bodyweight only. All you need is enough space to move around.`]
+};
+
+export const workoutDuration = {
+	heading: 'how long does a card deck workout take?',
+	list: [
+		`It depends on the exercises you choose and your pace, but most people finish a full deck in 20 to 45 minutes. Picking faster cardio movements like jumping jacks and high knees will push you through quicker. Slower strength movements like pull-ups and dips will take longer.`
+	]
+};
+
+export const warmUp = {
+	heading: 'can i use this as a warm-up?',
+	list: [
+		`Absolutely. Pick four mobility or low-intensity exercises from the library, set a time limit, and flip cards until time runs out. The mobility and yoga pose exercises in the library work well for this.`
+	]
+};
+
+export const beginners = {
+	heading: 'is this good for beginners?',
+	list: [
+		`Yes. You pick your own exercises, so you can start with movements you are comfortable with and swap in harder ones as you get stronger. The rep counts are fixed by the cards, but you control the difficulty through your exercise choices.`
+	]
+};
+
 export const suggestions = {
 	heading: 'suggestions',
 	list: [
