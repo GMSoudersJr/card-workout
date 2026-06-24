@@ -16,7 +16,7 @@
 	let { data }: Props = $props();
 	const { exercise } = data;
 
-	const { name, description, embeds, positions, variations } = exercise;
+	const { name, description, steps, embeds, positions, variations } = exercise;
 
 	const exerciseName = convertTypeValueToEnumValue(name!, EExerciseNames);
 
@@ -31,7 +31,8 @@
 		'@type': 'HowTo',
 		name: `How to Do ${exerciseName}`,
 		...(description ? { description } : {}),
-		tool: exercisePositions.map((pos) => ({ '@type': 'HowToTool', name: pos }))
+		tool: exercisePositions.map((pos) => ({ '@type': 'HowToTool', name: pos })),
+		...(steps ? { step: steps.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })) } : {})
 	};
 </script>
 
