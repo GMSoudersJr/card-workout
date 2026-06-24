@@ -7,6 +7,12 @@
 		repCount,
 		howToUse,
 		exercises,
+		cardDeckWorkout,
+		fullDeckReps,
+		equipment,
+		workoutDuration,
+		warmUp,
+		beginners,
 		suggestions,
 		problems
 	} from '$lib/strings/forAboutPage';
@@ -16,6 +22,12 @@
 	<ListWidget heading={howToUse.heading} unorderedList={howToUse.list} />
 	<ListWidget heading={repCount.heading} unorderedList={repCount.list} />
 	<ListWidget heading={exercises.heading} unorderedList={exercises.list} />
+	<ParagraphWidget heading={cardDeckWorkout.heading} listOfParagraphs={cardDeckWorkout.list} />
+	<ParagraphWidget heading={fullDeckReps.heading} listOfParagraphs={fullDeckReps.list} />
+	<ParagraphWidget heading={equipment.heading} listOfParagraphs={equipment.list} />
+	<ParagraphWidget heading={workoutDuration.heading} listOfParagraphs={workoutDuration.list} />
+	<ParagraphWidget heading={warmUp.heading} listOfParagraphs={warmUp.list} />
+	<ParagraphWidget heading={beginners.heading} listOfParagraphs={beginners.list} />
 	<ParagraphWidget heading={motivation.heading} listOfParagraphs={motivation.list} />
 	<ListWidget heading={problems.heading} unorderedList={problems.list} />
 	<ListWidget heading={suggestions.heading} unorderedList={suggestions.list} />
@@ -30,7 +42,7 @@
 		justify-self: center;
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(7, min-content);
+		grid-template-rows: repeat(13, min-content);
 		row-gap: 1rem;
 		overflow-y: auto;
 		-ms-overflow-style: none;
