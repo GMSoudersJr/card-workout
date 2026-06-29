@@ -26,6 +26,11 @@ test.describe('SEO meta tags', () => {
 		expect(twitterImage).toBe(ogImage);
 	});
 
+	test('canonical link points to non-www origin with correct pathname', async ({ page }) => {
+		const href = await page.locator('link[rel="canonical"]').getAttribute('href');
+		expect(href).toBe('https://suityourself.app/');
+	});
+
 	test('homepage SEO description paragraph is present and contains target keywords', async ({
 		page
 	}) => {

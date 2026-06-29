@@ -138,6 +138,7 @@
 	<meta property="twitter:title" content={`${page.data.title}`} />
 	<meta property="twitter:description" content={`${page.data.description}`} />
 	<meta property="twitter:image" content={`${page.data.metaImageUrl}`} />
+	<link rel="canonical" href="https://suityourself.app{page.url.pathname}" />
 </svelte:head>
 
 <svelte:window onclick={handleWindowClick} onbeforeinstallprompt={handleBeforeInstallPrompt} />
