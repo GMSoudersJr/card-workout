@@ -1,4 +1,4 @@
-# <h1 align='center'>[SUIT YOURSELF](https://card-workout-tau.vercel.app/)</h1>
+# <h1 align='center'>[SUIT YOURSELF](https://suityourself.app/)</h1>
 
 <div align="center">
   <table>
@@ -27,7 +27,7 @@
 
 ## Overview
 
-A _mobile-first_, _web-based_ card workout app: [SUIT YOURSELF](https://card-workout-tau.vercel.app/)
+A _mobile-first_, _web-based_ card workout app: [SUIT YOURSELF](https://suityourself.app/)
 
 During the pandemic, I was intrigued by a video of a boxer using a deck of cards to determine the number of push-ups he would do.
 After trying it a few times...
