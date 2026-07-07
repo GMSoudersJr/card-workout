@@ -54,7 +54,7 @@ Carrying around a deck of cards and remembering which exercise is for which suit
 
 ## Current Status
 
-**LIVE LINK:** https://card-workout-tau.vercel.app
+**LIVE LINK:** https://suityourself.app
 
 ## Future Plans
 
