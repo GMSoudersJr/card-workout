@@ -89,7 +89,7 @@ Don't move SEO metadata, long-form SEO copy, the install toast, or the service w
 `../tools/sync` and most of `../shared/` don't exist yet, so neither folder below exists. Once sync runs, it will write these, and they are never edited by hand:
 
 - `src/lib/generated/`: strings, exercises, decks, deck rules, design tokens as CSS custom properties
-- `tests/shared-fixtures/`: copies of rule fixtures and export fixtures
+- `tests/shared-fixtures/`: a copy of `../shared/rules/fixtures.json`
 
 Until then, copy lives in `src/lib/strings/`, data in `exercisesDB.ts` and `workoutsDB.ts`, and colors and sizes are hardcoded in component `<style>` blocks and `src/app.css`.
 
