@@ -105,7 +105,8 @@ Until then, copy lives in `src/lib/strings/`, data in `exercisesDB.ts` and `work
 
 - No new hardcoded user-facing copy or visual values in components once generated files exist. Until then, put copy in `src/lib/strings/`, not inline.
 - No network requests beyond loading the app and its own assets. Known exception: YouTube iframes on `/library/[exerciseName]`.
-- Exports must validate against `../shared/schema/export.v1.schema.json`. (No export/import feature exists yet.)
+- Saved workouts in `localStorage` must match `../shared/schema/workout.v1.schema.json` (not written yet). Changing the `workouts` shape means changing that schema and every platform.
+- No export/import without an ADR.
 
 ## Quirks
 
