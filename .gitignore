@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 Session.vim
 /.vercel/output
 /.claude
+/test-results
